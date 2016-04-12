@@ -23,8 +23,8 @@ class TradeController < ApplicationController
         "post_back_url":"http://140.113.151.76:10111/trade/post_back",
         "result_url":"https://140.113.151.76:10111/trade/result"
         }}'
-    res = RestClient.post("https://tspg-t.taishinbank.com.tw/tspgapi/restapi/auth.ashx" , params, :headers => {:content_type => 'json'})
-    redirect_to JSON.parse(res)["params"]["hpp_url"]
+    #res = RestClient.post("https://tspg-t.taishinbank.com.tw/tspgapi/restapi/auth.ashx" , params, :headers => {:content_type => 'json'})
+    #redirect_to JSON.parse(res)["params"]["hpp_url"]
   end
   def post_back
     logger.info "xxxxxxxxxxxxxxxxxxxxxxxx"
