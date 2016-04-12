@@ -1,0 +1,17 @@
+<div class="container-fluid">
+	<div class="row">
+        <div class="col-sm-3 col-lg-2 sidebar">
+        </div>
+          <ul class="description-sidebar hidden-xs">
+	          <li>	
+	          	<div><%= current_user.email%></div>
+	          </li>          	
+          </ul>
+          <ul class="nav nav-sidebar">
+			<li><%= link_to "編輯個人資訊", edit_user_path(current_user) %></li>			
+			<li><%= link_to "更改密碼", edit_user_registration_path %></li>          
+          	<li><%= link_to '登出', destroy_user_session_path, :method => :delete %></li>
+          </ul>
+        </div>
+	</div>
+</div>
