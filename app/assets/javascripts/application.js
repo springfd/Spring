@@ -14,4 +14,7 @@
 //= require jquery_ujs
 //= require turbolinks
 //= require bootstrap-sprockets
+//= require jquery-fileupload/basic
+//= require fileinput.min.js
+//= require fileinput_locale_zh-TW.js
 //= require_tree .

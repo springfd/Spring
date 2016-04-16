@@ -17,6 +17,9 @@ gem 'rest-client' , '~>1.6.7'
 gem 'devise' , '~>3.5.6'
 gem 'railties', '~>4.2.6'
 gem 'bootstrap-sass', '~> 3.3.6'
+gem "paperclip", "~> 4.2"
+gem 'rails-i18n', '~> 4.0.0' # For 4.0.x
+gem "jquery-fileupload-rails"
 # Use ActiveModel has_secure_password
 # gem 'bcrypt', '~> 3.1.7'
 

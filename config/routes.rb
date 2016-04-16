@@ -1,12 +1,14 @@
 Rails.application.routes.draw do
 
-  devise_for :users
+  resources :stories
+  resources :links
+  devise_for :users # be careful of the order with resources users
+  resources :users, only: [:index, :edit, :new, :update]
   get 'trade/post_back'
   post 'trade/post_back'
   get 'trade/result'
   post 'trade/result'
   
-  resources :users, only: [:show, :edit, :update]
   # The priority is based upon order of creation: first created -> highest priority.
   # See how all your routes lay out with "rake routes".
 

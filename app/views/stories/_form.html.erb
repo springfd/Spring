@@ -1,0 +1,54 @@
+<%= form_for @story, :html => { :multipart => true } do |f| %>
+  <% if @story.errors.any? %>
+    <div id="error_explanation">
+      <h2><%= pluralize(@story.errors.count, "error") %> prohibited this story from being saved:</h2>
+
+      <ul>
+      <% @story.errors.full_messages.each do |message| %>
+        <li><%= message %></li>
+      <% end %>
+      </ul>
+    </div>
+  <% end %>
+
+  <div class="field">
+    <%= f.label :description %><br>
+    <%= f.text_area :description %>
+  </div>
+  <div class="field">
+    <%= f.label :topic %><br>
+    <%= f.text_field :topic %>
+  </div>
+  <div class="field">
+    <%= f.label :video_url %><br>
+    <%= f.text_field :video_url %>
+  </div>
+  <%= file_field_tag "images[]", type: :file, multiple: true%>
+  <div class="actions">
+    <%= f.submit %>
+  </div>
+<% end %>
+<script>
+$(document).on('ready', function() {
+     $("#images_").fileinput({
+     	initialPreview: [
+     		<% @story.pictures.each  do |p| %> 
+		    <% if !p.blank? %>
+        		'<%= image_tag p.image.url, class: 'file-preview-image' %>',
+			<% end %>
+			<% end %>		
+		             ],
+		showUpload: false,
+        previewFileType: "image",
+        browseClass: "btn btn-success",
+        browseLabel: "Pick Image",
+        browseIcon: "<i class=\"glyphicon glyphicon-picture\"></i> ",
+        removeClass: "btn btn-danger",
+        removeLabel: "Delete",
+        removeIcon: "<i class=\"glyphicon glyphicon-trash\"></i> ",
+        uploadClass: "btn btn-info",
+        uploadLabel: "Upload",
+        uploadIcon: "<i class=\"glyphicon glyphicon-upload\"></i> "
+    });
+});
+</script>

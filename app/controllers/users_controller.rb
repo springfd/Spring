@@ -1,11 +1,15 @@
 class UsersController < ApplicationController
   before_filter :authenticate_user!
-  def show
-  
-  end
-  def edit
+  def index
+    @users = User.all
   end
 
+  def new
+  end
+  
+  def edit
+  end
+  
   def update
     if @user.update(user_params)
       sign_in(@user == current_user ? @user : current_user, :bypass => true)

@@ -1,0 +1,19 @@
+<p id="notice"><%= notice %></p>
+
+<p>
+  <strong>Description:</strong>
+  <%= @story.description %>
+</p>
+
+<p>
+  <strong>Topic:</strong>
+  <%= @story.topic %>
+</p>
+
+<p>
+  <strong>Video url:</strong>
+  <%= embed(@story.video_url) %>  
+</p>
+
+<%= link_to 'Edit', edit_story_path(@story) , data: { no_turbolink: true }%> |
+<%= link_to 'Back', stories_path %>
