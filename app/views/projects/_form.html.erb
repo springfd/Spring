@@ -1,0 +1,65 @@
+<%= form_for(@project) do |f| %>
+  <% if @project.errors.any? %>
+    <div id="error_explanation">
+      <h2><%= pluralize(@project.errors.count, "error") %> prohibited this project from being saved:</h2>
+
+      <ul>
+      <% @project.errors.full_messages.each do |message| %>
+        <li><%= message %></li>
+      <% end %>
+      </ul>
+    </div>
+  <% end %>
+
+  <div class="field">
+    <%= f.label :year %><br>
+    <%= f.datetime_select :year %>
+  </div>
+  <div class="field">
+    <%= f.label :name %><br>
+    <%= f.text_field :name %>
+  </div>
+  <div class="field">
+    <%= f.label :budget %><br>
+    <%= f.number_field :budget %>
+  </div>
+  <div class="field">
+    <%= f.label :exp_personnel %><br>
+    <%= f.number_field :exp_personnel %>
+  </div>
+  <div class="field">
+    <%= f.label :exp_business %><br>
+    <%= f.number_field :exp_business %>
+  </div>
+  <div class="field">
+    <%= f.label :exp_mix %><br>
+    <%= f.number_field :exp_mix %>
+  </div>
+  <div class="field">
+    <%= f.label :exp_other %><br>
+    <%= f.number_field :exp_other %>
+  </div>
+  <div class="field">
+    <%= f.label :exe_desc %><br>
+    <%= f.text_field :exe_desc %>
+  </div>
+  <div class="field">
+    <%= f.label :donate_flag %><br>
+    <%= f.text_field :donate_flag %>
+  </div>
+  <div class="field">
+    <%= f.label :abbreviation %><br>
+    <%= f.text_field :abbreviation %>
+  </div>
+  <div class="field">
+    <%= f.label :account_begin %><br>
+    <%= f.datetime_select :account_begin %>
+  </div>
+  <div class="field">
+    <%= f.label :account_end %><br>
+    <%= f.datetime_select :account_end %>
+  </div>
+  <div class="actions">
+    <%= f.submit %>
+  </div>
+<% end %>

@@ -1,2 +1,18 @@
-<h1>Users#show</h1>
-<p>Find me in app/views/users/show.html.erb</p>
+<div class="container" style="margin-bottom: 20px;">
+  <div class="row">
+	<h3 class="col-sm-5 ">User</h3>
+  </div>
+</div>
+<div class="container-fluid">
+	<div class="row">	
+		<div class="col-md-offset-7">
+			<%= link_to 'Destroy', @user, method: :delete, data: { confirm: 'Are you sure?' } , class: 'btn btn-danger'%>
+		</div>
+	</div>
+</div>
+<div class="container-fluid">
+	<div class="row">
+	  <div class="col-md-3 col-md-offset-2">Email</div>
+	  <div class="col-md-4"> <%= @user.email %></div>
+	</div>
+</div>

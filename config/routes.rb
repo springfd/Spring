@@ -1,13 +1,19 @@
 Rails.application.routes.draw do
 
+  resources :donations
+  resources :projects
   resources :stories
   resources :links
-  devise_for :users # be careful of the order with resources users
-  resources :users, only: [:index, :edit, :new, :update]
+  as :user do
+      patch '/user/confirmation' => 'users/confirmations#update', :via => :patch, :as => :update_user_confirmation
+  end
+  devise_for :users, :controllers => { :confirmations => "users/confirmations", :registrations => "registrations" } # be careful of the order with resources users
+  resources :users, only: [:index, :show, :destroy]
   get 'trade/post_back'
   post 'trade/post_back'
   get 'trade/result'
   post 'trade/result'
+  
   
   # The priority is based upon order of creation: first created -> highest priority.
   # See how all your routes lay out with "rake routes".

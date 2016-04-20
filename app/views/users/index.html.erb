@@ -1,25 +1,34 @@
-<p id="notice"><%= notice %></p>
+<div class="container">
+	<div class="row">
+		<h3>User</h3>
+	</div>
+</div>
+<div class="container-fluid">
+	<div class="row">	
+		<div class="col-md-offset-9">
+			<%= link_to "新增使用者", new_user_registration_path, class: 'btn btn-info' %>
+		</div>
+	</div>
+</div>
 
-<h1>Listing Users</h1>
-
-<table>
-  <thead>
-    <tr>
-      <th>Email</th>
-      <th colspan="3"></th>
-    </tr>
-  </thead>
-
-  <tbody>
+<div class="container">
+  <!-- Table -->
+  <table class="table table-striped table-hover">
+  	<tbody>
     <% @users.each do |user| %>
-      <tr>
+      <tr data-link="<%= user_path(user) %>">
         <td><%= user.email %></td>
-        <td><%= link_to 'Edit', edit_user_registration_path %></td>
+        <td><%= link_to '刪除', user, method: :delete, data: {confirm: "確定刪除?"}%></td>
       </tr>
     <% end %>
   </tbody>
-</table>
+  </table>
+</div>
 
 <br>
-<%= link_to 'New User', new_user_path %>
-
+<%= link_to('登出', destroy_user_session_path, :method => :delete) %>        
+<script>
+$("tr").click(function() {
+  window.location = $(this).data("link")
+})
+</script>

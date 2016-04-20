@@ -1,14 +1,24 @@
-<p id="notice"><%= notice %></p>
+<div class="container" style="margin-bottom: 20px;">
+  <div class="row">
+	<h3 class="col-sm-5 ">Link</h3>
+  </div>
+</div>
+<div class="container-fluid">
+	<div class="row">	
+		<div class="col-md-offset-7">
+			<%= link_to "編輯連結", edit_link_path(@link), class: 'btn btn-default' %>
+			<%= link_to 'Destroy', @link, method: :delete, data: { confirm: 'Are you sure?' } , class: 'btn btn-danger'%>
+		</div>
+	</div>
+</div>
+<div class="container-fluid">
+	<div class="row">
+	  <div class="col-md-3 col-md-offset-2">連結名稱</div>
+	  <div class="col-md-4"> <%= @link.name %></div>
+	</div>
+	<div class="row">
+	  <div class="col-md-3 col-md-offset-2">網址</div>
+	  <div class="col-md-4"> <%= @link.web_addr %></div>
+	</div>
+</div>
 
-<p>
-  <strong>Name:</strong>
-  <%= @link.name %>
-</p>
-
-<p>
-  <strong>Web addr:</strong>
-  <%= @link.web_addr %>
-</p>
-
-<%= link_to 'Edit', edit_link_path(@link) %> |
-<%= link_to 'Back', links_path %>

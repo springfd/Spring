@@ -1,0 +1,64 @@
+<p id="notice"><%= notice %></p>
+
+<p>
+  <strong>Year:</strong>
+  <%= @project.year %>
+</p>
+
+<p>
+  <strong>Name:</strong>
+  <%= @project.name %>
+</p>
+
+<p>
+  <strong>Budget:</strong>
+  <%= @project.budget %>
+</p>
+
+<p>
+  <strong>Exp personnel:</strong>
+  <%= @project.exp_personnel %>
+</p>
+
+<p>
+  <strong>Exp business:</strong>
+  <%= @project.exp_business %>
+</p>
+
+<p>
+  <strong>Exp mix:</strong>
+  <%= @project.exp_mix %>
+</p>
+
+<p>
+  <strong>Exp other:</strong>
+  <%= @project.exp_other %>
+</p>
+
+<p>
+  <strong>Exe desc:</strong>
+  <%= @project.exe_desc %>
+</p>
+
+<p>
+  <strong>Donate flag:</strong>
+  <%= @project.donate_flag %>
+</p>
+
+<p>
+  <strong>Abbreviation:</strong>
+  <%= @project.abbreviation %>
+</p>
+
+<p>
+  <strong>Account begin:</strong>
+  <%= @project.account_begin %>
+</p>
+
+<p>
+  <strong>Account end:</strong>
+  <%= @project.account_end %>
+</p>
+
+<%= link_to 'Edit', edit_project_path(@project) %> |
+<%= link_to 'Back', projects_path %>

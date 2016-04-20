@@ -1,0 +1,44 @@
+<p id="notice"><%= notice %></p>
+
+<p>
+  <strong>Name:</strong>
+  <%= @donation.name %>
+</p>
+
+<p>
+  <strong>Amount:</strong>
+  <%= @donation.amount %>
+</p>
+
+<p>
+  <strong>Type:</strong>
+  <%= @donation.type %>
+</p>
+
+<p>
+  <strong>Date:</strong>
+  <%= @donation.date %>
+</p>
+
+<p>
+  <strong>Receipt title:</strong>
+  <%= @donation.receipt_title %>
+</p>
+
+<p>
+  <strong>Receipt address:</strong>
+  <%= @donation.receipt_address %>
+</p>
+
+<p>
+  <strong>Phone:</strong>
+  <%= @donation.phone %>
+</p>
+
+<p>
+  <strong>Email:</strong>
+  <%= @donation.email %>
+</p>
+
+<%= link_to 'Edit', edit_donation_path(@donation) %> |
+<%= link_to 'Back', donations_path %>

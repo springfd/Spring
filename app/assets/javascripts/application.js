@@ -17,4 +17,6 @@
 //= require jquery-fileupload/basic
 //= require fileinput.min.js
 //= require fileinput_locale_zh-TW.js
+//= require toastr.min.js
+//= require toastr_options.js
 //= require_tree .

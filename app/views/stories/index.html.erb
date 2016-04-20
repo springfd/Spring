@@ -19,7 +19,7 @@
         <td><%= story.topic %></td>
         <td><%= embed(story.video_url) %>  </td>
         <td><%= link_to 'Show', story %></td>
-        <td><%= link_to 'Edit', edit_story_path(story) %></td>
+        <td><%= link_to 'Edit', edit_story_path(story), data: { no_turbolink: true } %></td>
         <td><%= link_to 'Destroy', story, method: :delete, data: { confirm: 'Are you sure?' } %></td>
       </tr>
     <% end %>
@@ -28,4 +28,4 @@
 
 <br>
 
-<%= link_to 'New Story', new_story_path %>
+<%= link_to '新增最新消息', new_story_path, data: { no_turbolink: true } %>

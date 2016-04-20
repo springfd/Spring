@@ -1,4 +1,4 @@
-<%= form_for @story, :html => { :multipart => true } do |f| %>
+<%= form_for @story, :html => {class: "form-horizontal", role: "form", :multipart => true } do |f| %>
   <% if @story.errors.any? %>
     <div id="error_explanation">
       <h2><%= pluralize(@story.errors.count, "error") %> prohibited this story from being saved:</h2>
@@ -10,22 +10,23 @@
       </ul>
     </div>
   <% end %>
-
-  <div class="field">
-    <%= f.label :description %><br>
-    <%= f.text_area :description %>
+  <div class="form-group">
+    <label class="col-sm-offset-1 col-sm-2 control-label">標題</label>
+    <div class="col-sm-4"><%= f.text_field :topic, class: "form-control", placeholder: '標題' %></div>
   </div>
-  <div class="field">
-    <%= f.label :topic %><br>
-    <%= f.text_field :topic %>
+  <div class="form-group">
+    <label class="col-sm-offset-1 col-sm-2 control-label">描述</label>
+    <div class="col-sm-4"><%= f.text_area :description , class: "form-control", placeholder: '描述'%></div>
   </div>
-  <div class="field">
-    <%= f.label :video_url %><br>
-    <%= f.text_field :video_url %>
+  <div class="form-group">
+    <label class="col-sm-offset-1 col-sm-2 control-label">嵌入影片</label>
+    <div class="col-sm-4"><%= f.text_field :video_url, class: "form-control", placeholder: '網址' %></div>
   </div>
-  <%= file_field_tag "images[]", type: :file, multiple: true%>
-  <div class="actions">
-    <%= f.submit %>
+  <div class="col-sm-offset-3 col-sm-4"><%= file_field_tag "images[]", type: :file, multiple: true%>
+  <div class="form-group">
+		<div class="col-sm-offset-12 col-sm-10">
+			<%= f.submit '儲存',  class: "btn btn-default"  %>
+		</div>
   </div>
 <% end %>
 <script>
