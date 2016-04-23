@@ -9,14 +9,16 @@ Rails.application.routes.draw do
   end
   devise_for :users, :controllers => { :confirmations => "users/confirmations", :registrations => "registrations" } # be careful of the order with resources users
   resources :users, only: [:index, :show, :destroy]
-  get 'trade/post_back'
-  get 'trade/result'
+  get  'trade/post_back'
+  get  'trade/result'
   post 'trade/result'
   post 'trade/post_back'
 
 
-
-  root 'main#index'
+  get  'main/about'
+  get  'main/news'
+  get  'main/donation'  
+  root 'main#about'
   
   
 end
