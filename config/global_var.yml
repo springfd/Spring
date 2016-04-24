@@ -1,0 +1,14 @@
+defaults: &defaults
+    
+   donate_transfer: 1
+   donate_check: 2
+   donate_cash: 3
+    
+development:
+  <<: *defaults
+
+production:
+  <<: *defaults
+
+test:
+  <<: *defaults

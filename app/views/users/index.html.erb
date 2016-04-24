@@ -18,7 +18,6 @@
     <% @users.each do |user| %>
       <tr data-link="<%= user_path(user) %>">
         <td><%= user.email %></td>
-        <td><%= link_to '刪除', user, method: :delete, data: {confirm: "確定刪除?"}%></td>
       </tr>
     <% end %>
   </tbody>

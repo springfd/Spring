@@ -1,41 +1,37 @@
-<p id="notice"><%= notice %></p>
+<div class="container">
+	<div class="row">
+		<h3>捐贈</h3>
+	</div>
+</div>
+<div class="container-fluid">
+	<div class="row">	
+		<div class="col-md-offset-9">
+			<%= link_to "新增", new_donation_path, class: 'btn btn-info' %>
+		</div>
+	</div>
+</div>
+<div class="container">
+	<div class="row">
+		<div class="column">
+			<table class="table">
+				<tbody>
+					<% @donations.each do |donation| %>
+					<tr data-link="<%= donation_path(donation) %>">
+						<td><%= donation.id %></td>
+						<td><%= donation.name %></td>
+						<td><%= donation.amount %></td>
+						<td><%= Hash[donateWayOptions].rassoc(donation.donate_way).first %> </td>
+					</tr>
+					<% end %>
+				</tbody>
+			</table>
+		</div>
+	</div>
+</div>
 
-<h1>Listing Donations</h1>
+<script>
+$("tr").click(function() {
+  window.location = $(this).data("link")
+})
 
-<table>
-  <thead>
-    <tr>
-      <th>Name</th>
-      <th>Amount</th>
-      <th>Type</th>
-      <th>Date</th>
-      <th>Receipt title</th>
-      <th>Receipt address</th>
-      <th>Phone</th>
-      <th>Email</th>
-      <th colspan="3"></th>
-    </tr>
-  </thead>
-
-  <tbody>
-    <% @donations.each do |donation| %>
-      <tr>
-        <td><%= donation.name %></td>
-        <td><%= donation.amount %></td>
-        <td><%= donation.type %></td>
-        <td><%= donation.date %></td>
-        <td><%= donation.receipt_title %></td>
-        <td><%= donation.receipt_address %></td>
-        <td><%= donation.phone %></td>
-        <td><%= donation.email %></td>
-        <td><%= link_to 'Show', donation %></td>
-        <td><%= link_to 'Edit', edit_donation_path(donation) %></td>
-        <td><%= link_to 'Destroy', donation, method: :delete, data: { confirm: 'Are you sure?' } %></td>
-      </tr>
-    <% end %>
-  </tbody>
-</table>
-
-<br>
-
-<%= link_to 'New Donation', new_donation_path %>
+</script>

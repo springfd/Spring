@@ -1,31 +1,30 @@
-<p id="notice"><%= notice %></p>
+<div class="container">
+	<div class="row">
+		<h3>最新消息</h3>
+	</div>
+</div>
+<div class="container-fluid">
+	<div class="row">	
+		<div class="col-md-offset-9">
+			<%= link_to "新增消息", new_story_path, data: { no_turbolink: true }, class: 'btn btn-info' %>
+		</div>
+	</div>
+</div>
+<div class="container">
+	<% @stories.each do |story| %>
+		<%= link_to story_path(story)  do%>
+		<div class="col-sm-4">
+			<div class="panel panel-default">
+			  <div class="panel-heading"><%= story.topic %></div>
+			  <div class="panel-body">
+			    <%= story.description %>
+			    </div>
+			    <div class="panel-body">
+			    <%= embed(story.video_url) %>
+			  </div>
+			</div>
+		</div>
+		<% end %>
+	<% end %>
+</div>
 
-<h1>Listing Stories</h1>
-
-<table>
-  <thead>
-    <tr>
-      <th>Description</th>
-      <th>Topic</th>
-      <th>Video url</th>
-      <th colspan="6"></th>
-    </tr>
-  </thead>
-
-  <tbody>
-    <% @stories.each do |story| %>
-      <tr>
-        <td><%= story.description %></td>
-        <td><%= story.topic %></td>
-        <td><%= embed(story.video_url) %>  </td>
-        <td><%= link_to 'Show', story %></td>
-        <td><%= link_to 'Edit', edit_story_path(story), data: { no_turbolink: true } %></td>
-        <td><%= link_to 'Destroy', story, method: :delete, data: { confirm: 'Are you sure?' } %></td>
-      </tr>
-    <% end %>
-  </tbody>
-</table>
-
-<br>
-
-<%= link_to '新增最新消息', new_story_path, data: { no_turbolink: true } %>

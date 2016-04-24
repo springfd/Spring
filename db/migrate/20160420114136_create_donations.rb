@@ -3,8 +3,8 @@ class CreateDonations < ActiveRecord::Migration
     create_table :donations do |t|
       t.string :name
       t.integer :amount
-      t.integer :type
-      t.datetime :date
+      t.integer :donate_way
+      t.datetime :donate_date
       t.string :receipt_title
       t.string :receipt_address
       t.string :phone

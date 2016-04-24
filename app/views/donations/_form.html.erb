@@ -1,3 +1,4 @@
+<div class="container" >
 <%= form_for(@donation) do |f| %>
   <% if @donation.errors.any? %>
     <div id="error_explanation">
@@ -10,40 +11,43 @@
       </ul>
     </div>
   <% end %>
-
-  <div class="field">
-    <%= f.label :name %><br>
-    <%= f.text_field :name %>
+  <div class="form-group">
+  	<label class="col-sm-offset-1 col-sm-2 control-label">捐款人</label>
+  		<div class="col-sm-6">
+  			<%= f.text_field :name, class: "form-control", placeholder: "捐款人" %>
+    	</div>
+  	</div>
   </div>
-  <div class="field">
-    <%= f.label :amount %><br>
-    <%= f.number_field :amount %>
+  <div class="form-group">
+  	<label class="col-sm-offset-1 col-sm-2 control-label">金額</label>
+  		<div class="col-sm-6">
+  			<%= f.number_field :amount, class: "form-control", placeholder: "金額" %>
+    	</div>
+  	</div>
   </div>
-  <div class="field">
-    <%= f.label :type %><br>
-    <%= f.number_field :type %>
-  </div>
-  <div class="field">
-    <%= f.label :date %><br>
-    <%= f.datetime_select :date %>
-  </div>
-  <div class="field">
-    <%= f.label :receipt_title %><br>
-    <%= f.text_field :receipt_title %>
-  </div>
-  <div class="field">
-    <%= f.label :receipt_address %><br>
-    <%= f.text_field :receipt_address %>
-  </div>
-  <div class="field">
-    <%= f.label :phone %><br>
-    <%= f.text_field :phone %>
-  </div>
-  <div class="field">
-    <%= f.label :email %><br>
-    <%= f.text_field :email %>
-  </div>
-  <div class="actions">
-    <%= f.submit %>
-  </div>
+  <div class="form-group">
+		<label class="col-sm-offset-1 col-sm-2 control-label">方式</label>
+		<div class="col-sm-6">
+			<%= f.select :donate_way , options_for_select([["電匯", 1], ["支票", 2], ["現金", 3]], @donation.donate_way), {include_blank: true}, class: "form-control" %>		
+		</div>
+	</div>
+  <div class="form-group">
+		<label class="col-sm-offset-1 col-sm-2 control-label">捐款日期</label>
+		<div class="col-sm-6">
+			<%= f.text_field :donate_date, class: "form-control", id: 'datetimepicker_donate_date', placeholder: "捐款日期" %>	
+		</div>
+	    <script type="text/javascript">
+	            $(function () {
+	                $('#datetimepicker_donate_date').datetimepicker({
+						format : 'YYYY/MM/DD'		                
+	                });
+	            });
+	    </script>	
+	</div>
+	<div class="form-group">
+		<div class="col-sm-offset-3 col-sm-6">
+			<%= f.submit '儲存',  class: "btn btn-primary"  %>
+		</div>
+	</div
 <% end %>
+</div>

@@ -45,6 +45,8 @@ GEM
     bootstrap-sass (3.3.6)
       autoprefixer-rails (>= 5.2.1)
       sass (>= 3.3.4)
+    bootstrap3-datetimepicker-rails (4.0.0)
+      momentjs-rails (>= 2.8.1)
     builder (3.2.2)
     byebug (8.2.2)
     climate_control (0.0.3)
@@ -93,6 +95,8 @@ GEM
     mime-types-data (3.2016.0221)
     mini_portile2 (2.0.0)
     minitest (5.8.4)
+    momentjs-rails (2.10.3)
+      railties (>= 3.1)
     multi_json (1.11.2)
     mysql2 (0.4.1)
     nokogiri (1.6.7.2)
@@ -180,12 +184,14 @@ PLATFORMS
 
 DEPENDENCIES
   bootstrap-sass (~> 3.3.6)
+  bootstrap3-datetimepicker-rails (~> 4.0.0)
   byebug
   coffee-rails (~> 4.1.0)
   devise (~> 3.5.6)
   jbuilder (~> 2.0)
   jquery-fileupload-rails
   jquery-rails
+  momentjs-rails (>= 2.9.0)
   mysql2
   paperclip (~> 4.2)
   rails (= 4.2.6)

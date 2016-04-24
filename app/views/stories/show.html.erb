@@ -1,19 +1,27 @@
-<p id="notice"><%= notice %></p>
+<div class="container" style="margin-bottom: 20px;">
+  <div class="row">
+	<h3 class="col-sm-5 ">最新消息</h3>
+  </div>
+</div>
+<div class="container-fluid">
+	<div class="row">	
+		<div class="col-md-offset-7">
+			<%= link_to 'Edit', edit_story_path(@story) , data: { no_turbolink: true }, class: 'btn btn-default'%> 
+			<%= link_to 'Destroy', @story, method: :delete, data: { confirm: 'Are you sure?' } , class: 'btn btn-danger'%>
+		</div>
+	</div>
+</div>
+<div class="container-fluid">
+	<div class="row">
+	  <div class="col-md-3 col-md-offset-2">標題</div>
+	  <div class="col-md-4"> <%= @story.topic %></div>
+	</div>
+	<div class="row">
+	  <div class="col-md-3 col-md-offset-2">內容</div>
+	  <div class="col-md-4"> <%= @story.description %></div>
+	</div>
+	<div class="row">
+	  <div class="col-md-3 col-md-offset-2"><%= embed(@story.video_url) %>  </div>
+	</div>
+</div>
 
-<p>
-  <strong>Description:</strong>
-  <%= @story.description %>
-</p>
-
-<p>
-  <strong>Topic:</strong>
-  <%= @story.topic %>
-</p>
-
-<p>
-  <strong>Video url:</strong>
-  <%= embed(@story.video_url) %>  
-</p>
-
-<%= link_to 'Edit', edit_story_path(@story) , data: { no_turbolink: true }%> |
-<%= link_to 'Back', stories_path %>

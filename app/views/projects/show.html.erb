@@ -1,64 +1,62 @@
-<p id="notice"><%= notice %></p>
+<div class="container" style="margin-bottom: 20px;">
+  <div class="row">
+	<h3 class="col-sm-5 ">自辦計畫</h3>
+  </div>
+</div>
+<div class="container-fluid">
+	<div class="row">	
+		<div class="col-md-offset-7">
+			<%= link_to "編輯", edit_project_path(@project), class: 'btn btn-default' %>
+			<%= link_to 'Destroy', @project, method: :delete, data: { confirm: 'Are you sure?' } , class: 'btn btn-danger'%>
+		</div>
+	</div>
+</div>
+<div class="container-fluid">
+	<div class="row">
+	  <div class="col-md-3 col-md-offset-2">西元年度</div>
+	  <div class="col-md-4"> <%= @project.year %></div>
+	</div>
+	<div class="row">
+	  <div class="col-md-3 col-md-offset-2">名稱</div>
+	  <div class="col-md-4"> <%= @project.name %></div>
+	</div>
+	<div class="row">
+	  <div class="col-md-3 col-md-offset-2">預算</div>
+	  <div class="col-md-4"> <%= @project.budget %></div>
+	</div>
+	<div class="row">
+	  <div class="col-md-3 col-md-offset-2">人事支出</div>
+	  <div class="col-md-4"> <%= @project.exp_personnel %></div>
+	</div>
+	<div class="row">
+	  <div class="col-md-3 col-md-offset-2">業務支出</div>
+	  <div class="col-md-4"> <%= @project.exp_business %></div>
+	</div>
+	<div class="row">
+	  <div class="col-md-3 col-md-offset-2">雜支支出</div>
+	  <div class="col-md-4"> <%= @project.exp_mix %></div>
+	</div>
+	<div class="row">
+	  <div class="col-md-3 col-md-offset-2">其他支出</div>
+	  <div class="col-md-4"> <%= @project.exp_other %></div>
+	</div>
+	<div class="row">
+	  <div class="col-md-3 col-md-offset-2">執行狀況描述</div>
+	  <div class="col-md-4"> <%= @project.exe_desc  %></div>
+	</div>
+	<div class="row">
+	  <div class="col-md-3 col-md-offset-2">簡稱</div>
+	  <div class="col-md-4"> <%= @project.abbreviation %></div>
+	</div>
+	<div class="row">
+	  <div class="col-md-3 col-md-offset-2">帳號開始時間</div>
+	  <div class="col-md-4"> <%= @project.account_begin %></div>
+	</div>
+	<div class="row">
+	  <div class="col-md-3 col-md-offset-2">帳號結束時間</div>
+	  <div class="col-md-4"> <%= @project.account_end %></div>
+	</div>
+</div>
 
-<p>
-  <strong>Year:</strong>
-  <%= @project.year %>
-</p>
 
-<p>
-  <strong>Name:</strong>
-  <%= @project.name %>
-</p>
 
-<p>
-  <strong>Budget:</strong>
-  <%= @project.budget %>
-</p>
-
-<p>
-  <strong>Exp personnel:</strong>
-  <%= @project.exp_personnel %>
-</p>
-
-<p>
-  <strong>Exp business:</strong>
-  <%= @project.exp_business %>
-</p>
-
-<p>
-  <strong>Exp mix:</strong>
-  <%= @project.exp_mix %>
-</p>
-
-<p>
-  <strong>Exp other:</strong>
-  <%= @project.exp_other %>
-</p>
-
-<p>
-  <strong>Exe desc:</strong>
-  <%= @project.exe_desc %>
-</p>
-
-<p>
-  <strong>Donate flag:</strong>
-  <%= @project.donate_flag %>
-</p>
-
-<p>
-  <strong>Abbreviation:</strong>
-  <%= @project.abbreviation %>
-</p>
-
-<p>
-  <strong>Account begin:</strong>
-  <%= @project.account_begin %>
-</p>
-
-<p>
-  <strong>Account end:</strong>
-  <%= @project.account_end %>
-</p>
-
-<%= link_to 'Edit', edit_project_path(@project) %> |
-<%= link_to 'Back', projects_path %>
