@@ -16,8 +16,8 @@ ActiveRecord::Schema.define(version: 20160420114136) do
   create_table "donations", force: :cascade do |t|
     t.string   "name",            limit: 255
     t.integer  "amount",          limit: 4
-    t.integer  "type",            limit: 4
-    t.datetime "date"
+    t.integer  "donate_way",      limit: 4
+    t.datetime "donate_date"
     t.string   "receipt_title",   limit: 255
     t.string   "receipt_address", limit: 255
     t.string   "phone",           limit: 255

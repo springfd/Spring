@@ -20,6 +20,8 @@ gem 'bootstrap-sass', '~> 3.3.6'
 gem "paperclip", "~> 4.2"
 gem 'rails-i18n', '~> 4.0.0' # For 4.0.x
 gem "jquery-fileupload-rails"
+gem 'momentjs-rails', '>= 2.9.0'
+gem 'bootstrap3-datetimepicker-rails', '~> 4.0.0'
 # Use ActiveModel has_secure_password
 # gem 'bcrypt', '~> 3.1.7'
 

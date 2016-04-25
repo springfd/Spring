@@ -19,4 +19,7 @@
 //= require fileinput_locale_zh-TW.js
 //= require toastr.min.js
 //= require toastr_options.js
+//= require bootstrap
+//= require moment
+//= require bootstrap-datetimepicker
 //= require_tree .

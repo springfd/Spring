@@ -1,0 +1,1 @@
+GLOBAL_VAR = YAML.load_file("#{Rails.root}/config/global_var.yml")[Rails.env]

@@ -1,49 +1,46 @@
-<p id="notice"><%= notice %></p>
+<div class="container">
+	<div class="row">
+		<h3>自辦計畫</h3>
+	</div>
+</div>
+<div class="container-fluid">
+	<div class="row">	
+		<div class="col-md-offset-9">
+			<%= link_to "新增", new_project_path, class: 'btn btn-info' %>
+		</div>
+	</div>
+</div>
+<div class="container">
+	<div class="row">
+		<div class="column">
+			<table class="table">
+				<tbody>
+				    <% @projects.each do |project| %>
+				      <tr data-link="<%= project_path(project) %>">
+				        <td><%= project.year %></td>
+				        <td><%= project.name %></td>
+				        <td><%= project.budget %></td>
+				        <td><%= project.exp_personnel %></td>
+				        <td><%= project.exp_business %></td>
+				        <td><%= project.exp_mix %></td>
+				        <td><%= project.exp_other %></td>
+				        <td><%= project.exe_desc %></td>
+				        <td><%= project.donate_flag %></td>
+				        <td><%= project.abbreviation %></td>
+				        <td><%= project.account_begin %></td>
+				        <td><%= project.account_end %></td>
+				      </tr>
+				    <% end %>
+				  </tbody>
+			</table>
+		</div>
+	</div>
+</div>
 
-<h1>Listing Projects</h1>
+<script>
+$("tr").click(function() {
+  window.location = $(this).data("link")
+})
 
-<table>
-  <thead>
-    <tr>
-      <th>Year</th>
-      <th>Name</th>
-      <th>Budget</th>
-      <th>Exp personnel</th>
-      <th>Exp business</th>
-      <th>Exp mix</th>
-      <th>Exp other</th>
-      <th>Exe desc</th>
-      <th>Donate flag</th>
-      <th>Abbreviation</th>
-      <th>Account begin</th>
-      <th>Account end</th>
-      <th colspan="3"></th>
-    </tr>
-  </thead>
-
-  <tbody>
-    <% @projects.each do |project| %>
-      <tr>
-        <td><%= project.year %></td>
-        <td><%= project.name %></td>
-        <td><%= project.budget %></td>
-        <td><%= project.exp_personnel %></td>
-        <td><%= project.exp_business %></td>
-        <td><%= project.exp_mix %></td>
-        <td><%= project.exp_other %></td>
-        <td><%= project.exe_desc %></td>
-        <td><%= project.donate_flag %></td>
-        <td><%= project.abbreviation %></td>
-        <td><%= project.account_begin %></td>
-        <td><%= project.account_end %></td>
-        <td><%= link_to 'Show', project %></td>
-        <td><%= link_to 'Edit', edit_project_path(project) %></td>
-        <td><%= link_to 'Destroy', project, method: :delete, data: { confirm: 'Are you sure?' } %></td>
-      </tr>
-    <% end %>
-  </tbody>
-</table>
-
-<br>
-
-<%= link_to 'New Project', new_project_path %>
+</script>
+  
