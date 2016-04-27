@@ -28,7 +28,7 @@
 	</div>
 	<div class="row">
 	  <div class="col-md-3 col-md-offset-2">日期</div>
-	  <div class="col-md-4"> <%= @donation.donate_date %></div>
+	  <div class="col-md-4"> <%= @donation.donate_date.strftime("%Y-%m-%d") %></div>
 	</div>
 	<div class="row">
 	  <div class="col-md-3 col-md-offset-2">收據抬頭</div>

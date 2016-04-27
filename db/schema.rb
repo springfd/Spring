@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20160420114136) do
+ActiveRecord::Schema.define(version: 20160425152037) do
 
   create_table "donations", force: :cascade do |t|
     t.string   "name",            limit: 255
@@ -45,19 +45,27 @@ ActiveRecord::Schema.define(version: 20160420114136) do
 
   create_table "projects", force: :cascade do |t|
     t.datetime "year"
-    t.string   "name",          limit: 255
-    t.integer  "budget",        limit: 4
-    t.integer  "exp_personnel", limit: 4
-    t.integer  "exp_business",  limit: 4
-    t.integer  "exp_mix",       limit: 4
-    t.integer  "exp_other",     limit: 4
-    t.string   "exe_desc",      limit: 255
+    t.string   "name",                       limit: 255
+    t.integer  "kind",                       limit: 4
+    t.integer  "budget",                     limit: 4
+    t.integer  "income",                     limit: 4
+    t.integer  "exp_personnel",              limit: 4
+    t.integer  "exp_business",               limit: 4
+    t.integer  "exp_mix",                    limit: 4
+    t.integer  "exp_other",                  limit: 4
+    t.string   "exe_desc",                   limit: 255
     t.boolean  "donate_flag"
-    t.string   "abbreviation",  limit: 255
+    t.string   "abbreviation",               limit: 255
     t.datetime "account_begin"
     t.datetime "account_end"
-    t.datetime "created_at",                null: false
-    t.datetime "updated_at",                null: false
+    t.string   "p_account",                  limit: 255
+    t.string   "p_password",                 limit: 255
+    t.datetime "created_at",                             null: false
+    t.datetime "updated_at",                             null: false
+    t.string   "pj_attachment_file_name",    limit: 255
+    t.string   "pj_attachment_content_type", limit: 255
+    t.integer  "pj_attachment_file_size",    limit: 4
+    t.datetime "pj_attachment_updated_at"
   end
 
   create_table "stories", force: :cascade do |t|

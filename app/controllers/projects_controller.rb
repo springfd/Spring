@@ -4,7 +4,7 @@ class ProjectsController < ApplicationController
   # GET /projects
   # GET /projects.json
   def index
-    @projects = Project.all
+    @projects = Project.where("kind = ? ", params[:pj_kind]).order('id DESC').paginate(per_page: 30, page: params[:page])
   end
 
   # GET /projects/1
@@ -25,40 +25,28 @@ class ProjectsController < ApplicationController
   # POST /projects.json
   def create
     @project = Project.new(project_params)
-
-    respond_to do |format|
-      if @project.save
-        format.html { redirect_to @project, notice: 'Project was successfully created.' }
-        format.json { render :show, status: :created, location: @project }
-      else
-        format.html { render :new }
-        format.json { render json: @project.errors, status: :unprocessable_entity }
-      end
-    end
+    @project.year = DateTime.strptime(params[:project][:year], "%Y")
+    @project.save!
+    redirect_to @project, pj_kind: @project.kind, notice: 'Project was successfully created.'
   end
 
   # PATCH/PUT /projects/1
   # PATCH/PUT /projects/1.json
   def update
-    respond_to do |format|
-      if @project.update(project_params)
-        format.html { redirect_to @project, notice: 'Project was successfully updated.' }
-        format.json { render :show, status: :ok, location: @project }
-      else
-        format.html { render :edit }
-        format.json { render json: @project.errors, status: :unprocessable_entity }
-      end
+    if params[:attachment_delete] == 'true'
+      @project.pj_attachment = nil
     end
+    @project.update(project_params)
+    @project.year = DateTime.strptime(params[:project][:year], "%Y")
+    @project.save!
+    redirect_to @project, pj_kind: @project.kind, notice: 'Project was successfully updated.'
   end
 
   # DELETE /projects/1
   # DELETE /projects/1.json
   def destroy
     @project.destroy
-    respond_to do |format|
-      format.html { redirect_to projects_url, notice: 'Project was successfully destroyed.' }
-      format.json { head :no_content }
-    end
+    redirect_to({ controller: "projects", action: 'index' , pj_kind: @project.kind}, notice: 'Project was successfully destroyed.') 
   end
 
   private
@@ -69,6 +57,6 @@ class ProjectsController < ApplicationController
 
     # Never trust parameters from the scary internet, only allow the white list through.
     def project_params
-      params.require(:project).permit(:year, :name, :budget, :exp_personnel, :exp_business, :exp_mix, :exp_other, :exe_desc, :donate_flag, :abbreviation, :account_begin, :account_end)
+      params.require(:project).permit(:kind, :year, :name, :budget, :exp_personnel, :exp_business, :exp_mix, :exp_other, :exe_desc, :donate_flag, :abbreviation, :account_begin, :account_end, :income, :p_account, :p_password, :pj_attachment)
     end
 end
