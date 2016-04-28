@@ -1,6 +1,7 @@
-<h1>Editing Project</h1>
+<% if params[:pj_kind].to_i==GLOBAL_VAR['project_self']%>
+<%= render 'form_self' %>
+<% else %>
+<%= render 'form_delegate' %>
+<% end %>
 
-<%= render 'form' %>
 
-<%= link_to 'Show', @project %> |
-<%= link_to 'Back', projects_path %>

@@ -1,5 +1,6 @@
 <h1>New Project</h1>
-
-<%= render 'form' %>
-
-<%= link_to 'Back', projects_path %>
+<%if params[:pj_kind].to_i==GLOBAL_VAR['project_self']%>
+<%= render 'form_self' %>
+<% else %>
+<%= render 'form_delegate' %>
+<% end %>

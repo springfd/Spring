@@ -15,9 +15,9 @@
 //= require turbolinks
 //= require bootstrap-sprockets
 //= require jquery-fileupload/basic
-//= require fileinput.min.js
+//= require fileinput.js
 //= require fileinput_locale_zh-TW.js
-//= require toastr.min.js
+//= require toastr.js
 //= require toastr_options.js
 //= require bootstrap
 //= require moment

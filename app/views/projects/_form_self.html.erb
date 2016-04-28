@@ -1,0 +1,114 @@
+<%= form_for @project , html: { multipart: true , id: "projectForm"} do |f| %>
+<div class="container" style="margin-top: 10mm">
+  <% if @project.errors.any? %>
+    <div id="error_explanation">
+      <h2><%= pluralize(@project.errors.count, "error") %> prohibited this project from being saved:</h2>
+
+      <ul>
+      <% @project.errors.full_messages.each do |message| %>
+        <li><%= message %></li>
+      <% end %>
+      </ul>
+    </div>
+  <% end %>
+  <%= f.hidden_field :kind, :value => params[:pj_kind]%>
+  <%= hidden_field_tag(:attachment_delete, false) %>
+  <div class="form-group row">
+  	<label class="col-sm-offset-1 col-sm-2 control-label">全稱</label>
+  		<div class="col-sm-6">
+  			<%= f.text_field :name, class: "form-control", placeholder: "全稱" %>
+    	</div>
+  </div>
+  <div class="form-group row">
+		<label class="col-sm-offset-1 col-sm-2 control-label">西元年度</label>
+		<div class="col-sm-6">
+			<%= f.text_field :year, class: "form-control", id: 'datetimepicker_year', placeholder: "西元年度" %>	
+		</div>
+	    <script type="text/javascript">
+	            $(function () {
+	                $('#datetimepicker_year').datetimepicker({
+						format : 'YYYY'		                
+	                });
+	            });
+	    </script>	
+  </div>
+  <div class="form-group row">
+  	<label class="col-sm-offset-1 col-sm-2 control-label">預算</label>
+  		<div class="col-sm-6">
+  			<%= f.number_field :budget, class: "form-control", placeholder: "預算" %>
+    	</div>
+  </div>
+  <div class="form-group row">
+  	<label class="col-sm-offset-1 col-sm-2 control-label">人事支出</label>
+  		<div class="col-sm-6">
+  			<%= f.number_field :exp_personnel, class: "form-control", placeholder: "人事支出" %>
+    	</div>
+  </div>
+  <div class="form-group row">
+  	<label class="col-sm-offset-1 col-sm-2 control-label">業務支出</label>
+  		<div class="col-sm-6">
+  			<%= f.number_field :exp_business, class: "form-control", placeholder: "業務支出" %>
+    	</div>
+  </div>
+  <div class="form-group row">
+  	<label class="col-sm-offset-1 col-sm-2 control-label">雜支支出</label>
+  		<div class="col-sm-6">
+  			<%= f.number_field :exp_mix, class: "form-control", placeholder: "雜支支出" %>
+    	</div>
+  </div>
+  <div class="form-group row">
+  	<label class="col-sm-offset-1 col-sm-2 control-label">其他支出</label>
+  		<div class="col-sm-6">
+  			<%= f.number_field :exp_other, class: "form-control", placeholder: "其他支出" %>
+    	</div>
+  </div>
+  <div class="form-group row">
+  	<label class="col-sm-offset-1 col-sm-2 control-label">執行狀況描述</label>
+  		<div class="col-sm-6">
+  			<%= f.text_field :exe_desc, class: "form-control", placeholder: "執行狀況描述" %>
+    	</div>
+  </div>
+  <div class="form-group row">
+  	<label class="col-sm-offset-1 col-sm-2 control-label">附件</label>
+  	<div class="col-sm-6">
+  		<%= file_field_tag "project[pj_attachment]", type: :file%>
+  	</div>
+  </div>
+  <div class="form-group row">
+  	<label class="col-sm-offset-1 col-sm-2 control-label">是否募款</label>
+  		<div class="col-sm-6">
+  			<%=f.radio_button :donate_flag, "true", checked: true%>是
+			<%=f.radio_button :donate_flag, "false"%>否
+    	</div>
+  </div>
+  <div class="form-group ">
+		<div class="col-sm-offset-8 col-sm-10">
+			<%= f.submit '儲存',  class: "btn btn-default"  %>
+		</div>
+  </div>
+</div>
+<% end %>
+<script>
+$(document).on('ready', function() {
+     $("#project_pj_attachment").fileinput({
+     	initialPreview: [
+		    <% if !@project.pj_attachment_file_name.blank? %>
+        		'<%= image_tag @project.pj_attachment.url, class: 'file-preview-file' %>',
+			<% end %>
+		             ],
+		showUpload: false,
+        browseClass: "btn btn-success",
+        browseLabel: "Browse",
+        browseIcon: "<i class=\"glyphicon glyphicon-folder-open\"></i> ",
+        removeClass: "btn btn-danger",
+        removeLabel: "Delete",
+        removeIcon: "<i class=\"glyphicon glyphicon-trash\"></i> ",
+    });
+    $('#project_pj_attachment').on('fileloaded', function(event, file, previewId, index, reader) {
+        $('#attachment_delete').val(true);
+    });
+    $('#project_pj_attachment').on('fileclear', function(event) {
+    	$('#attachment_delete').val(true);
+    });
+});
+</script>

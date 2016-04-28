@@ -3,7 +3,9 @@ class CreateProjects < ActiveRecord::Migration
     create_table :projects do |t|
       t.datetime :year
       t.string :name
+      t.integer :kind
       t.integer :budget
+      t.integer :income
       t.integer :exp_personnel
       t.integer :exp_business
       t.integer :exp_mix
@@ -13,6 +15,8 @@ class CreateProjects < ActiveRecord::Migration
       t.string :abbreviation
       t.datetime :account_begin
       t.datetime :account_end
+      t.string :p_account
+      t.string :p_password
 
       t.timestamps null: false
     end

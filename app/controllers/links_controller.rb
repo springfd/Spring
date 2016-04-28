@@ -27,29 +27,19 @@ class LinksController < ApplicationController
   # POST /links.json
   def create
     @link = Link.new(link_params)
-
-    respond_to do |format|
-      if @link.save
-        format.html { redirect_to @link, notice: '成功新增連結' }
-        format.json { render :show, status: :created, location: @link }
-      else
-        format.html { render :new }
-        format.json { render json: @link.errors, status: :unprocessable_entity }
-      end
-    end
+    @link.save!
+    redirect_to @link, notice: '成功新增連結' 
+    rescue ActiveRecord::RecordInvalid
+    render :action=>:edit
   end
 
   # PATCH/PUT /links/1
   # PATCH/PUT /links/1.json
   def update
-    respond_to do |format|
-      if @link.update(link_params)
-        format.html { redirect_to @link, notice: '成功更新連結' }
-        format.json { render :show, status: :ok, location: @link }
-      else
-        format.html { render :edit }
-        format.json { render json: @link.errors, status: :unprocessable_entity }
-      end
+    if @link.update(link_params)
+      redirect_to @link, notice: '成功更新連結'
+    else
+      render :action=>:edit
     end
   end
 
@@ -57,10 +47,7 @@ class LinksController < ApplicationController
   # DELETE /links/1.json
   def destroy
     @link.destroy
-    respond_to do |format|
-      format.html { redirect_to links_url, notice: '成功刪除連結' }
-      format.json { head :no_content }
-    end
+    redirect_to links_url, notice: '成功刪除連結' 
   end
 
   private
