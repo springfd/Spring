@@ -22,4 +22,5 @@
 //= require bootstrap
 //= require moment
 //= require bootstrap-datetimepicker
+//= require masonry.pkgd.js
 //= require_tree .

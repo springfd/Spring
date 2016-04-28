@@ -46,7 +46,9 @@ ActiveRecord::Schema.define(version: 20160420114136) do
   create_table "projects", force: :cascade do |t|
     t.datetime "year"
     t.string   "name",          limit: 255
+    t.integer  "kind",          limit: 4
     t.integer  "budget",        limit: 4
+    t.integer  "income",        limit: 4
     t.integer  "exp_personnel", limit: 4
     t.integer  "exp_business",  limit: 4
     t.integer  "exp_mix",       limit: 4
@@ -56,6 +58,8 @@ ActiveRecord::Schema.define(version: 20160420114136) do
     t.string   "abbreviation",  limit: 255
     t.datetime "account_begin"
     t.datetime "account_end"
+    t.string   "p_account",     limit: 255
+    t.string   "p_password",    limit: 255
     t.datetime "created_at",                null: false
     t.datetime "updated_at",                null: false
   end
