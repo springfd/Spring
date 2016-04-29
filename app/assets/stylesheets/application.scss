@@ -1,5 +1,5 @@
 $font-family-sans-serif: PingFang TC, 'Microsoft YaHei', sans-serif;
-$body-bg: #eeeeee;
+//$body-bg: #eeeeee;
 @import "bootstrap-sprockets";
 @import "bootstrap";
 @import "jquery.fileupload";
@@ -10,3 +10,4 @@ $body-bg: #eeeeee;
 @import "menu";
 @import "scaffolds";
 @import "donation";
+@import "main";

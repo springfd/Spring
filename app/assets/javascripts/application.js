@@ -23,4 +23,9 @@
 //= require moment
 //= require bootstrap-datetimepicker
 //= require masonry.pkgd.js
+//= require ScrollMagic/TweenMax.js
+//= require ScrollMagic/ScrollMagic.js
+//= require ScrollMagic/animation.gsap.js
+//= require ScrollMagic/debug.addIndicators.js 
+//= require ScrollMagic/modernizr.custom.js
 //= require_tree .
