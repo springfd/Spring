@@ -14,12 +14,12 @@
 //= require jquery_ujs
 //= require turbolinks
 //= require bootstrap-sprockets
+//= require bootstrap
 //= require jquery-fileupload/basic
 //= require fileinput.js
 //= require fileinput_locale_zh-TW.js
 //= require toastr.js
 //= require toastr_options.js
-//= require bootstrap
 //= require moment
 //= require bootstrap-datetimepicker
 //= require masonry.pkgd.js

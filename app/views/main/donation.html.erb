@@ -1,8 +1,55 @@
-<p>8,8888,321 NTW</p>
-
+<div class="container-fluid">
+	<div class="row text-center">
+		<div class="col-lg-12 text-center">		
+		<div class="donation_summary">
+			<div class="donation_summary_inner">
+				<span class="donation_summary_number">28,888,321</span><span class="donation_summary_en">NTW</span>	
+			</div>
+			<div class="donation_range text-right">累積期間 2016/01/01~2016/04/13</div>	
+		</div>
+		</div>
+	</div>		
+</div>	
 <div class="grid">
   <div class="grid-item">
+    <div class="grid-item-content">
+    <label class="grid-item-close"><span aria-hidden="true">&times;</span></label>
+
+ 	
+<div class="container-fluid">	
+	<div class="row" style="">
+		<div class="col-lg-12">	
+			<div class="donation_card_small_img"></div>	
+			<div class="donation_card_small_title">兩岸菁英學生交流計畫</div>
+			<div class="donation_card_small_content"><%= truncate("交通大學於兩岸分設五個校區，彼此素有相當的歷史淵源背景，各自於專長領域發展。為擴展兩岸交大間之良性發展與互動關係，奠定未來研究及學術合作廣大基礎。本會特創造兩岸交大學生一個新的溝通和交流方式，建立彼此互信的感情，促使兩岸之間學術、文化與人員的交流。", length: 60)%></div>
+			<button type="button" class="btn btn-primary btn-block grid-item-button">點擊贊助</button>		
+		</div>			
+	</div>	
+</div>  
+	
+
+    	
+    </div>
+  </div>
+  <div class="grid-item">
     <div class="grid-item-content"></div>
+  </div>
+  <div class="grid-item">
+    <div class="grid-item-content"></div>
+  </div>
+  <div class="grid-item">
+    <div class="grid-item-content">
+
+<div class="container-fluid">		
+	<div class="row" style="height: 500px; color: #c5a063;">
+		<div class="col-lg-6 col-lg-offset-3 text-center">
+				<button type="button" class="btn btn-primary btn-block grid-item-button">點擊贊助</button>		
+		</div>
+	</div>	
+</div>  
+	
+    	
+    </div>
   </div>
   <div class="grid-item">
     <div class="grid-item-content"></div>
@@ -32,86 +79,48 @@
     <div class="grid-item-content"></div>
   </div>
   <div class="grid-item">
-    <div class="grid-item-content"></div>
-  </div>
-  <div class="grid-item">
-    <div class="grid-item-content"></div>
-  </div>
-  <div class="grid-item">
-    <div class="grid-item-content"></div>
-  </div>
-  <div class="grid-item">
-    <div class="grid-item-content"></div>
+    <div class="grid-item-content">
+    	
+<div class="container-fluid">		
+	<div class="row" style="height: 500px; color: #c5a063;">
+		<div class="col-lg-6 col-lg-offset-3 text-center">
+				<button type="button" class="btn btn-primary btn-block grid-item-button">點擊贊助</button>		
+		</div>
+	</div>	
+</div>  
+	    	
+    	
+    </div>
   </div>
   <div class="grid-item">
     <div class="grid-item-content"></div>
   </div>
 </div>
 
-<style>
-* { box-sizing: border-box; }
-
-body { font-family: sans-serif; }
-
-.grid {
-  background: #EEE;
-}
-
-.grid-item {
-  float: left;
-}
-
-/* item is invisible, but used for layout */
-.grid-item,
-.grid-item-content {
-  width: 120px;
-  height: 120px;
-}
-
-/* grid-item-content is visible, and transitions size */
-.grid-item-content {
-  width: 120px;
-  height: 120px;
-  background: #D26;
-  border: 2px solid #333;
-  border-color: hsla(0, 0%, 0%, 0.5);
-  border-radius: 5px;
-  -webkit-transition: width 0.4s, height 0.4s;
-          transition: width 0.4s, height 0.4s;
-}
-
-.grid-item:hover .grid-item-content {
-  border-color: white;
-  background: #A2C;
-  cursor: pointer;
-}
-
-/* both item and item content change size */
-.grid-item.is-expanded,
-.grid-item.is-expanded .grid-item-content {
-  width: 360px;
-  height: 240px;
-}
-
-.grid-item.is-expanded {
-  z-index: 2;
-}
-
-.grid-item.is-expanded .grid-item-content {
-  background: #F90;
-}
-</style>
 <script>
 // external js: masonry.pkgd.js
 
 var $grid = $('.grid').masonry({
-  columnWidth: 120,
-  itemSelector: '.grid-item'
+  columnWidth: '.grid-item',
+  itemSelector: '.grid-item',
+  percentPosition: true
+  //gutter: '.gutter-sizer',    
 });
-
+/*
 $grid.on( 'click', '.grid-item-content', function( event ) {
   $( event.currentTarget ).parent('.grid-item').toggleClass('is-expanded');
   $grid.masonry();
 });
+*/
+$grid.on( 'click', '.grid-item-button', function( event ) {
+  $( event.currentTarget ).closest('.grid-item').toggleClass('is-expanded');
+  $grid.masonry();
+});
+
+$grid.on( 'click', '.grid-item-close', function( event ) {
+  $( event.currentTarget ).closest('.grid-item').toggleClass('is-expanded');
+  $grid.masonry();
+});
+
 
 </script>
