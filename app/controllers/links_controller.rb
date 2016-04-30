@@ -39,7 +39,7 @@ class LinksController < ApplicationController
     if @link.update(link_params)
       redirect_to @link, notice: '成功更新連結'
     else
-      render :action=>:edit
+      render :edit
     end
   end
 

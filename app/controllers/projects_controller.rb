@@ -1,4 +1,5 @@
 class ProjectsController < ApplicationController
+  before_filter :authenticate_user!
   before_action :set_project, only: [:show, :edit, :update, :destroy]
 
   # GET /projects
@@ -25,9 +26,14 @@ class ProjectsController < ApplicationController
   # POST /projects.json
   def create
     @project = Project.new(project_params)
-    @project.year = DateTime.strptime(params[:project][:year], "%Y")
+    unless params[:project][:year].blank?
+      @project.year = DateTime.strptime(params[:project][:year], "%Y")
+    end
     @project.save!
-    redirect_to @project, pj_kind: @project.kind, notice: 'Project was successfully created.'
+    redirect_to @project, pj_kind: @project.kind, notice: '成功新增計畫'
+    rescue ActiveRecord::RecordInvalid
+    params[:pj_kind] = params[:project][:kind].to_i
+    render "edit"
   end
 
   # PATCH/PUT /projects/1
@@ -39,14 +45,16 @@ class ProjectsController < ApplicationController
     @project.update(project_params)
     @project.year = DateTime.strptime(params[:project][:year], "%Y")
     @project.save!
-    redirect_to @project, pj_kind: @project.kind, notice: 'Project was successfully updated.'
+    redirect_to @project, pj_kind: @project.kind, notice: '成功更新計畫'
+    rescue ActiveRecord::RecordInvalid
+    render "edit", pj_kind: @project.kind
   end
 
   # DELETE /projects/1
   # DELETE /projects/1.json
   def destroy
     @project.destroy
-    redirect_to({ controller: "projects", action: 'index' , pj_kind: @project.kind}, notice: 'Project was successfully destroyed.') 
+    redirect_to({ controller: "projects", action: 'index' , pj_kind: @project.kind}, notice: '成功刪除計畫') 
   end
 
   private

@@ -1,4 +1,5 @@
 class DonationsController < ApplicationController
+  before_filter :authenticate_user!
   before_action :set_donation, only: [:show, :edit, :update, :destroy]
 
   # GET /donations
@@ -25,29 +26,19 @@ class DonationsController < ApplicationController
   # POST /donations.json
   def create
     @donation = Donation.new(donation_params)
-
-    respond_to do |format|
-      if @donation.save
-        format.html { redirect_to @donation, notice: 'Donation was successfully created.' }
-        format.json { render :show, status: :created, location: @donation }
-      else
-        format.html { render :new }
-        format.json { render json: @donation.errors, status: :unprocessable_entity }
-      end
-    end
+    @donation.save!
+    redirect_to @donation, notice: '成功新增捐款' 
+    rescue ActiveRecord::RecordInvalid
+    render :edit
   end
 
   # PATCH/PUT /donations/1
   # PATCH/PUT /donations/1.json
   def update
-    respond_to do |format|
-      if @donation.update(donation_params)
-        format.html { redirect_to @donation, notice: 'Donation was successfully updated.' }
-        format.json { render :show, status: :ok, location: @donation }
-      else
-        format.html { render :edit }
-        format.json { render json: @donation.errors, status: :unprocessable_entity }
-      end
+    if @donation.update(donation_params)
+      redirect_to @donation, notice: '成功更新捐款' 
+    else
+      render :edit 
     end
   end
 
@@ -55,10 +46,7 @@ class DonationsController < ApplicationController
   # DELETE /donations/1.json
   def destroy
     @donation.destroy
-    respond_to do |format|
-      format.html { redirect_to donations_url, notice: 'Donation was successfully destroyed.' }
-      format.json { head :no_content }
-    end
+    redirect_to donations_url, notice: '成功刪除捐款' 
   end
 
   private

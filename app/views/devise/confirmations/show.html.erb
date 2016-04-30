@@ -1,15 +1,28 @@
-<h2>Account Activation</h2>
+<div class="container">
+	<div class="row">
+		<h3><% if resource.email %> <%= resource.email %><% end %>帳戶啟用</h3>
+	</div>
+</div>
 
 <%= form_for resource, :as => resource_name, :url => update_user_confirmation_path, :html => {:method => 'patch'}, :id => 'activation-form' do |f| %>
-  <%= devise_error_messages! %>
-  <fieldset>
-    <legend>Account Activation<% if resource.email %> for <%= resource.email %><% end %></legend>
-
+<div class="container" style="margin-top: 10mm">
+	  <%= devise_error_messages! %>
   <% if @requires_password %>
-      <p><%= f.label :password,'Choose a Password:' %> <%= f.password_field :password %></p>
-      <p><%= f.label :password_confirmation,'Password Confirmation:' %> <%= f.password_field :password_confirmation %></p>
+  	<div class="form-group row">
+  		<label class="col-sm-offset-1 col-sm-2 control-label">設定密碼</label>
+      	<div class="col-sm-4"><%= f.password_field :password %></div>
+    </div>
+    <div class="form-group row">
+  		<label class="col-sm-offset-1 col-sm-2 control-label">密碼確認</label>
+      	<div class="col-sm-4"><%= f.password_field :password_confirmation %></div>
+    </div>
+  
   <% end %>
   <%= hidden_field_tag :confirmation_token,@confirmation_token %>
-  <p><%= f.submit "Activate" %></p>
-  </fieldset>
+ 	<div class="form-group row">
+		<div class="col-sm-offset-6 col-sm-10">
+			<%= f.submit '確認',  class: "btn btn-default" %>
+		</div>
+  	</div>
+</div>
 <% end %>

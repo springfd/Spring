@@ -90,6 +90,7 @@
 <% end %>
 <script>
 $(document).on('ready', function() {
+	$('#project_kind').val('<%= params[:pj_kind]%>');
      $("#project_pj_attachment").fileinput({
      	initialPreview: [
 		    <% if !@project.pj_attachment_file_name.blank? %>

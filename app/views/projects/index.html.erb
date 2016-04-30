@@ -16,7 +16,7 @@
 			<table class="table">
 				<tbody>
 				    <% @projects.each do |project| %>
-				      <tr data-link="<%= project_path(project, :pj_kind => params[:pj_kind]) %>">
+				      <tr data-link="<%= project_path(project) %>">
 				        <td><%= project.year.strftime("%Y-%m-%d") %></td>
 				        <td><%= project.name %></td>
 				        <td><%= project.budget %></td>

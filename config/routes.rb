@@ -7,7 +7,7 @@ Rails.application.routes.draw do
   as :user do
       patch '/user/confirmation' => 'users/confirmations#update', :via => :patch, :as => :update_user_confirmation
   end
-  devise_for :users, :controllers => { :confirmations => "users/confirmations", :registrations => "registrations" } # be careful of the order with resources users
+  devise_for :users, :controllers => { :registrations => "registrations", :confirmations => "users/confirmations" } # be careful of the order with resources users
   resources :users, only: [:index, :show, :destroy]
   get 'trade/post_back'
   get 'trade/result'
@@ -16,7 +16,7 @@ Rails.application.routes.draw do
 
 
 
-  root 'main#index'
+  root 'users#index'
   
   
 end
