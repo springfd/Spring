@@ -1,0 +1,189 @@
+/*=========================== grid ===================================*/
+.grid {
+  background: none;
+  width: 95%;
+  margin: 0 auto;
+}
+.grid-item {
+  float: left;
+  margin-bottom: 20px;
+}
+/* item is invisible, but used for layout */
+.grid-item{
+  /*width: 120px;*/
+   width: 33%;
+   min-height: 580px;
+}
+/* grid-item-content is visible, and transitions size */
+.grid-item-content {
+  /*width: 120px;*/
+  width: 96%;
+  min-height: 500px;
+  margin: 0 auto;
+  background: #ffffff;
+  -webkit-transition: width 0.4s, height 0.4s;
+          transition: width 0.4s, height 0.4s;
+}
+/*
+.grid-item:hover .grid-item-content {
+  border-color: white;
+  background: #A2C;
+  cursor: pointer;
+}
+*/
+/* both item and item content change size */
+.grid-item.is-expanded,
+.grid-item.is-expanded .grid-item-content {
+  /*width: 360px;*/
+}
+
+.grid-item.is-expanded {
+  width: 100%;		
+  z-index: 2;
+}
+
+.grid-item.is-expanded .grid-item-content {
+  background: #ffffff;
+  width: 100%;
+}
+
+
+@media (max-width: $screen-md-min) {
+	.grid-item{
+		width: 50%;
+	}
+}
+@media (max-width: $screen-xs-min) {
+	.grid-item{
+		width: 100%;
+	}
+}
+.grid-item-close {
+  font-size: 30px;
+  z-index: 3;
+  position: absolute;
+  right: 30px;
+  top: 20px;
+  cursor: pointer;
+  visibility: hidden;
+}
+.grid-item-button{
+  margin-top: 25px;
+  margin-bottom: 15px;
+  font-size: 16px;
+  letter-spacing: 7px;
+  color: #ffffff !important;
+  border: none;
+  background: #02a0eb;	
+  padding: 12px 14px 8px !important; 
+  border-radius: 0px;
+  border-bottom: 4px solid #0279b1; 
+}
+.no-touch .grid-item-button:hover{
+  color: #ffffff;  
+  background: #0279b1 !important; 
+}
+.donation_card_enlarge{
+  display: none;
+}
+/*=========================== grid-item.is-expanded ===================================*/
+.grid-item.is-expanded .grid-item-button{
+  visibility: hidden;
+}	
+.grid-item.is-expanded .grid-item-close{
+  visibility: visible;
+}	
+.grid-item.is-expanded .donation_card_small{
+  display: none;
+}	
+.grid-item.is-expanded .donation_card_enlarge {
+  display: block;
+}	
+
+/*=========================== content ===================================*/
+.donation_summary{
+	width: 730px;
+	margin: 120px auto;
+	margin-bottom: 200px;
+	font-size: 9em;
+}
+.donation_summary_inner{
+	font-family: Helvetica;
+	height: 155px;
+}
+.donation_summary_number{
+	color: #02a0eb;	
+}
+.donation_summary_en{
+	font-size: 35%;
+	color: #19417f;
+}
+.donation_range{
+	font-size: 11%;
+	color: #adadad;
+}
+@media (max-width: $screen-sm-min) {
+	.donation_summary{
+		width: 480px;
+		font-size: 6em;
+	}
+	.donation_summary_inner{
+		height: 100px;
+	}	
+}
+
+@media (max-width: $screen-xs-min) {
+	.donation_summary{
+		width: 280px;
+		font-size: 3.5em;
+	}
+	.donation_summary_inner{
+		height: 60px;
+	}	
+}
+/*=========================== card ===================================*/
+.donation_card_small_img{
+  height: 280px;
+  width: 100%;
+  margin-top: 15px;	  
+  background-image: url('<%= asset_path 'sample_2.jpg' %>');
+  background-size: cover; 
+  background-position: center center;	
+}
+.donation_card_small_title{
+  margin-top: 30px;
+  font-size: 20px;	
+}
+.donation_card_small_content{
+  font-size: 14px;	
+  line-height: 25px;
+  letter-spacing: 2px;
+  color: #878787;
+}
+.donation_card_pie{
+  margin-top: 15px;	
+  width: 100%;
+  height: 500px;
+  background: #878787;
+}
+
+
+.donation_card_enlarge_img{
+  height: 300px;
+  width: 100%;
+  margin-top: 15px;	  
+  background-image: url('<%= asset_path 'sample_2.jpg' %>');
+  background-size: cover; 
+  background-position: center center;	
+}
+.donation_card_enlarge_title{
+  margin-top: 30px;
+  font-size: 20px;	
+}
+.donation_card_enlarge_content{
+  font-size: 14px;	
+  line-height: 25px;
+  letter-spacing: 2px;
+  color: #878787;
+}
+

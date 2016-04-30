@@ -1,0 +1,57 @@
+<div class="container-fluid">
+	<div class="row text-center">
+		<div class="col-lg-12 text-center">		
+		<div class="donation_summary">
+			<div class="donation_summary_inner">
+				<span class="donation_summary_number">28,888,321</span><span class="donation_summary_en">NTW</span>	
+			</div>
+			<div class="donation_range text-right">累積期間 2016/01/01~2016/04/13</div>	
+		</div>
+		</div>
+	</div>		
+</div>	
+<div class="grid">
+  <%=render "donation_card" %>	
+  <%=render "donation_card" %>		
+  <%=render "donation_card" %>	
+  <%=render "donation_card" %>	
+  <%=render "donation_card" %>	
+  <%=render "donation_card" %>	
+  <%=render "donation_card" %>	
+  <%=render "donation_card" %>	
+  <%=render "donation_card" %>	
+  <%=render "donation_card" %>	
+  <%=render "donation_card" %>	
+  <%=render "donation_card" %>	
+  <%=render "donation_card" %>	
+  <%=render "donation_card" %>	  
+            
+</div>
+
+<script>
+// external js: masonry.pkgd.js
+
+var $grid = $('.grid').masonry({
+  columnWidth: '.grid-item',
+  itemSelector: '.grid-item',
+  percentPosition: true
+  //gutter: '.gutter-sizer',    
+});
+/*
+$grid.on( 'click', '.grid-item-content', function( event ) {
+  $( event.currentTarget ).parent('.grid-item').toggleClass('is-expanded');
+  $grid.masonry();
+});
+*/
+$grid.on( 'click', '.grid-item-button', function( event ) {
+  $( event.currentTarget ).closest('.grid-item').toggleClass('is-expanded');
+  $grid.masonry();
+});
+
+$grid.on( 'click', '.grid-item-close', function( event ) {
+  $( event.currentTarget ).closest('.grid-item').toggleClass('is-expanded');
+  $grid.masonry();
+});
+
+
+</script>
