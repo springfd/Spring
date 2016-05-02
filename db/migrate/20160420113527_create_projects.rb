@@ -15,8 +15,9 @@ class CreateProjects < ActiveRecord::Migration
       t.string :abbreviation
       t.datetime :account_begin
       t.datetime :account_end
-      t.string :p_account
-      t.string :p_password
+      t.string :account
+      t.string :encrypted_password
+      t.string :encrypted_password_iv
 
       t.timestamps null: false
     end

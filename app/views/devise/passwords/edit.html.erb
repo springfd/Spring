@@ -1,24 +1,29 @@
-<h2>Change your password</h2>
+<div class="container">
+	<div class="row">
+		<h3>重設密碼</h3>
+	</div>
+</div>
 
 <%= form_for(resource, as: resource_name, url: password_path(resource_name), html: { method: :put }) do |f| %>
+<div class="container" style="margin-top: 10mm">  
   <%= devise_error_messages! %>
   <%= f.hidden_field :reset_password_token %>
 
-  <div class="field">
-    <%= f.label :password, "New password" %><br />
-    <% if @minimum_password_length %>
-      <em>(<%= @minimum_password_length %> characters minimum)</em><br />
-    <% end %>
-    <%= f.password_field :password, autofocus: true, autocomplete: "off" %>
-  </div>
+	  <div class="form-group row">
+	      <label class="col-sm-offset-1 col-sm-2 control-label">新密碼 ( 密碼最少 <%= @minimum_password_length %> 字元)</label>
+	      <div class="col-sm-4"><%= f.password_field :password, autofocus: true, autocomplete: "off", class: "form-control", placeholder: '新密碼'%></div>
+	  </div>
+	
+	  <div class="form-group row">
+	    <label class="col-sm-offset-1 col-sm-2 control-label">密碼確認</label>
+	    <div class="col-sm-4"><%= f.password_field :password_confirmation, autofocus: true, autocomplete: "off", class: "form-control", placeholder: '密碼確認'%></div>
+	  </div>
 
-  <div class="field">
-    <%= f.label :password_confirmation, "Confirm new password" %><br />
-    <%= f.password_field :password_confirmation, autocomplete: "off" %>
-  </div>
-
-  <div class="actions">
-    <%= f.submit "Change my password" %>
-  </div>
+	  <div class="form-group row">
+		  <div class="col-sm-offset-6 col-sm-10">
+			  <%= f.submit '寄信',  class: "btn btn-default" %>
+		  </div>
+	  </div>
+</div>
 <% end %>
 

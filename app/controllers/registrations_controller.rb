@@ -7,7 +7,6 @@ class RegistrationsController < Devise::RegistrationsController
   
   def create
     super
-    flash[:notice] = "成功寄出"
   end
   
 end
