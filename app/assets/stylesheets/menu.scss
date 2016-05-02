@@ -19,3 +19,26 @@
         display: none;
      }
 }
+
+.backmenubar > li > a{
+  color: #c0c0c0;
+  font-size: 18px;
+  padding: 5px 0px;
+  margin: 5px 10px;
+}
+
+.backmenubar > li.active > a, .backmenubar > li.active > a:hover {
+    background-color: #fff;
+    color: #c0c0c0;
+    border-bottom: 2px solid #000;
+}
+
+.backmenubar{
+  margin-left: 10px;
+}
+
+.backmenubar > li > a {
+    border-radius: 0px;
+}
+
+ 

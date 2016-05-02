@@ -82,7 +82,6 @@ class Users::ConfirmationsController < Devise::ConfirmationsController
   # The path used after resending confirmation instructions.
    def after_resending_confirmation_instructions_path_for(resource_name)
      if signed_in?
-      flash[:notice] = "成功寄出" #this is optional since devise already sets the flash message
       new_user_confirmation_path
     else
       new_session_path(resource_name)

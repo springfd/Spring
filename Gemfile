@@ -23,6 +23,7 @@ gem "jquery-fileupload-rails"
 gem 'momentjs-rails', '>= 2.9.0'
 gem 'bootstrap3-datetimepicker-rails', '~> 4.0.0'
 gem 'will_paginate', '~> 3.1.0'
+gem "attr_encrypted", "~> 3.0.0"
 # Use ActiveModel has_secure_password
 # gem 'bcrypt', '~> 3.1.7'
 
