@@ -28,6 +28,4 @@
 //= require ScrollMagic/animation.gsap.js
 //= require ScrollMagic/debug.addIndicators.js 
 //= require ScrollMagic/modernizr.custom.js
-//= require Highcharts/highcharts.src.js
-//= require Highcharts/exporting.src.js
 //= require_tree .
