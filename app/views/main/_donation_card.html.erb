@@ -20,14 +20,294 @@
 					<button type="button" class="btn btn-primary btn-block grid-item-button">點擊贊助</button>		
 				</div>
 				<div class="col-sm-6">	
-					<div class="donation_card_pie"></div>
+					<div class="donation_card_pie">
+						
+						
+<section class="model-2">
+  <div class="graph">支出比例</div><span tooltip="70%" class="tooltip">人事</span>
+</section>
+<section class="model-3">
+  <div class="multi-graph">javaScript
+    <div data-name="jQuery" class="graph jQuery"> </div>
+    <div data-name="javaScript" class="graph javaScript"></div>
+    <div data-name="Angular JS" class="graph angular"> </div>
+  </div>
+</section>						
+						
+<div class="container_1" style="min-width: 400px; max-width: 1000px; margin: 0 auto"></div>
+						
+					</div>
+
+
+
+
+
+
+					<div class="">是否需要收據</div>
+					<div class="">線上捐款金額</div>
+					<div class=""></div>
 				</div>				
 			</div>	
 			<div class="row" style="">
 				<div class="col-sm-12">	
-					<div class="donation_card_pie" style="background:#cacaca"></div>
+					<div class="donation_card_pie" style="background:#ffffff; height: 300px;"></div>
 				</div>				
 			</div>				
 		</div> 		
 	</div>
 </div>
+
+
+<style>
+*, *:after, *:before {
+  box-sizing: border-box;
+}
+
+
+
+section {
+  display: inline-block;
+  width: 33.33%;
+  margin: 50px 0;
+  text-align: center;
+  min-width: 320px;
+  position: relative;
+}
+
+.tooltip {
+  position: absolute;
+  background: #eee;
+  padding: 3px;
+  font-weight: 100;
+  font-size: 12px;
+  border-radius: 2px;
+  border: 1px solid  #ddd;
+  bottom: 100%;
+  left: 50%;
+  opacity: 0;
+  -webkit-transition: 0.3s;
+  transition: 0.3s;
+  -webkit-transform: translateX(-50%);
+  transform: translateX(-50%);
+}
+.tooltip:after {
+  content: "" attr(tooltip) "";
+  margin-left: 3px;
+  color: #2DABD8;
+}
+.tooltip:before {
+  content: '';
+  width: 8px;
+  height: 8px;
+  background: #2DABD8;
+  display: inline-block;
+  margin-right: 5px;
+}
+
+.graph {
+  width: 300px;
+  height: 150px;
+  position: relative;
+  margin: auto;
+  text-align: center;
+  color: #fff;
+  font-size: 22px;
+  line-height: 280px;
+  font-weight: 600;
+  border-radius: 150px 150px 0 0;
+  overflow: hidden;
+  color: #0ff;
+}
+.graph:before, .graph:after {
+  content: '';
+  width: 300px;
+  height: 150px;
+  border: 50px solid #0ff;
+  border-top: none;
+  position: absolute;
+  -webkit-transition: 0.3s;
+  transition: 0.3s;
+  -webkit-transform-origin: 50% 0%;
+  transform-origin: 50% 0%;
+  border-radius: 0 0 300px 300px;
+  -webkit-animation: demo 2s;
+  animation: demo 2s;
+  left: 0;
+  top: 100%;
+  z-index: 5;
+}
+.graph:after {
+  z-index: 3;
+  border-color: rgba(0, 0, 0, 0.15);
+  -webkit-transform: rotate(180deg);
+  transform: rotate(180deg);
+}
+.graph:hover:before {
+  opacity: .8;
+  cursor: pointer;
+}
+.graph:hover + .tooltip {
+  bottom: 105%;
+  opacity: 1;
+}
+
+.multi-graph {
+  width: 300px;
+  height: 150px;
+  position: relative;
+  margin: auto;
+  color: #fff;
+  font-size: 22px;
+  line-height: 280px;
+  font-weight: 600;
+}
+.multi-graph:before {
+  content: '';
+  width: 300px;
+  height: 150px;
+  border: 50px solid rgba(0, 0, 0, 0.15);
+  border-bottom: none;
+  position: absolute;
+  -webkit-transform-origin: 50% 0%;
+  transform-origin: 50% 0%;
+  border-radius: 300px 300px 0 0;
+  left: 0;
+  top: 0;
+}
+.multi-graph .graph {
+  position: absolute;
+  top: 0;
+  left: 0;
+}
+.multi-graph .graph:after {
+  background: #eee;
+  border: medium none;
+  border-radius: 2px;
+  color: #333;
+  font-weight: 200;
+  content: "" attr(data-name) "";
+  display: inline-block;
+  font-size: 12px;
+  height: 20px;
+  left: 50%;
+  line-height: 20px;
+  padding: 0 5px;
+  top: 50px;
+  z-index: 0;
+  -webkit-transform: rotate(0deg) translateX(-50%);
+  transform: rotate(0deg) translateX(-50%);
+  width: auto;
+  opacity: 0;
+}
+.multi-graph .graph:hover:after {
+  opacity: 1;
+  top: 70px;
+}
+
+
+
+section.model-2 .graph {
+  color: #2DABD8;
+}
+section.model-2 .graph:before {
+  -webkit-transform: rotate(130deg);
+  transform: rotate(130deg);
+  border-color: #2DABD8;
+}
+
+section.model-3 .javaScript:before {
+  -webkit-transform: rotate(80deg);
+  transform: rotate(80deg);
+  border-color: #FEDA3E;
+}
+section.model-3 .jQuery:before {
+  -webkit-transform: rotate(130deg);
+  transform: rotate(130deg);
+  border-color: #0669AD;
+}
+section.model-3 .angular:before {
+  -webkit-transform: rotate(30deg);
+  transform: rotate(30deg);
+  border-color: #E62A39;
+}
+section.model-3 .graph {
+  color: #2DABD8;
+}
+@-webkit-keyframes demo {
+  0% {
+    -webkit-transform: rotate(0deg);
+    transform: rotate(0deg);
+  }
+  50% {
+    -webkit-transform: rotate(180deg);
+    transform: rotate(180deg);
+  }
+}
+@keyframes demo {
+  0% {
+    -webkit-transform: rotate(0deg);
+    transform: rotate(0deg);
+  }
+  50% {
+    -webkit-transform: rotate(180deg);
+    transform: rotate(180deg);
+  }
+}
+</style>
+<script>
+$(function () {
+    $('.container_1').highcharts({
+        chart: {
+            plotBackgroundColor: null,
+            plotBorderWidth: 0,
+            plotShadow: false
+        },
+        title: {
+            text: 'Browser<br>shares<br>2015',
+            align: 'center',
+            verticalAlign: 'middle',
+            y: 40
+        },
+        tooltip: {
+            pointFormat: '{series.name}: <b>{point.percentage:.1f}%</b>'
+        },
+        plotOptions: {
+            pie: {
+                dataLabels: {
+                    enabled: true,
+                    distance: -50,
+                    style: {
+                        fontWeight: 'bold',
+                        color: 'white',
+                        textShadow: '0px 1px 2px black'
+                    }
+                },
+                startAngle: -90,
+                endAngle: 90,
+                center: ['50%', '75%']
+            }
+        },
+        series: [{
+            type: 'pie',
+            name: 'Browser share',
+            innerSize: '50%',
+            data: [
+                ['Firefox',   10.38],
+                ['IE',       56.33],
+                ['Chrome', 24.03],
+                ['Safari',    4.77],
+                ['Opera',     0.91],
+                {
+                    name: 'Proprietary or Undetectable',
+                    y: 0.2,
+                    dataLabels: {
+                        enabled: false
+                    }
+                }
+            ]
+        }]
+    });
+});
+
+
+</script>
