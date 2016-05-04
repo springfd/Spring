@@ -84,6 +84,7 @@
 }
 .donation_card_enlarge{
   display: none;
+  padding-bottom: 30px;
 }
 /*=========================== grid-item.is-expanded ===================================*/
 .grid-item.is-expanded .grid-item-button{
@@ -191,7 +192,6 @@
 }
 /*=========================== pie ===================================*/
 .donation_card_pie{
-  margin-top: 15px;	
   height: 500px;
 }
 .chart {
@@ -203,6 +203,7 @@
   margin: 0px 0 0 -225px;
 }
 .doughnutTip {
+  font-family: "Oswald", sans-serif;		
   z-index: 4;
   position: absolute;
   min-width: 30px;
@@ -233,12 +234,13 @@
   }
 }
 .doughnutSummary {
+  font-family: "Oswald", sans-serif;		
   position: absolute;
   top: 50%;
   left: 50%;
-  color: #d5d5d5;
+  color: #878787;
   text-align: center;
-  text-shadow: 0 -1px 0 #111;
+  /*text-shadow: 0 -1px 0 #111;*/
   cursor: default;
 }
 .doughnutSummaryTitle {
@@ -258,4 +260,99 @@
 }
 .chart path:hover { 
 	opacity: 0.65; 
+}
+/*=========================== form ===================================*/
+.donation_form_pie{
+  border-left: 1px solid rgb(221, 221, 221);	
+}
+.donation_form input[type=text]{
+  font-size: 16px;
+  padding: 20px 20px;
+  background: #eeeeee;
+  border: none !important;
+  border-radius: 0 !important;
+  outline: none !important;
+  box-shadow: none !important;
+}
+.form_group_donation{
+  
+}
+.donation_btn_group{
+}
+.donation_btn_group .donation_gray_btn{
+  font-family: "Oswald", sans-serif;	
+  font-size: 23px;	
+  color: #02a0eb;	
+  text-align: center;
+  margin: 0px 12px 12px 0px !important; 
+  width: 110px;
+  background: #eeeeee;
+  border-radius: 0px;
+  border: none;
+}
+.donation_btn_group .donation_gray_btn.active, 
+.no-touch .donation_btn_group .donation_gray_btn:hover, 
+.donation_btn_group .donation_gray_btn.active span, 
+.no-touch .donation_btn_group .donation_gray_btn span:hover{
+  color: #ffffff !important; 
+  background: #bababa !important;
+  box-shadow: none !important;
+  border: none !important;
+}
+.donation_button{
+  font-size: 17px;	
+  letter-spacing: 2px;
+  color: #ffffff !important;
+  border: none;
+  background: #02a0eb;	
+  padding: 6px 30px 4px !important; 
+  border-radius: 0px;
+  border-bottom: 2px solid #0279b1; 
+}
+.no-touch .donation_button:hover{
+  color: #ffffff;  
+  background: #0279b1 !important; 
+}
+/*=========================== sponsor ===================================*/
+.donation_sponsor{
+	font-size: 16px;
+	position: relative;
+	padding-top: 30px;
+}
+.donation_sponsor:after {
+  content: "";
+  position: absolute;
+  left: 2%;
+  top: 0;
+  width: 96%;  /* or 100px */
+  border-top: 1px solid rgb(221, 221, 221);
+}
+.donation_sponsor .glyphicon{
+  cursor: pointer;	
+}
+.donation_sponsor_content{
+	font-size: 16px;	
+	color: #878787;
+	width: 100%;
+}
+
+.donation_sponsor_text {
+	letter-spacing: 2px;
+    text-align: center;
+    text-transform: uppercase;
+    width: 60%;
+    float: left;
+}
+.donation_sponsor_text.no-span {
+    display: table;
+    white-space: nowrap;
+    &:after {
+      border-top: 1px solid #878787;
+      content: '';
+      display: table-cell;
+      position: relative;
+      top: 10px;
+      width: 95%;
+    }
+    &:after { left: 5%; }
 }
