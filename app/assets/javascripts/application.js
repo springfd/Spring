@@ -30,4 +30,6 @@
 //= require ScrollMagic/modernizr.custom.js
 //= require Highcharts/highcharts.src.js
 //= require Highcharts/exporting.src.js
+//= require fancybox/jquery.fancybox.js
+//= require fancybox/jquery.fancybox.pack.js
 //= require_tree .

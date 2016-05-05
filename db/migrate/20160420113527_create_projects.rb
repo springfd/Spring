@@ -13,11 +13,12 @@ class CreateProjects < ActiveRecord::Migration
       t.string :exe_desc
       t.boolean :donate_flag
       t.string :abbreviation
+      t.datetime :donate_begin_at
+      t.datetime :donate_end_at
       t.datetime :account_begin
       t.datetime :account_end
       t.string :account
-      t.string :encrypted_password
-      t.string :encrypted_password_iv
+      t.string :password
 
       t.timestamps null: false
     end
