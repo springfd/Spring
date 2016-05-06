@@ -9,6 +9,9 @@ Rails.application.routes.draw do
   end
   devise_for :users, :controllers => { :registrations => "registrations", :confirmations => "users/confirmations" } # be careful of the order with resources users
   resources :users, only: [:index, :show, :destroy]
+  
+  post 'projects/check_login'
+  
   get  'trade/post_back'
   get  'trade/result'
   post 'trade/result'
