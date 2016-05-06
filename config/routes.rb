@@ -16,6 +16,7 @@ Rails.application.routes.draw do
   get  'trade/result'
   post 'trade/result'
   post 'trade/post_back'
+  post 'trade/donate'
 
 
   get  'main/about'

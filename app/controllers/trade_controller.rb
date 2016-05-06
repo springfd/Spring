@@ -1,6 +1,11 @@
 class TradeController < ApplicationController
-    before_filter :authenticate_user!
     skip_before_action :verify_authenticity_token, only: [:post_back]
+  
+  def donate
+    
+  end  
+    
+    
   def index
     require 'rest-client'
     params = 
