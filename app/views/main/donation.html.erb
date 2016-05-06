@@ -10,6 +10,12 @@
 		</div>
 	</div>		
 </div>	
+<div class="grid">
+	<%for i in 1..8 do %>
+		<%=render "donation_card", id_id_id: i %>	
+	<%end%>	   
+</div>
+
 <a href="#login_form" id="login_btn" class="fancybox btn btn-primary btn-block grid-item-button">委辦計畫</a>		
 
 <div style="display:none">
@@ -29,11 +35,6 @@
 			<input type="submit" value="Login"  class= "btn btn-default"/>
 		</div>
 	<% end %>
-	<%for i in 1..8 do %>
-		<%=render "donation_card", id_id_id: i %>	
-	<%end%>	   
-</div>
-
 <script>
 //============================= masonry =============================//
 var $grid = $('.grid').masonry({
