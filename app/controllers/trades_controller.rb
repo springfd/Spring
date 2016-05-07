@@ -3,6 +3,7 @@ class TradesController < ApplicationController
   
   def donate
     require 'rest-client'
+    order_no = generate_order_num
     parameters = 
         '{
         "sender":"rest",
@@ -14,8 +15,8 @@ class TradesController < ApplicationController
         "params":
         {
         "layout":"1",
-        "order_no":"NO01234552",
-        "amt":"'+"123"+'",
+        "order_no":"'+order_no+'",
+        "amt":"'+params[:amount]+"00"+'",
         "cur":"NTD",
         "order_desc":"測試 3C 網站購物",
         "capt_flag":"0",
@@ -31,10 +32,17 @@ class TradesController < ApplicationController
   def index
     
   end
+  
   def post_back
-    logger.info "xxxxxxxxxxxxxxxxxxxxxxxx"
   end
+  
   def result
     logger.info "xxxxxxxxxxxxxxxxxxxxxxxx"
   end
+  private
+    def generate_order_num
+      order_no = "NO"; 
+      8.times{ order_no  << (48 + rand(9)).chr}
+      return order_no
+    end
 end
