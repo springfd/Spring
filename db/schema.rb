@@ -60,8 +60,8 @@ ActiveRecord::Schema.define(version: 20160505120127) do
     t.integer  "exp_business",               limit: 4
     t.integer  "exp_mix",                    limit: 4
     t.integer  "exp_other",                  limit: 4
-    t.string   "exe_desc",                   limit: 255
-    t.boolean  "donate_flag"
+    t.text     "exe_desc",                   limit: 65535
+    t.text     "description",                limit: 65535
     t.string   "abbreviation",               limit: 255
     t.datetime "donate_begin_at"
     t.datetime "donate_end_at"
@@ -69,8 +69,8 @@ ActiveRecord::Schema.define(version: 20160505120127) do
     t.datetime "account_end"
     t.string   "account",                    limit: 255
     t.string   "password",                   limit: 255
-    t.datetime "created_at",                             null: false
-    t.datetime "updated_at",                             null: false
+    t.datetime "created_at",                               null: false
+    t.datetime "updated_at",                               null: false
     t.string   "pj_attachment_file_name",    limit: 255
     t.string   "pj_attachment_content_type", limit: 255
     t.integer  "pj_attachment_file_size",    limit: 4
