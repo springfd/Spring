@@ -10,8 +10,8 @@ class CreateProjects < ActiveRecord::Migration
       t.integer :exp_business
       t.integer :exp_mix
       t.integer :exp_other
-      t.string :exe_desc
-      t.boolean :donate_flag
+      t.text :exe_desc
+      t.text :description
       t.string :abbreviation
       t.datetime :donate_begin_at
       t.datetime :donate_end_at
