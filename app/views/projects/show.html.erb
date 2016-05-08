@@ -1,78 +1,64 @@
 <div class="container" style="margin-bottom: 20px;">
   <div class="row">
-  	<% if @project.kind.to_i == GLOBAL_VAR['project_self'] %>
-	<h3 class="col-sm-5 ">自辦計畫</h3>
-	<% elsif @project.kind.to_i == GLOBAL_VAR['project_delegate'] %>
-  	<h3 class="col-sm-5 ">委辦計畫</h3>
-  	<% end %>
+  	<h3 class="col-sm-5 "><%= @project.name %>計畫</h3>
   </div>
 </div>
 <div class="container-fluid">
 	<div class="row">	
-		<div class="col-md-offset-7">
-			<%= link_to "編輯", edit_project_path(@project, pj_kind: @project.kind), data: { no_turbolink: true }, class: 'btn btn-default' %>
-			<%= link_to 'Destroy', @project, method: :delete, data: { confirm: 'Are you sure?' } , class: 'btn btn-danger'%>
+		<div class="col-md-offset-9">
+			<%= link_to "編輯", edit_project_path(@project, pj_kind: @project.kind), data: { no_turbolink: true }, class: 'btn btn-default edit-btn' %>
+			<%= link_to '刪除', @project, method: :delete, data: { confirm: 'Are you sure?' } , class: 'btn btn-danger delete-btn'%>
 		</div>
 	</div>
 </div>
 <div class="container-fluid">
 	<div class="row">
-	  <div class="col-md-3 col-md-offset-2">西元年度</div>
-	  <div class="col-md-4"> <%= @project.year.strftime("%Y-%m-%d") %></div>
+		<div class="col-md-offset-2 col-md-3 ">
+			<div id="doughnutChart_expense" class="chart" style="position: relative;"></div>
+		</div>
+		<div class="col-md-2 col-md-offset-1 show-title">簡稱</div>
+	    <div class="col-md-3 show-content" style="font-size: 24px;"> <%= @project.abbreviation %></div>
+		<div class="col-md-2 col-md-offset-1 show-title">描述</div>
+	    <div class="col-md-3 show-content"> <%= @project.description	 %></div>
+	    <div class="col-md-2 col-md-offset-1 show-title">西元年度</div>
+	  	<div class="col-md-3 show-content" style="font-size: 24px;"> <%= @project.year.strftime("%Y") %></div>
+		<div class="col-md-2 col-md-offset-1 show-title">預算</div>
+		<div class="col-md-3 show-content" style="font-size: 24px;"> <%= @project.budget%> 元</div>
+		<div class="col-md-2 col-md-offset-1 show-title">收入</div>
+	    <div class="col-md-3 show-content" style="font-size: 24px;"> <%= @project.income%> 元</div>
+	</div>
+	<div class="row">		
+		<div class="col-md-offset-1 col-md-10" style="margin-top: 40px;">
+			<div style="border-top: 1px solid #fff;"></div>
+		</div>					
 	</div>
 	<div class="row">
-	  <div class="col-md-3 col-md-offset-2">名稱</div>
-	  <div class="col-md-4"> <%= @project.name %></div>
+	  <div class="col-md-3 col-md-offset-2 show-title">執行狀況描述</div>
+	  <div class="col-md-4 show-content"> <%= @project.exe_desc  %></div>
 	</div>
-	<div class="row">
-	  <div class="col-md-3 col-md-offset-2">人事支出</div>
-	  <div class="col-md-4"> <%= @project.exp_personnel %></div>
+	<div class="row" >
+	  <div class="col-md-3 col-md-offset-2 show-title">附件</div>
+	  <div class="col-md-4 show-content"> <% unless @project.pj_attachment_file_name.blank? %><%= link_to @project.pj_attachment_file_name, @project.pj_attachment.url(:original, false) %><% end %></div>
 	</div>
-	<div class="row">
-	  <div class="col-md-3 col-md-offset-2">業務支出</div>
-	  <div class="col-md-4"> <%= @project.exp_business %></div>
-	</div>
-	<div class="row">
-	  <div class="col-md-3 col-md-offset-2">雜支支出</div>
-	  <div class="col-md-4"> <%= @project.exp_mix %></div>
-	</div>
-	<div class="row">
-	  <div class="col-md-3 col-md-offset-2">其他支出</div>
-	  <div class="col-md-4"> <%= @project.exp_other %></div>
-	</div>
-	<% if params[:pj_kind].to_i == GLOBAL_VAR['project_self']%>
-	<div class="row">
-	  <div class="col-md-3 col-md-offset-2">預算</div>
-	  <div class="col-md-4"> <%= @project.budget %></div>
-	</div>
-	<div class="row">
-	  <div class="col-md-3 col-md-offset-2">執行狀況描述</div>
-	  <div class="col-md-4"> <%= @project.exe_desc  %></div>
-	</div>
-	<div class="row">
-	  <div class="col-md-3 col-md-offset-2">附件</div>
-	  <div class="col-md-4"> <% unless @project.pj_attachment_file_name.blank? %><%= link_to @project.pj_attachment_file_name, @project.pj_attachment.url(:original, false) %><% end %></div>
-	</div>
-	<% end %>
 	<% if params[:pj_kind].to_i == GLOBAL_VAR['project_delegate']%>
 	<div class="row">
-	  <div class="col-md-3 col-md-offset-2">收入</div>
-	  <div class="col-md-4"> <%= @project.income%></div>
-	</div>
-	<div class="row">
-	  <div class="col-md-3 col-md-offset-2">簡稱</div>
-	  <div class="col-md-4"> <%= @project.abbreviation %></div>
-	</div>
-	<div class="row">
-	  <div class="col-md-3 col-md-offset-2">帳號開始時間</div>
+	  <div class="col-md-3 col-md-offset-2 show-title">帳號開始時間</div>
 	  <div class="col-md-4"> <%= @project.account_begin.strftime("%Y-%m-%d") %></div>
 	</div>
 	<div class="row">
-	  <div class="col-md-3 col-md-offset-2">帳號結束時間</div>
+	  <div class="col-md-3 col-md-offset-2 show-title">帳號結束時間</div>
 	  <div class="col-md-4"> <%= @project.account_end.strftime("%Y-%m-%d") %></div>
 	</div>
 	<% end %>
 </div>
 
+<script>
+ $("#doughnutChart_expense").drawDoughnutChart([
+    { title: "人事", value : <%= @project.exp_personnel %>,  color: "#02a0eb" },
+    { title: "雜支", value:  <%= @project.exp_mix %>,   color: "#c070a3" },
+    { title: "業務", value:  <%= @project.exp_business %>,   color: "#f4a301" },
+    { title: "其他", value : <%= @project.exp_other %>,   color: "#b3a253" }
+  ]);  
+</script>
 
 

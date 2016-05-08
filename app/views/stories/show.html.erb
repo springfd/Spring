@@ -5,9 +5,9 @@
 </div>
 <div class="container-fluid">
 	<div class="row">	
-		<div class="col-md-offset-7">
-			<%= link_to 'Edit', edit_story_path(@story) , data: { no_turbolink: true }, class: 'btn btn-default'%> 
-			<%= link_to 'Destroy', @story, method: :delete, data: { confirm: 'Are you sure?' } , class: 'btn btn-danger'%>
+		<div class="col-md-offset-9">
+			<%= link_to '編輯', edit_story_path(@story) , data: { no_turbolink: true }, class: 'btn btn-default edit-btn'%> 
+			<%= link_to '刪除', @story, method: :delete, data: { confirm: '確定要刪除嗎?' } , class: 'btn btn-danger delete-btn'%>
 		</div>
 	</div>
 </div>

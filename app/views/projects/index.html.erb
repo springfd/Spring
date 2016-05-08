@@ -6,38 +6,13 @@
 <div class="container-fluid">
 	<div class="row">	
 		<div class="col-md-offset-9">
-			<%= link_to "新增",{controller: 'projects', action: 'new', pj_kind: params[:pj_kind]}, data: {no_turbolink: true}, class: 'btn btn-info' %>
+			<%= link_to "新增",{controller: 'projects', action: 'new', pj_kind: params[:pj_kind]}, data: {no_turbolink: true}, class: 'btn btn-info add-btn' %>
 		</div>
 	</div>
 </div>
 <div class="container">
-	<div class="row">
-		<div class="column">
-			<table class="table">
-				<tbody>
-				    <% @projects.each do |project| %>
-				      <tr data-link="<%= project_path(project) %>">
-				        <td><%= project.year.strftime("%Y-%m-%d") %></td>
-				        <td><%= project.name %></td>
-				        <td><%= project.budget %></td>
-				        <td><%= project.exp_personnel %></td>
-				        <td><%= project.exp_business %></td>
-				        <td><%= project.exp_mix %></td>
-				        <td><%= project.exp_other %></td>
-				        <td><%= project.exe_desc %></td>
-				        <td><%= project.abbreviation %></td>
-				        <td><% unless project.account_begin.blank? %><%= project.account_begin.strftime("%Y-%m-%d") %><% end %></td>
-				        <td><% unless project.account_end.blank? %><%= project.account_end.strftime("%Y-%m-%d") %><% end %></td>
-				      </tr>
-				    <% end %>
-				  </tbody>
-			</table>
-		</div>
-	</div>
+    <% @projects.each do |project| %>
+    	<%= render "sub_project_panel", project: project %>
+    <% end %>
 </div>
-<script>
-$("tr").click(function() {
-  window.location = $(this).data("link")
-})
-</script>
   
