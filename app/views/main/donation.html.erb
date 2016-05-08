@@ -75,7 +75,8 @@ $('input[type=radio][name=receipt]').change(function() {
 });
 //============================= sponsor =============================//
 $('.donation_sponsor_content').hide() 
-$( ".donation_sponsor .glyphicon" ).click(function() {
+$( ".donation_sponsor .glyphicon" ).click(function() {	
+	
 	if ($(this).hasClass( "glyphicon-triangle-bottom" )) {
        $(this).removeClass( "glyphicon-triangle-bottom")
        $(this).addClass( "glyphicon-triangle-top")			
@@ -86,6 +87,7 @@ $( ".donation_sponsor .glyphicon" ).click(function() {
        $(this).addClass( "glyphicon-triangle-bottom")		
        $('.donation_sponsor_content_'+this.id).slideUp("slow");    
     }
+    		    		
 });
 
 //fancybox for login project
