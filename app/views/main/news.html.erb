@@ -1,27 +1,40 @@
 <div class="container-fluid">
   <!-- add extra container element for Masonry -->
   <div class="grid-news">
-    <div class="grid-news-sizer col-xs-6 col-sm-4 col-md-3"></div>
-    <div class="grid-news-item col-xs-6 col-sm-8 col-md-6">
-      <!-- add inner element for column content -->
+    <div class="grid-news-sizer col-xs-12 col-sm-4 col-md-3"></div>
+    
+    
+    <div class="grid-news-item col-xs-12 col-sm-8 col-md-6">
       <div class="grid-news-item-content"></div>
     </div>
-    <div class="grid-news-item col-xs-6 col-sm-4 col-md-3">
+    
+	<%=render "news_card_text", id_id_id: 3 %>	    
+    
+    <div class="grid-news-item col-xs-12 col-sm-4 col-md-3">
       <div class="grid-news-item-content"></div>
     </div>
-    <div class="grid-news-item col-xs-6 col-sm-4 col-md-3">
+    
+    <div class="grid-news-item col-xs-12 col-sm-4 col-md-3">
       <div class="grid-news-item-content grid-news-item-content--height2"></div>
     </div>
-    <div class="grid-news-item col-xs-6 col-sm-8 col-md-6">
+
+	<%=render "news_card_image", id_id_id: 4 %>	        
+ 
+    
+    <div class="grid-news-item col-xs-12 col-sm-8 col-md-6">
       <div class="grid-news-item-content"></div>
     </div>
-    <div class="grid-news-item col-xs-6 col-sm-4 col-md-3">
+    
+		    
+    <div class="grid-news-item col-xs-12 col-sm-4 col-md-3">
       <div class="grid-news-item-content grid-news-item-content--height2"></div>
     </div>
-    <div class="grid-news-item col-xs-6 col-sm-4 col-md-3">
+    
+    
+    <div class="grid-news-item col-xs-12 col-sm-4 col-md-3">
       <div class="grid-news-item-content"></div>
     </div>
-    <div class="grid-news-item col-xs-6 col-sm-4 col-md-3">
+    <div class="grid-news-item col-xs-12 col-sm-4 col-md-3">
       <div class="grid-news-item-content"></div>
     </div>
   </div>
@@ -38,24 +51,19 @@ var $grid = $('.grid-news').masonry({
 
 
 
+
+
+
 $grid.on( 'click', '.grid-news-item-button', function( event ) {
   $( event.currentTarget ).closest('.grid-news-item').toggleClass('is-expanded');
   $grid.masonry();
-  
-  $("#doughnutChart_"+event.currentTarget.id).drawDoughnutChart([
-    { title: "人事", value : 120,  color: "#02a0eb" },
-    { title: "雜支", value:  80,   color: "#c070a3" },
-    { title: "業務", value:  70,   color: "#f4a301" },
-    { title: "其他", value : 50,   color: "#b3a253" }
-  ], {tipClass: "doughnutTip "+"doughnutTip_"+event.currentTarget.id});  
-  
 });
+
+
 
 $grid.on( 'click', '.grid-news-item-close', function( event ) {
   $( event.currentTarget ).closest('.grid-news-item').toggleClass('is-expanded');
   $grid.masonry();
-  $("#doughnutChart_"+event.currentTarget.id).empty();
-  $(".doughnutTip_"+event.currentTarget.id).remove();
 });
 
 </script>
