@@ -1,13 +1,13 @@
 <div class="grid-item">
     <div class="grid-item-content">
-	    <label class="grid-item-close" id="<%= id_id_id %>"><span aria-hidden="true">&times;</span></label>
+	    <label class="grid-item-close" id="<%= project.id %>"><span aria-hidden="true">&times;</span></label>
 		<div class="container-fluid donation_card_small">	
 			<div class="row" style="">
 				<div class="col-lg-12">	
 					<div class="donation_card_small_img"></div>	
-					<div class="donation_card_small_title">兩岸菁英學生交流計畫</div>
-					<div class="donation_card_small_content"><%= truncate("交通大學於兩岸分設五個校區，彼此素有相當的歷史淵源背景，各自於專長領域發展。為擴展兩岸交大間之良性發展與互動關係，奠定未來研究及學術合作廣大基礎。本會特創造兩岸交大學生一個新的溝通和交流方式，建立彼此互信的感情，促使兩岸之間學術、文化與人員的交流。", length: 60)%></div>
-					<button type="button" class="btn btn-primary btn-block grid-item-button" id="<%= id_id_id %>">點擊贊助</button>		
+					<div class="donation_card_small_title"><%= project.name %></div>
+					<div class="donation_card_small_content"><%= truncate( project.description, length: 60)%></div>
+					<button type="button" class="btn btn-primary btn-block grid-item-button" id="<%= project.id %>">點擊贊助</button>		
 				</div>			
 			</div>	
 		</div>  
@@ -15,21 +15,21 @@
 			<div class="row" style="">
 				<div class="col-sm-6">	
 					<div class="donation_card_enlarge_img"></div>	
-					<div class="donation_card_enlarge_title">兩岸菁英學生交流計畫</div>
-					<div class="donation_card_enlarge_content">交通大學於兩岸分設五個校區，彼此素有相當的歷史淵源背景，各自於專長領域發展。為擴展兩岸交大間之良性發展與互動關係，奠定未來研究及學術合作廣大基礎。本會特創造兩岸交大學生一個新的溝通和交流方式，建立彼此互信的感情，促使兩岸之間學術、文化與人員的交流。</div>		
+					<div class="donation_card_enlarge_title"><%= project.name %></div>
+					<div class="donation_card_enlarge_content"><%= project.description%></div>		
 					<table class="table donation_card_enlarge_table">
 					    <tbody>
 					      <tr>
-					        <th>名稱:</th>
-					        <td>校園種子基金</td>
+					        <th>簡稱:</th>
+					        <td><%= project.abbreviation %></td>
 					      </tr>
 					      <tr>
 					        <th>預算:</th>
-					        <td>400萬</td>
+					        <td>$<%= project.budget %></td>
 					      </tr>
 					      <tr>
 					        <th>執行狀況:</th>
-					        <td>我們第一次舉辦大型公益活動「愛在偏鄉．夢想起飛」園遊會，在李南山理事長的帶領下，委由林三賢常務理事擔任活動執行長，經各組夥伴們的努力及嚕家人的熱情參與，活動順利圓滿結束，活動結算共計募得1,173,367元，並陸續執行於各項公益計畫。</td>
+					        <td><%= project.exe_desc %></td>
 					      </tr>
 					      <tr>
 					        <th></th>
@@ -52,28 +52,28 @@
 						  </div>
 						</section>						
 						-->									
-						<div id="doughnutChart_<%=id_id_id%>" class="chart"></div>										
+						<div id="doughnutChart_<%=project.id%>" class="chart" data-exp_personnel="<%=project.exp_personnel%>" data-exp_business="<%=project.exp_business%>" data-exp_mix="<%=project.exp_mix%>" data-exp_other="<%=project.exp_other%>"></div>										
 					</div>		
 					<%= form_tag('/trades/donate', class: "donation_form") do -%>
-						<%= hidden_field_tag 'id', id_id_id, class: 'form-control'%>
+						<%= hidden_field_tag 'id', project.id, class: 'form-control'%>
 						<div for="exampleInputEmail1">收據</div> 
 						<div class="btn-group donation_btn_group" data-toggle="buttons">
 			                <label class="btn btn-default donation_gray_btn">
-			                    <input type="radio" name="receipt" autocomplete="off" value="true" id="<%= id_id_id %>" /> 是                
+			                    <input type="radio" name="receipt" autocomplete="off" value="true" id="<%= project.id %>" /> 是                
 			                </label> 
 			                <label class="btn btn-default donation_gray_btn">
-			                    <input type="radio" name="receipt" autocomplete="off" value="false" id="<%= id_id_id %>" /> 否	                
+			                    <input type="radio" name="receipt" autocomplete="off" value="false" id="<%= project.id %>" /> 否	                
 			                </label>   
 			            </div>					
-						<div class="form-group form_group_donation form_group_donation_<%=id_id_id%>">
+						<div class="form-group form_group_donation form_group_donation_<%=project.id%>">
 							<div for="exampleInputEmail1">收據抬頭</div> 
 						  	<%= text_field_tag 'title', nil, class: 'form-control' %>
 						</div>
-					    <div class="form-group form_group_donation form_group_donation_<%=id_id_id%>">
+					    <div class="form-group form_group_donation form_group_donation_<%=project.id%>">
 					    	<div for="exampleInputEmail1">電話</div>   
 					  		<%= text_field_tag 'phone', nil, class: 'form-control' %>
 					    </div>  
-					    <div class="form-group form_group_donation form_group_donation_<%=id_id_id%>">
+					    <div class="form-group form_group_donation form_group_donation_<%=project.id%>">
 					    	<div for="exampleInputEmail1">地址</div>   
 					  		<%= text_field_tag 'address', nil, class: 'form-control' %>
 					  	</div>   
@@ -99,7 +99,7 @@
 			                </label> 			                			                		                            			                
 		           		</div>    
 						<div class="form-group form-inline"> 
-						  	<%= text_field_tag 'amount', nil, class: 'form-control', placeholder: '或輸入您想捐款的金額'%>
+						  	<%= text_field_tag 'amount_others', nil, class: 'form-control', placeholder: '或輸入您想捐款的金額'%>
 							<%= submit_tag '捐款', class: "btn btn-default donation_button" %>
 						</div>  
 
@@ -108,10 +108,10 @@
 			</div>	
 			<div class="row donation_sponsor" style="">
 				<div class="col-sm-10 col-sm-offset-1">	
-					<div class="text-center">捐款名冊 <span class="glyphicon glyphicon-triangle-bottom" id="<%= id_id_id%>"></span></div>
+					<div class="text-center">捐款名冊 <span class="glyphicon glyphicon-triangle-bottom" id="<%= project.id%>"></span></div>
 				</div>				
 			</div>	
-			<div class="donation_sponsor_content donation_sponsor_content_<%= id_id_id%> row">
+			<div class="donation_sponsor_content donation_sponsor_content_<%= project.id%> row">
 				<div class="col-sm-5 col-sm-offset-1">	
 					<div class="donation_sponsor_text no-span">皮x丘</div>
 					<div style="width: 25%; float: right;">8000元</div>												
@@ -121,7 +121,7 @@
 					<div style="width: 25%; float: right;">80000元</div>												
 				</div>											
 			</div>
-			<div class="donation_sponsor_content donation_sponsor_content_<%= id_id_id%> row">
+			<div class="donation_sponsor_content donation_sponsor_content_<%= project.id%> row">
 				<div class="col-sm-5 col-sm-offset-1">	
 					<div class="donation_sponsor_text no-span">財團法人台x電文教基金會</div>
 					<div style="width: 25%; float: right;">8000元</div>												
@@ -131,7 +131,7 @@
 					<div style="width: 25%; float: right;">80000元</div>												
 				</div>											
 			</div>
-			<div class="donation_sponsor_content donation_sponsor_content_<%= id_id_id%> row">
+			<div class="donation_sponsor_content donation_sponsor_content_<%= project.id%> row">
 				<div class="col-sm-5 col-sm-offset-1">	
 					<div class="donation_sponsor_text no-span">流x滑</div>
 					<div style="width: 25%; float: right;">8000元</div>												
@@ -144,214 +144,3 @@
 		</div> 		
 	</div>
 </div>
-
-
-<style>
-/*
-*, *:after, *:before {
-  box-sizing: border-box;
-}
-
-section {
-  display: inline-block;
-  width: 33.33%;
-  margin: 50px 0;
-  text-align: center;
-  min-width: 320px;
-  position: relative;
-}
-
-.tooltip {
-  position: absolute;
-  background: #eee;
-  padding: 3px;
-  font-weight: 100;
-  font-size: 12px;
-  border-radius: 2px;
-  border: 1px solid  #ddd;
-  bottom: 100%;
-  left: 50%;
-  opacity: 0;
-  -webkit-transition: 0.3s;
-  transition: 0.3s;
-  -webkit-transform: translateX(-50%);
-  transform: translateX(-50%);
-}
-.tooltip:after {
-  content: "" attr(tooltip) "";
-  margin-left: 3px;
-  color: #2DABD8;
-}
-.tooltip:before {
-  content: '';
-  width: 8px;
-  height: 8px;
-  background: #2DABD8;
-  display: inline-block;
-  margin-right: 5px;
-}
-
-.graph {
-  width: 300px;
-  height: 150px;
-  position: relative;
-  margin: auto;
-  text-align: center;
-  color: #fff;
-  font-size: 22px;
-  line-height: 280px;
-  font-weight: 600;
-  border-radius: 150px 150px 0 0;
-  overflow: hidden;
-  color: #0ff;
-}
-.graph:before, .graph:after {
-  content: '';
-  width: 300px;
-  height: 150px;
-  border: 50px solid #0ff;
-  border-top: none;
-  position: absolute;
-  -webkit-transition: 0.3s;
-  transition: 0.3s;
-  -webkit-transform-origin: 50% 0%;
-  transform-origin: 50% 0%;
-  border-radius: 0 0 300px 300px;
-  -webkit-animation: demo 2s;
-  animation: demo 2s;
-  left: 0;
-  top: 100%;
-  z-index: 5;
-}
-.graph:after {
-  z-index: 3;
-  border-color: rgba(0, 0, 0, 0.15);
-  -webkit-transform: rotate(180deg);
-  transform: rotate(180deg);
-}
-.graph:hover:before {
-  opacity: .8;
-  cursor: pointer;
-}
-.graph:hover + .tooltip {
-  bottom: 105%;
-  opacity: 1;
-}
-
-.multi-graph {
-  width: 300px;
-  height: 150px;
-  position: relative;
-  margin: auto;
-  color: #fff;
-  font-size: 22px;
-  line-height: 280px;
-  font-weight: 600;
-}
-.multi-graph:before {
-  content: '';
-  width: 300px;
-  height: 150px;
-  border: 50px solid rgba(0, 0, 0, 0.15);
-  border-bottom: none;
-  position: absolute;
-  -webkit-transform-origin: 50% 0%;
-  transform-origin: 50% 0%;
-  border-radius: 300px 300px 0 0;
-  left: 0;
-  top: 0;
-}
-.multi-graph .graph {
-  position: absolute;
-  top: 0;
-  left: 0;
-}
-.multi-graph .graph:after {
-  background: #eee;
-  border: medium none;
-  border-radius: 2px;
-  color: #333;
-  font-weight: 200;
-  content: "" attr(data-name) "";
-  display: inline-block;
-  font-size: 12px;
-  height: 20px;
-  left: 50%;
-  line-height: 20px;
-  padding: 0 5px;
-  top: 50px;
-  z-index: 0;
-  -webkit-transform: rotate(0deg) translateX(-50%);
-  transform: rotate(0deg) translateX(-50%);
-  width: auto;
-  opacity: 0;
-}
-.multi-graph .graph:hover:after {
-  opacity: 1;
-  top: 70px;
-}
-
-
-
-section.model-2 .graph {
-  color: #2DABD8;
-}
-section.model-2 .graph:before {
-  -webkit-transform: rotate(130deg);
-  transform: rotate(130deg);
-  border-color: #2DABD8;
-}
-
-section.model-3 .javaScript:before {
-  -webkit-transform: rotate(80deg);
-  transform: rotate(80deg);
-  border-color: #FEDA3E;
-}
-section.model-3 .jQuery:before {
-  -webkit-transform: rotate(130deg);
-  transform: rotate(130deg);
-  border-color: #0669AD;
-}
-section.model-3 .angular:before {
-  -webkit-transform: rotate(30deg);
-  transform: rotate(30deg);
-  border-color: #E62A39;
-}
-section.model-3 .graph {
-  color: #2DABD8;
-}
-@-webkit-keyframes demo {
-  0% {
-    -webkit-transform: rotate(0deg);
-    transform: rotate(0deg);
-  }
-  50% {
-    -webkit-transform: rotate(180deg);
-    transform: rotate(180deg);
-  }
-}
-@keyframes demo {
-  0% {
-    -webkit-transform: rotate(0deg);
-    transform: rotate(0deg);
-  }
-  50% {
-    -webkit-transform: rotate(180deg);
-    transform: rotate(180deg);
-  }
-}
--->
-/*=============*/
-/*
-@import "bourbon";
-
-@import url(//fonts.googleapis.com/css?family=Oswald:400);
-body {
-  background: #222428;
-  font-family: "Oswald", sans-serif;
-}
-*/
-
-
-
-</style>

@@ -11,9 +11,9 @@
 	</div>		
 </div>	
 <div class="grid">
-	<%for i in 1..8 do %>
-		<%=render "donation_card", id_id_id: i %>	
-	<%end%>	 	
+	<% Project.all.each do |project|%>
+		<%=render "donation_card", project: project%>	
+	<% end %>	 	
 </div>	
 <!--
 <a href="#login_form" id="login_btn" class="fancybox btn btn-primary btn-block grid-item-button">委辦計畫</a>		
@@ -49,10 +49,10 @@ $grid.on( 'click', '.grid-item-button', function( event ) {
   $grid.masonry();
   
   $("#doughnutChart_"+event.currentTarget.id).drawDoughnutChart([
-    { title: "人事", value : 120,  color: "#02a0eb" },
-    { title: "雜支", value:  80,   color: "#c070a3" },
-    { title: "業務", value:  70,   color: "#f4a301" },
-    { title: "其他", value : 50,   color: "#b3a253" }
+    { title: "人事", value: parseInt($('#doughnutChart_'+event.currentTarget.id).attr('data-exp_personnel')),  color: "#02a0eb" },
+    { title: "雜支", value: parseInt($('#doughnutChart_'+event.currentTarget.id).attr('data-exp_business')),   color: "#c070a3" },
+    { title: "業務", value: parseInt($('#doughnutChart_'+event.currentTarget.id).attr('data-exp_mix')),   color: "#f4a301" },
+    { title: "其他", value: parseInt($('#doughnutChart_'+event.currentTarget.id).attr('data-exp_other')),   color: "#b3a253" }
   ], {tipClass: "doughnutTip "+"doughnutTip_"+event.currentTarget.id});  
   
 });
