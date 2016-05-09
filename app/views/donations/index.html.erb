@@ -6,32 +6,13 @@
 <div class="container-fluid">
 	<div class="row">	
 		<div class="col-md-offset-9">
-			<%= link_to "新增", new_donation_path, class: 'btn btn-info' %>
+			<%= link_to "新增", new_donation_path, class: 'btn btn-info add-btn' %>
 		</div>
 	</div>
 </div>
 <div class="container">
-	<div class="row">
-		<div class="column">
-			<table class="table">
-				<tbody>
-					<% @donations.each do |donation| %>
-					<tr data-link="<%= donation_path(donation) %>">
-						<td><%= donation.id %></td>
-						<td><%= donation.name %></td>
-						<td><%= donation.amount %></td>
-						<td><%= Hash[donateWayOptions].rassoc(donation.donate_way).first %> </td>
-					</tr>
-					<% end %>
-				</tbody>
-			</table>
-		</div>
-	</div>
+	<% @donations.each do |donation| %>
+		<%= render "sub_donation_panel", donation: donation %>
+	<% end %>
 </div>
 
-<script>
-$("tr").click(function() {
-  window.location = $(this).data("link")
-})
-
-</script>

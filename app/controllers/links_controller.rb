@@ -28,7 +28,7 @@ class LinksController < ApplicationController
   def create
     @link = Link.new(link_params)
     @link.save!
-    redirect_to @link, notice: '成功新增連結' 
+    redirect_to action: "index", notice: '成功新增連結' 
     rescue ActiveRecord::RecordInvalid
     render :action=>:edit
   end
@@ -37,7 +37,7 @@ class LinksController < ApplicationController
   # PATCH/PUT /links/1.json
   def update
     if @link.update(link_params)
-      redirect_to @link, notice: '成功更新連結'
+      redirect_to action: "index", notice: '成功更新連結'
     else
       render :edit
     end

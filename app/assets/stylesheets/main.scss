@@ -8,7 +8,14 @@ body {
     background: -moz-linear-gradient(#ffffff 0%, #e6e6e6 30%); 
     background: linear-gradient(#ffffff 0%, #e6e6e6 30%);*/
 }
-
+body.backend{
+    background: #d9d9d9; /* For browsers that do not support gradients */
+    background: -webkit-linear-gradient(#ffffff 0%, #e6e6e6 30%); /* For Safari 5.1 to 6.0 */
+    background: -o-linear-gradient(#ffffff 0%, #e6e6e6 30%); /* For Opera 11.1 to 12.0 */
+    background: -moz-linear-gradient(#ffffff 0%, #e6e6e6 30%); /* For Firefox 3.6 to 15 */
+    background: linear-gradient(#ffffff 0%, #e6e6e6 30%); /* Standard syntax */
+    background-repeat: no-repeat;
+}
 /*======================================= footer =======================================*/
 .footer {
   background: #02a0eb;
@@ -25,3 +32,5 @@ body {
   border-top: 1px solid #ffffff;
   font-size: 12px;    
 }
+
+

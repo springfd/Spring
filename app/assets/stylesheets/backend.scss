@@ -1,0 +1,122 @@
+.show-title{
+  font-size: 22px;
+  margin-top: 10px;
+}
+
+.show-content{
+  margin-top: 10px;
+  font-size: 20px;
+}
+
+// donation design
+
+.donation_backend_table{
+  background-color: #fff;
+  font-size: 14px;    
+  margin-top: 30px;
+}
+.donation_backend_table th{
+  border: none !important;
+  min-width: 70px;
+  color: #000;
+}
+.donation_backend_table td{
+  border: none  !important;
+  color: #878787;
+}
+
+//story design
+
+.story_image_container{
+  width: 100%;
+  height: 0;
+  padding-bottom: 70% ; /* % of width, defines aspect ratio*/
+  position: relative;
+  margin: 0 auto;
+  background-repeat: no-repeat;
+  background-position: center center;
+  background-size: cover;  
+}
+
+.story-panel-tr{
+  display: table-row; 
+  height: 29px;
+}
+
+.story-panel-th{
+  width: 20%;
+  display: table-cell; 
+  margin-right: 10px;
+  color: black;
+}
+
+.story-panel-td{
+  display: table-cell; 
+  color: #878787;
+}
+
+//     button design
+
+.add-btn{
+  width: 70px !important;
+  font-size: 16px;
+  background-color: #33CC99;
+  border-radius: 38px;
+  border: 0px;
+}
+
+.btn.add-btn:hover,.btn.add-btn:active ,.btn.add-btn:focus {
+    /* here copy default .btn class styles */
+    background-color : #33CC99;
+    border: 0px; 
+    box-shadow: 1px 1px 5px #167447;
+    /* or something like that */
+}
+
+.delete-btn{
+  width: 70px !important;
+  font-size: 16px;
+  background-color: #EC7E64;
+  border-radius: 38px;
+  border: 0px;
+}
+
+.btn.delete-btn:hover,.btn.delete-btn:active ,.btn.delete-btn:focus {
+    /* here copy default .btn class styles */
+    background-color : #EC7E64;
+    border: 0px; 
+    box-shadow: 1px 1px 5px #B74F37;
+    /* or something like that */
+}
+
+.edit-btn{
+  width: 70px !important;
+  font-size: 16px;
+  background-color: #fff;
+  border-radius: 38px;
+  border: 0px;
+}
+
+.btn.edit-btn:hover,.btn.edit-btn:active ,.btn.edit-btn:focus {
+    /* here copy default .btn class styles */
+    background-color : #fff;
+    border: 0px; 
+    box-shadow: 1px 1px 5px gray;
+    /* or something like that */
+}
+
+.save-btn{
+  width: 70px !important;
+  font-size: 16px;
+  background-color: #33CCCC;
+  border-radius: 38px;
+  border: 0px;
+}
+
+.btn.save-btn:hover,.btn.save-btn:active ,.btn.save-btn:focus {
+    /* here copy default .btn class styles */
+    background-color : #33CCCC;
+    border: 0px; 
+    box-shadow: 1px 1px 5px #157879;
+    /* or something like that */
+}
