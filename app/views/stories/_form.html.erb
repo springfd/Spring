@@ -1,0 +1,65 @@
+<%= form_for @story, :html => {class: "form-horizontal", role: "form", :multipart => true } do |f| %>
+<div class="container" style="margin-top: 10mm">  
+  <% if @story.errors.any? %>
+    <div id="error_explanation">
+      <h2><%= pluralize(@story.errors.count, "error") %> prohibited this story from being saved:</h2>
+
+      <ul>
+      <% @story.errors.full_messages.each do |message| %>
+        <li><%= message %></li>
+      <% end %>
+      </ul>
+    </div>
+  <% end %>
+  <%= hidden_field_tag(:images_delete, false) %>
+  <div class="form-group">
+    <label class="col-sm-offset-1 col-sm-2 control-label">標題</label>
+    <div class="col-sm-4"><%= f.text_field :topic, class: "form-control", placeholder: '標題' %></div>
+  </div>
+  <div class="form-group">
+    <label class="col-sm-offset-1 col-sm-2 control-label">描述</label>
+    <div class="col-sm-4"><%= f.text_area :description , class: "form-control", placeholder: '描述'%></div>
+  </div>
+  <div class="form-group">
+    <label class="col-sm-offset-1 col-sm-2 control-label">嵌入影片</label>
+    <div class="col-sm-4"><%= f.text_field :video_url, class: "form-control", placeholder: '網址' %></div>
+  </div>
+  <div class="col-sm-offset-3 col-sm-4"><%= file_field_tag "images[]", type: :file, accept: "image/*", multiple: true%>
+  <div class="form-group">
+		<div class="col-sm-offset-12 col-sm-10">
+			<%= f.submit '儲存',  class: "btn btn-default"  %>
+		</div>
+  </div>
+</div>
+<% end %>
+<script>
+$(document).on('ready', function() {
+     $("#images_").fileinput({
+     	initialPreview: [
+     		<% @story.pictures.each  do |p| %> 
+		    <% if !p.blank? %>
+        		'<%= image_tag p.image.url, class: 'file-preview-image' %>',
+			<% end %>
+			<% end %>		
+		             ],
+		showUpload: false,
+        previewFileType: "image",
+        browseClass: "btn btn-success",
+        browseLabel: "Pick Image",
+        browseIcon: "<i class=\"glyphicon glyphicon-picture\"></i> ",
+        removeClass: "btn btn-danger",
+        removeLabel: "Delete",
+        removeIcon: "<i class=\"glyphicon glyphicon-trash\"></i> ",
+        uploadClass: "btn btn-info",
+        uploadLabel: "Upload",
+        uploadIcon: "<i class=\"glyphicon glyphicon-upload\"></i> "
+    });
+    
+     $('#images_').on('fileloaded', function(event, file, previewId, index, reader) {
+        $('#images_delete').val(true);
+    });
+    $('#images_').on('fileclear', function(event) {
+    	$('#images_delete').val(true);
+    });
+});
+</script>

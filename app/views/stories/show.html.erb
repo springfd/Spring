@@ -1,0 +1,36 @@
+<div class="container" style="margin-bottom: 20px;">
+  <div class="row">
+	<h3 class="col-sm-5 ">最新消息</h3>
+  </div>
+</div>
+<div class="container-fluid">
+	<div class="row">	
+		<div class="col-md-offset-9">
+			<%= link_to '編輯', edit_story_path(@story) , data: { no_turbolink: true }, class: 'btn btn-default edit-btn'%> 
+			<%= link_to '刪除', @story, method: :delete, data: { confirm: '確定要刪除嗎?' } , class: 'btn btn-danger delete-btn'%>
+		</div>
+	</div>
+</div>
+<div class="container-fluid">
+	<div class="row">
+	  <div class="col-md-3 col-md-offset-2">標題</div>
+	  <div class="col-md-4"> <%= @story.topic %></div>
+	</div>
+	<div class="row">
+	  <div class="col-md-3 col-md-offset-2">內容</div>
+	  <div class="col-md-4"> <%= @story.description %></div>
+	</div>
+	<div class="row">
+	  <div class="col-md-3 col-md-offset-2">照片集</div>
+	  <div class="col-md-4"> 
+	  		<% @story.pictures.each do |p|%>
+				<%= image_tag p.image.url , :size => "100x100"%>
+			<% end %>
+	  </div>
+	</div>
+	<div class="row">
+	  <div class="col-md-3 col-md-offset-2">影片</div>
+	  <div class="col-md-4"><%= show_video(data: @story.video_url) %>  </div>
+	</div>
+</div>
+

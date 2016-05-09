@@ -1,0 +1,49 @@
+<div class="container">
+	<div class="row">
+		<h3>最新消息</h3>
+	</div>
+</div>
+<div class="container-fluid">
+	<div class="row">	
+		<div class="col-md-offset-9">
+			<%= link_to "新增", new_story_path, data: { no_turbolink: true }, class: 'btn btn-info add-btn' %>
+		</div>
+	</div>
+</div>
+<div class="container">
+	<% @stories.each do |story| %>
+		<%= link_to story_path(story)  do%>
+		<div class="col-sm-4">
+			<div class="panel panel-default">
+			  <div class="story_image_container" style="background-image: url('<%=story.pictures.first.image.url%>')"></div>	
+			  <div class="panel-body">
+			  	<div class = "story-panel-tr">
+				  	<div class="story-panel-th">標題:</div>
+				  	<div class="story-panel-td"><%= story.topic %></div>
+				</div>
+				<div class = "story-panel-tr">
+				  	<div class="story-panel-th">內容:</div>
+				  	<div class="story-panel-td">
+				  		<% if story.description.length > 250 %>
+						  	<%= truncate(story.description, length: 250) %>
+						    <%= link_to '  Read more', '', class: "read-more-#{story.id}" %>
+						 <% else %>
+						    <%= story.description %>
+						 <% end %>	
+				  	</div>
+				</div>
+			  </div>
+			</div>
+		</div>
+		<% end %>
+	<% end %>
+</div>
+
+<script>
+	<% @stories.each do |story| %>
+	  $('.read-more-<%= story.id %>').on('click', function(e) {
+	    e.preventDefault()
+	    $(this).parent().html('<%= story.description %>')
+	  })
+	<% end %>
+</script>

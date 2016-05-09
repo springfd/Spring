@@ -1,0 +1,35 @@
+<div class="container">
+	<div class="row">
+		<h3>相關連結</h3>
+	</div>
+</div>
+<div class="container-fluid">
+	<div class="row">	
+		<div class="col-md-offset-9">
+			<%= link_to "新增", new_link_path, class: 'btn btn-info add-btn' %>
+		</div>
+	</div>
+</div>
+<div class="container" style="margin-top: 23px;">
+	<div class="row">
+		<div class="column">
+			<table class="table">
+				<tbody>
+					<% @links.each do |link| %>
+					<tr>
+						<td><%= link.name %></td>
+        				<td><%= link.web_addr %></td>
+        				<td>
+        					<%= link_to "編輯", edit_link_path(link), class: 'btn btn-default edit-btn' %>
+							<%= link_to '刪除', link, method: :delete, data: { confirm: '確定要刪除?' } , class: 'btn btn-danger delete-btn'%>
+						</td>
+					</tr>
+					<% end %>
+				</tbody>
+			</table>
+		</div>
+	</div>
+</div>
+
+<script>
+</script>

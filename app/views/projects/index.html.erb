@@ -1,0 +1,18 @@
+<div class="container">
+	<div class="row">
+		<h3><%= Hash[projectKindOptions].rassoc(params[:pj_kind].to_i).first%></h3>
+	</div>
+</div>
+<div class="container-fluid">
+	<div class="row">	
+		<div class="col-md-offset-9">
+			<%= link_to "新增",{controller: 'projects', action: 'new', pj_kind: params[:pj_kind]}, data: {no_turbolink: true}, class: 'btn btn-info add-btn' %>
+		</div>
+	</div>
+</div>
+<div class="container">
+    <% @projects.each do |project| %>
+    	<%= render "sub_project_panel", project: project %>
+    <% end %>
+</div>
+  

@@ -1,0 +1,17 @@
+defaults: &defaults
+    
+   donate_transfer: 0
+   donate_check: 1
+   donate_cash: 2
+   
+   project_self: 0
+   project_delegate: 1
+    
+development:
+  <<: *defaults
+
+production:
+  <<: *defaults
+
+test:
+  <<: *defaults
