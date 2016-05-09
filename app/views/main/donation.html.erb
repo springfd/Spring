@@ -15,6 +15,44 @@
 		<%=render "donation_card", project: project%>	
 	<% end %>	 	
 </div>	
+<div class="container-fluid">
+	<div class="row" style="margin-bottom: 40px;">
+		<div class="col-lg-offset-3 col-lg-6 text-center">	
+		<button type="button" class="btn btn-block donation_project_button" data-toggle="modal" data-target="#myModal">委辦計畫查詢</button>
+		</div>
+	</div>		
+</div>	
+
+<div id="myModal" class="modal fade" role="dialog">
+  <div class="modal-dialog modal-lg">
+    <!-- Modal content-->
+    <div class="modal-content">
+      <div class="modal-header">
+        <button type="button" class="close" data-dismiss="modal">&times;</button>
+        <h4 class="modal-title">委辦計畫查詢</h4>
+      </div>
+      <div class="modal-body">
+        
+		<form class="form-inline">
+		  <div class="form-group">
+		    <label for="exampleInputName2">計畫帳號</label>
+		    <input type="text" class="form-control" id="exampleInputName2" placeholder="Jane Doe">
+		  </div>
+		  <div class="form-group">
+		    <label for="exampleInputEmail2">計畫密碼</label>
+		    <input type="email" class="form-control" id="exampleInputEmail2" placeholder="jane.doe@example.com">
+		  </div>
+		  <button type="submit" class="btn btn-default">查詢</button>
+		</form>        
+        
+      </div>
+      <div class="modal-footer">
+        <button type="button" class="btn btn-default " data-dismiss="modal">Close</button>
+      </div>
+    </div>
+  </div>
+</div>
+
 
 
 
