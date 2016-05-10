@@ -34,12 +34,12 @@
       <div class="modal-body">        
 		<form class="form-inline" id="login_form">
 		  <div class="form-group">
-		    <label for="exampleInputName2">計畫帳號</label>
-		    <input type="text" class="form-control" id="login_name" placeholder="Jane Doe">
+		    <label for="project_account">計畫帳號</label>
+		    <input type="text" class="form-control" id="project_account" name="project_account">
 		  </div>
 		  <div class="form-group">
-		    <label for="exampleInputEmail2">計畫密碼</label>
-		    <input type="email" class="form-control" id="login_pass" placeholder="jane.doe@example.com">
+		    <label for="project_password">計畫密碼</label>
+		    <input type="password" class="form-control" id="project_password" name="project_password">
 		  </div>
 		  <button type="submit" class="btn btn-default">查詢</button>
 		</form>              
@@ -95,33 +95,37 @@ $('input[type=radio][name=receipt]').change(function() {
 });
 //============================= sponsor =============================//
 $('.donation_sponsor_content').hide() 
-$( ".donation_sponsor .glyphicon" ).click(function() {	
-	
-	if ($(this).hasClass( "glyphicon-triangle-bottom" )) {
-       $(this).removeClass( "glyphicon-triangle-bottom")
-       $(this).addClass( "glyphicon-triangle-top")			
-       $('.donation_sponsor_content_'+this.id).slideDown("slow");              
-    }
-    else if ($(this).hasClass( "glyphicon-triangle-top" )) {
-       $(this).removeClass( "glyphicon-triangle-top")
-       $(this).addClass( "glyphicon-triangle-bottom")		
-       $('.donation_sponsor_content_'+this.id).slideUp("slow");    
-    }
-    		    		
-});
 
+$grid.on( 'click', '.donation_sponsor .glyphicon', function( event ) {
+	//$( event.currentTarget ).closest('.grid-item').toggleClass('is-expanded');
+
+	if ($(event.currentTarget).hasClass( "glyphicon-triangle-bottom" )) {
+       $(event.currentTarget).removeClass( "glyphicon-triangle-bottom")
+       $(event.currentTarget).addClass( "glyphicon-triangle-top")			
+       $('.donation_sponsor_content_'+this.id).slideDown("slow");    
+	   
+	   
+	   
+	   //$grid.masonry();                  
+    }
+    else if ($(event.currentTarget).hasClass( "glyphicon-triangle-top" )) {
+       $(event.currentTarget).removeClass( "glyphicon-triangle-top")
+       $(event.currentTarget).addClass( "glyphicon-triangle-bottom")		
+       $('.donation_sponsor_content_'+this.id).slideUp("slow");  
+       //grid.masonry();   
+    }
+});
 //============================= project login =============================//
 
 $( "#login_form" ).submit(function( event ) {
   	event.preventDefault();
-	if ($("#login_name").val().length < 1 || $("#login_pass").val().length < 1) {
+	if ($("#project_account").val().length < 1 || $("#project_password").val().length < 1) {
 	    toastr['warning']('請輸入帳號密碼')	
 	    return false;
 	}
 
 	$.ajax({
 		type: "POST",
-		cache: false,
 		url: "/projects/checkLogin",
 		data: $(this).serializeArray(),
 		dataType: 'json',
