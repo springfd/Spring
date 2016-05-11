@@ -56,7 +56,7 @@
 					</div>		
 					<%= form_tag('/trades/donate', class: "donation_form") do -%>
 						<%= hidden_field_tag 'id', project.id, class: 'form-control'%>
-						<div for="exampleInputEmail1">收據</div> 
+						<div class="donation_form_title">收據</div> 
 						<div class="btn-group donation_btn_group" data-toggle="buttons">
 			                <label class="btn btn-default donation_gray_btn">
 			                    <input type="radio" name="receipt" autocomplete="off" value="true" id="<%= project.id %>" /> 是                
@@ -66,18 +66,18 @@
 			                </label>   
 			            </div>					
 						<div class="form-group form_group_donation form_group_donation_<%=project.id%>">
-							<div for="exampleInputEmail1">收據抬頭</div> 
+							<div class="donation_form_title">收據抬頭</div> 
 						  	<%= text_field_tag 'title', nil, class: 'form-control' %>
 						</div>
 					    <div class="form-group form_group_donation form_group_donation_<%=project.id%>">
-					    	<div for="exampleInputEmail1">電話</div>   
+					    	<div class="donation_form_title">電話</div>   
 					  		<%= text_field_tag 'phone', nil, class: 'form-control' %>
 					    </div>  
 					    <div class="form-group form_group_donation form_group_donation_<%=project.id%>">
-					    	<div for="exampleInputEmail1">地址</div>   
+					    	<div class="donation_form_title">地址</div>   
 					  		<%= text_field_tag 'address', nil, class: 'form-control' %>
 					  	</div>   
-					  	<div for="exampleInputEmail1">金額</div>  
+					  	<div class="donation_form_title">金額</div>  
 						<div class="btn-group donation_btn_group" data-toggle="buttons">
 			                <label class="btn btn-default donation_gray_btn">
 			                    <input type="radio" name="amount" autocomplete="off" value="1000" /> $1000	                

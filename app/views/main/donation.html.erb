@@ -1,15 +1,77 @@
 <div class="container-fluid">
-	<div class="row text-center">
-		<div class="col-lg-12 text-center">		
-		<div class="donation_summary">
+	<div class="row">
+		<div class="col-lg-12">		
+		<div class="donation_year text-center"><span>2015年</span><span style="margin-left: 18px; margin-right: 18px;">|</span><span>2016年</span></div>	
+		<div class="donation_summary text-center">
 			<div class="donation_summary_inner">
-				<span class="donation_summary_number">28,888,321</span> <span class="donation_summary_en">NTW</span>	
+				<div class="donation_summary_number"></div> <div class="donation_summary_en">NTW</div>	
 			</div>
 			<div class="donation_range text-right">累積期間 2016/01/01~2016/04/13</div>	
 		</div>
 		</div>
-	</div>		
+	</div>	
 </div>	
+<div class="container-fluid donation_content_donate">
+	<div class="donation_content_background_image"></div>
+	<div class="row" style="position:relative; z-index:2;">
+		<div class="col-lg-offset-4 col-lg-4 col-sm-offset-2 col-sm-8 donation_content_donate_inner">
+			<p class="text-center" style="font-size: 22px; letter-spacing: 2px; color: #898989;">不指定計畫贊助</p>		
+			<%= form_tag('/trades/donate', class: "donation_form") do -%>
+						<%= hidden_field_tag 'id', 1, class: 'form-control'%>
+						<div class="donation_form_title">收據</div> 
+						<div class="btn-group donation_btn_group" data-toggle="buttons">
+			                <label class="btn btn-default donation_gray_btn">
+			                    <input type="radio" name="receipt" autocomplete="off" value="true" id="1" /> 是                
+			                </label> 
+			                <label class="btn btn-default donation_gray_btn">
+			                    <input type="radio" name="receipt" autocomplete="off" value="false" id="1" /> 否	                
+			                </label>   
+			            </div>					
+						<div class="form-group form_group_donation form_group_donation_1">
+							<div class="donation_form_title">收據抬頭</div> 
+						  	<%= text_field_tag 'title', nil, class: 'form-control' %>
+						</div>
+					    <div class="form-group form_group_donation form_group_donation_1">
+					    	<div class="donation_form_title">電話</div>   
+					  		<%= text_field_tag 'phone', nil, class: 'form-control' %>
+					    </div>  
+					    <div class="form-group form_group_donation form_group_donation_1">
+					    	<div class="donation_form_title">地址</div>   
+					  		<%= text_field_tag 'address', nil, class: 'form-control' %>
+					  	</div>   
+					  	<div class="donation_form_title">金額</div>  
+						<div class="btn-group donation_btn_group" data-toggle="buttons">
+			                <label class="btn btn-default donation_gray_btn">
+			                    <input type="radio" name="amount" autocomplete="off" value="1000" /> $1000	                
+			                </label> 
+			                <label class="btn btn-default donation_gray_btn">
+			                    <input type="radio" name="amount" autocomplete="off" value="2000" /> $2000	                
+			                </label> 
+			                <label class="btn btn-default donation_gray_btn">
+			                    <input type="radio" name="amount" autocomplete="off" value="5000" /> $5000	                
+			                </label> 			    
+			                <label class="btn btn-default donation_gray_btn">
+			                    <input type="radio" name="amount" autocomplete="off" value="10000" /> $10000	                
+			                </label> 		
+			                <label class="btn btn-default donation_gray_btn">
+			                    <input type="radio" name="amount" autocomplete="off" value="15000" /> $15000	                
+			                </label> 
+			                <label class="btn btn-default donation_gray_btn">
+			                    <input type="radio" name="amount" autocomplete="off" value="20000" /> $20000	                
+			                </label> 			                			                		                            			                
+		           		</div>    
+						<div class="form-group form-inline"> 
+						  	<%= text_field_tag 'amount_others', nil, class: 'form-control', placeholder: '或輸入您想捐款的金額'%>
+							<%= submit_tag '捐款', class: "btn btn-default donation_button" %>
+						</div>  
+
+					<% end -%>	
+		</div>
+	</div>	
+</div>	
+
+
+
 <div class="grid">
 	<% Project.all.each do |project|%>
 		<%=render "donation_card", project: project%>	
@@ -57,6 +119,20 @@
 
 
 <script>
+
+
+//============================= masonry =============================//
+
+$('.donation_summary_number').html( Math.ceil(2888321-10000).toLocaleString() )
+var foo = { bar: 2888321-10000 };		
+tween = new TimelineLite();
+tween.to(foo, 2, { bar: 2888321, onUpdate: function() {
+	 $('.donation_summary_number').html(Math.ceil(foo.bar).toLocaleString());}, ease: Linear.easeNone})
+	 .to(".donation_summary_en", 1, {autoAlpha: 1, ease: Linear.easeNone})
+	 .to(".donation_year", 1, {autoAlpha: 1, ease: Linear.easeNone})
+	 .to(".donation_range", 1, {autoAlpha: 1, ease: Linear.easeNone})
+	 .to(".donation_content_donate_inner", 1, {autoAlpha: 1, ease: Linear.easeNone})
+	 .from(".donation_content_donate_inner", 1,{bottom: "40px", ease: Linear.easeNone})
 //============================= masonry =============================//
 var $grid = $('.grid').masonry({
   columnWidth: '.grid-item',

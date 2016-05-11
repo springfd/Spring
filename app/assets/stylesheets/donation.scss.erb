@@ -4,6 +4,7 @@
   background: none;
   width: 95%;
   margin: 0 auto;
+  margin-top: 100px;
 }
 .grid-item {
   float: left;
@@ -101,47 +102,109 @@
 }	
 
 /*=========================== content ===================================*/
+.donation_year{
+	font-size: 20px;
+	margin-top: 18vh;
+	color: #adadad;	
+	visibility: hidden;
+}
 .donation_summary{
-	width: 730px;
-	margin: 22vh auto;
-	font-size: 10em;
+	width: 650px;
+	margin: 0 auto;
+	margin-bottom: 60px;
+	font-size: 145px;
 }
 .donation_summary_inner{
 	font-family: Helvetica;
 	height: 170px;
+	position: relative;
 }
 .donation_summary_number{
 	color: #02a0eb;	
+	line-height: 150px;
   	font-family: "Oswald", sans-serif;	
+  	position: absolute;
+  	bottom: 0px;
+  	
 }
 .donation_summary_en{
 	font-size: 35%;
 	color: #19417f;
   	font-family: "Oswald", sans-serif;	
+  	visibility: hidden;
+  	position: absolute;  
+  	bottom: 0px;
+  	right: 0px;  		
 }
 .donation_range{
 	font-size: 11%;
 	color: #adadad;
-  	font-family: "Oswald", sans-serif;		
+  	font-family: "Oswald", sans-serif;
+  	visibility: hidden;		
 }
 @media (max-width: $screen-sm-min) {
+	.donation_year{
+		font-size: 15px;
+	}	
 	.donation_summary{
-		width: 440px;
-		font-size: 6em;
+		width: 350px;
+		font-size: 76px;
 	}
 	.donation_summary_inner{
-		height: 105px;
+		height: 90px;
+	}	
+	.donation_summary_number{
+		line-height: 79px;
 	}	
 }
 
 @media (max-width: $screen-xs-min) {
+	.donation_year{
+		font-size: 12px;
+	}	
 	.donation_summary{
-		width: 250px;
-		font-size: 3.5em;
+		width: 260px;
+		font-size: 60px;
 	}
 	.donation_summary_inner{
-		height: 65px;
+		height: 70px;
 	}	
+	.donation_summary_number{
+		line-height: 65px;
+	}		
+}
+
+.donation_content_background_image{
+	position:absolute;
+	left:0;
+	right:0;
+	top:0;
+	bottom:0;
+	background: url('<%= asset_path 'campus.jpg' %>');
+	background-size:cover;
+	background-position: center center;	
+	z-index:1;
+	-webkit-filter: blur(10px);
+    -moz-filter: blur(10px);
+    -o-filter: blur(10px);
+    -ms-filter: blur(10px);
+    filter: blur(10px);	
+}
+.content{
+	position:relative;
+	z-index:2;
+	color:#fff;
+}
+.donation_content_donate{
+  position:relative;	
+}
+.donation_content_donate_inner{
+  margin-top: 60px; 
+  margin-bottom: 50px;
+  background: #ffffff; 
+  padding: 30px; 
+  padding-bottom: 10px;
+  visibility: hidden;
 }
 /*=========================== card ===================================*/
 .donation_card_small_img{
@@ -262,6 +325,9 @@
 	opacity: 0.65; 
 }
 /*=========================== form ===================================*/
+.donation_form_title{
+  color: #898989;
+}
 .donation_form_pie{
   border-left: 1px solid rgb(221, 221, 221);	
 }
