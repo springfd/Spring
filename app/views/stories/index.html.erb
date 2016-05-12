@@ -12,10 +12,8 @@
 </div>
 <div class="container">
 	<% @stories.each do |story| %>
-		<%= link_to story_path(story)  do%>
 		<div class="col-sm-4">
 			<div class="panel panel-default">
-			  <div class="story_image_container" style="background-image: url('<%=story.pictures.first.image.url%>')"></div>	
 			  <div class="panel-body">
 			  	<div class = "story-panel-tr">
 				  	<div class="story-panel-th">標題:</div>
@@ -33,9 +31,15 @@
 				  	</div>
 				</div>
 			  </div>
+			  <%= link_to story_path(story)  do%>
+				<div class = "story-panel-view-btn">
+					瀏覽
+					
+				</div>
+				<% end %>
 			</div>
+			
 		</div>
-		<% end %>
 	<% end %>
 </div>
 
