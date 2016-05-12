@@ -23,7 +23,6 @@
 //= require bootstrap-datetimepicker
 //= require masonry.pkgd.js
 //= require jquery.drawDoughnutChart.js
-//= require bootstrap-toolkit.js
 //= require ScrollMagic/TweenMax.js
 //= require ScrollMagic/ScrollMagic.js
 //= require ScrollMagic/animation.gsap.js
