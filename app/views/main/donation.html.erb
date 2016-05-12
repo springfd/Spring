@@ -1,7 +1,7 @@
 <div class="container-fluid">
 	<div class="row">
 		<div class="col-lg-12">		
-		<div class="donation_year text-center"><span>2015年</span><span style="margin-left: 18px; margin-right: 18px;">|</span><span>2016年</span></div>	
+		<div class="donation_year text-center"><span><%= Time.zone.now.year-1 %>年</span><span style="margin-left: 18px; margin-right: 18px;">|</span><span><%= Time.zone.now.year%>年</span></div>	
 		<div class="donation_summary text-center">
 			<div class="donation_summary_inner">
 				<div class="donation_summary_number"></div> <div class="donation_summary_en">NTW</div>	
@@ -15,7 +15,7 @@
 	<div class="donation_content_background_image"></div>
 	<div class="row" style="position:relative; z-index:2;">
 		<div class="col-lg-offset-4 col-lg-4 col-sm-offset-2 col-sm-8 donation_content_donate_inner">
-			<p class="text-center" style="font-size: 22px; letter-spacing: 2px; color: #898989;">不指定計畫贊助</p>		
+			<p class="text-center" style="font-size: 22px; letter-spacing: 2px; color: #898989;">贊助不指定計畫</p>		
 			<%= form_tag('/trades/donate', class: "donation_form") do -%>
 						<%= hidden_field_tag 'id', 1, class: 'form-control'%>
 						<div class="donation_form_title">收據</div> 
@@ -26,19 +26,21 @@
 			                <label class="btn btn-default donation_gray_btn">
 			                    <input type="radio" name="receipt" autocomplete="off" value="false" id="1" /> 否	                
 			                </label>   
-			            </div>					
-						<div class="form-group form_group_donation form_group_donation_1">
-							<div class="donation_form_title">收據抬頭</div> 
-						  	<%= text_field_tag 'title', nil, class: 'form-control' %>
-						</div>
-					    <div class="form-group form_group_donation form_group_donation_1">
-					    	<div class="donation_form_title">電話</div>   
-					  		<%= text_field_tag 'phone', nil, class: 'form-control' %>
-					    </div>  
-					    <div class="form-group form_group_donation form_group_donation_1">
-					    	<div class="donation_form_title">地址</div>   
-					  		<%= text_field_tag 'address', nil, class: 'form-control' %>
-					  	</div>   
+			            </div>	
+			            <div class="form_group_donation form_group_donation_hidden form_group_donation_1">						            				
+							<div class="form-group">
+								<div class="donation_form_title">收據抬頭</div> 
+							  	<%= text_field_tag 'title', nil, class: 'form-control' %>
+							</div>
+						    <div class="form-group">
+						    	<div class="donation_form_title">電話</div>   
+						  		<%= text_field_tag 'phone', nil, class: 'form-control' %>
+						    </div>  
+						    <div class="form-group">
+						    	<div class="donation_form_title">地址</div>   
+						  		<%= text_field_tag 'address', nil, class: 'form-control' %>
+						  	</div>  
+						</div>						  					  	 
 					  	<div class="donation_form_title">金額</div>  
 						<div class="btn-group donation_btn_group" data-toggle="buttons">
 			                <label class="btn btn-default donation_gray_btn">
@@ -61,26 +63,22 @@
 			                </label> 			                			                		                            			                
 		           		</div>    
 						<div class="form-group form-inline"> 
-						  	<%= text_field_tag 'amount_others', nil, class: 'form-control', placeholder: '或輸入您想捐款的金額'%>
-							<%= submit_tag '捐款', class: "btn btn-default donation_button" %>
+						  	<%= text_field_tag 'amount_others', nil, class: 'form-control amount_others', placeholder: '或輸入您想捐款的金額'%>
+							<%= submit_tag '捐款', class: "btn donation_button" %>
 						</div>  
-
-					<% end -%>	
+			<% end -%>	
 		</div>
 	</div>	
 </div>	
-
-
-
 <div class="grid">
-	<% Project.all.each do |project|%>
+	<% Project.where('id <> 1').all.each do |project|%>
 		<%=render "donation_card", project: project%>	
 	<% end %>	 	
 </div>	
 <div class="container-fluid">
-	<div class="row" style="margin-bottom: 40px;">
+	<div class="row" style="margin-bottom: 40px; margin-top: 40px;">
 		<div class="col-lg-offset-3 col-lg-6 text-center">	
-		<button type="button" class="btn btn-block donation_project_button" data-toggle="modal" data-target="#myModal">委辦計畫查詢</button>
+		<button type="button" class="btn btn-block donation_project_button" data-toggle="modal" data-target="#myModal">查詢委辦計畫</button>
 		</div>
 	</div>		
 </div>	
@@ -91,7 +89,7 @@
     <div class="modal-content">
       <div class="modal-header">
         <button type="button" class="close" data-dismiss="modal">&times;</button>
-        <h4 class="modal-title">委辦計畫查詢</h4>
+        <h4 class="modal-title">查詢委辦計畫</h4>
       </div>
       <div class="modal-body">        
 		<form class="form-inline" id="login_form">
@@ -120,19 +118,24 @@
 
 <script>
 
+//============================= count =============================//
 
-//============================= masonry =============================//
-
+var controller = new ScrollMagic.Controller();
 $('.donation_summary_number').html( Math.ceil(2888321-10000).toLocaleString() )
 var foo = { bar: 2888321-10000 };		
 tween = new TimelineLite();
 tween.to(foo, 2, { bar: 2888321, onUpdate: function() {
 	 $('.donation_summary_number').html(Math.ceil(foo.bar).toLocaleString());}, ease: Linear.easeNone})
 	 .to(".donation_summary_en", 1, {autoAlpha: 1, ease: Linear.easeNone})
-	 .to(".donation_year", 1, {autoAlpha: 1, ease: Linear.easeNone})
+	 //.to(".donation_year", 1, {autoAlpha: 1, ease: Linear.easeNone})
 	 .to(".donation_range", 1, {autoAlpha: 1, ease: Linear.easeNone})
 	 .to(".donation_content_donate_inner", 1, {autoAlpha: 1, ease: Linear.easeNone})
 	 .from(".donation_content_donate_inner", 1,{bottom: "40px", ease: Linear.easeNone})
+/*
+new ScrollMagic.Scene({triggerElement: ".menu"})
+	.setTween(tween)
+	.addTo(controller) 
+*/
 //============================= masonry =============================//
 var $grid = $('.grid').masonry({
   columnWidth: '.grid-item',
@@ -160,37 +163,39 @@ $grid.on( 'click', '.grid-item-close', function( event ) {
   $(".doughnutTip_"+event.currentTarget.id).remove();
 });
 //============================= radio =============================//
-$('.form_group_donation').hide() 
 $('input[type=radio][name=receipt]').change(function() {
-	if (this.value == 'true') {
-       $('.form_group_donation_'+this.id).slideDown("slow");              
-    }
-    else if (this.value == 'false') {
-       $('.form_group_donation_'+this.id).slideUp("slow");    
-    }
+    $('.form_group_donation_'+this.id).toggleClass('form_group_donation_hidden');             	    
+    $grid.masonry() 
 });
 //============================= sponsor =============================//
-$('.donation_sponsor_content').hide() 
-
 $grid.on( 'click', '.donation_sponsor .glyphicon', function( event ) {
-	//$( event.currentTarget ).closest('.grid-item').toggleClass('is-expanded');
-
+	$('.donation_sponsor_content_'+this.id).toggleClass('donation_sponsor_content_hidden');
 	if ($(event.currentTarget).hasClass( "glyphicon-triangle-bottom" )) {
        $(event.currentTarget).removeClass( "glyphicon-triangle-bottom")
        $(event.currentTarget).addClass( "glyphicon-triangle-top")			
-       $('.donation_sponsor_content_'+this.id).slideDown("slow");    
-	   
-	   
-	   
-	   //$grid.masonry();                  
     }
     else if ($(event.currentTarget).hasClass( "glyphicon-triangle-top" )) {
        $(event.currentTarget).removeClass( "glyphicon-triangle-top")
        $(event.currentTarget).addClass( "glyphicon-triangle-bottom")		
-       $('.donation_sponsor_content_'+this.id).slideUp("slow");  
-       //grid.masonry();   
     }
+    grid.masonry();     
 });
+//============================= resize =============================//
+$(window).resize(function() {
+	$('.is-expanded').each(function()
+	{
+		id = $(this).attr('id')
+		$("#doughnutChart_"+id).empty();
+		$(".doughnutTip_"+id).remove();                
+		$("#doughnutChart_"+id).drawDoughnutChart([
+			{ title: "人事", value: parseInt($('#doughnutChart_'+id).attr('data-exp_personnel')),  color: "#02a0eb" },
+			{ title: "雜支", value: parseInt($('#doughnutChart_'+id).attr('data-exp_business')),   color: "#c070a3" },
+			{ title: "業務", value: parseInt($('#doughnutChart_'+id).attr('data-exp_mix')),   color: "#f4a301" },
+			{ title: "其他", value: parseInt($('#doughnutChart_'+id).attr('data-exp_other')),   color: "#b3a253" }
+		], {tipClass: "doughnutTip "+"doughnutTip_"+id});  					
+	});
+}); 
+
 //============================= project login =============================//
 
 $( "#login_form" ).submit(function( event ) {

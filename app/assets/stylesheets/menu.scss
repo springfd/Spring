@@ -13,8 +13,10 @@
     -webkit-transform: rotate(20deg); /* Chrome, Safari, Opera */
     transform: rotate(20deg);    
 }
-
-
+.navbar-toggle {
+  margin-top: 14px;
+  margin-bottom: 14px;
+}
 
 .navbar-brand{
   //margin-top: 15px;  
@@ -23,9 +25,16 @@
 .navbar-brand img{
   height: 30px; 
 }
-@media (max-width: 380px) {
-  .smallfarmer01-brand{
-    //display: none !important;
+.navbar-brand .logo_text_only{
+  display: none !important;
+}
+
+@media (max-width: 320px) {
+   .navbar-brand .logo_text{
+      display: none !important;
+  }
+  .navbar-brand .logo_text_only{
+      display: block !important;
   }
 }
 
