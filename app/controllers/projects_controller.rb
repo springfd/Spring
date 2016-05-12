@@ -1,5 +1,5 @@
 class ProjectsController < ApplicationController
-  before_filter :authenticate_user!
+  before_filter :authenticate_user!, except: [:checkLogin]
   before_action :set_project, only: [:show, :edit, :update, :destroy]
 
   # GET /projects
@@ -62,14 +62,12 @@ class ProjectsController < ApplicationController
     redirect_to({ controller: "projects", action: 'index' , pj_kind: @project.kind}, notice: '成功刪除計畫') 
   end
 
-  def check_login
-    @project = Project.find_by_account_and_password(params[:login_name], params[:login_pass])
+  def checkLogin
+    @project = Project.find_by_account_and_password(params[:project_account], params[:project_password])
     if @project.blank?
-      flash[:error] = '帳號密碼錯誤'
-      flash.keep(:notice)
-      render :json => {:success => false, :location => url_for(:controller => 'main', :action => 'donation')}.to_json
+      render json: { success: false }.to_json
     else
-      render :json => {:success => true, :location => url_for(:controller => 'projects', :action => 'show', :id => @project.id)}.to_json
+      render json: { success: true, id: @project.id, name: @project.name }.to_json
     end
   end
   private

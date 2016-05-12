@@ -11,10 +11,9 @@
 // about supported directives.
 //
 //= require jquery
+//= require jquery.turbolinks
 //= require jquery_ujs
-//= require turbolinks
 //= require bootstrap-sprockets
-//= require bootstrap
 //= require jquery-fileupload/basic
 //= require fileinput.js
 //= require fileinput_locale_zh-TW.js
@@ -29,6 +28,4 @@
 //= require ScrollMagic/animation.gsap.js
 //= require ScrollMagic/debug.addIndicators.js 
 //= require ScrollMagic/modernizr.custom.js
-//= require fancybox/jquery.fancybox.js
-//= require fancybox/jquery.fancybox.pack.js
 //= require_tree .

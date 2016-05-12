@@ -1,42 +1,141 @@
 <div class="container-fluid">
-	<div class="row text-center">
-		<div class="col-lg-12 text-center">		
-		<div class="donation_summary">
+	<div class="row">
+		<div class="col-lg-12">		
+		<div class="donation_year text-center"><span><%= Time.zone.now.year-1 %>年</span><span style="margin-left: 18px; margin-right: 18px;">|</span><span><%= Time.zone.now.year%>年</span></div>	
+		<div class="donation_summary text-center">
 			<div class="donation_summary_inner">
-				<span class="donation_summary_number">28,888,321</span> <span class="donation_summary_en">NTW</span>	
+				<div class="donation_summary_number"></div> <div class="donation_summary_en">NTW</div>	
 			</div>
 			<div class="donation_range text-right">累積期間 2016/01/01~2016/04/13</div>	
 		</div>
 		</div>
-	</div>		
+	</div>	
+</div>	
+<div class="container-fluid donation_content_donate">
+	<div class="donation_content_background_image"></div>
+	<div class="row" style="position:relative; z-index:2;">
+		<div class="col-lg-offset-4 col-lg-4 col-sm-offset-2 col-sm-8 donation_content_donate_inner">
+			<p class="text-center" style="font-size: 22px; letter-spacing: 2px; color: #898989;">贊助不指定計畫</p>		
+			<%= form_tag('/trades/donate', class: "donation_form") do -%>
+						<%= hidden_field_tag 'id', 1, class: 'form-control'%>
+						<div class="donation_form_title">收據</div> 
+						<div class="btn-group donation_btn_group" data-toggle="buttons">
+			                <label class="btn btn-default donation_gray_btn">
+			                    <input type="radio" name="receipt" autocomplete="off" value="true" id="1" /> 是                
+			                </label> 
+			                <label class="btn btn-default donation_gray_btn">
+			                    <input type="radio" name="receipt" autocomplete="off" value="false" id="1" /> 否	                
+			                </label>   
+			            </div>	
+			            <div class="form_group_donation form_group_donation_hidden form_group_donation_1">						            				
+							<div class="form-group">
+								<div class="donation_form_title">收據抬頭</div> 
+							  	<%= text_field_tag 'title', nil, class: 'form-control' %>
+							</div>
+						    <div class="form-group">
+						    	<div class="donation_form_title">電話</div>   
+						  		<%= text_field_tag 'phone', nil, class: 'form-control' %>
+						    </div>  
+						    <div class="form-group">
+						    	<div class="donation_form_title">地址</div>   
+						  		<%= text_field_tag 'address', nil, class: 'form-control' %>
+						  	</div>  
+						</div>						  					  	 
+					  	<div class="donation_form_title">金額</div>  
+						<div class="btn-group donation_btn_group" data-toggle="buttons">
+			                <label class="btn btn-default donation_gray_btn">
+			                    <input type="radio" name="amount" autocomplete="off" value="1000" /> $1000	                
+			                </label> 
+			                <label class="btn btn-default donation_gray_btn">
+			                    <input type="radio" name="amount" autocomplete="off" value="2000" /> $2000	                
+			                </label> 
+			                <label class="btn btn-default donation_gray_btn">
+			                    <input type="radio" name="amount" autocomplete="off" value="5000" /> $5000	                
+			                </label> 			    
+			                <label class="btn btn-default donation_gray_btn">
+			                    <input type="radio" name="amount" autocomplete="off" value="10000" /> $10000	                
+			                </label> 		
+			                <label class="btn btn-default donation_gray_btn">
+			                    <input type="radio" name="amount" autocomplete="off" value="15000" /> $15000	                
+			                </label> 
+			                <label class="btn btn-default donation_gray_btn">
+			                    <input type="radio" name="amount" autocomplete="off" value="20000" /> $20000	                
+			                </label> 			                			                		                            			                
+		           		</div>    
+						<div class="form-group form-inline"> 
+						  	<%= text_field_tag 'amount_others', nil, class: 'form-control amount_others', placeholder: '或輸入您想捐款的金額'%>
+							<%= submit_tag '捐款', class: "btn donation_button" %>
+						</div>  
+			<% end -%>	
+		</div>
+	</div>	
 </div>	
 <div class="grid">
-	<% Project.all.each do |project|%>
+	<% Project.where('id <> 1').all.each do |project|%>
 		<%=render "donation_card", project: project%>	
 	<% end %>	 	
 </div>	
-<!--
-<a href="#login_form" id="login_btn" class="fancybox btn btn-primary btn-block grid-item-button">委辦計畫</a>		
-<div style="display:none">
-	<%= form_tag("", method: "post", id: "login_form") do %>
-	    	<p id="login_error">請輸入帳號密碼</p>
-		<div class="form-group row">
-			<label class="col-sm-4 control-label">臨時帳號</label>
-			<div class="col-sm-4"><input type="text" id="login_name" name="login_name" size="30" />
+<div class="container-fluid">
+	<div class="row" style="margin-bottom: 40px; margin-top: 40px;">
+		<div class="col-lg-offset-3 col-lg-6 text-center">	
+		<button type="button" class="btn btn-block donation_project_button" data-toggle="modal" data-target="#myModal">查詢委辦計畫</button>
 		</div>
-		</div>
-		<div class="form-group row">
-			<label class="col-sm-4 control-label">臨時密碼</label>
-			<div class="col-sm-4"><input type="password" id="login_pass" name="login_pass" size="30" />
-		</div>
-		</div>
-		<div class="pull-right">
-			<input type="submit" value="Login"  class= "btn btn-default"/>
-		</div>
-	<% end %>  
+	</div>		
+</div>	
+
+<div id="myModal" class="modal fade" role="dialog">
+  <div class="modal-dialog modal-lg">
+    <!-- Modal content-->
+    <div class="modal-content">
+      <div class="modal-header">
+        <button type="button" class="close" data-dismiss="modal">&times;</button>
+        <h4 class="modal-title">查詢委辦計畫</h4>
+      </div>
+      <div class="modal-body">        
+		<form class="form-inline" id="login_form">
+		  <div class="form-group">
+		    <label for="project_account">計畫帳號</label>
+		    <input type="text" class="form-control" id="project_account" name="project_account">
+		  </div>
+		  <div class="form-group">
+		    <label for="project_password">計畫密碼</label>
+		    <input type="password" class="form-control" id="project_password" name="project_password">
+		  </div>
+		  <button type="submit" class="btn btn-default">查詢</button>
+		</form>              
+      </div>
+      <div class="modal-footer">
+        <button type="button" class="btn btn-default " data-dismiss="modal">Close</button>
+      </div>
+    </div>
+  </div>
 </div>
--->
+
+
+
+
+
+
 <script>
+
+//============================= count =============================//
+
+var controller = new ScrollMagic.Controller();
+$('.donation_summary_number').html( Math.ceil(2888321-10000).toLocaleString() )
+var foo = { bar: 2888321-10000 };		
+tween = new TimelineLite();
+tween.to(foo, 2, { bar: 2888321, onUpdate: function() {
+	 $('.donation_summary_number').html(Math.ceil(foo.bar).toLocaleString());}, ease: Linear.easeNone})
+	 .to(".donation_summary_en", 1, {autoAlpha: 1, ease: Linear.easeNone})
+	 //.to(".donation_year", 1, {autoAlpha: 1, ease: Linear.easeNone})
+	 .to(".donation_range", 1, {autoAlpha: 1, ease: Linear.easeNone})
+	 .to(".donation_content_donate_inner", 1, {autoAlpha: 1, ease: Linear.easeNone})
+	 .from(".donation_content_donate_inner", 1,{bottom: "40px", ease: Linear.easeNone})
+/*
+new ScrollMagic.Scene({triggerElement: ".menu"})
+	.setTween(tween)
+	.addTo(controller) 
+*/
 //============================= masonry =============================//
 var $grid = $('.grid').masonry({
   columnWidth: '.grid-item',
@@ -64,51 +163,74 @@ $grid.on( 'click', '.grid-item-close', function( event ) {
   $(".doughnutTip_"+event.currentTarget.id).remove();
 });
 //============================= radio =============================//
-$('.form_group_donation').hide() 
 $('input[type=radio][name=receipt]').change(function() {
-	if (this.value == 'true') {
-       $('.form_group_donation_'+this.id).slideDown("slow");              
-    }
-    else if (this.value == 'false') {
-       $('.form_group_donation_'+this.id).slideUp("slow");    
-    }
+    $('.form_group_donation_'+this.id).toggleClass('form_group_donation_hidden');             	    
+    $grid.masonry() 
 });
 //============================= sponsor =============================//
-$('.donation_sponsor_content').hide() 
-$( ".donation_sponsor .glyphicon" ).click(function() {	
-	
-	if ($(this).hasClass( "glyphicon-triangle-bottom" )) {
-       $(this).removeClass( "glyphicon-triangle-bottom")
-       $(this).addClass( "glyphicon-triangle-top")			
-       $('.donation_sponsor_content_'+this.id).slideDown("slow");              
+$grid.on( 'click', '.donation_sponsor .glyphicon', function( event ) {
+	$('.donation_sponsor_content_'+this.id).toggleClass('donation_sponsor_content_hidden');
+	if ($(event.currentTarget).hasClass( "glyphicon-triangle-bottom" )) {
+       $(event.currentTarget).removeClass( "glyphicon-triangle-bottom")
+       $(event.currentTarget).addClass( "glyphicon-triangle-top")			
     }
-    else if ($(this).hasClass( "glyphicon-triangle-top" )) {
-       $(this).removeClass( "glyphicon-triangle-top")
-       $(this).addClass( "glyphicon-triangle-bottom")		
-       $('.donation_sponsor_content_'+this.id).slideUp("slow");    
+    else if ($(event.currentTarget).hasClass( "glyphicon-triangle-top" )) {
+       $(event.currentTarget).removeClass( "glyphicon-triangle-top")
+       $(event.currentTarget).addClass( "glyphicon-triangle-bottom")		
     }
-    		    		
+    grid.masonry();     
 });
+//============================= resize =============================//
+$(window).resize(function() {
+	$('.is-expanded').each(function()
+	{
+		id = $(this).attr('id')
+		$("#doughnutChart_"+id).empty();
+		$(".doughnutTip_"+id).remove();                
+		$("#doughnutChart_"+id).drawDoughnutChart([
+			{ title: "人事", value: parseInt($('#doughnutChart_'+id).attr('data-exp_personnel')),  color: "#02a0eb" },
+			{ title: "雜支", value: parseInt($('#doughnutChart_'+id).attr('data-exp_business')),   color: "#c070a3" },
+			{ title: "業務", value: parseInt($('#doughnutChart_'+id).attr('data-exp_mix')),   color: "#f4a301" },
+			{ title: "其他", value: parseInt($('#doughnutChart_'+id).attr('data-exp_other')),   color: "#b3a253" }
+		], {tipClass: "doughnutTip "+"doughnutTip_"+id});  					
+	});
+}); 
 
-//fancybox for login project
-$(document).ready(function() {
-$("#login_btn").fancybox({
-	'scrolling'		: 'no',
-	'titleShow'		: false,
-	'beforeShow'		: function() {
-	    $("#login_error").hide();
-	}
-});
+//============================= project login =============================//
 
-$("#login_form").bind("submit", function() {
-
-	if ($("#login_name").val().length < 1 || $("#login_pass").val().length < 1) {
-	    $("#login_error").show();
-	    $.fancybox.update();
+$( "#login_form" ).submit(function( event ) {
+  	event.preventDefault();
+	if ($("#project_account").val().length < 1 || $("#project_password").val().length < 1) {
+	    toastr['warning']('請輸入帳號密碼')	
 	    return false;
 	}
-	$.fancybox.showLoading();
 
+	$.ajax({
+		type: "POST",
+		url: "/projects/checkLogin",
+		data: $(this).serializeArray(),
+		dataType: 'json',
+		success: function(data) {
+			if (data.success) {
+    		}else{
+    		}
+		}
+	});
+	return false;
+});
+
+/*
+$("#login_form").bind("submit", function() {
+	
+		alert(132);
+	
+	if ($("#login_name").val().length < 1 || $("#login_pass").val().length < 1) {
+	    $("#login_error").show();
+	    return false;
+	}
+	
+	alert(132);
+	
 	$.ajax({
 		type		: "POST",
 		cache	: false,
@@ -126,6 +248,7 @@ $("#login_form").bind("submit", function() {
 	});
 
 	return false;
+
 });
-}); // ready
+*/
 </script>

@@ -10,7 +10,7 @@ Rails.application.routes.draw do
   devise_for :users, :controllers => { :registrations => "registrations", :confirmations => "users/confirmations" } # be careful of the order with resources users
   resources :users, only: [:index, :show, :destroy]
   
-  post 'projects/check_login'
+  post 'projects/checkLogin'
   
   get  'main/result'
   get  'main/post_back'

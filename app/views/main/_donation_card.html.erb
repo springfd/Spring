@@ -1,20 +1,20 @@
-<div class="grid-item">
+<div class="grid-item" id="<%= project.id %>">
     <div class="grid-item-content">
 	    <label class="grid-item-close" id="<%= project.id %>"><span aria-hidden="true">&times;</span></label>
 		<div class="container-fluid donation_card_small">	
 			<div class="row" style="">
 				<div class="col-lg-12">	
-					<div class="donation_card_small_img"></div>	
+					<div class="donation_card_small_img" style="background-image: url('<%= project.pj_cover.url%>')"></div>	
 					<div class="donation_card_small_title"><%= project.name %></div>
 					<div class="donation_card_small_content"><%= truncate( project.description, length: 60)%></div>
-					<button type="button" class="btn btn-primary btn-block grid-item-button" id="<%= project.id %>">點擊贊助</button>		
+					<button type="button" class="btn btn-block grid-item-button" id="<%= project.id %>">點擊贊助</button>		
 				</div>			
 			</div>	
 		</div>  
 		<div class="container-fluid donation_card_enlarge">	
 			<div class="row" style="">
 				<div class="col-sm-6">	
-					<div class="donation_card_enlarge_img"></div>	
+					<div class="donation_card_enlarge_img" style="background-image: url('<%= project.pj_cover.url %>');"></div>	
 					<div class="donation_card_enlarge_title"><%= project.name %></div>
 					<div class="donation_card_enlarge_content"><%= project.description%></div>		
 					<table class="table donation_card_enlarge_table">
@@ -56,7 +56,7 @@
 					</div>		
 					<%= form_tag('/main/donation', class: "donation_form") do -%>
 						<%= hidden_field_tag 'id', project.id, class: 'form-control'%>
-						<div for="exampleInputEmail1">收據</div> 
+						<div class="donation_form_title">收據</div> 
 						<div class="btn-group donation_btn_group" data-toggle="buttons">
 			                <label class="btn btn-default donation_gray_btn">
 			                    <input type="radio" name="receipt" autocomplete="off" value="true" id="<%= project.id %>" /> 是                
@@ -64,20 +64,22 @@
 			                <label class="btn btn-default donation_gray_btn">
 			                    <input type="radio" name="receipt" autocomplete="off" value="false" id="<%= project.id %>" /> 否	                
 			                </label>   
-			            </div>					
-						<div class="form-group form_group_donation form_group_donation_<%=project.id%>">
-							<div for="exampleInputEmail1">收據抬頭</div> 
-						  	<%= text_field_tag 'title', nil, class: 'form-control' %>
-						</div>
-					    <div class="form-group form_group_donation form_group_donation_<%=project.id%>">
-					    	<div for="exampleInputEmail1">電話</div>   
-					  		<%= text_field_tag 'phone', nil, class: 'form-control' %>
-					    </div>  
-					    <div class="form-group form_group_donation form_group_donation_<%=project.id%>">
-					    	<div for="exampleInputEmail1">地址</div>   
-					  		<%= text_field_tag 'address', nil, class: 'form-control' %>
-					  	</div>   
-					  	<div for="exampleInputEmail1">金額</div>  
+			            </div>		
+			            <div class="form_group_donation form_group_donation_hidden form_group_donation_<%=project.id%>" style="transition: all .3s ease .15s;">			
+							<div class="form-group">
+								<div class="donation_form_title">收據抬頭</div> 
+							  	<%= text_field_tag 'title', nil, class: 'form-control' %>
+							</div>
+						    <div class="form-group">
+						    	<div class="donation_form_title">電話</div>   
+						  		<%= text_field_tag 'phone', nil, class: 'form-control' %>
+						    </div>  
+						    <div class="form-group">
+						    	<div class="donation_form_title">地址</div>   
+						  		<%= text_field_tag 'address', nil, class: 'form-control' %>
+						  	</div>  
+					  	</div> 
+					  	<div class="donation_form_title">金額</div>  
 						<div class="btn-group donation_btn_group" data-toggle="buttons">
 			                <label class="btn btn-default donation_gray_btn">
 			                    <input type="radio" name="amount" autocomplete="off" value="1000" /> $1000	                
@@ -99,8 +101,8 @@
 			                </label> 			                			                		                            			                
 		           		</div>    
 						<div class="form-group form-inline"> 
-						  	<%= text_field_tag 'amount_others', nil, class: 'form-control', placeholder: '或輸入您想捐款的金額'%>
-							<%= submit_tag '捐款', class: "btn btn-default donation_button" %>
+						  	<%= text_field_tag 'amount_others', nil, class: 'form-control amount_others', placeholder: '或輸入您想捐款的金額'%>
+							<%= submit_tag '捐款', class: "btn donation_button" %>
 						</div>  
 
 					<% end -%>					
@@ -111,35 +113,37 @@
 					<div class="text-center">捐款名冊 <span class="glyphicon glyphicon-triangle-bottom" id="<%= project.id%>"></span></div>
 				</div>				
 			</div>	
-			<div class="donation_sponsor_content donation_sponsor_content_<%= project.id%> row">
-				<div class="col-sm-5 col-sm-offset-1">	
-					<div class="donation_sponsor_text no-span">皮x丘</div>
-					<div style="width: 25%; float: right;">8000元</div>												
-				</div>	
-				<div class="col-sm-5 col-sm-offset-1">	
-					<div class="donation_sponsor_text no-span">財團法人台x電文教基金會</div>
-					<div style="width: 25%; float: right;">80000元</div>												
-				</div>											
-			</div>
-			<div class="donation_sponsor_content donation_sponsor_content_<%= project.id%> row">
-				<div class="col-sm-5 col-sm-offset-1">	
-					<div class="donation_sponsor_text no-span">財團法人台x電文教基金會</div>
-					<div style="width: 25%; float: right;">8000元</div>												
-				</div>	
-				<div class="col-sm-5 col-sm-offset-1">	
-					<div class="donation_sponsor_text no-span">金x武</div>
-					<div style="width: 25%; float: right;">80000元</div>												
-				</div>											
-			</div>
-			<div class="donation_sponsor_content donation_sponsor_content_<%= project.id%> row">
-				<div class="col-sm-5 col-sm-offset-1">	
-					<div class="donation_sponsor_text no-span">流x滑</div>
-					<div style="width: 25%; float: right;">8000元</div>												
-				</div>	
-				<div class="col-sm-5 col-sm-offset-1">	
-					<div class="donation_sponsor_text no-span">王x安</div>
-					<div style="width: 25%; float: right;">80000元</div>												
-				</div>											
+			<div>			
+				<div class="row donation_sponsor_content donation_sponsor_content_hidden donation_sponsor_content_<%= project.id%>">
+					<div class="col-sm-5 col-sm-offset-1">	
+						<div class="donation_sponsor_text no-span">皮x丘</div>
+						<div style="width: 25%; float: right;">8000元</div>												
+					</div>	
+					<div class="col-sm-5 col-sm-offset-1">	
+						<div class="donation_sponsor_text no-span">財團法人台x電文教基金會</div>
+						<div style="width: 25%; float: right;">80000元</div>												
+					</div>											
+				</div>
+				<div class="row donation_sponsor_content donation_sponsor_content_hidden donation_sponsor_content_<%= project.id%>">
+					<div class="col-sm-5 col-sm-offset-1">	
+						<div class="donation_sponsor_text no-span">財團法人台x電文教基金會</div>
+						<div style="width: 25%; float: right;">8000元</div>												
+					</div>	
+					<div class="col-sm-5 col-sm-offset-1">	
+						<div class="donation_sponsor_text no-span">金x武</div>
+						<div style="width: 25%; float: right;">80000元</div>												
+					</div>											
+				</div>
+				<div class="row donation_sponsor_content donation_sponsor_content_hidden donation_sponsor_content_<%= project.id%>">
+					<div class="col-sm-5 col-sm-offset-1">	
+						<div class="donation_sponsor_text no-span">流x滑</div>
+						<div style="width: 25%; float: right;">8000元</div>												
+					</div>	
+					<div class="col-sm-5 col-sm-offset-1">	
+						<div class="donation_sponsor_text no-span">王x安</div>
+						<div style="width: 25%; float: right;">80000元</div>												
+					</div>											
+				</div>
 			</div>	
 		</div> 		
 	</div>
