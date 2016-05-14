@@ -18,11 +18,11 @@ Rails.application.routes.draw do
   post 'trades/post_back'
   post 'trades/donate'
 
-
   get  'main/about'
   get  'main/news'
   get  'main/donation'  
   root 'main#about'
-  
+
+  get '/fKF2erXB', :to => redirect('/fKF2erXB.html')  
   
 end
