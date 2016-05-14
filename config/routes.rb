@@ -12,11 +12,11 @@ Rails.application.routes.draw do
   
   post 'projects/checkLogin'
   
-  get  'trades/result'
-  get  'trades/post_back'
-  post 'trades/result'
-  post 'trades/post_back'
-  post 'trades/donate'
+  get  'main/result'
+  get  'main/post_back'
+  post 'main/result'
+  post 'main/post_back'
+  post 'main/donation'
 
   get  'main/about'
   get  'main/news'

@@ -22,6 +22,7 @@ ActiveRecord::Schema.define(version: 20160505120127) do
     t.string   "receipt_address", limit: 255
     t.string   "phone",           limit: 255
     t.string   "email",           limit: 255
+    t.string   "order_no",        limit: 255
     t.datetime "created_at",                  null: false
     t.datetime "updated_at",                  null: false
   end

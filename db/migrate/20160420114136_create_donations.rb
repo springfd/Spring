@@ -9,6 +9,7 @@ class CreateDonations < ActiveRecord::Migration
       t.string :receipt_address
       t.string :phone
       t.string :email
+      t.string :order_num
 
       t.timestamps null: false
     end
