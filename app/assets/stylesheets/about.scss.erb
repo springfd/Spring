@@ -1,0 +1,19 @@
+.about_top{
+  position:relative;	
+}
+.about_top_background_image{
+	position:absolute;
+	left:0;
+	right:0;
+	top:0;
+	bottom:0;
+	background: url('<%= asset_path 'about/background.jpg' %>');
+	background-size:cover;
+	background-position: center center;	
+	z-index:1;
+	-webkit-filter: blur(1px) grayscale(.9);
+    -moz-filter: blur(1px) grayscale(.9);
+    -o-filter: blur(1px) grayscale(.9);
+    -ms-filter: blur(1px) grayscale(.9);
+    filter: blur(1px) grayscale(.9);	
+}
