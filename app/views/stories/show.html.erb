@@ -11,26 +11,59 @@
 		</div>
 	</div>
 </div>
-<div class="container-fluid">
+<div class="container-fluid" style="margin-top: 23px;">
 	<div class="row">
-	  <div class="col-md-3 col-md-offset-2">標題</div>
-	  <div class="col-md-4"> <%= @story.topic %></div>
+		<div class="col-md-offset-3 col-md-6">
+			<div id="myCarousel" class="carousel slide" data-ride="carousel">
+			  <!-- Indicators -->
+			  <ol class="carousel-indicators">
+			    <% @story.pictures.each_with_index do |p, i|%> 
+					<%if i==0 %>
+						<li data-target="#carousel-example-generic" data-slide-to="<%=i%>" class="active"></li>
+					<% else %>
+					    <li data-target="#carousel-example-generic" data-slide-to="<%=i%>"></li>    
+					<% end %>
+				<% end %> 
+			  </ol>
+			
+			  <!-- Wrapper for slides -->
+			  <div class="story_carousel-inner carousel-inner" role="listbox">
+			  	<% @story.pictures.each_with_index do |p, i| %>
+				  	<% if i==0 %>
+					    <div class="item active">
+					      <div class="story_carousel_img" style="background-image: url('<%=p.image.url%>')"></div>
+					    </div>
+				    <% else %>
+						<div class="item">
+					      <div class="story_carousel_img" style="background-image: url('<%=p.image.url%>')"></div>
+					    </div>	    
+				    <% end %>
+			    <% end %>
+			  </div>
+			
+			  <!-- Left and right controls -->
+			  <a class="left carousel-control" href="#myCarousel" role="button" data-slide="prev" style="border-radius: 23px;">
+			    <span class="glyphicon glyphicon-chevron-left" aria-hidden="true"></span>
+			    <span class="sr-only">Previous</span>
+			  </a>
+			  <a class="right carousel-control" href="#myCarousel" role="button" data-slide="next" style="border-radius: 23px;">
+			    <span class="glyphicon glyphicon-chevron-right" aria-hidden="true"></span>
+			    <span class="sr-only">Next</span>
+			  </a>
+			</div>
+		</div>
 	</div>
 	<div class="row">
-	  <div class="col-md-3 col-md-offset-2">內容</div>
-	  <div class="col-md-4"> <%= @story.description %></div>
+	  	<div class="col-md-2 col-md-offset-3 show-title">標題</div>
+	  	<div class="col-md-4 show-content"> <%= @story.topic %></div>
 	</div>
 	<div class="row">
-	  <div class="col-md-3 col-md-offset-2">照片集</div>
-	  <div class="col-md-4"> 
-	  		<% @story.pictures.each do |p|%>
-				<%= image_tag p.image.url , :size => "100x100"%>
-			<% end %>
-	  </div>
+	  	<div class="col-md-2 col-md-offset-3 show-title">內容</div>
+	  	<div class="col-md-4 show-content"> <%= @story.description %></div>
 	</div>
 	<div class="row">
-	  <div class="col-md-3 col-md-offset-2">影片</div>
-	  <div class="col-md-4"><%= show_video(data: @story.video_url) %>  </div>
+	  <div class="col-md-2 col-md-offset-3 show-title">影片</div>
+	  <div class="col-md-5" style="padding: 23px;"><%= show_video(data: @story.video_url) %> </div>
 	</div>
 </div>
 

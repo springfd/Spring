@@ -15,8 +15,8 @@
 	<div class="donation_content_background_image"></div>
 	<div class="row" style="position:relative; z-index:2;">
 		<div class="col-lg-offset-4 col-lg-4 col-sm-offset-2 col-sm-8 donation_content_donate_inner">
-			<div class="donation_content_donate_title">贊助不指定計畫</div>			
-			<%= form_tag('/trades/donate', class: "donation_form") do -%>
+			<p class="text-center" style="font-size: 22px; letter-spacing: 2px; color: #898989;">贊助不指定計畫</p>		
+			<%= form_tag('/main/donation', class: "donation_form") do -%>
 						<%= hidden_field_tag 'id', 1, class: 'form-control'%>
 						<div class="donation_form_title">收據</div> 
 						<div class="btn-group donation_btn_group" data-toggle="buttons">

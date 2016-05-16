@@ -7,4 +7,5 @@
   <li role="presentation" <%= active(controller: 'stories')%>><%=link_to "最新消息", stories_path %></li>
   <li role="presentation" <%= active(controller: 'links')%>><%=link_to "相關連結", links_path %></li>
   <li role="presentation" <%= active(controller: 'users')%>><%=link_to "帳號管理", users_path %></li>
+  <% if user_signed_in? %><li class = "pull-right" style="margin-right: 23px;"><%= link_to('登出', destroy_user_session_path, :method => :delete) %></li><% end %>
 </ul>
