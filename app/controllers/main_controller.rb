@@ -23,7 +23,11 @@ class MainController < ApplicationController
                     ], validation_result)
       end
       checkValidations(validations: validation_result, render: 'donation' )
+<<<<<<< HEAD
       @donation = Donation.create(name: "彼得潘", amount: amount, donate_way: GLOBAL_VAR["donate_transfer"], donate_date: today, receipt_title: params[:title], receipt_address: params[:address], phone: params[:phone])
+=======
+      @donation = Donation.create(name: "彼得潘", amount: params[:amount], donate_way: GLOBAL_VAR["donate_transfer"], donate_date: today, receipt_title: params[:title], receipt_address: params[:address], phone: params[:phone])
+>>>>>>> 34fc83302d0b056e004ae4a6eb01e69a12b7531d
       order_no = generate_order_num()
       @donation.order_num = order_no
       @donation.save!
