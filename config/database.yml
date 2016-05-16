@@ -9,7 +9,7 @@ default: &default
   encoding: utf8
   pool: 5
   username: root
-  password: spring@nctu5712121
+  password: 9712030
   socket: /var/run/mysqld/mysqld.sock
 
 development:

@@ -23,8 +23,10 @@ class MainController < ApplicationController
                     ], validation_result)
       end
       checkValidations(validations: validation_result, render: 'donation' )
-      #@donation = Donation.create(name: "彼得潘", amount: params[:amount], donate_way: GLOBAL_VAR["donate_transfer"], donate_date: today, receipt_title: params[:title], receipt_address: params[:address], phone: params[:phone])
+      @donation = Donation.create(name: "彼得潘", amount: amount, donate_way: GLOBAL_VAR["donate_transfer"], donate_date: today, receipt_title: params[:title], receipt_address: params[:address], phone: params[:phone])
       order_no = generate_order_num()
+      @donation.order_num = order_no
+      @donation.save!
       parameters = 
           '{
           "sender":"rest",
@@ -42,8 +44,8 @@ class MainController < ApplicationController
           "order_desc":"測試 3C 網站購物",
           "capt_flag":"0",
           "result_flag":"1",
-          "post_back_url":"http://140.113.151.76:10111/trades/post_back",
-          "result_url":"https://140.113.151.76:10111/trades/result",
+          "post_back_url":"http://140.113.151.76:10111/main/post_back",
+          "result_url":"https://140.113.151.76:10111/main/result",
           }}'
       res = RestClient.post("https://tspg-t.taishinbank.com.tw/tspgapi/restapi/auth.ashx" , parameters, :headers => {:content_type => 'json'})
       redirect_to JSON.parse(res)["params"]["hpp_url"]
@@ -51,16 +53,26 @@ class MainController < ApplicationController
   end   
   
   def post_back
+    if params[:ret_code] == "00" 
+      @donation = Donation.find_by order_num: params[:order_no]
+      @donation.donate = true
+      @donation.save
+    end
   end
   
   def result
-    logger.info "xxxxxxxxxxxxxxxxxxxxxxxx"
+    #if JSON.parse(res)["params"]["ret_code"] == "00" 
+    #  @donation = Donation.find_by order_no: JSON.parse(res)["params"]["order_no"]
+    #  @donation.donate = true
+    #  @donate.save
+    #end
   end
   
   private
     def generate_order_num
       order_no = "NO"; 
       8.times{ order_no  << (48 + rand(9)).chr}
+      order_no << "_"+@donation.id.to_s
       return order_no
     end
     

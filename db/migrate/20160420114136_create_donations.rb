@@ -10,6 +10,7 @@ class CreateDonations < ActiveRecord::Migration
       t.string :phone
       t.string :email
       t.string :order_num
+      t.boolean :donate, :default => false
 
       t.timestamps null: false
     end
