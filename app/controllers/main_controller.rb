@@ -23,11 +23,7 @@ class MainController < ApplicationController
                     ], validation_result)
       end
       checkValidations(validations: validation_result, render: 'donation' )
-<<<<<<< HEAD
       @donation = Donation.create(name: "彼得潘", amount: amount, donate_way: GLOBAL_VAR["donate_transfer"], donate_date: today, receipt_title: params[:title], receipt_address: params[:address], phone: params[:phone])
-=======
-      @donation = Donation.create(name: "彼得潘", amount: params[:amount], donate_way: GLOBAL_VAR["donate_transfer"], donate_date: today, receipt_title: params[:title], receipt_address: params[:address], phone: params[:phone])
->>>>>>> 34fc83302d0b056e004ae4a6eb01e69a12b7531d
       order_no = generate_order_num()
       @donation.order_num = order_no
       @donation.save!
@@ -57,10 +53,14 @@ class MainController < ApplicationController
   end   
   
   def post_back
-    if params[:ret_code] == "00" 
       @donation = Donation.find_by order_num: params[:order_no]
+    if params[:ret_code] == "00" 
       @donation.donate = true
       @donation.save
+      redirect_to "/main/about", notice: "捐款"+ @donation.amount.to_s + "成功"
+    else
+      @donation.destroy
+      redirect_to "/main/about", notice: "捐款失敗" + params[:ret_msg]
     end
   end
   

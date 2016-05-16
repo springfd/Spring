@@ -14,6 +14,14 @@
 	        <th>方式: </th>
 	        <td><%= Hash[donateWayOptions].rassoc(donation.donate_way).first %></td>
 	      </tr>
+	      <tr>
+	      	<% if donation.donate %>
+	      		<th>已捐款</th>
+	      	<% else %>
+	      		<th>尚未捐款</th>
+	      	<% end %>
+	      </tr>
+	      <tr>
 	    </tbody>
 	  </table>
 	</div>
