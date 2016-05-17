@@ -78,7 +78,7 @@ Rails.application.configure do
   config.active_record.dump_schema_after_migration = false
   
   #mail server
-  config.action_mailer.default_url_options = { host: '140.113.199.70', port: 80 }
+  config.action_mailer.default_url_options = { host: 'www.spring.org.tw', port: 80 }
   config.action_mailer.delivery_method = :smtp
   config.action_mailer.smtp_settings = {
     :address => "smtp.gmail.com",
