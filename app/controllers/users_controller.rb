@@ -1,4 +1,5 @@
 class UsersController < ApplicationController
+  before_filter :authenticate_user!
   before_action :set_user, only: [:show, :destroy]
   def index
     @users = User.all
@@ -21,7 +22,7 @@ class UsersController < ApplicationController
   
   def destroy
     if @user.destroy
-        redirect_to root_url, notice: "成功刪除使用者"
+        redirect_to "/user/index", notice: "成功刪除使用者"
     end
   end
   
