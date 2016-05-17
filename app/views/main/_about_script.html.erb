@@ -90,7 +90,16 @@
 				  .addTo(controller) 		  
 <% end %>
 
+<% for i in 1..2 %>
+	tween = new TimelineLite();
 
+	//.to(".about_plan_main_container_<%=i%>", 1, {autoAlpha: 1, ease: Linear.easeNone})	
+	tween.from(".about_plan_main_container_<%=i%>", 1, {top: "50px", ease: Linear.easeNone})	
+		 	 
+	new ScrollMagic.Scene({triggerElement: ".about_plan_main_container_<%=i%>"})
+				  .setTween(tween)
+				  .addTo(controller) 		  
+<% end %>
 					
 //============================= masonry =============================//
 	var $grid = $('.grid-plan').masonry({
