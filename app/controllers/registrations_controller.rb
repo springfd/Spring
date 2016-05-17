@@ -9,4 +9,12 @@ class RegistrationsController < Devise::RegistrationsController
     super
   end
   
+  def after_update_path_for(resource)
+    case resource
+    when :user, User
+      resource.teacher? ? another_path : "/users"
+    else
+      super
+    end
+  end
 end

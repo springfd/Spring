@@ -22,7 +22,7 @@ class UsersController < ApplicationController
   
   def destroy
     if @user.destroy
-        redirect_to "/user/index", notice: "成功刪除使用者"
+        redirect_to "/users", notice: "成功刪除使用者"
     end
   end
   
