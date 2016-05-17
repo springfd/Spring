@@ -32,12 +32,35 @@
 <div class="container">
 	<div class="row">
 		<div class="col-md-6 text-right" style="">	
+			<div style="height: 400px; 
+			background: #b3a253; 
+			width: 1px; 
+			position: absolute;
+			-ms-transform: rotate(15deg); /* IE 9 */
+    -webkit-transform: rotate(15deg); /* Chrome, Safari, Opera */
+    transform: rotate(15deg);"></div>
+    
+			
+
+			
 			<div class="about_quote text-center">
 				“ 基金會命名取自交大人重視「飲水思源」，不忘感念母校的永恆信念。 „
 			</div>
 			<%=image_tag 'about/sign_chairman.png', class: 'sign_chairman' %>						
 		</div>
 		<div class="col-md-6 about_chairman_container">		
+			
+
+		<div style="height: 500px; 
+			background: #b3a253; 
+			width: 1px; 
+			position: absolute; 
+			left: 0px;
+			-ms-transform: rotate(15deg); /* IE 9 */
+    -webkit-transform: rotate(15deg); /* Chrome, Safari, Opera */
+    transform: rotate(15deg);"></div>			
+			
+			
 		<div class="about_chairman_bg"></div>		
 		<%=image_tag 'about/chairman.jpg', class: 'about_chairman' %>
 		</div>
@@ -59,10 +82,10 @@
 </div>
 <div class="container">
 	<div class="row">
-		<div class="col-md-6 text-left" style="">	
-			<div class="about_original_title">成立起源</div>
-			<div class="about_original_content">
-			國立交通大學自1958年在新竹復校以來，先後培養了理工、管理、人文等人才達八萬餘人，分佈在產、官、學、研各領域，形成一股龐大校友力量。在各界熱心人士及校友齊心發起，並由殷之浩、施振榮、胡定華、焦佑鈞、簡明仁、葉宏清、陳榮祥、張國華、邱再興、曹興誠等人捐助下，於1994年7月23日獲經濟部核准正式成立。基金會命名取自交大人重視「飲水思源」，不忘感念母校的永恆信念。
+		<div class="col-md-6 text-left" style="">
+			<div class="about_original_1_container" style="visibility: hidden">	
+			<div class="about_original_title">成立緣起</div>
+			<div class="about_original_content">國立交通大學自1958 年在新竹復校以來，先後培養了理工、管理、人文等人才達八萬餘人，分佈在產、官、學、研各領域，形成一股龐大校友力量。在各界熱心人士及校友齊心發起，並由殷之浩、施振榮、胡定華、焦佑鈞、簡明仁、葉宏清、陳榮祥、張國華、邱再興、曹興誠等人捐助下，於1994 年7 月23 日獲經濟部核准正式成立。基金會命名取自交大人重視「飲水思源」，不忘感念母校的永恆信念。</div>
 			</div>
 		</div>
 		<div class="col-md-6 about_original_bg_1_container">		
@@ -77,10 +100,12 @@
 		<div class="about_original_bg_2"></div>		
 		<%=image_tag 'about/original_2.png', class: 'about_original_2' %>		
 		</div>
-		<div class="col-md-6 text-left" style="">		
-			<div class="about_original_title">任務與使命</div>
-			<div class="about_original_content">
-			建立平台，凝聚校友力量挹注給交大，提供母校除了公部門資源外之校友強力後盾，共同實現母校邁向「偉大大學」目標…
+		<div class="col-md-6 text-left" style="">
+			<div class="about_original_2_container" style="visibility: hidden">			
+				<div class="about_original_title">任務與使命</div>
+				<div class="about_original_content">
+				建立平台，凝聚校友力量挹注給交大，提供母校除了公部門資源外之校友強力後盾，共同實現母校邁向「偉大大學」目標…
+				</div>
 			</div>
 		</div>
 	</div>		
@@ -90,10 +115,10 @@
 		<div class="col-md-6">				
 			<div class="grid-plan">
 				<div class="grid-plan-sizer col-xs-12 col-sm-6"></div>
-				<%=render "about_card", id_id_id: 123%>
-				<%=render "about_card", id_id_id: 123%>
-				<%=render "about_card", id_id_id: 123%>
-				<%=render "about_card", id_id_id: 123%>
+				<%=render "main/temp/about_card_1", id_id_id: 1%>
+				<%=render "main/temp/about_card_2", id_id_id: 2%>
+				<%=render "main/temp/about_card_3", id_id_id: 3%>
+				<%=render "main/temp/about_card_4", id_id_id: 4%>
 			</div>	
 		</div>
 		<div class="col-md-6">	
@@ -106,10 +131,6 @@
 		</div>
 	</div>		
 </div>
-
-
-
-
 <div class="container">
 	<div class="row" style="margin-top: 100px;">
 		<div class="col-md-6">	
@@ -123,73 +144,18 @@
 		<div class="col-md-6">				
 			<div class="grid-plan">
 				<div class="grid-plan-sizer col-xs-12 col-sm-6"></div>
-				<%=render "about_card", id_id_id: 123%>
-				<%=render "about_card", id_id_id: 123%>
-				<%=render "about_card", id_id_id: 123%>
-				<%=render "about_card", id_id_id: 123%>
+				<%=render "main/temp/about_card_5", id_id_id: 5%>
+				<%=render "main/temp/about_card_6", id_id_id: 6%>
+				<%=render "main/temp/about_card_7", id_id_id: 7%>
+				<%=render "main/temp/about_card_8", id_id_id: 8%>
 			</div>	
 		</div>
 	</div>		
 </div>
-
-
-
-
-
-
-
-
-
-<script>
-/*
-	function pathPrepare ($el) {
-		var lineLength = $el[0].getTotalLength();
-		$el.css("stroke-dasharray", lineLength);
-		$el.css("stroke-dashoffset", lineLength);
-	}
-
-	var $word = $("path#word");
-	var $dot = $("path#dot");
-	var $svg_9 = $("path#svg_9") 
-
-	var $svg_16 = $("path#svg_16") 
-	var $svg_17 = $("path#svg_17") 
-	var $svg_18 = $("path#svg_18") 
-	var $svg_19 = $("path#svg_19") 				
-	var $svg_20 = $("path#svg_20") 	
-	// prepare SVG
-	pathPrepare($word);
-	pathPrepare($dot);
-	// init controller
-	var controller = new ScrollMagic.Controller();
-
-	// build tween
-	var tween = new TimelineMax()
-		.add(TweenMax.to($word, 0.9, {strokeDashoffset: 0, ease:Linear.easeNone})) // draw word for 0.9
-		.add(TweenMax.to($dot, 0.1, {strokeDashoffset: 0, ease:Linear.easeNone}))  // draw dot for 0.1
-		.add(TweenMax.to("path", 1, {stroke: "#1b4a8b", ease:Linear.easeNone}), 0);			// change color during the whole thing
-
-	// build scene
-	var scene = new ScrollMagic.Scene({triggerElement: "#trigger1", duration: 200, tweenChanges: true})
-					.setTween(tween)
-					.addIndicators() // add indicators (requires plugin)
-					.addTo(controller);
-					*/
-//============================= masonry =============================//
-	var $grid = $('.grid-plan').masonry({
-	  itemSelector: '.grid-plan-item',
-	  columnWidth: '.grid-plan-sizer',
-	  percentPosition: true
-	});
-	
-	$grid.on( 'click', '.grid-plan-item-button', function( event ) {
-	  $( event.currentTarget ).closest('.grid-plan-item').toggleClass('is-expanded');
-	  $grid.masonry();
-	});
-	
-	$grid.on( 'click', '.grid-plan-item-close', function( event ) {
-	  $( event.currentTarget ).closest('.grid-plan-item').toggleClass('is-expanded');
-	  $grid.masonry();
-	});
-					
-</script>
+<div class="container">
+	<div class="row" style="height: 30vh">
+		<div class="col-md-12">
+		</div>
+	</div>		
+</div>				
+<%= render "about_script" %>
