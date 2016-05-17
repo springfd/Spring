@@ -1,0 +1,112 @@
+<script>
+/*
+	function pathPrepare ($el) {
+		var lineLength = $el[0].getTotalLength();
+		$el.css("stroke-dasharray", lineLength);
+		$el.css("stroke-dashoffset", lineLength);
+	}
+
+	var $word = $("path#word");
+	var $dot = $("path#dot");
+	var $svg_9 = $("path#svg_9") 
+
+	var $svg_16 = $("path#svg_16") 
+	var $svg_17 = $("path#svg_17") 
+	var $svg_18 = $("path#svg_18") 
+	var $svg_19 = $("path#svg_19") 				
+	var $svg_20 = $("path#svg_20") 	
+	// prepare SVG
+	pathPrepare($word);
+	pathPrepare($dot);
+	// init controller
+	var controller = new ScrollMagic.Controller();
+
+	// build tween
+	var tween = new TimelineMax()
+		.add(TweenMax.to($word, 0.9, {strokeDashoffset: 0, ease:Linear.easeNone})) // draw word for 0.9
+		.add(TweenMax.to($dot, 0.1, {strokeDashoffset: 0, ease:Linear.easeNone}))  // draw dot for 0.1
+		.add(TweenMax.to("path", 1, {stroke: "#1b4a8b", ease:Linear.easeNone}), 0);			// change color during the whole thing
+
+	// build scene
+	var scene = new ScrollMagic.Scene({triggerElement: "#trigger1", duration: 200, tweenChanges: true})
+					.setTween(tween)
+					.addIndicators() // add indicators (requires plugin)
+					.addTo(controller);
+					*/
+					
+	// init controller
+	var controller = new ScrollMagic.Controller();
+
+	// build tween
+	var tween = new TimelineMax()
+					.to(".sign_chairman", 1, {autoAlpha: 1, ease: Linear.easeNone})					
+	var scene = new ScrollMagic.Scene({triggerElement: ".about_chairman_container", duration: 200, tweenChanges: true})
+					.setTween(tween)
+					.addTo(controller);	
+
+	var tween = new TimelineMax()
+					.to(".sign_ceo", 1, {autoAlpha: 1, ease: Linear.easeNone})					
+	var scene = new ScrollMagic.Scene({triggerElement: ".about_ceo_container", duration: 200, tweenChanges: true})
+					.setTween(tween)
+					.addTo(controller);										
+					
+										
+	var tween = new TimelineMax()
+					.to(".about_original_1_container", 1, {autoAlpha: 1, ease: Linear.easeNone})
+	var scene = new ScrollMagic.Scene({triggerElement: ".about_original_1_container", duration: 200, tweenChanges: true})
+					.setTween(tween)
+					.addTo(controller);							
+					
+	var tween = new TimelineMax()
+					.from(".about_original_1", 1, {right: "40px", ease: Linear.easeNone})
+	var scene = new ScrollMagic.Scene({triggerElement: ".about_original_1", duration: 200, tweenChanges: true})
+					.setTween(tween)
+					.addTo(controller);						
+
+	var tween = new TimelineMax()
+					.to(".about_original_2_container", 1, {autoAlpha: 1, ease: Linear.easeNone})	
+	var scene = new ScrollMagic.Scene({triggerElement: ".about_original_2_container", duration: 200, tweenChanges: true})
+					.setTween(tween)
+					.addTo(controller);							
+					
+	var tween = new TimelineMax()
+					.from(".about_original_2", 1, {left: "90px", ease: Linear.easeNone})
+	var scene = new ScrollMagic.Scene({triggerElement: ".about_original_2", duration: 200, tweenChanges: true})
+					.setTween(tween)
+					.addTo(controller);						
+
+
+
+//============================= project =============================//
+
+<% for i in 1..8 %>
+	tween = new TimelineLite();
+
+	tween.to(".plan_card_container_<%=i%>", 1, {autoAlpha: 1, ease: Linear.easeNone})	
+		 //.from(".plan_card_container_<%=i%>", 1, {right: "20px", ease: Linear.easeNone})	
+
+	new ScrollMagic.Scene({triggerElement: ".plan_card_container_<%=i%>"})
+				  .setTween(tween)
+				  .addTo(controller) 		  
+<% end %>
+
+
+					
+//============================= masonry =============================//
+	var $grid = $('.grid-plan').masonry({
+	  itemSelector: '.grid-plan-item',
+	  columnWidth: '.grid-plan-sizer',
+	  percentPosition: true
+	});
+	
+	$grid.on( 'click', '.grid-plan-item-button', function( event ) {
+	  $( event.currentTarget ).closest('.grid-plan-item').toggleClass('is-expanded');
+	  $grid.masonry();
+	});
+	
+	$grid.on( 'click', '.grid-plan-item-close', function( event ) {
+	  $( event.currentTarget ).closest('.grid-plan-item').toggleClass('is-expanded');
+	  $grid.masonry();
+	});
+					
+</script>
