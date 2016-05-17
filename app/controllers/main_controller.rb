@@ -57,10 +57,10 @@ class MainController < ApplicationController
     if params[:ret_code] == "00" 
       @donation.donate = true
       @donation.save
-      redirect_to "/main/about", notice: "捐款"+ @donation.amount.to_s + "成功"
+      redirect_to "/main/about", notice: "捐款成功<br>"+ "金額: " + @donation.amount.to_s
     else
       @donation.destroy
-      redirect_to "/main/about", notice: "捐款失敗" + params[:ret_msg]
+      redirect_to "/main/about", notice: "捐款失敗<br>" + params[:ret_msg]
     end
   end
   
