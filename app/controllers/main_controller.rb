@@ -44,8 +44,8 @@ class MainController < ApplicationController
           "order_desc":"測試 3C 網站購物",
           "capt_flag":"0",
           "result_flag":"1",
-          "post_back_url":"http://140.113.151.76:10111/main/post_back",
-          "result_url":"https://140.113.151.76:10111/main/result",
+          "post_back_url":"http://www.spring.org.tw/main/post_back",
+          "result_url":"https://www.spring.org.tw/main/result",
           }}'
       res = RestClient.post("https://tspg-t.taishinbank.com.tw/tspgapi/restapi/auth.ashx" , parameters, :headers => {:content_type => 'json'})
       redirect_to JSON.parse(res)["params"]["hpp_url"]

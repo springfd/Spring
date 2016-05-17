@@ -22,10 +22,8 @@ ActiveRecord::Schema.define(version: 20160505120127) do
     t.string   "receipt_address", limit: 255
     t.string   "phone",           limit: 255
     t.string   "email",           limit: 255
-    t.string   "order_num",       limit: 255
-    t.boolean  "donate",                      default: false
-    t.datetime "created_at",                                  null: false
-    t.datetime "updated_at",                                  null: false
+    t.datetime "created_at",                  null: false
+    t.datetime "updated_at",                  null: false
   end
 
   create_table "links", force: :cascade do |t|

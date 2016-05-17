@@ -19,3 +19,4 @@
 /public
 /config/database.yml
 /config/secrets.yml
+/app/controllers/main_controller.rb
