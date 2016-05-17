@@ -7,6 +7,7 @@ class RegistrationsController < Devise::RegistrationsController
   
   def create
     super
+    redirect_to "/user/index"
   end
   
 end
