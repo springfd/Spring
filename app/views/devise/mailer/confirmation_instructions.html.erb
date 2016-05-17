@@ -1,5 +1,5 @@
-<p>Welcome <%= @email %>!</p>
+<p><%= @email %> 您好!</p>
 
-<p>您可以透過下列連結進行密碼的設定:</p>
+<p>您可以透過下列連結進行新帳戶的密碼設定:</p>
 
 <p><%= link_to '確認我的帳戶', confirmation_url(@resource, confirmation_token: @token) %></p>
