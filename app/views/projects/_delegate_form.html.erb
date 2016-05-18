@@ -1,0 +1,238 @@
+<%= form_for @project , html: { multipart: true , id: "projectForm"} do |f| %>
+<div class="container" style="margin-top: 10mm">
+  <% if @project.errors.any? %>
+    <div id="error_explanation">
+      <h2><%= pluralize(@project.errors.count, "error") %> prohibited this project from being saved:</h2>
+
+      <ul>
+      <% @project.errors.full_messages.each do |message| %>
+        <li><%= message %></li>
+      <% end %>
+      </ul>
+    </div>
+  <% end %>
+  <%= f.hidden_field :kind, :value => GLOBAL_VAR['project_delegate']%>
+  <%= hidden_field_tag(:attachment_delete, false) %>
+  <%= hidden_field_tag(:cover_delete, false) %>
+  <div class="form-group row">
+  	<label class="col-sm-offset-1 col-sm-2 control-label">全稱</label>
+  		<div class="col-sm-6">
+  			<%= f.text_field :name, class: "form-control", placeholder: "全稱" %>
+    	</div>
+  </div>
+  <div class="form-group row">
+  	<label class="col-sm-offset-1 col-sm-2 control-label">描述</label>
+  		<div class="col-sm-6">
+  			<%= f.text_area :description, class: "form-control", placeholder: "描述" %>
+    	</div>
+  </div>
+  <div class="form-group row">
+  	<label class="col-sm-offset-1 col-sm-2 control-label">簡稱</label>
+  		<div class="col-sm-6">
+  			<%= f.text_field :abbreviation, class: "form-control", placeholder: "簡稱" %>
+    	</div>
+  </div>
+  <div class="form-group row">
+		<label class="col-sm-offset-1 col-sm-2 control-label">西元年度</label>
+		<div class="col-sm-6">
+			<%= f.text_field :year, class: "form-control", id: 'datetimepicker_year', placeholder: "西元年度" %>	
+		</div>
+	    <script type="text/javascript">
+	            $(function () {
+	                $('#datetimepicker_year').datetimepicker({
+						format : 'YYYY'		                
+	                });
+	            });
+	    </script>	
+  </div>
+  <div class="form-group row">
+  	<label class="col-sm-offset-1 col-sm-2 control-label">預算</label>
+  		<div class="col-sm-6">
+  			<%= f.number_field :budget, class: "form-control", placeholder: "預算" %>
+    	</div>
+  </div>
+  <div class="form-group row">
+  	<label class="col-sm-offset-1 col-sm-2 control-label">收入</label>
+  		<div class="col-sm-6">
+  			<%= f.number_field :income, class: "form-control", placeholder: "收入" %>
+    	</div>
+  </div>
+  <div class="form-group row">
+  	<label class="col-sm-offset-1 col-sm-2 control-label">執行狀況描述</label>
+  		<div class="col-sm-6">
+  			<%= f.text_area :exe_desc, class: "form-control", placeholder: "執行狀況描述" %>
+    	</div>
+  </div>
+  <div class="form-group row">
+  	<label class="col-sm-offset-1 col-sm-2 control-label">人事支出</label>
+  		<div class="col-sm-6">
+  			<%= f.number_field :exp_personnel, class: "form-control", placeholder: "人事支出" %>
+    	</div>
+  </div>
+  <div class="form-group row">
+  	<label class="col-sm-offset-1 col-sm-2 control-label">業務支出</label>
+  		<div class="col-sm-6">
+  			<%= f.number_field :exp_business, class: "form-control", placeholder: "業務支出" %>
+    	</div>
+  </div>
+  <div class="form-group row">
+  	<label class="col-sm-offset-1 col-sm-2 control-label">雜支支出</label>
+  		<div class="col-sm-6">
+  			<%= f.number_field :exp_mix, class: "form-control", placeholder: "雜支支出" %>
+    	</div>
+  </div>
+  <div class="form-group row">
+  	<label class="col-sm-offset-1 col-sm-2 control-label">其他支出</label>
+  		<div class="col-sm-6">
+  			<%= f.number_field :exp_other, class: "form-control", placeholder: "其他支出" %>
+    	</div>
+  </div>
+  <div class="form-group row">
+  	<label class="col-sm-offset-1 col-sm-2 control-label">計畫封面</label>
+  	<div class="col-sm-6">
+  		<%= file_field_tag "project[pj_cover]", type: :file, accept: "image/*"%>
+  	</div>
+  </div>
+  <div class="form-group row">
+  	<label class="col-sm-offset-1 col-sm-2 control-label">附件</label>
+  	<div class="col-sm-6">
+  		<%= file_field_tag "project[pj_attachment]", type: :file%>
+  	</div>
+  </div>
+  <div class="form-group row">
+		<label class="col-sm-offset-1 col-sm-2 control-label">捐款開始</label>
+		<div class="col-sm-6">
+			<%= f.text_field :donate_begin_at, class: "form-control", id: 'datetimepicker_donate_begin_at', placeholder: "日期" %>	
+		</div>
+	    <script type="text/javascript">
+	            $(function () {
+	                $('#datetimepicker_donate_begin_at').datetimepicker({
+						format : 'YYYY/MM/DD'		                
+	                });
+	                
+	                 $("#datetimepicker_donate_begin_at").on("dp.change", function(e) {
+            			$('#datetimepicker_donate_end_at').data("DateTimePicker").minDate(e.date);
+        			});
+	            });
+	    </script>	
+  </div>
+  <div class="form-group row">
+		<label class="col-sm-offset-1 col-sm-2 control-label">捐款結束</label>
+		<div class="col-sm-6">
+			<%= f.text_field :donate_end_at, class: "form-control", id: 'datetimepicker_donate_end_at', placeholder: "日期" %>	
+		</div>
+	    <script type="text/javascript">
+	            $(function () {
+	                $('#datetimepicker_donate_end_at').datetimepicker({
+						format : 'YYYY/MM/DD'		                
+	                });
+	                $("#datetimepicker_donate_end_at").on("dp.change", function(e) {
+            			$('#datetimepicker_donate_begin_at').data("DateTimePicker").maxDate(e.date);
+        			});
+	            });
+	    </script>	
+  </div>
+  <% if params[:pj_kind].to_i==GLOBAL_VAR['project_delegate']%>
+  <div class="form-group row">
+  	<label class="col-sm-offset-1 col-sm-2 control-label">臨時帳號</label>
+  		<div class="col-sm-6">
+  			<%= f.text_field :account, class: "form-control", placeholder: "臨時帳號" %>
+    	</div>
+  </div>
+  <div class="form-group row">
+  	<label class="col-sm-offset-1 col-sm-2 control-label">臨時密碼</label>
+  		<div class="col-sm-6">
+  			<%= f.password_field :encrypted_password, class: "form-control", placeholder: "臨時密碼" %>
+    	</div>
+  </div>
+  <div class="form-group row">
+		<label class="col-sm-offset-1 col-sm-2 control-label">帳號開始</label>
+		<div class="col-sm-6">
+			<%= f.text_field :account_begin, class: "form-control", id: 'datetimepicker_account_begin', placeholder: "日期" %>	
+		</div>
+	    <script type="text/javascript">
+	            $(function () {
+	                $('#datetimepicker_account_begin').datetimepicker({
+						format : 'YYYY/MM/DD',		  
+	                });
+	                $("#datetimepicker_account_begin").on("dp.change", function(e) {
+            			$('#datetimepicker_account_end').data("DateTimePicker").minDate(e.date);
+        			});
+	            });
+	    </script>	
+  </div>
+  <div class="form-group row">
+		<label class="col-sm-offset-1 col-sm-2 control-label">帳號結束</label>
+		<div class="col-sm-6">
+			<%= f.text_field :account_end, class: "form-control", id: 'datetimepicker_account_end', placeholder: "日期" %>	
+		</div>
+	    <script type="text/javascript">
+	            $(function () {
+	                $('#datetimepicker_account_end').datetimepicker({
+						format : 'YYYY/MM/DD'		                
+	                });
+	                $("#datetimepicker_account_end").on("dp.change", function(e) {
+            			$('#datetimepicker_account_begin').data("DateTimePicker").maxDate(e.date);
+        			});
+	            });
+	    </script>	
+  </div>
+  <% end %>
+  <div class="form-group ">
+		<div class="col-sm-offset-8 col-sm-10">
+			<%= f.submit '儲存',  class: "btn btn-default"  %>
+		</div>
+  </div>
+</div>
+<% end %>
+<script>
+$(document).on('ready', function() {
+	$('#project_kind').val('<%= GLOBAL_VAR['project_delegate']%>');
+	//project attachment file upload
+     $("#project_pj_attachment").fileinput({
+     	initialPreview: [
+		    <% if !@project.pj_attachment_file_name.blank? %>
+		    "<div class='file-preview-other'>" +
+    	    "<h2><i class='glyphicon glyphicon-file'></i></h2>" +
+            '<%= @project.pj_attachment_file_name%>' + "</div>"
+			<% end %>
+		             ],
+		showUpload: false,
+        browseClass: "btn btn-success",
+        browseLabel: "Browse",
+        browseIcon: "<i class=\"glyphicon glyphicon-folder-open\"></i> ",
+        removeClass: "btn btn-danger",
+        removeLabel: "Delete",
+        removeIcon: "<i class=\"glyphicon glyphicon-trash\"></i> ",
+    });
+    $('#project_pj_attachment').on('fileloaded', function(event, file, previewId, index, reader) {
+        $('#attachment_delete').val(true);
+    });
+    $('#project_pj_attachment').on('fileclear', function(event) {
+    	$('#attachment_delete').val(true);
+    });
+    
+    //project cover file upload
+     $("#project_pj_cover").fileinput({
+     	initialPreview: [
+		    <% if !@project.pj_cover_file_name.blank? %>
+        		'<%= image_tag @project.pj_cover.url, class: 'file-preview-image' %>',
+			<% end %>
+		             ],
+		showUpload: false,
+		previewFileType: "image",
+        browseClass: "btn btn-success",
+        browseLabel: "Pick Image",
+        browseIcon: "<i class=\"glyphicon glyphicon-picture\"></i> ",
+        removeClass: "btn btn-danger",
+        removeLabel: "Delete",
+        removeIcon: "<i class=\"glyphicon glyphicon-trash\"></i> ",
+    });
+    $('#project_pj_cover').on('fileloaded', function(event, file, previewId, index, reader) {
+        $('#cover_delete').val(true);
+    });
+    $('#project_pj_cover').on('fileclear', function(event) {
+    	$('#cover_delete').val(true);
+    });
+});
+</script>

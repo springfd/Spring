@@ -10,4 +10,5 @@ class Project < ActiveRecord::Base
    do_not_validate_attachment_file_type :pj_cover
    
    validates :name, :kind, :year, :donate_begin_at, :donate_end_at, :exe_desc,  presence: true
+   validates :account_begin, :account_end, presence: true , if: "kind==1" #委辦計畫
 end

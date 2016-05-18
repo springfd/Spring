@@ -6,7 +6,7 @@
 <div class="container-fluid">
 	<div class="row">	
 		<div class="col-md-offset-9">
-			<%= link_to "編輯", edit_project_path(@project, pj_kind: @project.kind), data: { no_turbolink: true }, class: 'btn btn-default edit-btn' %>
+			<%= link_to "編輯", edit_project_path(@project, :pj_kind => @project.kind), data: { no_turbolink: true }, class: 'btn btn-default edit-btn' %>
 			<%= link_to '刪除', @project, method: :delete, data: { confirm: 'Are you sure?' } , class: 'btn btn-danger delete-btn'%>
 		</div>
 	</div>
@@ -40,7 +40,7 @@
 	  <div class="col-md-3 col-md-offset-2 show-title">附件</div>
 	  <div class="col-md-4 show-content"> <% unless @project.pj_attachment_file_name.blank? %><%= link_to @project.pj_attachment_file_name, @project.pj_attachment.url(:original, false) %><% end %></div>
 	</div>
-	<% if params[:pj_kind].to_i == GLOBAL_VAR['project_delegate']%>
+	<% if @project.kind == GLOBAL_VAR['project_delegate']%>
 	<div class="row">
 	  <div class="col-md-3 col-md-offset-2 show-title">帳號開始時間</div>
 	  <div class="col-md-4"> <%= @project.account_begin.strftime("%Y-%m-%d") %></div>

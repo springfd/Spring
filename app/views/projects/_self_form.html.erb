@@ -11,7 +11,7 @@
       </ul>
     </div>
   <% end %>
-  <%= f.hidden_field :kind, :value => params[:pj_kind]%>
+  <%= f.hidden_field :kind, :value => GLOBAL_VAR['project_self']%>
   <%= hidden_field_tag(:attachment_delete, false) %>
   <%= hidden_field_tag(:cover_delete, false) %>
   <div class="form-group row">
@@ -132,52 +132,6 @@
 	            });
 	    </script>	
   </div>
-  <% if params[:pj_kind].to_i==GLOBAL_VAR['project_delegate']%>
-  <div class="form-group row">
-  	<label class="col-sm-offset-1 col-sm-2 control-label">臨時帳號</label>
-  		<div class="col-sm-6">
-  			<%= f.text_field :account, class: "form-control", placeholder: "臨時帳號" %>
-    	</div>
-  </div>
-  <div class="form-group row">
-  	<label class="col-sm-offset-1 col-sm-2 control-label">臨時密碼</label>
-  		<div class="col-sm-6">
-  			<%= f.password_field :encrypted_password, class: "form-control", placeholder: "臨時密碼" %>
-    	</div>
-  </div>
-  <div class="form-group row">
-		<label class="col-sm-offset-1 col-sm-2 control-label">帳號開始</label>
-		<div class="col-sm-6">
-			<%= f.text_field :account_begin, class: "form-control", id: 'datetimepicker_account_begin', placeholder: "日期" %>	
-		</div>
-	    <script type="text/javascript">
-	            $(function () {
-	                $('#datetimepicker_account_begin').datetimepicker({
-						format : 'YYYY/MM/DD',		  
-	                });
-	                $("#datetimepicker_account_begin").on("dp.change", function(e) {
-            			$('#datetimepicker_account_end').data("DateTimePicker").minDate(e.date);
-        			});
-	            });
-	    </script>	
-  </div>
-  <div class="form-group row">
-		<label class="col-sm-offset-1 col-sm-2 control-label">帳號結束</label>
-		<div class="col-sm-6">
-			<%= f.text_field :account_end, class: "form-control", id: 'datetimepicker_account_end', placeholder: "日期" %>	
-		</div>
-	    <script type="text/javascript">
-	            $(function () {
-	                $('#datetimepicker_account_end').datetimepicker({
-						format : 'YYYY/MM/DD'		                
-	                });
-	                $("#datetimepicker_account_end").on("dp.change", function(e) {
-            			$('#datetimepicker_account_begin').data("DateTimePicker").maxDate(e.date);
-        			});
-	            });
-	    </script>	
-  </div>
-  <% end %>
   <div class="form-group ">
 		<div class="col-sm-offset-8 col-sm-10">
 			<%= f.submit '儲存',  class: "btn btn-default"  %>
@@ -187,12 +141,13 @@
 <% end %>
 <script>
 $(document).on('ready', function() {
-	$('#project_kind').val('<%= params[:pj_kind]%>');
 	//project attachment file upload
      $("#project_pj_attachment").fileinput({
      	initialPreview: [
 		    <% if !@project.pj_attachment_file_name.blank? %>
-        		'<%= image_tag @project.pj_attachment.url, class: 'file-preview-file' %>',
+		    "<div class='file-preview-other'>" +
+    	    "<h2><i class='glyphicon glyphicon-file'></i></h2>" +
+            '<%= @project.pj_attachment_file_name%>' + "</div>"
 			<% end %>
 		             ],
 		showUpload: false,

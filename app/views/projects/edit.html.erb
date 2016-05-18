@@ -1,3 +1,9 @@
-<%= render 'form' %>
+<%if params[:pj_kind].to_i==GLOBAL_VAR['project_self']%>
+<%= render 'self_form' %>
+<%end%>
+<%if params[:pj_kind].to_i==GLOBAL_VAR['project_delegate']%>
+<%= render 'delegate_form' %>
+<%end%>
+
 
 

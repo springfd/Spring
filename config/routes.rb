@@ -1,5 +1,6 @@
 Rails.application.routes.draw do
 
+  
   resources :donations
   resources :projects
   resources :stories
@@ -17,12 +18,13 @@ Rails.application.routes.draw do
   post 'main/result'
   post 'main/post_back'
   post 'main/donation'
+  
+  
 
   get  'main/about'
   get  'main/news'
   get  'main/donation'  
   root 'main#about'
 
-  get '/fKF2erXB', :to => redirect('/fKF2erXB.html')  
   
 end

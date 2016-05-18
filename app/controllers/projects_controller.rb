@@ -52,7 +52,8 @@ class ProjectsController < ApplicationController
     record_log
     redirect_to @project, pj_kind: @project.kind, notice: '成功更新計畫'
     rescue ActiveRecord::RecordInvalid
-    render "edit", pj_kind: @project.kind
+    params[:pj_kind] = params[:project][:kind].to_i
+    render "edit"
   end
 
   # DELETE /projects/1
