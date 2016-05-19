@@ -39,10 +39,20 @@
 
 	// build tween
 	var tween = new TimelineMax()
+					//.to(".about_quote_title_1", 1, {autoAlpha: 1, ease: Linear.easeNone})
+					.to(".about_quote_1", 1, {autoAlpha: 1, ease: Linear.easeNone})
 					.to(".sign_chairman", 1, {autoAlpha: 1, ease: Linear.easeNone})					
-	var scene = new ScrollMagic.Scene({triggerElement: ".about_chairman_container", duration: 200, tweenChanges: true})
+	var scene = new ScrollMagic.Scene({triggerElement: ".about_quote_1", duration: 200, tweenChanges: true})
 					.setTween(tween)
 					.addTo(controller);	
+
+	var tween = new TimelineMax()
+					//.to(".about_quote_title_1", 1, {autoAlpha: 1, ease: Linear.easeNone})
+					.to(".about_quote_2", 1, {autoAlpha: 1, ease: Linear.easeNone})
+					.to(".sign_ceo", 1, {autoAlpha: 1, ease: Linear.easeNone})					
+	var scene = new ScrollMagic.Scene({triggerElement: ".about_quote_2", duration: 200, tweenChanges: true})
+					.setTween(tween)
+					.addTo(controller);						
 
 	var tween = new TimelineMax()
 					.to(".sign_ceo", 1, {autoAlpha: 1, ease: Linear.easeNone})					
@@ -58,7 +68,7 @@
 					.addTo(controller);							
 					
 	var tween = new TimelineMax()
-					.from(".about_original_1", 1, {right: "40px", ease: Linear.easeNone})
+					.from(".about_original_1", 1, {right: "60px", ease: Linear.easeNone})
 	var scene = new ScrollMagic.Scene({triggerElement: ".about_original_1", duration: 200, tweenChanges: true})
 					.setTween(tween)
 					.addTo(controller);						
@@ -70,7 +80,7 @@
 					.addTo(controller);							
 					
 	var tween = new TimelineMax()
-					.from(".about_original_2", 1, {left: "90px", ease: Linear.easeNone})
+					.from(".about_original_2", 1, {left: "110px", ease: Linear.easeNone})
 	var scene = new ScrollMagic.Scene({triggerElement: ".about_original_2", duration: 200, tweenChanges: true})
 					.setTween(tween)
 					.addTo(controller);						
@@ -94,7 +104,7 @@
 	tween = new TimelineLite();
 
 	//.to(".about_plan_main_container_<%=i%>", 1, {autoAlpha: 1, ease: Linear.easeNone})	
-	tween.from(".about_plan_main_container_<%=i%>", 1, {top: "50px", ease: Linear.easeNone})	
+	tween.from(".about_plan_main_container_<%=i%>", 1, {top: "30px", ease: Linear.easeNone})	
 		 	 
 	new ScrollMagic.Scene({triggerElement: ".about_plan_main_container_<%=i%>"})
 				  .setTween(tween)

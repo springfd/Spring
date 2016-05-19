@@ -112,6 +112,7 @@
 .donation_summary{
 	width: 650px;
 	margin: 0 auto;
+	margin-top: 25vh;	
 	margin-bottom: 60px;
 	font-size: 145px;
 }
@@ -181,15 +182,12 @@
 	right:0;
 	top:0;
 	bottom:0;
-	background: url('<%= asset_path 'campus.jpg' %>');
+	background: url('<%= asset_path 'forest.jpg' %>');
 	background-size:cover;
 	background-position: center center;	
 	z-index:1;
-	-webkit-filter: blur(10px);
-    -moz-filter: blur(10px);
-    -o-filter: blur(10px);
-    -ms-filter: blur(10px);
-    filter: blur(10px);	
+	-webkit-filter: grayscale(.8);
+    filter: grayscale(.8);	
 }
 /*
 .content{
@@ -521,12 +519,12 @@
   letter-spacing: 2px;
   color: #ffffff !important;
   border: none;
-  background: #02a0eb;	
+  background: #C070A3;	
   padding: 10px 30px 7px !important; 
   border-radius: 5px !important;
-  border-bottom: 3px solid #0279b1; 
+  border-bottom: 3px solid #a0467f; 
 }
 .no-touch .donation_project_button:hover{
   color: #ffffff;  
-  background: #0279b1 !important;   
+  background: #a0467f !important;   
 }

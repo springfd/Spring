@@ -1,10 +1,12 @@
 <div class="container-fluid">
 	<div class="row">
 		<div class="col-lg-12">		
-		<div class="donation_year text-center"><span><%= Time.zone.now.year-1 %>年</span><span style="margin-left: 18px; margin-right: 18px;">|</span><span><%= Time.zone.now.year%>年</span></div>	
+		<!--
+			<div class="donation_year text-center"><span><%= Time.zone.now.year-1 %>年</span><span style="margin-left: 18px; margin-right: 18px;">|</span><span><%= Time.zone.now.year%>年</span></div>	
+		-->
 		<div class="donation_summary text-center">
 			<div class="donation_summary_inner">
-				<div class="donation_summary_number"></div> <div class="donation_summary_en">NTW</div>	
+				<div class="donation_summary_number"></div> <div class="donation_summary_en">NT</div>	
 			</div>
 			<div class="donation_range text-right">累積期間 2016/01/01~2016/04/13</div>	
 		</div>
@@ -73,11 +75,11 @@
 <div class="grid">
 	<% Project.where('id <> 1').all.each do |project|%>
 		<%=render "donation_card", project: project%>	
-	<% end %>	 	
+	<% end %>	  		 			
 </div>	
 <div class="container-fluid">
 	<div class="row" style="margin-bottom: 40px; margin-top: 40px;">
-		<div class="col-lg-offset-3 col-lg-6 text-center">	
+		<div class="col-lg-offset-4 col-lg-4 text-center">	
 		<button type="button" class="btn btn-block donation_project_button" data-toggle="modal" data-target="#myModal">查詢委辦計畫</button>
 		</div>
 	</div>		
