@@ -1,8 +1,13 @@
 <div class="grid-plan-item col-xs-12 col-md-6 plan_card_container_<%= id_id_id %>">
-	<div class="grid-plan-item-content">
+	<div class="grid-plan-item-content" style="	
+	background: url('<%= asset_path 'about/plan_2.jpg' %>');
+	background-size:cover;
+	background-position: center center;	
+ -webkit-filter: grayscale(.7);
+  filter: grayscale(.7);">
 		<label class="grid-plan-item-close" id="<%= id_id_id %>"><span aria-hidden="true">&times;</span></label>
-		<div class="plan_card_small text-center grid-plan-item-button" id="<%= id_id_id %>">	
-			<div class="plan_card_small_title">協助學校研究中心</div>
+		<div class="plan_card_small grid-plan-item-button" id="<%= id_id_id %>">	
+			<span class="plan_card_small_title" style="color: #ffffff; background-color:rgba(166, 166, 166, 0.6); padding: 10px;">協助學校研究中心</span>
 		</div> 
 		<div class="plan_card_enlarge">	
 			<div class="plan_card_enlarge_title">協助學校研究中心</div>
