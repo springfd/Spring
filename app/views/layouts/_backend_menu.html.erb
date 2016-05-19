@@ -1,11 +1,23 @@
-<ul class="nav nav-pills backmenubar">
-  <li role="presentation" <%= active(controller: 'projects', pj_kind: GLOBAL_VAR['project_self'])%>>
-  		<%=link_to "自辦計畫",{controller: '/projects', pj_kind: GLOBAL_VAR['project_self']} %>
-  </li>
-  <li role="presentation" <%= active(controller: 'projects', pj_kind: GLOBAL_VAR['project_delegate'])%>><%=link_to "委辦計畫",{controller: '/projects', action: 'index', pj_kind: GLOBAL_VAR['project_delegate']} %></li>
-  <li role="presentation" <%= active(controller: 'donations')%>><%=link_to "捐款", donations_path %></li>
-  <li role="presentation" <%= active(controller: 'stories')%>><%=link_to "最新消息", stories_path %></li>
-  <li role="presentation" <%= active(controller: 'links')%>><%=link_to "相關連結", links_path %></li>
-  <li role="presentation" <%= active(controller: 'users')%>><%=link_to "帳號管理", users_path %></li>
-  <% if user_signed_in? %><li class = "pull-right" style="margin-right: 23px;"><%= link_to('登出', destroy_user_session_path, :method => :delete) %></li><% end %>
-</ul>
+<nav class="navbar navbar-default" style="padding: 0px !important; min-height: 45px !important;">
+	<div class="navbar-header">
+	      <button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#bs-example-navbar-collapse-1" aria-expanded="false">
+	        <span class="sr-only">Toggle navigation</span>
+	        <span class="icon-bar"></span>
+	        <span class="icon-bar"></span>
+	        <span class="icon-bar"></span>
+	      </button>
+	    </div>
+	<div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1" style="padding: 0px;!important">
+		<ul class="nav navbar-nav backmenubar">
+		  <li role="presentation" <%= active(controller: 'projects', pj_kind: GLOBAL_VAR['project_self'])%>>
+		  		<%=link_to "自辦計畫",{controller: '/projects', pj_kind: GLOBAL_VAR['project_self']} %>
+		  </li>
+		  <li role="presentation" <%= active(controller: 'projects', pj_kind: GLOBAL_VAR['project_delegate'])%>><%=link_to "委辦計畫",{controller: '/projects', action: 'index', pj_kind: GLOBAL_VAR['project_delegate']} %></li>
+		  <li role="presentation" <%= active(controller: 'donations')%>><%=link_to "捐款", donations_path %></li>
+		  <li role="presentation" <%= active(controller: 'stories')%>><%=link_to "最新消息", stories_path %></li>
+		  <li role="presentation" <%= active(controller: 'links')%>><%=link_to "相關連結", links_path %></li>
+		  <li role="presentation" <%= active(controller: 'users')%>><%=link_to "帳號管理", users_path %></li>
+		  <% if user_signed_in? %><li class = "navbar-right" style="margin-right: 23px;"><%= link_to('登出', destroy_user_session_path, :method => :delete) %></li><% end %>
+		</ul>
+	</div><!-- /.navbar-collapse -->
+</nav>

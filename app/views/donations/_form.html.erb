@@ -2,8 +2,6 @@
 	<div class="container" style="margin-top: 10mm">
 	   <% if @donation.errors.any? %>
 	    <div id="error_explanation">
-	      <h2><%= pluralize(@donation.errors.count, "error") %> prohibited this donation from being saved:</h2>
-	
 	      <ul>
 	      <% @donation.errors.full_messages.each do |message| %>
 	        <li><%= message %></li>

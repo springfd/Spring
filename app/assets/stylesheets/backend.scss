@@ -43,6 +43,33 @@
   color: #878787;
 }
 
+.borderless td, .borderless th {
+    border: none;
+}
+
+.donation_show_table{
+  background-color: #fff;
+  border: none;
+  width: 64%;
+  margin: 23px auto;
+}
+
+.donation_show_table td.dt-title{
+  font-size: 16px;
+  padding: auto 15px !important;
+  color: #000;
+  background: #f5f5f5;
+  border: none;
+}
+
+.donation_show_table td.dt-content{
+  font-size: 14px;
+  padding: auto 8px !important;
+  color: #000;
+  background: #fff;
+  border:none;
+}
+
 //story design
 
 .story_image_container{
@@ -159,6 +186,25 @@
 }
 
 .btn.save-btn:hover,.btn.save-btn:active ,.btn.save-btn:focus {
+    /* here copy default .btn class styles */
+    background-color : #33CCCC;
+    border: 0px; 
+    box-shadow: 1px 1px 5px #157879;
+    /* or something like that */
+}
+
+.print-btn{
+  padding: 5px;
+  width: 90px !important;
+  text-align: center;
+  font-size: 14px;
+  background-color: #f5f5f5;
+  color: #000;
+  border-radius: 38px;
+  border: 0px;
+}
+
+.btn.print-btn:hover,.btn.print-btn:active ,.btn.print-btn:focus {
     /* here copy default .btn class styles */
     background-color : #33CCCC;
     border: 0px; 

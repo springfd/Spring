@@ -5,57 +5,47 @@
 </div>
 <div class="container-fluid">
 	<div class="row">	
-		<div class="col-md-offset-7">
+		<div class="col-md-offset-9">
 			<%= link_to "編輯", edit_donation_path(@donation), class: 'btn btn-default' %>
-			<%= link_to 'Destroy', @donation, method: :delete, data: { confirm: 'Are you sure?' } , class: 'btn btn-danger'%>
+			<%= link_to '刪除', @donation, method: :delete, data: { confirm: 'Are you sure?' } , class: 'btn btn-danger'%>
 		</div>
 	</div>
 </div>
 <div class="container-fluid">
-	<div class="row">
-	  <div class="col-md-3 col-md-offset-2">捐款人: </div>
-	  <div class="col-md-4"> <%= @donation.name %></div>
-	</div>
-	<div class="row">
-	  <div class="col-md-3 col-md-offset-2">捐款編號: </div>
-	  <div class="col-md-4"> <%= @donation.order_num %></div>
-	</div>
-	<div class="row">
-	  <div class="col-md-3 col-md-offset-2">是否捐贈: </div>
-	  <div class="col-md-4"> <%= @donation.donate %></div>
-	</div>
-	<div class="row">
-	  <div class="col-md-3 col-md-offset-2">金額: </div>
-	  <div class="col-md-4"> <%= @donation.amount %></div>
-	</div>
-	<div class="row">
-	  <div class="col-md-3 col-md-offset-2">方式: </div>
-	  <div class="col-md-4"> 
-	  	<%= Hash[donateWayOptions].rassoc(@donation.donate_way).first %> 
-	  	</div>
-	</div>
-	<div class="row">
-	  <div class="col-md-3 col-md-offset-2">日期</div>
-	  <div class="col-md-4"> <%= @donation.donate_date.strftime("%Y-%m-%d") %></div>
-	</div>
-	<div class="row">
-	  <div class="col-md-3 col-md-offset-2">收據抬頭</div>
-	  <div class="col-md-4"> <%= @donation.receipt_title %></div>
-	</div>
-	<div class="row">
-	  <div class="col-md-3 col-md-offset-2">收據地址</div>
-	  <div class="col-md-4"> <%= @donation.receipt_address %></div>
-	</div>
-	<div class="row">
-	  <div class="col-md-3 col-md-offset-2">電話</div>
-	  <div class="col-md-4"> <%= @donation.phone %></div>
-	</div>
-	<div class="row">
-	  <div class="col-md-3 col-md-offset-2">Email</div>
-	  <div class="col-md-4"> <%= @donation.email %></div>
-	</div>
-</div>
-<%= link_to "PRINT", "#", onclick:"printData();", class: 'btn btn-primary col-md-offset-2' %>
+	<table class="table donation_show_table">
+	    <tbody>
+	      <tr>
+	        <td colspan="8" class="dt-content" style="background: #33cccc; font-size: 16px;"><%= @donation.name %></td>
+	      </tr>
+	      <tr>
+	        <td class="dt-title">編號</td>
+	        <td colspan="3" class="dt-content"><%= @donation.order_num %></td>
+	        <td colspan="2" class="dt-title">日期</td>
+	        <td colspan="2" class="dt-content"><%= @donation.donate_date.strftime("%Y-%m-%d") %></td>
+	      </tr>
+	      <tr>
+	        <td class="dt-title">金額</td>
+	        <td colspan="3" class="dt-content"><%= @donation.amount %></td>
+	        <td colspan="2" class="dt-title">方式</td>
+	        <td colspan="2" class="dt-content"><%= Hash[donateWayOptions].rassoc(@donation.donate_way).first %></td>
+	      </tr>
+	      <tr>
+	        <td class="dt-title">抬頭</td>
+	        <td colspan="2" class="dt-content"><%= @donation.receipt_title %></td>
+	        <td colspan="1" class="dt-title">電話</td>
+	        <td colspan="4" class="dt-content"><%= @donation.phone %></td>
+	      </tr>
+	      <tr>
+	        <td class="dt-title">地址</td>
+	        <td colspan="7" class="dt-content"><%= @donation.receipt_address %></td>
+	      </tr>
+	      <tr>
+	        <td colspan="8" class="dt-content" style="padding:4px 16px!important;"><%= link_to "列印收據", "#", onclick:"printData();", class: 'btn btn-info print-btn pull-right' %></td>
+	      </tr>
+	    </tbody>
+	</table>
+s</div>
+
 <script>
 function printData() {    
                var data = document.getElementById('printTable').innerHTML;
