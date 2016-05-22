@@ -4,14 +4,6 @@
   </div>
 </div>
 <div class="container-fluid">
-	<div class="row">	
-		<div class="col-md-offset-9">
-  			<%= link_to "重寄註冊信", new_confirmation_path(:user) , class: 'btn btn-default'%>
-			<%= link_to '刪除', @user, method: :delete, data: { confirm: 'Are you sure?' } , class: 'btn btn-danger'%>
-		</div>
-	</div>
-</div>
-<div class="container-fluid">
 	<div class="row">
 	  <div class="col-md-3 col-md-offset-2 show-title">Email</div>
 	  <div class="col-md-4 show-content"> <%= @user.email %></div>

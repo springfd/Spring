@@ -6,16 +6,16 @@
 <div class="container-fluid">
 	<div class="row">	
 		<div class="col-md-offset-9">
-			<%= link_to "編輯", edit_donation_path(@donation), class: 'btn btn-default' %>
-			<%= link_to '刪除', @donation, method: :delete, data: { confirm: 'Are you sure?' } , class: 'btn btn-danger'%>
+			<%= link_to "編輯", edit_donation_path(@donation), class: 'btn btn-default edit-btn' %>
+			<%= link_to '刪除', @donation, method: :delete, data: { confirm: 'Are you sure?' } , class: 'btn btn-danger delete-btn'%>
 		</div>
 	</div>
 </div>
 <div class="container-fluid">
 	<table class="table donation_show_table">
-	    <tbody>
+	    <tbody style="border-left: solid 13px #33CCCC!important;">
 	      <tr>
-	        <td colspan="8" class="dt-content" style="background: #33cccc; font-size: 16px;"><%= @donation.name %></td>
+	        <td colspan="8" class="dt-content" style="font-weight: 900!important; background: #e3e3e3; font-size: 16px;"><%= @donation.name %></td>
 	      </tr>
 	      <tr>
 	        <td class="dt-title">編號</td>
@@ -25,7 +25,7 @@
 	      </tr>
 	      <tr>
 	        <td class="dt-title">金額</td>
-	        <td colspan="3" class="dt-content"><%= @donation.amount %></td>
+	        <td colspan="3" class="dt-content"><%= @donation.amount %>元整</td>
 	        <td colspan="2" class="dt-title">方式</td>
 	        <td colspan="2" class="dt-content"><%= Hash[donateWayOptions].rassoc(@donation.donate_way).first %></td>
 	      </tr>
@@ -44,7 +44,7 @@
 	      </tr>
 	    </tbody>
 	</table>
-s</div>
+</div>
 
 <script>
 function printData() {    

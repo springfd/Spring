@@ -47,7 +47,7 @@ Rails.application.configure do
     :domain => "gmail.com",
     :authentication => "plain",
     :user_name => "nctusiyuan",
-    :password => "nctusiyuan2016",
+    :password => ENV["SPRING_EMAIL_PASSWORD"],
     :enable_starttls_auto => true
  }
 end
