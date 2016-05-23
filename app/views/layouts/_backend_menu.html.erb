@@ -6,9 +6,11 @@
 	        <span class="icon-bar"></span>
 	        <span class="icon-bar"></span>
 	      </button>
+	      <a class="navbar-brand"><%= image_tag("logo_favicon.png")%></a>
 	    </div>
-	<div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1" style="padding: 0px;!important">
-		<ul class="nav navbar-nav backmenubar">
+	<div class="collapse navbar-collapse backmenubar" id="bs-example-navbar-collapse-1" style="padding: 0px;!important">
+		<ul class="nav navbar-nav">
+		  <li>
 		  <li role="presentation" <%= active(controller: 'projects', pj_kind: GLOBAL_VAR['project_self'])%>>
 		  		<%=link_to "自辦計畫",{controller: '/projects', pj_kind: GLOBAL_VAR['project_self']} %>
 		  </li>

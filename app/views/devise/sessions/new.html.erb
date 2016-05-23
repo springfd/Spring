@@ -4,25 +4,27 @@
 		  <div class="panel-body login-body">
 		  	　<div class="form-group ">
 			    <label class="col-md-5 control-label">Email</label>
-			    <%= f.email_field :email, autofocus: true , class: "col-md-7" %>
+			    <%= f.email_field :email, autofocus: true , class: "col-md-7 form-control" %>
 			  </div>
 			
 			  <div class="form-group">
 			    <label class="col-md-5 control-label">Password</label>
-			    <%= f.password_field :password, autocomplete: "off" , class: "col-md-7"%>
+			    <%= f.password_field :password, autocomplete: "off" , class: "col-md-7 form-control"%>
 			  </div>
 			
 			  <% if devise_mapping.rememberable? -%>
 			    <div class="form-group">
-			      <%= f.check_box :remember_me %>
-			      <label class="col-md-4 control-label">記得我</label>
+			      <%= f.check_box :remember_me , class: "col-md-1"%>
+			      <label class="col-md-3 control-label">記得我</label>
 			    </div>
 			  <% end -%>
-			  <%- if devise_mapping.recoverable? && controller_name != 'passwords' && controller_name != 'registrations' %>
-				<%= link_to "忘記密碼?", new_password_path(resource_name) , class: "col-md-offset-4 col-md-4" , style: "color: #33CCCC; padding-top: 5px;"%>
-			  <% end -%>
-			  <div class="actions">
-			    <%= f.submit "登入" , class: " col-md-3 btn btn-info save-btn"%>
+			  <div class="row">
+				  <%- if devise_mapping.recoverable? && controller_name != 'passwords' && controller_name != 'registrations' %>
+					<%= link_to "忘記密碼?", new_password_path(resource_name) , class: "col-md-offset-4 col-md-4" , style: "color: #33CCCC; padding-top: 5px;"%>
+				  <% end -%>
+				  <div class="actions" style="display: inline;">
+				    <%= f.submit "登入" , class: " col-md-3 btn btn-info save-btn"%>
+				  </div>
 			  </div>
 		  </div>
 	</div>
