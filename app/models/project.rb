@@ -1,5 +1,5 @@
 class Project < ActiveRecord::Base
-   has_many :donations
+   has_many :donations, :dependent => :destroy
    has_attached_file :pj_attachment,
       :url  => "/assets/pj_attachments/:id/:style/:basename.:extension"
       #:path => ":rails_root/public/assets/pj_attachments/:id/:style/:basename.:extension"
