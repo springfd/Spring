@@ -63,6 +63,14 @@
     color: #777777;	
 	margin-bottom: 40px;    
 }
+.about_more{
+	font-size: 70%;
+    cursor: pointer;
+}
+.no-touch .about_more:hover{
+	color: #000000;
+}
+
 .about_chairman_container{
 	position: relative; 
 	height: 600px;
@@ -78,9 +86,9 @@
 }
 .about_chairman_bg_2{
 	position: absolute;
-	right: 0px;
+	right: 5px;
 	height: 400px;	
-	width: 320px;
+	width: 310px;
 	background-color: #b3a253;
 	-webkit-clip-path: polygon(25% 0%, 100% 0%, 75% 100%, 0% 100%);
 	clip-path: polygon(25% 0%, 100% 0%, 75% 100%, 0% 100%);
@@ -359,14 +367,19 @@
 .plan_card_small_title{
   display: inline-block;
   vertical-align: middle;
-  line-height: normal;     
+  line-height: normal;
+  padding: 10px;
 }
-
-.no-touch .plan_card_small:hover{
-	font-size: 24px; 
+.plan_card_small a{
+  color: #ffffff; 
+  -webkit-transition: all .3s;
+  -moz-transition: all .3s;
+  transition: all .3s;   
 }
-
-
+.no-touch .plan_card_small a:hover, .no-touch .plan_card_small a:focus{
+  text-decoration: none;
+  font-size: 22px;   
+}
 .plan_card_enlarge_title{
   font-size: 19px;	
 }

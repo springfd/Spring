@@ -8,8 +8,8 @@
 }
 
 .navbar .divider-vertical {
-    height: 16px;
-    margin: 16px 20px;
+    height: 13px;
+    margin: 18px 20px;
     border-right: 1px solid #777;
     //border-left: 1px solid #777;
     -ms-transform: rotate(20deg); /* IE 9 */
@@ -30,6 +30,9 @@
 }
 .navbar-brand .logo_text_only{
   display: none !important;
+}
+.navbar-nav{
+  letter-spacing: 3px;
 }
 
 @media (max-width: 320px) {

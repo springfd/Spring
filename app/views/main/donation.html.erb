@@ -1,4 +1,5 @@
 <div class="container-fluid">
+	<!--<div class="donation_content_background_image"></div>-->
 	<div class="row">
 		<div class="col-lg-12">		
 		<!--
@@ -8,16 +9,20 @@
 			<div class="donation_summary_inner">
 				<div class="donation_summary_number"></div> <div class="donation_summary_en">NT</div>	
 			</div>
-			<div class="donation_range text-right">累積期間 2016/01/01~2016/04/13</div>	
+			<div class="donation_range text-right">累積期間 <%=Time.zone.now().year%>/01/01~<%=Time.zone.now().strftime("%Y/%m/%d")  %></div>	
+		</div>
+		<div class="text-center" style="margin-bottom: 15vh;">
+			<a href="#donation_content_donate" class="donation_top_button">不指定贊助</a>
+			<a href="#donation-no-span" class="donation_top_button">指定贊助</a>
 		</div>
 		</div>
-	</div>	
+	</div>		
 </div>	
-<div class="container-fluid donation_content_donate">
+<div class="container-fluid donation_content_donate" id="donation_content_donate">
 	<div class="donation_content_background_image"></div>
 	<div class="row" style="position:relative; z-index:2;">
-		<div class="col-lg-offset-4 col-lg-4 col-sm-offset-2 col-sm-8 donation_content_donate_inner">
-			<p class="text-center" style="font-size: 22px; letter-spacing: 2px; color: #898989;">贊助不指定計畫</p>		
+		<div class="col-lg-offset-4 col-lg-4 col-sm-offset-2 col-sm-8 donation_content_donate_inner" id="donation_content_donate_inner">
+			<p class="text-center" style="font-size: 22px; letter-spacing: 2px; color: #898989;">贊助<span style="color: #02a0eb;">不指定計畫</span></p>		
 			<%= form_tag('/main/donation', class: "donation_form") do -%>
 						<%= hidden_field_tag 'id', 1, class: 'form-control'%>
 						<div class="donation_form_title">收據</div> 
@@ -68,11 +73,15 @@
 						  	<%= text_field_tag 'amount_others', nil, class: 'form-control amount_others', placeholder: '或輸入您想捐款的金額'%>
 							<%= submit_tag '捐款', class: "btn donation_button" %>
 						</div>  
-			<% end -%>	
+			<% end -%>
+			<p style="color: #888888">*款項將直接用於本會所執行，但經費仍不足之各項計畫。</p>	
 		</div>
 	</div>	
 </div>	
-<div class="grid">
+<div class="container">
+<h2 class="donation-no-span" id="donation-no-span">贊助<span style="color: #02a0eb;">指定計畫<span></h2>
+</div>
+<div class="grid" id="grid_container">
 	<% Project.where('id <> 1').all.each do |project|%>
 		<%=render "donation_card", project: project%>	
 	<% end %>	  		 			
@@ -119,6 +128,33 @@
 
 
 <script>
+$(document).ready(function(){		
+	var link = document.URL.split('#')[1];	
+	if ( link != 'grid_container' && link != 'donation_content_donate_inner' && link) {		
+		$('#'+link).click()
+		var $target = $('#'+link+'_title');	
+		$('html, body').stop().animate({
+			'scrollTop': $target.offset().top + 200
+			}, 900, 'swing', function () {
+		});
+		
+	}
+
+});
+
+
+//============================= count =============================//
+
+$('a[href^="#"]').on('click',function (e) {
+	e.preventDefault();
+	var target = this.hash;
+	var $target = $(target);	
+	$('html, body').stop().animate({
+		'scrollTop': $target.offset().top
+		}, 900, 'swing', function () {
+			//window.location.hash = target;
+	});
+});
 
 //============================= count =============================//
 
@@ -131,13 +167,16 @@ tween.to(foo, 2, { bar: 2888321, onUpdate: function() {
 	 .to(".donation_summary_en", 1, {autoAlpha: 1, ease: Linear.easeNone})
 	 //.to(".donation_year", 1, {autoAlpha: 1, ease: Linear.easeNone})
 	 .to(".donation_range", 1, {autoAlpha: 1, ease: Linear.easeNone})
-	 .to(".donation_content_donate_inner", 1, {autoAlpha: 1, ease: Linear.easeNone})
-	 .from(".donation_content_donate_inner", 1,{bottom: "40px", ease: Linear.easeNone})
-/*
-new ScrollMagic.Scene({triggerElement: ".menu"})
-	.setTween(tween)
-	.addTo(controller) 
-*/
+	 //.to(".donation_content_donate_inner", 1, {autoAlpha: 1, ease: Linear.easeNone})
+	 //.from(".donation_content_donate_inner", 1,{bottom: "40px", ease: Linear.easeNone})
+
+
+	var tween = new TimelineMax()
+				.to(".donation_content_donate_inner", 1, {autoAlpha: 1, ease: Linear.easeNone})
+	 			.from(".donation_content_donate_inner", 1,{bottom: "20px", ease: Linear.easeNone})				
+	var scene = new ScrollMagic.Scene({triggerElement: ".donation_content_donate_inner", tweenChanges: true})
+					.setTween(tween)
+					.addTo(controller);	
 //============================= masonry =============================//
 var $grid = $('.grid').masonry({
   columnWidth: '.grid-item',
@@ -148,12 +187,13 @@ var $grid = $('.grid').masonry({
 $grid.on( 'click', '.grid-item-button', function( event ) {
   $( event.currentTarget ).closest('.grid-item').toggleClass('is-expanded');
   $grid.masonry();
-  
-  $("#doughnutChart_"+event.currentTarget.id).drawDoughnutChart([
-    { title: "人事", value: parseInt($('#doughnutChart_'+event.currentTarget.id).attr('data-exp_personnel')),  color: "#02a0eb" },
-    { title: "雜支", value: parseInt($('#doughnutChart_'+event.currentTarget.id).attr('data-exp_business')),   color: "#c070a3" },
-    { title: "業務", value: parseInt($('#doughnutChart_'+event.currentTarget.id).attr('data-exp_mix')),   color: "#f4a301" },
-    { title: "其他", value: parseInt($('#doughnutChart_'+event.currentTarget.id).attr('data-exp_other')),   color: "#b3a253" }
+  id = $(event.currentTarget).attr('data-id')
+
+  $("#doughnutChart_"+id).drawDoughnutChart([
+    { title: "人事", value: parseInt($('#doughnutChart_'+id).attr('data-exp_personnel')),  color: "#02a0eb" },
+    { title: "雜支", value: parseInt($('#doughnutChart_'+id).attr('data-exp_business')),   color: "#c070a3" },
+    { title: "業務", value: parseInt($('#doughnutChart_'+id).attr('data-exp_mix')),   color: "#f4a301" },
+    { title: "其他", value: parseInt($('#doughnutChart_'+id).attr('data-exp_other')),   color: "#b3a253" }
   ], {tipClass: "doughnutTip "+"doughnutTip_"+event.currentTarget.id});  
   
 });

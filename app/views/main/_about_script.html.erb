@@ -1,4 +1,15 @@
 <script>
+//============================= more =============================//
+	$('#chair_more_content').hide()
+	$('#chair_more').click(function() {
+  		$('#chair_more_content_less').hide()		
+  		$('#chair_more_content').show('slow')
+	});
+	$('#ceo_more_content').hide()
+	$('#ceo_more').click(function() {
+  		$('#ceo_more_content_less').hide()		
+  		$('#ceo_more_content').show('slow')
+	});	
 /*
 	function pathPrepare ($el) {
 		var lineLength = $el[0].getTotalLength();
@@ -118,6 +129,7 @@
 	  percentPosition: true
 	});
 	
+	/*
 	$grid.on( 'click', '.grid-plan-item-button', function( event ) {
 	  $( event.currentTarget ).closest('.grid-plan-item').toggleClass('is-expanded');
 	  $grid.masonry();
@@ -127,5 +139,5 @@
 	  $( event.currentTarget ).closest('.grid-plan-item').toggleClass('is-expanded');
 	  $grid.masonry();
 	});
-					
+	*/				
 </script>

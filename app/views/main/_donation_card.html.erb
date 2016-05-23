@@ -7,7 +7,7 @@
 					<div class="donation_card_small_img" style="background-image: url('<%= project.pj_cover.url%>')"></div>	
 					<div class="donation_card_small_title"><%= project.name %></div>
 					<div class="donation_card_small_content"><%= truncate( project.description, length: 60)%></div>
-					<button type="button" class="btn btn-block grid-item-button" id="<%= project.id %>">點擊贊助</button>		
+					<button type="button" class="btn btn-block grid-item-button" id="grid-item-button_<%= project.id %>" data-id="<%= project.id %>">點擊贊助</button>		
 				</div>			
 			</div>	
 		</div>  
@@ -15,7 +15,7 @@
 			<div class="row" style="">
 				<div class="col-sm-6">	
 					<div class="donation_card_enlarge_img" style="background-image: url('<%= project.pj_cover.url %>');"></div>	
-					<div class="donation_card_enlarge_title"><%= project.name %></div>
+					<div class="donation_card_enlarge_title" id="grid-item-button_<%= project.id %>_title"><%= project.name %></div>
 					<div class="donation_card_enlarge_content"><%= project.description%></div>		
 					<table class="table donation_card_enlarge_table">
 					    <tbody>
@@ -104,6 +104,7 @@
 					<% end -%>					
 				</div>				
 			</div>	
+<!--
 			<div class="row donation_sponsor" style="">
 				<div class="col-sm-10 col-sm-offset-1">	
 					<div class="text-center">捐款名冊 <span class="glyphicon glyphicon-triangle-bottom" id="<%= project.id%>"></span></div>
@@ -141,6 +142,7 @@
 					</div>											
 				</div>
 			</div>	
+-->
 		</div> 		
 	</div>
 </div>
