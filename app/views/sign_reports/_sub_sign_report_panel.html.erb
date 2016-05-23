@@ -1,0 +1,23 @@
+	<div class="col-md-3">
+	  <table class="table">
+	  	<tbody>
+	      <tr>
+	        <td>標題: </td>
+	        <td><%= sign_report.title %></td>
+	      </tr>
+	      <tr>
+	        <td>年度: </td>
+	        <td><%= sign_report.year.strftime("%Y") %></td>
+	      </tr>
+	      <tr>
+	      	<td colspan="2">
+	      		<% unless sign_report.sr_attachment_file_name.blank? %><%= link_to sign_report.sr_attachment_file_name, sign_report.sr_attachment.url(:original, false) %><% end %>
+	      	</td>
+	      </tr>
+	      <tr>
+	      	<td><%= link_to "編輯", edit_sign_report_path(sign_report), data: { no_turbolink: true }, class: 'btn btn-default edit-btn' %></td>
+		    <td><%= link_to '刪除', sign_report, method: :delete, data: { confirm: 'Are you sure?' } , class: 'btn btn-danger delete-btn'%></td>
+	      </tr>
+	    </tbody>
+	  </table>
+	</div>

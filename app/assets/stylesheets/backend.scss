@@ -5,6 +5,7 @@
 }
 
 .show-content{
+  min-height: 1px;
   padding-top: 3px;
   margin-top: 10px;
   font-size: 18px;
@@ -219,9 +220,19 @@ span.glyphicon {
     /* or something like that */
 }
 
+// links design
+
 .link-td{
   line-height: 34px; 
   font-size: 16px; 
+  white-space: nowrap; 
+  max-width: 120px;
+  overflow: hidden;
+  text-overflow: ellipsis;
+}
+
+// project design
+.project-panel-title{
   white-space: nowrap; 
   max-width: 120px;
   overflow: hidden;

@@ -6,7 +6,7 @@
 	        <span class="icon-bar"></span>
 	        <span class="icon-bar"></span>
 	      </button>
-	      <a class="navbar-brand"><%= image_tag("logo_favicon.png")%></a>
+	      <a class="navbar-brand" href="http://www.spring.org.tw"><%= image_tag("logo_favicon.png")%></a>
 	    </div>
 	<div class="collapse navbar-collapse backmenubar" id="bs-example-navbar-collapse-1" style="padding: 0px;!important">
 		<ul class="nav navbar-nav">
@@ -18,6 +18,7 @@
 		  <li role="presentation" <%= active(controller: 'donations')%>><%=link_to "捐款", donations_path %></li>
 		  <li role="presentation" <%= active(controller: 'stories')%>><%=link_to "最新消息", stories_path %></li>
 		  <li role="presentation" <%= active(controller: 'links')%>><%=link_to "相關連結", links_path %></li>
+		  <li role="presentation" <%= active(controller: 'sign_reports')%>><%=link_to "簽證報告", sign_reports_path %></li>
 		  <li role="presentation" <%= active(controller: 'users')%>><%=link_to "帳號管理", users_path %></li>
 		  <% if user_signed_in? %><li class = "navbar-right" style="margin-right: 23px;"><%= link_to('登出', destroy_user_session_path, :method => :delete) %></li><% end %>
 		</ul>

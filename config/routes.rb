@@ -1,6 +1,7 @@
 Rails.application.routes.draw do
 
   
+  resources :sign_reports
   resources :donations
   resources :projects
   resources :stories

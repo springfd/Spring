@@ -46,7 +46,9 @@ class ProjectsController < ApplicationController
       @project.pj_cover = nil
     end
     @project.update(project_params)
-    @project.year = DateTime.strptime(params[:project][:year], "%Y")
+    unless params[:project][:year].blank?
+      @project.year = DateTime.strptime(params[:project][:year], "%Y")
+    end
     @project.password = params[:project][:encrypted_password]
     @project.save!
     record_log
