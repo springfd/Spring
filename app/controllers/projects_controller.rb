@@ -5,7 +5,7 @@ class ProjectsController < ApplicationController
   # GET /projects
   # GET /projects.json
   def index
-    @projects = Project.where("kind = ? ", params[:pj_kind]).order('id DESC').paginate(per_page: 30, page: params[:page])
+    @projects = Project.where("kind = ? and id != ?", params[:pj_kind], 1).order('id DESC').paginate(per_page: 30, page: params[:page])
   end
 
   # GET /projects/1
