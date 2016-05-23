@@ -70,7 +70,12 @@ class ProjectsController < ApplicationController
     if @project.blank?
       render json: { success: false }.to_json
     else
-      render json: { success: true, id: @project.id, name: @project.name }.to_json
+      render json: { success: true, id: @project.id, 
+                     name: @project.name, budget: @project.budget, exe_desc: @project.exe_desc,
+                     description: @project.description, year: @project.year.strftime("%Y"),
+                     file_name: @project.pj_attachment_file_name, file_url: @project.pj_attachment.url(:original, false),
+                     exp_personnel: @project.exp_personnel, exp_mix: @project.exp_mix,
+                     exp_business: @project.exp_business, exp_other: @project.exp_other}.to_json
     end
   end
   private
