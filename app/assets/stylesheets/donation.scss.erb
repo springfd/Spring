@@ -164,7 +164,7 @@
 	border-bottom: 3px solid #0279b1 !important;*/	
 }
 .no-touch .donation_top_button:hover, 
-.no-touch .donation_top_button:focus{
+.donation_top_button:focus{
 	text-decoration: none;
 	color: #000000;	
 	border: 1px solid #000000;	
@@ -574,4 +574,55 @@
 .no-touch .donation_project_button:hover{
   color: #ffffff;  
   background: #a0467f !important;   
+}
+.donation_accounting{
+  color: #444444;
+  font-size: 18px;
+  letter-spacing: 2px;
+}
+.donation_accounting ul{
+  display: inline;	
+  padding: 0;	
+}
+.donation_accounting li{
+  display: inline;	
+}
+.donation_accounting li a{
+  color: #808080;	
+}
+.no-touch  .donation_accounting li a:hover{
+  color: #000000;	
+  text-decoration: none;
+}
+
+/*=========================== self plan ===================================*/
+.modal_table{
+}
+.donation_project_submit_button{
+  font-size: 13px;	
+  letter-spacing: 2px;
+  color: #ffffff !important;
+  border: none;
+  background: #C070A3;	
+  padding: 7px 20px 5px !important; 
+  border-radius: 5px !important;
+  border-bottom: 2px solid #a0467f; 
+}
+.no-touch .donation_project_submit_button:hover{
+  color: #ffffff;  
+  background: #a0467f !important;   
+}
+.glyphicon-refresh-animate {
+    -animation: spin 1s infinite linear;
+    -webkit-animation: spin2 1s infinite linear;
+}
+
+@-webkit-keyframes spin2 {
+    from { -webkit-transform: rotate(0deg);}
+    to { -webkit-transform: rotate(360deg);}
+}
+
+@keyframes spin {
+    from { transform: scale(1) rotate(0deg);}
+    to { transform: scale(1) rotate(360deg);}
 }
