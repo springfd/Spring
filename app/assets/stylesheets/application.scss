@@ -1,5 +1,6 @@
 $font-family-sans-serif: PingFang TC, 'Microsoft YaHei', sans-serif;
 //$body-bg: #eeeeee;
+@import url('//fonts.googleapis.com/earlyaccess/cwtexhei.css');
 @import "bootstrap-sprockets";
 @import "bootstrap";
 @import "jquery.fileupload";
@@ -14,4 +15,5 @@ $font-family-sans-serif: PingFang TC, 'Microsoft YaHei', sans-serif;
 @import "news";
 @import "about";
 @import "backend";
+
 
