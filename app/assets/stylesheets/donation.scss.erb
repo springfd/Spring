@@ -1,25 +1,14 @@
 @import url(//fonts.googleapis.com/css?family=Oswald:400);
 /*=========================== grid ===================================*/
 .grid {
-  background: none;
-  width: 95%;
-  margin: 0 auto;
   margin-top: 80px;
 }
-.grid-item {
-  float: left;
-  margin-bottom: 20px;
-}
-/* item is invisible, but used for layout */
 .grid-item{
   /*width: 120px;*/
-   width: 33.333%;
    min-height: 540px;
+   margin-bottom: 20px;   
 }
-/* grid-item-content is visible, and transitions size */
 .grid-item-content {
-  width: 96%;
-  margin: 0 auto;
   background: #ffffff;
   -webkit-transition: width 0.4s, height 0.4s;
           transition: width 0.4s, height 0.4s;
@@ -47,7 +36,7 @@
   width: 100%;
 }
 
-
+/*
 @media (max-width: $screen-md-min) {
 	.grid-item{
 		width: 50%;
@@ -57,7 +46,7 @@
 	.grid-item{
 		width: 100%;
 	}
-}
+}*/
 .grid-item-close {
   color: #878787;
   font-size: 30px;
@@ -71,14 +60,14 @@
 .grid-item-button{
   margin-top: 25px;
   margin-bottom: 15px;
-  font-size: 16px;
+  font-size: 14px;
   letter-spacing: 7px;
   color: #ffffff !important;
   border: none;
   background: #02a0eb;	
-  padding: 12px 14px 8px !important; 
+  padding: 12px 14px 9px !important; 
   border-radius: 5px !important;
-  border-bottom: 4px solid #0279b1; 
+  border-bottom: 3px solid #0279b1; 
 }
 .no-touch .grid-item-button:hover{
   color: #ffffff;  
@@ -112,7 +101,7 @@
 .donation_summary{
 	width: 600px;
 	margin: 0 auto;
-	margin-top: 30vh;	
+	margin-top: 20vh;	
 	margin-bottom: 5vh;
 	font-size: 145px;
 }
@@ -123,7 +112,7 @@
 }
 .donation_summary_number{
 	color: #02a0eb;	
-	line-height: 150px;
+	line-height: 155px;
   	font-family: "Oswald", sans-serif;	
   	position: absolute;
   	bottom: 0px;
@@ -139,8 +128,8 @@
   	right: 0px;  		
 }
 .donation_range{
-	font-size: 11%;
-	color: #adadad;
+	font-size: 10%;
+	color: #808080;
   	font-family: "Oswald", sans-serif;
   	visibility: hidden;		
 }
@@ -169,7 +158,17 @@
 	color: #000000;	
 	border: 1px solid #000000;	
 }
-
+.donation_arrow_container{
+	position: relative;
+} 
+.donation_arrow span{
+	position: relative;	
+	color: #808080;
+	font-size: 25px !important;
+	border-radius: 50%;
+	border: 1px solid #808080;	
+	padding: 8px;
+}
 
 @media (max-width: $screen-sm-min) {
 	.donation_year{
@@ -209,6 +208,8 @@
 	right:0;
 	top:0;
 	bottom:0;
+	-webkit-clip-path: polygon(50% 13%, 100% 0, 100% 100%, 0 100%, 0 0);
+	clip-path: polygon(50% 13%, 100% 0, 100% 100%, 0 100%, 0 0);	
 	background: url('<%= asset_path 'forest.jpg' %>');
 	background-size:cover;
 	background-position: center center;	
@@ -223,11 +224,10 @@
 }*/
 .donation_content_donate{
   position:relative;
-  margin-top: 40px;	
 }
 .donation_content_donate_inner{
   margin-top: 20vh; 
-  margin-bottom: 20vh;
+  margin-bottom: 10vh;
   background: #ffffff; 
   padding: 30px 20px; 
   padding-bottom: 10px;
@@ -265,12 +265,12 @@
 	margin-top: 100px;
 	font-size: 22px; 
 	letter-spacing: 3px; 
-	color: #898989;	
 	text-align: center;	
+	/*
     display: table;
     white-space: nowrap;
     &:before, &:after {
-      border-top: 1px solid #898989;
+      border-top: 1px solid #000000;
       content: '';
       display: table-cell;
       position: relative;
@@ -278,7 +278,7 @@
       width: 45%;
     }
     &:before { right: 1.5%; }
-    &:after { left: 1.5%; }	
+    &:after { left: 1.5%; }	*/
 }
 
 
@@ -292,7 +292,8 @@
 }
 .donation_card_small_title{
   margin-top: 30px;
-  font-size: 20px;	
+  font-size: 19px;
+  letter-spacing: 2px	
 }
 .donation_card_small_content{
   font-size: 14px;	
@@ -589,8 +590,9 @@
 }
 .donation_accounting li a{
   color: #808080;	
+  	  
 }
-.no-touch  .donation_accounting li a:hover{
+.no-touch  .donation_accounting li a:hover, .donation_accounting li a:focus{
   color: #000000;	
   text-decoration: none;
 }
