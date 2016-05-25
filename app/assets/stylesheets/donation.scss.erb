@@ -313,8 +313,7 @@
 }
 .donation_card_enlarge_img{
   height: 300px;
-  width: 100%;
-  margin-top: 15px;	  
+  width: 100%;	  
   /*background-image: url('<%= asset_path 'sample_2.jpg' %>');*/
   background-size: cover; 
   background-position: center center;	
@@ -454,8 +453,11 @@
 .donation_form_title{
   color: #898989;
 }
+.donation_form_content{
+  margin-top: 15px;	
+}
 .donation_form_pie{
-  border-left: 1px solid rgb(221, 221, 221);	
+  border-left: 1px solid rgb(221, 221, 221);		  	
 }
 .donation_form input[type=text]{
   font-size: 16px;
@@ -495,6 +497,9 @@
 		width: 100% !important; 
 		margin-bottom: 10px;
 	}
+	.donation_form_pie{
+		border: none;
+	}	
 }
 .donation_btn_group .donation_gray_btn.active, 
 .no-touch .donation_btn_group .donation_gray_btn:hover, 
@@ -709,15 +714,15 @@
 }
 
 .timeline-badge.success {
-    background-color: #3f903f !important;
+    background-color: #02a0eb !important;
 }
 
 .timeline-badge.warning {
-    background-color: #f0ad4e !important;
+    background-color: #f7d800 !important;
 }
 
 .timeline-badge.danger {
-    background-color: #d9534f !important;
+    background-color: rgb(192, 112, 163) !important;
 }
 
 .timeline-badge.info {
