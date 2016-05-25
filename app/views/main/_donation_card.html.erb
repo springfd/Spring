@@ -1,4 +1,4 @@
-<div class="grid-item" id="<%= project.id %>">
+<div class="grid-item col-xs-12 col-sm-4" id="<%= project.id %>">
     <div class="grid-item-content">
 	    <label class="grid-item-close" id="<%= project.id %>"><span aria-hidden="true">&times;</span></label>
 		<div class="container-fluid donation_card_small">	
@@ -13,7 +13,7 @@
 		</div>  
 		<div class="container-fluid donation_card_enlarge">	
 			<div class="row" style="">
-				<div class="col-sm-6">	
+				<div class="col-sm-6 donation_form_content">	
 					<div class="donation_card_enlarge_img" style="background-image: url('<%= project.pj_cover.url %>');"></div>	
 					<div class="donation_card_enlarge_title" id="grid-item-button_<%= project.id %>_title"><%= project.name %></div>
 					<div class="donation_card_enlarge_content"><%= project.description%></div>		
@@ -48,7 +48,7 @@
 						  </div>
 						</section>						
 						-->									
-						<div id="doughnutChart_<%=project.id%>" class="chart" data-exp_personnel="<%=project.exp_personnel%>" data-exp_business="<%=project.exp_business%>" data-exp_mix="<%=project.exp_mix%>" data-exp_other="<%=project.exp_other%>"></div>										
+						<div id="doughnutChart_<%=project.id%>" class="chart" data-donation = "2000" data-expect_remains = "1000" data-exp_personnel="<%=project.exp_personnel%>" data-exp_business="<%=project.exp_business%>" data-exp_mix="<%=project.exp_mix%>" data-exp_other="<%=project.exp_other%>"></div>										
 					</div>		
 					<%= form_tag('/main/donation', class: "donation_form") do -%>
 						<%= hidden_field_tag 'id', project.id, class: 'form-control'%>
@@ -104,6 +104,97 @@
 					<% end -%>					
 				</div>				
 			</div>	
+			
+			
+			
+			
+			
+			
+			
+			
+			<div class="row donation_timeline" style="">
+				<div class="col-sm-10 col-sm-offset-1">	
+					<div class="text-center">執行狀況</div>
+				</div>				
+			</div>		
+			<div class="row" style="">
+				<div class="col-sm-12">				
+			
+					
+	<ul class="timeline">
+        <li>
+          <div class="timeline-badge danger"><i class="glyphicon glyphicon-chevron-left"></i></div>
+          <div class="timeline-panel">
+            <div class="timeline-heading">
+              <h4 class="timeline-title">募款開始</h4>
+              <p><small class="text-muted"><i class="glyphicon glyphicon-time"></i> 2016/05/26 </small></p>
+            </div>
+            <div class="timeline-body">
+              <p>熱帶氣旋是發生在熱帶、亞熱帶地區海面上的氣旋性環流（風暴），由水蒸氣冷卻凝結時放出潛熱發展而出的暖心結構。所以當熱帶氣旋登陸後，或者當熱帶氣旋移到溫度較低的洋面上，便會因為失去溫暖、潮濕的空氣供應能量，而減弱消散，或失去熱帶氣旋的特性，轉化為溫帶氣旋。</p>
+            </div>
+          </div>
+        </li>
+        <li class="timeline-inverted">
+          <div class="timeline-badge warning"><i class="glyphicon glyphicon-chevron-right"></i></div>
+          <div class="timeline-panel">
+            <div class="timeline-heading">
+              <h4 class="timeline-title">校友聚會說明</h4>
+              <p><small class="text-muted"><i class="glyphicon glyphicon-time"></i> 2016/05/30 </small></p>              
+            </div>
+            <div class="timeline-body">
+              <p>熱帶氣旋是發生在熱帶、亞熱帶地區海面上的氣旋性環流（風暴），由水蒸氣冷卻凝結時放出潛熱發展而出的暖心結構。所以當熱帶氣旋登陸後，或者當熱帶氣旋移到溫度較低的洋面上，便會因為失去溫暖、潮濕的空氣供應能量，而減弱消散，或失去熱帶氣旋的特性，轉化為溫帶氣旋。</p>
+              <%= image_tag 'bench.jpg'%>
+            </div>
+          </div>
+        </li>
+		<li>
+          <div class="timeline-badge danger"><i class="glyphicon glyphicon-chevron-left"></i></div>
+          <div class="timeline-panel">
+            <div class="timeline-heading">
+              <h4 class="timeline-title">募款開始</h4>
+              <p><small class="text-muted"><i class="glyphicon glyphicon-time"></i> 2016/05/26 </small></p>
+            </div>
+            <div class="timeline-body">
+              <p>熱帶氣旋是發生在熱帶、亞熱帶地區海面上的氣旋性環流（風暴），由水蒸氣冷卻凝結時放出潛熱發展而出的暖心結構。所以當熱帶氣旋登陸後，或者當熱帶氣旋移到溫度較低的洋面上，便會因為失去溫暖、潮濕的空氣供應能量，而減弱消散，或失去熱帶氣旋的特性，轉化為溫帶氣旋。</p>
+              <%= image_tag 'sample_2.jpg'%>	
+            </div>
+          </div>
+        </li>
+        <li class="timeline-inverted">
+          <div class="timeline-badge warning"><i class="glyphicon glyphicon-chevron-right"></i></div>
+          <div class="timeline-panel">
+            <div class="timeline-heading">
+              <h4 class="timeline-title">校友聚會說明</h4>
+              <p><small class="text-muted"><i class="glyphicon glyphicon-time"></i> 2016/05/30 </small></p>              
+            </div>
+            <div class="timeline-body">
+              <p>熱帶氣旋是發生在熱帶、亞熱帶地區海面上的氣旋性環流（風暴），由水蒸氣冷卻凝結時放出潛熱發展而出的暖心結構。所以當熱帶氣旋登陸後，或者當熱帶氣旋移到溫度較低的洋面上，便會因為失去溫暖、潮濕的空氣供應能量，而減弱消散，或失去熱帶氣旋的特性，轉化為溫帶氣旋。</p>
+              <div class='embed-container'><iframe src='http://www.youtube.com/embed/qXv7POo5MNI?showinfo=0' frameborder='0' allowfullscreen></iframe></div>
+            </div>
+          </div>
+        </li>        
+
+
+
+
+
+
+
+      
+    </ul>			
+			
+			
+				</div>				
+			</div>			
+			
+			
+			
+			
+			
+			
+			
+			
+			
 <!--
 			<div class="row donation_sponsor" style="">
 				<div class="col-sm-10 col-sm-offset-1">	

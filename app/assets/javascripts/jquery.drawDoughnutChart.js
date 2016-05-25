@@ -34,7 +34,7 @@
         tipOffsetY: -45,
         tipClass: "doughnutTip",
         summaryClass: "doughnutSummary",
-        summaryTitle: "總支出:",
+        summaryTitle: "已募款:",
         summaryTitleClass: "doughnutSummaryTitle",
         summaryNumberClass: "doughnutSummaryNumber",
         beforeDraw: function() {  },
@@ -69,7 +69,8 @@
         easingFunction = animationOptions[settings.animationEasing],
         doughnutRadius = Min([H / 2,W / 2]) - settings.edgeOffset,
         cutoutRadius = doughnutRadius * (settings.percentageInnerCutout / 100),
-        segmentTotal = 0;
+        segmentTotal = 0,
+        firstData = 0 ; //Benny
 
     //Draw base doughnut
     var baseDoughnutRadius = doughnutRadius + settings.baseOffset,
@@ -102,7 +103,8 @@
                    });
     var $summaryTitle = $('<p class="' + settings.summaryTitleClass + '">' + settings.summaryTitle + '</p>').appendTo($summary);
     var $summaryNumber = $('<p class="' + settings.summaryNumberClass + '"></p>').appendTo($summary).css({opacity: 0});
-
+	firstData = data[0].value;//Benny
+    
     for (var i = 0, len = data.length; i < len; i++) {
       segmentTotal += data[i].value;
       $paths[i] = $(document.createElementNS('http://www.w3.org/2000/svg', 'path'))
@@ -168,7 +170,7 @@
           rotateAnimation = 1;
       if (settings.animation && settings.animateRotate) rotateAnimation = animationDecimal;//count up between0~1
 
-      drawDoughnutText(animationDecimal, segmentTotal);
+      drawDoughnutText(animationDecimal, segmentTotal, firstData);
 
       $pathGroup.attr("opacity", animationDecimal);
 
@@ -200,10 +202,11 @@
         startRadius += segmentAngle;
       }
     }
-    function drawDoughnutText(animationDecimal, segmentTotal) {
+    function drawDoughnutText(animationDecimal, segmentTotal, firstData) {
       $summaryNumber
         .css({opacity: animationDecimal})
-        .text('$'+(segmentTotal * animationDecimal).toFixed(0));
+        .text((firstData/segmentTotal).toFixed(3)*100+'%');        
+        //.text((segmentTotal * animationDecimal).toFixed(0)+'%');
     }
     function animateFrame(cnt, drawData) {
       var easeAdjustedAnimationPercent =(settings.animation)? CapValue(easingFunction(cnt), null, 0) : 1;

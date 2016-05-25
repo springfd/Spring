@@ -1,25 +1,14 @@
 @import url(//fonts.googleapis.com/css?family=Oswald:400);
 /*=========================== grid ===================================*/
 .grid {
-  background: none;
-  width: 95%;
-  margin: 0 auto;
   margin-top: 80px;
 }
-.grid-item {
-  float: left;
-  margin-bottom: 20px;
-}
-/* item is invisible, but used for layout */
 .grid-item{
   /*width: 120px;*/
-   width: 33.333%;
    min-height: 540px;
+   margin-bottom: 20px;   
 }
-/* grid-item-content is visible, and transitions size */
 .grid-item-content {
-  width: 96%;
-  margin: 0 auto;
   background: #ffffff;
   -webkit-transition: width 0.4s, height 0.4s;
           transition: width 0.4s, height 0.4s;
@@ -47,7 +36,7 @@
   width: 100%;
 }
 
-
+/*
 @media (max-width: $screen-md-min) {
 	.grid-item{
 		width: 50%;
@@ -57,7 +46,7 @@
 	.grid-item{
 		width: 100%;
 	}
-}
+}*/
 .grid-item-close {
   color: #878787;
   font-size: 30px;
@@ -71,14 +60,14 @@
 .grid-item-button{
   margin-top: 25px;
   margin-bottom: 15px;
-  font-size: 16px;
+  font-size: 14px;
   letter-spacing: 7px;
   color: #ffffff !important;
   border: none;
   background: #02a0eb;	
-  padding: 12px 14px 8px !important; 
+  padding: 12px 14px 9px !important; 
   border-radius: 5px !important;
-  border-bottom: 4px solid #0279b1; 
+  border-bottom: 3px solid #0279b1; 
 }
 .no-touch .grid-item-button:hover{
   color: #ffffff;  
@@ -110,9 +99,9 @@
 	/*visibility: hidden;*/
 }
 .donation_summary{
-	width: 600px;
+	width: 200px;
 	margin: 0 auto;
-	margin-top: 30vh;	
+	margin-top: 20vh;	
 	margin-bottom: 5vh;
 	font-size: 145px;
 }
@@ -123,11 +112,19 @@
 }
 .donation_summary_number{
 	color: #02a0eb;	
-	line-height: 150px;
+	line-height: 155px;
   	font-family: "Oswald", sans-serif;	
   	position: absolute;
   	bottom: 0px;
-  	
+  	right: 70px;  		
+}
+.donation_summary_ch{
+	font-size: 18%;
+  	position: absolute;  
+   	top: 64px; 	
+  	left: 0px;
+  	width: 20px;
+	visibility: hidden;  		
 }
 .donation_summary_en{
 	font-size: 35%;
@@ -139,8 +136,8 @@
   	right: 0px;  		
 }
 .donation_range{
-	font-size: 11%;
-	color: #adadad;
+	font-size: 10%;
+	color: #808080;
   	font-family: "Oswald", sans-serif;
   	visibility: hidden;		
 }
@@ -169,7 +166,17 @@
 	color: #000000;	
 	border: 1px solid #000000;	
 }
-
+.donation_arrow_container{
+	position: relative;
+} 
+.donation_arrow span{
+	position: relative;	
+	color: #808080;
+	font-size: 25px !important;
+	border-radius: 50%;
+	border: 1px solid #808080;	
+	padding: 8px;
+}
 
 @media (max-width: $screen-sm-min) {
 	.donation_year{
@@ -209,6 +216,8 @@
 	right:0;
 	top:0;
 	bottom:0;
+	-webkit-clip-path: polygon(50% 13%, 100% 0, 100% 100%, 0 100%, 0 0);
+	clip-path: polygon(50% 13%, 100% 0, 100% 100%, 0 100%, 0 0);	
 	background: url('<%= asset_path 'forest.jpg' %>');
 	background-size:cover;
 	background-position: center center;	
@@ -223,11 +232,10 @@
 }*/
 .donation_content_donate{
   position:relative;
-  margin-top: 40px;	
 }
 .donation_content_donate_inner{
   margin-top: 20vh; 
-  margin-bottom: 20vh;
+  margin-bottom: 10vh;
   background: #ffffff; 
   padding: 30px 20px; 
   padding-bottom: 10px;
@@ -265,12 +273,12 @@
 	margin-top: 100px;
 	font-size: 22px; 
 	letter-spacing: 3px; 
-	color: #898989;	
 	text-align: center;	
+	/*
     display: table;
     white-space: nowrap;
     &:before, &:after {
-      border-top: 1px solid #898989;
+      border-top: 1px solid #000000;
       content: '';
       display: table-cell;
       position: relative;
@@ -278,7 +286,7 @@
       width: 45%;
     }
     &:before { right: 1.5%; }
-    &:after { left: 1.5%; }	
+    &:after { left: 1.5%; }	*/
 }
 
 
@@ -292,7 +300,8 @@
 }
 .donation_card_small_title{
   margin-top: 30px;
-  font-size: 20px;	
+  font-size: 19px;
+  letter-spacing: 2px	
 }
 .donation_card_small_content{
   font-size: 14px;	
@@ -304,8 +313,7 @@
 }
 .donation_card_enlarge_img{
   height: 300px;
-  width: 100%;
-  margin-top: 15px;	  
+  width: 100%;	  
   /*background-image: url('<%= asset_path 'sample_2.jpg' %>');*/
   background-size: cover; 
   background-position: center center;	
@@ -445,8 +453,11 @@
 .donation_form_title{
   color: #898989;
 }
+.donation_form_content{
+  margin-top: 15px;	
+}
 .donation_form_pie{
-  border-left: 1px solid rgb(221, 221, 221);	
+  border-left: 1px solid rgb(221, 221, 221);		  	
 }
 .donation_form input[type=text]{
   font-size: 16px;
@@ -486,6 +497,9 @@
 		width: 100% !important; 
 		margin-bottom: 10px;
 	}
+	.donation_form_pie{
+		border: none;
+	}	
 }
 .donation_btn_group .donation_gray_btn.active, 
 .no-touch .donation_btn_group .donation_gray_btn:hover, 
@@ -559,6 +573,237 @@
     &:after { left: 5%; }
 }
 
+
+
+
+/*=========================== timeline ===================================*/
+.donation_timeline{
+	font-size: 16px;
+	position: relative;
+	padding-top: 30px;
+	padding-bottom: 30px;
+	color: #898989;
+}
+.donation_timeline:after {
+  content: "";
+  position: absolute;
+  left: 2%;
+  top: 0;
+  width: 96%;  /* or 100px */
+  border-top: 1px solid rgb(221, 221, 221);
+}
+
+
+
+.timeline {
+    list-style: none;
+    padding: 20px 0 20px;
+    position: relative;
+}
+
+    .timeline:before {
+        top: 0;
+        bottom: 0;
+        position: absolute;
+        content: " ";
+        width: 3px;
+        background-color: #eeeeee;
+        left: 50%;
+        margin-left: -1.5px;
+    }
+
+    .timeline > li {
+        margin-bottom: 20px;
+        position: relative;
+    }
+
+        .timeline > li:before,
+        .timeline > li:after {
+            content: " ";
+            display: table;
+        }
+
+        .timeline > li:after {
+            clear: both;
+        }
+
+        .timeline > li:before,
+        .timeline > li:after {
+            content: " ";
+            display: table;
+        }
+
+        .timeline > li:after {
+            clear: both;
+        }
+
+        .timeline > li > .timeline-panel {
+            width: 46%;
+            float: left;
+            border: 1px solid #d4d4d4;
+            border-radius: 2px;
+            padding: 20px;
+            position: relative;
+            -webkit-box-shadow: 0 1px 6px rgba(0, 0, 0, 0.175);
+            box-shadow: 0 1px 6px rgba(0, 0, 0, 0.175);
+        }
+
+            .timeline > li > .timeline-panel:before {
+                position: absolute;
+                top: 26px;
+                right: -15px;
+                display: inline-block;
+                border-top: 15px solid transparent;
+                border-left: 15px solid #ccc;
+                border-right: 0 solid #ccc;
+                border-bottom: 15px solid transparent;
+                content: " ";
+            }
+
+            .timeline > li > .timeline-panel:after {
+                position: absolute;
+                top: 27px;
+                right: -14px;
+                display: inline-block;
+                border-top: 14px solid transparent;
+                border-left: 14px solid #fff;
+                border-right: 0 solid #fff;
+                border-bottom: 14px solid transparent;
+                content: " ";
+            }
+
+        .timeline > li > .timeline-badge {
+            color: #fff;
+            width: 50px;
+            height: 50px;
+            line-height: 50px;
+            font-size: 1.4em;
+            text-align: center;
+            position: absolute;
+            top: 16px;
+            left: 50%;
+            margin-left: -25px;
+            background-color: #999999;
+            z-index: 100;
+            border-top-right-radius: 50%;
+            border-top-left-radius: 50%;
+            border-bottom-right-radius: 50%;
+            border-bottom-left-radius: 50%;
+        }
+
+        .timeline > li.timeline-inverted > .timeline-panel {
+            float: right;
+        }
+
+            .timeline > li.timeline-inverted > .timeline-panel:before {
+                border-left-width: 0;
+                border-right-width: 15px;
+                left: -15px;
+                right: auto;
+            }
+
+            .timeline > li.timeline-inverted > .timeline-panel:after {
+                border-left-width: 0;
+                border-right-width: 14px;
+                left: -14px;
+                right: auto;
+            }
+
+.timeline-badge.primary {
+    background-color: #2e6da4 !important;
+}
+
+.timeline-badge.success {
+    background-color: #02a0eb !important;
+}
+
+.timeline-badge.warning {
+    background-color: #f7d800 !important;
+}
+
+.timeline-badge.danger {
+    background-color: rgb(192, 112, 163) !important;
+}
+
+.timeline-badge.info {
+    background-color: #5bc0de !important;
+}
+
+.timeline-title {
+    margin-top: 0;
+    color: inherit;
+}
+
+.timeline-body > p,
+.timeline-body > ul {
+    margin-bottom: 0;
+}
+.timeline-body > img {
+	width: 100%;
+	margin-top: 20px;
+}
+
+.embed-container { 
+	position: relative; 
+	margin-top: 20px;	
+	padding-bottom: 56.25%; 
+	height: 0; 
+	overflow: hidden; 
+	max-width: 100%; 
+} 
+.embed-container iframe, 
+.embed-container object, 
+.embed-container embed { 
+	position: absolute; 
+	top: 0; 
+	left: 0; 
+	width: 100%; 
+	height: 100%; 
+}
+
+
+    .timeline-body > p + p {
+        margin-top: 5px;
+    }
+
+@media (max-width: 767px) {
+    ul.timeline:before {
+        left: 40px;
+    }
+
+    ul.timeline > li > .timeline-panel {
+        width: calc(100% - 90px);
+        width: -moz-calc(100% - 90px);
+        width: -webkit-calc(100% - 90px);
+    }
+
+    ul.timeline > li > .timeline-badge {
+        left: 15px;
+        margin-left: 0;
+        top: 16px;
+    }
+
+    ul.timeline > li > .timeline-panel {
+        float: right;
+    }
+
+        ul.timeline > li > .timeline-panel:before {
+            border-left-width: 0;
+            border-right-width: 15px;
+            left: -15px;
+            right: auto;
+        }
+
+        ul.timeline > li > .timeline-panel:after {
+            border-left-width: 0;
+            border-right-width: 14px;
+            left: -14px;
+            right: auto;
+        }
+}
+
+
+
 /*=========================== others ===================================*/
 
 .donation_project_button{
@@ -589,8 +834,9 @@
 }
 .donation_accounting li a{
   color: #808080;	
+  	  
 }
-.no-touch  .donation_accounting li a:hover{
+.no-touch  .donation_accounting li a:hover, .donation_accounting li a:focus{
   color: #000000;	
   text-decoration: none;
 }
