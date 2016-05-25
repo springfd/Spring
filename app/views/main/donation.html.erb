@@ -8,6 +8,7 @@
 		-->		
 				<div class="donation_summary text-center">
 					<div class="donation_summary_inner">
+						<div class="donation_summary_ch">已募</div>
 						<div class="donation_summary_number"></div> <div class="donation_summary_en">NT</div>	
 					</div>
 					<div class="donation_range text-right">累積期間 <%=Time.zone.now().year%>/01/01~<%=Time.zone.now().strftime("%Y/%m/%d")  %></div>	
@@ -169,11 +170,12 @@ var tween = new TimelineMax()
 //============================= count =============================//
 
 var controller = new ScrollMagic.Controller();
-$('.donation_summary_number').html( Math.ceil(2888321-10000).toLocaleString() )
-var foo = { bar: 2888321-10000 };		
+$('.donation_summary_number').html( Math.ceil(0).toLocaleString() )
+var foo = { bar: 0 };		
 tween = new TimelineLite();
-tween.to(foo, 2, { bar: 2888321, onUpdate: function() {
+tween.to(foo, 2, { bar: 0, onUpdate: function() {
 	 $('.donation_summary_number').html(Math.ceil(foo.bar).toLocaleString());}, ease: Linear.easeNone})
+	 .to(".donation_summary_ch", 1, {autoAlpha: 1, ease: Linear.easeNone})	 
 	 .to(".donation_summary_en", 1, {autoAlpha: 1, ease: Linear.easeNone})
 	 //.to(".donation_year", 1, {autoAlpha: 1, ease: Linear.easeNone})
 	 .to(".donation_range", 1, {autoAlpha: 1, ease: Linear.easeNone})
@@ -200,10 +202,8 @@ $grid.on( 'click', '.grid-item-button', function( event ) {
   id = $(event.currentTarget).attr('data-id')
 
   $("#doughnutChart_"+id).drawDoughnutChart([
-    { title: "人事", value: parseInt($('#doughnutChart_'+id).attr('data-exp_personnel')),  color: "#02a0eb" },
-    { title: "雜支", value: parseInt($('#doughnutChart_'+id).attr('data-exp_business')),   color: "#c070a3" },
-    { title: "業務", value: parseInt($('#doughnutChart_'+id).attr('data-exp_mix')),   color: "#f4a301" },
-    { title: "其他", value: parseInt($('#doughnutChart_'+id).attr('data-exp_other')),   color: "#b3a253" }
+    { title: "已募", value: parseInt($('#doughnutChart_'+id).attr('data-donation')),  color: "#02a0eb" },
+    { title: "剩餘", value: parseInt($('#doughnutChart_'+id).attr('data-expect_remains')),   color: "#eeeeee" }
   ], {tipClass: "doughnutTip "+"doughnutTip_"+event.currentTarget.id});  
   
 });
@@ -243,11 +243,9 @@ $(window).resize(function() {
 		$("#doughnutChart_"+id).empty();
 		$(".doughnutTip_"+id).remove();                
 		$("#doughnutChart_"+id).drawDoughnutChart([
-			{ title: "人事", value: parseInt($('#doughnutChart_'+id).attr('data-exp_personnel')),  color: "#02a0eb" },
-			{ title: "雜支", value: parseInt($('#doughnutChart_'+id).attr('data-exp_business')),   color: "#c070a3" },
-			{ title: "業務", value: parseInt($('#doughnutChart_'+id).attr('data-exp_mix')),   color: "#f4a301" },
-			{ title: "其他", value: parseInt($('#doughnutChart_'+id).attr('data-exp_other')),   color: "#b3a253" }
-		], {tipClass: "doughnutTip "+"doughnutTip_"+id});  					
+    		{ title: "已募", value: parseInt($('#doughnutChart_'+id).attr('data-donation')),  color: "#02a0eb" },
+    		{ title: "剩餘", value: parseInt($('#doughnutChart_'+id).attr('data-expect_remains')),   color: "#eeeeee" }
+    	], {tipClass: "doughnutTip "+"doughnutTip_"+id});  					
 	});
 }); 
 
