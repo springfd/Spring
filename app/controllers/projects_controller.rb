@@ -49,7 +49,7 @@ class ProjectsController < ApplicationController
     unless params[:project][:year].blank?
       @project.year = DateTime.strptime(params[:project][:year], "%Y")
     end
-    @project.password = params[:project][:encrypted_password]
+    #@project.password = params[:project][:encrypted_password]
     @project.save!
     record_log
     redirect_to @project, pj_kind: @project.kind, notice: '成功更新計畫'

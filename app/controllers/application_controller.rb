@@ -12,9 +12,12 @@ class ApplicationController < ActionController::Base
         if d[:data].blank?
           validation_result.push({type: 'presence', message: '請填寫 '+d[:title]})
         end  
+      when 'date_range'
+        unless (d[:from].to_date..d[:to].to_date).include?(Date.today)
+          validation_result.push({type: 'date_range', message: '今天無法捐款<br>' + d[:title] + ': ' + d[:from].strftime('%Y-%m-%d').to_s + '~' +d[:to].strftime('%Y-%m-%d').to_s})
+        end
       end
     end       
-    logger.info validation_result  
   end
   
   def checkValidations(hash={})
