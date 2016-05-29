@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20160528093524) do
+ActiveRecord::Schema.define(version: 20160529145313) do
 
   create_table "donations", force: :cascade do |t|
     t.string   "name",            limit: 255
@@ -113,6 +113,7 @@ ActiveRecord::Schema.define(version: 20160528093524) do
     t.string   "video_url",   limit: 255
     t.datetime "created_at",                null: false
     t.datetime "updated_at",                null: false
+    t.datetime "news_date"
   end
 
   create_table "users", force: :cascade do |t|
