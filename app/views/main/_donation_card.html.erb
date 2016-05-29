@@ -123,6 +123,34 @@
 			
 					
 	<ul class="timeline">
+		
+		<% project.stages.order('stageDate').each_with_index do |s, i| %>
+        <li class="<%if i%2 != 0 %>timeline-inverted<%end%>">
+          <%if i%2 != 0 %>
+          <div class="timeline-badge warning"><i class="glyphicon glyphicon-chevron-right"></i></div>      
+          <%else%>
+          <div class="timeline-badge danger"><i class="glyphicon glyphicon-chevron-left"></i></div>         
+          <%end%>	
+          <div class="timeline-panel">
+            <div class="timeline-heading">
+              <h4 class="timeline-title"><%=s.title %></h4>
+              <p><small class="text-muted"><i class="glyphicon glyphicon-time"></i> <%=s.stageDate.strftime("%Y/%m/%d") %></small></p>              
+            </div>
+            <div class="timeline-body">
+              <p><%= s.description%></p>
+		    	<% if s.image.blank? and !s.video_url.blank?%>	    	
+              		<div class='embed-container'><iframe src='http://www.youtube.com/embed/<%= s.video_url %>?showinfo=0' frameborder='0' allowfullscreen></iframe></div>		    	
+		    	<% elsif !s.image.blank?  and s.video_url.blank?%>	
+					<%= image_tag s.image.url %>
+		    	<% end %>
+            </div>
+          </div>
+        </li>        	
+        	
+        <% end %>        	
+        	
+        	
+        <!--
         <li>
           <div class="timeline-badge danger"><i class="glyphicon glyphicon-chevron-left"></i></div>
           <div class="timeline-panel">
@@ -174,14 +202,7 @@
             </div>
           </div>
         </li>        
-
-
-
-
-
-
-
-      
+		-->      
     </ul>			
 			
 			
