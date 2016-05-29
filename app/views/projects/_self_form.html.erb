@@ -149,9 +149,9 @@ $(document).on('ready', function() {
 		var id = '<%= s.id %>';
 		appendStage(id, '<%= s.image.url %>');
 		<% if s.stageDate.blank? %>
-			addStageValue(id, '<%= s.title %>', '<%= s.stageDate %>', '<%= s.description %>', '<%= s.video_url %>');
+			addStageValue(id, '<%= s.title %>', '<%= s.stageDate %>', '<%= s.description.gsub(/\r\n/, "\\n") %>', '<%= s.video_url %>');
 		<% else %>
-			addStageValue(id, '<%= s.title %>', '<%= s.stageDate.strftime("%Y-%m-%d") %>', '<%= s.description %>', '<%= s.video_url %>');
+			addStageValue(id, '<%= s.title %>', '<%= s.stageDate.strftime("%Y-%m-%d") %>', '<%= s.description.gsub(/\r\n/, "\\n") %>', '<%= s.video_url %>');
 		<% end %>
 	<% end %>
 	
@@ -247,7 +247,7 @@ $(document).on('ready', function() {
 		  			"<tr>"+
 			  			"<td>描述:</td>"+
 			  			"<td>"+
-			  				"<textarea id='stage_description_"+id+"' class='form-control' name='stage_description["+id+"]' cols='1' rows='3' class='stage_description'></textarea>"+
+			  				"<textarea id='stage_description_"+id+"' class='form-control' name='stage_description["+id+"]'  class='stage_description'></textarea>"+
 			  			"</td>"+
 		  			"</tr>"+
 		  			"<tr>"+
@@ -323,7 +323,7 @@ $(document).on('ready', function() {
 	function addStageValue(id, title, date, description, url){
 		$('#stage_title_'+id).val(title);
 		$('#stage_date_'+id).val(date);
-		$('#stage_description_'+id).val(description);
+		$('#stage_description_'+id).html(description);
 		$('#stage_url_'+id).val(url);
 	}
 	
