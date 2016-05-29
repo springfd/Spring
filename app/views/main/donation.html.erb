@@ -27,7 +27,7 @@
 </div>	
 <div class="container-fluid donation_content_donate" id="donation_content_donate">
 	<div class="donation_content_background_image"></div>
-	<div class="row" style="position:relative; z-index:2;">
+	<div class="row" style="position:relative; z-index:2;" id="credit">
 		<div class="col-lg-offset-3 col-lg-6 col-sm-offset-2 col-sm-8 donation_content_donate_inner" id="donation_content_donate_inner">
 			<p class="text-center" style="font-size: 22px; letter-spacing: 2px;">贊助<span style="color: #02a0eb;">不指定計畫</span></p>		
 			<%= form_tag('/main/donation', class: "donation_form") do -%>
@@ -101,7 +101,7 @@
 <div class="container-fluid">
 	<div class="row" style="margin-bottom: 40px; margin-top: 40px;">
 		<div class="col-lg-offset-4 col-lg-4 text-center">	
-		<button type="button" class="btn btn-block donation_project_button" data-toggle="modal" data-target="#myModal">查詢委辦計畫</button>
+		<button type="button" class="btn btn-block donation_project_button" data-toggle="modal" data-target="#myModal">查詢代收代付計畫</button>
 		</div>
 	</div>		
 </div>	
@@ -112,7 +112,7 @@
 			  <label for="sign_report">會計師<span style="color: #b3a253">簽證報告</span></label>
 			  <select class="form-control" id="sign_report">	
 			  	<option>請選擇</option>			
-			  	<% SignReport.all.each do |s|%>
+			  	<% SignReport.all.order('year').each do |s|%>
 					<option value="<%= s.sr_attachment.url%>">
 					<%= s.year.strftime("%Y")+'年度' %>
 					</option>

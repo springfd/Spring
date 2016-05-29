@@ -23,7 +23,8 @@ Rails.application.routes.draw do
   post 'main/donation'
   
   
-
+  get  'donation', to: 'main#donation'
+  
   get  'main/about'
   get  'main/news'
   get  'main/donation'  

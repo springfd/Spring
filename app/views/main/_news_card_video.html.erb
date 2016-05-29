@@ -1,0 +1,29 @@
+<div class="grid-news-item col-xs-12 col-sm-6">
+	<div class="grid-news-item-content">
+		<label class="grid-news-item-close" id="<%= news.id %>"><span aria-hidden="true">&times;</span></label>
+		<label class="grid-news-item-button" id="<%= news.id %>">閱讀更多</label>		
+		
+		
+		<div class="container-fluid news_card_small">	
+			<div class="row" style="">				
+				<div class="col-sm-12 news_card_padding">	
+					<div class="news_card_small_title"><%= news.topic %></div>
+					<div class='news_card_small_video'><iframe src='https://www.youtube.com/embed/<%= news.video_url %>?' frameborder='0' allowfullscreen></iframe></div>				
+				</div>			
+			</div>	
+		</div> 
+		
+		
+		<div class="container-fluid news_card_enlarge">	
+			<div class="row" style="">
+				<div class="col-sm-12">						
+					<div class="news_card_enlarge_title"><%= news.topic %></div>
+					<div class='news_card_enlarge_content'><%= simple_format( news.description )%></div>																		
+					<div class='news_card_enlarge_video'><iframe src='https://www.youtube.com/embed/<%= news.video_url %>' frameborder='0' allowfullscreen></iframe></div>									
+				</div>				
+			</div>	
+		</div> 	
+				
+					
+	</div>
+</div>
