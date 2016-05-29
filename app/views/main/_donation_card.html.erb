@@ -47,8 +47,9 @@
 						    <div data-name="Angular JS" class="graph angular"> </div>
 						  </div>
 						</section>						
-						-->									
-						<div id="doughnutChart_<%=project.id%>" class="chart" data-donation = "2000" data-expect_remains = "1000" data-exp_personnel="<%=project.exp_personnel%>" data-exp_business="<%=project.exp_business%>" data-exp_mix="<%=project.exp_mix%>" data-exp_other="<%=project.exp_other%>"></div>										
+						-->							
+						<% donation = project.donations.where(donate: true).sum(:amount) %>		
+						<div id="doughnutChart_<%=project.id%>" class="chart" data-donation = "<%= donation %>" data-expect_remains = "<%= project.budget - donation %>" data-exp_personnel="<%=project.exp_personnel%>" data-exp_business="<%=project.exp_business%>" data-exp_mix="<%=project.exp_mix%>" data-exp_other="<%=project.exp_other%>"></div>										
 					</div>		
 					<%= form_tag('/main/donation', class: "donation_form") do -%>
 						<%= hidden_field_tag 'id', project.id, class: 'form-control'%>

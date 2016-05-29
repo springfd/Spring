@@ -2,41 +2,18 @@
   <!-- add extra container element for Masonry -->
   <div class="grid-news">
     <div class="grid-news-sizer col-xs-12 col-sm-4 col-md-3"></div>
+    <% Story.all.order('id desc').each do |s| %>
+    	<% if s.pictures.size == 0 and s.video_url.blank? %>
+    		<%= render "news_card_text", news: s %>
+    	<% elsif s.pictures.size == 0 and !s.video_url.blank?%>	    	
+    		<%= render "news_card_video", news: s %>    	
+    	<% elsif s.pictures.size != 0 and s.video_url.blank?%>	
+    		<%= render "news_card_image", news: s %>  
+    	<% end %>
+    	
+    <% end %>
     
     
-    <div class="grid-news-item col-xs-12 col-sm-8 col-md-6">
-      <div class="grid-news-item-content"></div>
-    </div>
-    
-	<%=render "news_card_text", id_id_id: 3 %>	    
-    
-    <div class="grid-news-item col-xs-12 col-sm-4 col-md-3">
-      <div class="grid-news-item-content"></div>
-    </div>
-    
-    <div class="grid-news-item col-xs-12 col-sm-4 col-md-3">
-      <div class="grid-news-item-content grid-news-item-content--height2"></div>
-    </div>
-
-	<%=render "news_card_image", id_id_id: 4 %>	        
- 
-    
-    <div class="grid-news-item col-xs-12 col-sm-8 col-md-6">
-      <div class="grid-news-item-content"></div>
-    </div>
-    
-		    
-    <div class="grid-news-item col-xs-12 col-sm-4 col-md-3">
-      <div class="grid-news-item-content grid-news-item-content--height2"></div>
-    </div>
-    
-    
-    <div class="grid-news-item col-xs-12 col-sm-4 col-md-3">
-      <div class="grid-news-item-content"></div>
-    </div>
-    <div class="grid-news-item col-xs-12 col-sm-4 col-md-3">
-      <div class="grid-news-item-content"></div>
-    </div>
   </div>
 </div>
 
