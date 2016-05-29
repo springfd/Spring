@@ -13,6 +13,8 @@ Rails.application.routes.draw do
   resources :users, only: [:index, :show, :destroy]
   
   post 'projects/checkLogin'
+  post 'projects/delete_stage'
+  post 'projects/ajax_update'
   
   get  'main/result'
   get  'main/post_back'

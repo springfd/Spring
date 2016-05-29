@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20160523134201) do
+ActiveRecord::Schema.define(version: 20160528093524) do
 
   create_table "donations", force: :cascade do |t|
     t.string   "name",            limit: 255
@@ -93,6 +93,18 @@ ActiveRecord::Schema.define(version: 20160523134201) do
     t.string   "sr_attachment_content_type", limit: 255
     t.integer  "sr_attachment_file_size",    limit: 4
     t.datetime "sr_attachment_updated_at"
+  end
+
+  create_table "stages", force: :cascade do |t|
+    t.integer  "project_id",         limit: 4
+    t.string   "title",              limit: 255
+    t.datetime "stageDate"
+    t.text     "description",        limit: 65535
+    t.string   "video_url",          limit: 255
+    t.string   "image_file_name",    limit: 255
+    t.string   "image_content_type", limit: 255
+    t.integer  "image_file_size",    limit: 4
+    t.datetime "image_updated_at"
   end
 
   create_table "stories", force: :cascade do |t|
