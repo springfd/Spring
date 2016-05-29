@@ -113,118 +113,42 @@
 					<% end -%>					
 				</div>				
 			</div>	
-			
-			
-			
-			
-			
-			
-			
-			
+			<%if project.stages.size != 0%>	
 			<div class="row donation_timeline" style="">
 				<div class="col-sm-10 col-sm-offset-1">	
 					<div class="text-center">執行狀況</div>
 				</div>				
 			</div>		
 			<div class="row" style="">
-				<div class="col-sm-12">				
-			
-					
-	<ul class="timeline">
-		
-		<% project.stages.order('stageDate').each_with_index do |s, i| %>
-        <li class="<%if i%2 != 0 %>timeline-inverted<%end%>">
-          <%if i%2 != 0 %>
-          <div class="timeline-badge warning"><i class="glyphicon glyphicon-chevron-right"></i></div>      
-          <%else%>
-          <div class="timeline-badge danger"><i class="glyphicon glyphicon-chevron-left"></i></div>         
-          <%end%>	
-          <div class="timeline-panel">
-            <div class="timeline-heading">
-              <h4 class="timeline-title"><%=s.title %></h4>
-              <p><small class="text-muted"><i class="glyphicon glyphicon-time"></i> <%=s.stageDate.strftime("%Y/%m/%d") %></small></p>              
-            </div>
-            <div class="timeline-body">
-              <p><%= s.description%></p>
-		    	<% if s.image.blank? and !s.video_url.blank?%>	    	
-              		<div class='embed-container'><iframe src='http://www.youtube.com/embed/<%= s.video_url %>?showinfo=0' frameborder='0' allowfullscreen></iframe></div>		    	
-		    	<% elsif !s.image.blank?  and s.video_url.blank?%>	
-					<%= image_tag s.image.url %>
-		    	<% end %>
-            </div>
-          </div>
-        </li>        	
-        	
-        <% end %>        	
-        	
-        	
-        <!--
-        <li>
-          <div class="timeline-badge danger"><i class="glyphicon glyphicon-chevron-left"></i></div>
-          <div class="timeline-panel">
-            <div class="timeline-heading">
-              <h4 class="timeline-title">募款開始</h4>
-              <p><small class="text-muted"><i class="glyphicon glyphicon-time"></i> 2016/05/26 </small></p>
-            </div>
-            <div class="timeline-body">
-              <p>熱帶氣旋是發生在熱帶、亞熱帶地區海面上的氣旋性環流（風暴），由水蒸氣冷卻凝結時放出潛熱發展而出的暖心結構。所以當熱帶氣旋登陸後，或者當熱帶氣旋移到溫度較低的洋面上，便會因為失去溫暖、潮濕的空氣供應能量，而減弱消散，或失去熱帶氣旋的特性，轉化為溫帶氣旋。</p>
-            </div>
-          </div>
-        </li>
-        <li class="timeline-inverted">
-          <div class="timeline-badge warning"><i class="glyphicon glyphicon-chevron-right"></i></div>
-          <div class="timeline-panel">
-            <div class="timeline-heading">
-              <h4 class="timeline-title">校友聚會說明</h4>
-              <p><small class="text-muted"><i class="glyphicon glyphicon-time"></i> 2016/05/30 </small></p>              
-            </div>
-            <div class="timeline-body">
-              <p>熱帶氣旋是發生在熱帶、亞熱帶地區海面上的氣旋性環流（風暴），由水蒸氣冷卻凝結時放出潛熱發展而出的暖心結構。所以當熱帶氣旋登陸後，或者當熱帶氣旋移到溫度較低的洋面上，便會因為失去溫暖、潮濕的空氣供應能量，而減弱消散，或失去熱帶氣旋的特性，轉化為溫帶氣旋。</p>
-              <%= image_tag 'bench.jpg'%>
-            </div>
-          </div>
-        </li>
-		<li>
-          <div class="timeline-badge danger"><i class="glyphicon glyphicon-chevron-left"></i></div>
-          <div class="timeline-panel">
-            <div class="timeline-heading">
-              <h4 class="timeline-title">募款開始</h4>
-              <p><small class="text-muted"><i class="glyphicon glyphicon-time"></i> 2016/05/26 </small></p>
-            </div>
-            <div class="timeline-body">
-              <p>熱帶氣旋是發生在熱帶、亞熱帶地區海面上的氣旋性環流（風暴），由水蒸氣冷卻凝結時放出潛熱發展而出的暖心結構。所以當熱帶氣旋登陸後，或者當熱帶氣旋移到溫度較低的洋面上，便會因為失去溫暖、潮濕的空氣供應能量，而減弱消散，或失去熱帶氣旋的特性，轉化為溫帶氣旋。</p>
-              <%= image_tag 'sample_2.jpg'%>	
-            </div>
-          </div>
-        </li>
-        <li class="timeline-inverted">
-          <div class="timeline-badge warning"><i class="glyphicon glyphicon-chevron-right"></i></div>
-          <div class="timeline-panel">
-            <div class="timeline-heading">
-              <h4 class="timeline-title">校友聚會說明</h4>
-              <p><small class="text-muted"><i class="glyphicon glyphicon-time"></i> 2016/05/30 </small></p>              
-            </div>
-            <div class="timeline-body">
-              <p>熱帶氣旋是發生在熱帶、亞熱帶地區海面上的氣旋性環流（風暴），由水蒸氣冷卻凝結時放出潛熱發展而出的暖心結構。所以當熱帶氣旋登陸後，或者當熱帶氣旋移到溫度較低的洋面上，便會因為失去溫暖、潮濕的空氣供應能量，而減弱消散，或失去熱帶氣旋的特性，轉化為溫帶氣旋。</p>
-              <div class='embed-container'><iframe src='http://www.youtube.com/embed/qXv7POo5MNI?showinfo=0' frameborder='0' allowfullscreen></iframe></div>
-            </div>
-          </div>
-        </li>        
-		-->      
-    </ul>			
-			
-			
+				<div class="col-sm-12">								
+					<ul class="timeline">	
+					<% project.stages.order('stageDate').each_with_index do |s, i| %>
+			        <li class="<%if i%2 != 0 %>timeline-inverted<%end%>">
+			          <%if i%2 != 0 %>
+			          <div class="timeline-badge warning"><i class="glyphicon glyphicon-chevron-right"></i></div>      
+			          <%else%>
+			          <div class="timeline-badge danger"><i class="glyphicon glyphicon-chevron-left"></i></div>         
+			          <%end%>	
+			          <div class="timeline-panel">
+			            <div class="timeline-heading">
+			              <h4 class="timeline-title"><%=s.title %></h4>
+			              <p><small class="text-muted"><i class="glyphicon glyphicon-time"></i> <%=s.stageDate.strftime("%Y/%m/%d") %></small></p>              
+			            </div>
+			            <div class="timeline-body">
+			              <p><%= s.description%></p>
+					    	<% if s.image.blank? and !s.video_url.blank?%>	    	
+			              		<div class='embed-container'><iframe src='http://www.youtube.com/embed/<%= s.video_url %>?showinfo=0' frameborder='0' allowfullscreen></iframe></div>		    	
+					    	<% elsif !s.image.blank?  and s.video_url.blank?%>	
+								<%= image_tag s.image.url %>
+					    	<% end %>
+			            </div>
+			          </div>
+			        </li>        	     	
+			        <% end %>        	    
+			    	</ul>			
 				</div>				
-			</div>			
-			
-			
-			
-			
-			
-			
-			
-			
-			
+			</div>
+			<%end%>					
 <!--
 			<div class="row donation_sponsor" style="">
 				<div class="col-sm-10 col-sm-offset-1">	

@@ -41,12 +41,12 @@
 	.grid-item{
 		width: 50%;
 	}
-}
-@media (max-width: $screen-xs-min) {
-	.grid-item{
-		width: 100%;
-	}
 }*/
+@media (max-width: $screen-sm-min) {
+	.grid {
+	  margin-top: 50px;
+	}
+}
 .grid-item-close {
   color: #878787;
   font-size: 30px;
@@ -99,7 +99,6 @@
 	/*visibility: hidden;*/
 }
 .donation_summary{
-	width: 200px;
 	margin: 0 auto;
 	margin-top: 20vh;	
 	margin-bottom: 5vh;
@@ -111,11 +110,11 @@
 }
 .donation_summary_number{
 	color: #02a0eb;	
-	line-height: 155px;
+	line-height: 170px;
   	font-family: "Oswald", sans-serif;	
-  	position: absolute;
+  	/*position: absolute;
   	bottom: 0px;
-  	right: 70px;  		
+  	left: 60px;  */		
 }
 .donation_summary_ch{
 	font-size: 18%;
@@ -159,8 +158,7 @@
 	border-radius: 5px !important;
 	border-bottom: 3px solid #0279b1 !important;*/	
 }
-.no-touch .donation_top_button:hover, 
-.donation_top_button:focus{
+.no-touch .donation_top_button:hover, .donation_top_button:focus{
 	text-decoration: none;
 	color: #000000;	
 	border: 1px solid #000000;	
@@ -182,15 +180,18 @@
 		font-size: 15px;
 	}	
 	.donation_summary{
-		width: 350px;
 		font-size: 76px;
 	}
 	.donation_summary_inner{
 		height: 90px;
 	}	
 	.donation_summary_number{
-		line-height: 79px;
-	}	
+		line-height: 90px;
+		left: 29px; 
+	}
+	.donation_summary_ch{
+	   	top: 33px; 
+   	}		
 }
 
 @media (max-width: $screen-xs-min) {
@@ -198,15 +199,18 @@
 		font-size: 12px;
 	}	
 	.donation_summary{
-		width: 260px;
 		font-size: 60px;
 	}
 	.donation_summary_inner{
 		height: 70px;
 	}	
 	.donation_summary_number{
-		line-height: 65px;
-	}		
+		line-height: 70px;
+		left: 25px;  		
+	}	
+	.donation_summary_ch{
+	   	top: 27px; 
+   	}		
 }
 
 .donation_content_background_image{
@@ -287,7 +291,11 @@
     &:before { right: 1.5%; }
     &:after { left: 1.5%; }	*/
 }
-
+@media (max-width: $screen-sm-min) {
+	.donation-no-span{
+		margin-top: 50px;	
+	}	
+}
 
 .donation_card_small_img{
   height: 280px;
@@ -432,12 +440,12 @@
 
 @media (max-width: $screen-xs-min) {
 	.donation_card_pie{
-	  height: 350px;
+	  height: 300px;
 	}
 	.chart {
-	  width: 300px;
-	  height: 300px;
-	  margin: 0px 0 0 -150px;
+	  width: 280px;
+	  height: 280px;
+	  margin: 0px 0 0 -140px;
 	}
 	.doughnutSummaryTitle {
 	  font-size: 15px;
@@ -479,11 +487,11 @@
 }
 .donation_btn_group .donation_gray_btn{
   font-family: "Oswald", sans-serif;	
-  font-size: 23px;	
+  font-size: 21px;	
   color: #02a0eb;	
   text-align: center;
   margin: 0px 12px 12px 0px !important; 
-  width: 110px;
+  width: 100px;
   background: #eeeeee;
   border-radius: 5px !important;
   border: none;

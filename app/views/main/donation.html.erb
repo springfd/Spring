@@ -9,7 +9,8 @@
 				<div class="donation_summary text-center">
 					<div class="donation_summary_inner">
 						<div class="donation_summary_ch">已募</div>
-						<div class="donation_summary_number"></div> <div class="donation_summary_en">NT</div>	
+						<div class="donation_summary_number"></div>
+						<div class="donation_summary_en">NT</div>	
 					</div>
 					<div class="donation_range text-right">累積期間 <%=Time.zone.now().year%>/01/01~<%=Time.zone.now().strftime("%Y/%m/%d")  %></div>	
 				</div>
@@ -181,7 +182,7 @@ var controller = new ScrollMagic.Controller();
 $('.donation_summary_number').html( Math.ceil(0).toLocaleString() )
 var foo = { bar: 0 };		
 tween = new TimelineLite();
-tween.to(foo, 2, { bar: 0, onUpdate: function() {
+tween.to(foo, 2, { bar: <%= Donation.where("donate_date >= ? and donate = ? ", Time.zone.now.beginning_of_year, true ).sum(:amount)%>, onUpdate: function() {
 	 $('.donation_summary_number').html(Math.ceil(foo.bar).toLocaleString());}, ease: Linear.easeNone})
 	 .to(".donation_summary_ch", 1, {autoAlpha: 1, ease: Linear.easeNone})	 
 	 .to(".donation_summary_en", 1, {autoAlpha: 1, ease: Linear.easeNone})
@@ -264,3 +265,22 @@ $( "#sign_report" ).change(function() {
 });
 
 </script>
+<style>
+<% digit = (Donation.where("donate_date >= ? and donate = ? ", Time.zone.now.beginning_of_year, true ).sum(:amount) ).to_s.length%>
+<% digit = digit + 0.5 if digit >= 4%>	
+<% digit = digit + 0.5 if digit >= 7%>
+
+.donation_summary{
+	width: <%= 140 + digit*75%>px;	
+}
+@media (max-width: 768px) {
+	.donation_summary{
+		width: <%= 68 + digit*40%>px;			
+	}
+}	
+@media (max-width: 480px) {
+	.donation_summary{
+		width: <%= 55 + digit*30%>px;			
+	}
+}
+</style>
