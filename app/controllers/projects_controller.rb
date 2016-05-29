@@ -32,10 +32,12 @@ class ProjectsController < ApplicationController
     end
     @project.save!
     #stage create
-    params[:stage_id].each do |key, value|
-      stage = Stage.create(id: key, project_id: @project.id, title: params[:stage_title][key], stageDate: params[:stage_date][key], description: params[:stage_description][key], video_url: params[:url][key])
-      store_stage_image(stage, params[:stage], key)
-      stage.save!
+    unless params[:stage_id].blank?
+      params[:stage_id].each do |key, value|
+        stage = Stage.create(id: key, project_id: @project.id, title: params[:stage_title][key], stageDate: params[:stage_date][key], description: params[:stage_description][key], video_url: params[:url][key])
+        store_stage_image(stage, params[:stage], key)
+        stage.save!
+      end
     end
     #end stage create
     redirect_to @project, pj_kind: @project.kind, notice: '成功新增計畫'
