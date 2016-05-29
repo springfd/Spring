@@ -9,9 +9,15 @@
       </ul>
     </div>
   <% end %>
+  <%= f.hidden_field :stage_next_id, :value => @stage_next_id%>
   <%= f.hidden_field :kind, :value => GLOBAL_VAR['project_delegate']%>
   <%= hidden_field_tag(:attachment_delete, false) %>
   <%= hidden_field_tag(:cover_delete, false) %>
+  <div class="form-group ">
+		<div class="col-sm-offset-10 col-sm-10">
+			<%= f.submit '儲存',  class: "btn btn-info save-btn", :onclick => "return validateform();"%>
+		</div>
+  </div>
   <div class="form-group row">
   	<label class="col-sm-offset-1 col-sm-2 control-label">全稱*</label>
   		<div class="col-sm-6">
@@ -176,16 +182,24 @@
 	    </script>	
   </div>
   <% end %>
-  <div class="form-group ">
-		<div class="col-sm-offset-8 col-sm-10">
-			<%= f.submit '儲存',  class: "btn btn-default"  %>
-		</div>
-  </div>
 </div>
+<div style="font-size: 34px; margin-left: 87px;">計畫發展階段</div>
+  <a id="addNewStage" class="btn btn-info add-btn col-md-offset-10">新增</a>
+  <div id="project_stages" class="container" style="margin-left:139px; ">
+  </div>
 <% end %>
 <script>
 $(document).on('ready', function() {
-	$('#project_kind').val('<%= GLOBAL_VAR['project_delegate']%>');
+	document.getElementById('project_stage_next_id').value = '<%= @stage_next_id %>'
+	<% @project.stages.each do |s| %>
+		var id = '<%= s.id %>';
+		appendStage(id, '<%= s.image.url %>');
+		<% if s.stageDate.blank? %>
+			addStageValue(id, '<%= s.title %>', '<%= s.stageDate %>', '<%= s.description.gsub(/\r\n/, "\\n") %>', '<%= s.video_url %>');
+		<% else %>
+			addStageValue(id, '<%= s.title %>', '<%= s.stageDate.strftime("%Y-%m-%d") %>', '<%= s.description.gsub(/\r\n/, "\\n") %>', '<%= s.video_url %>');
+		<% end %>
+	<% end %>
 	//project attachment file upload
      $("#project_pj_attachment").fileinput({
      	initialPreview: [
@@ -232,5 +246,128 @@ $(document).on('ready', function() {
     $('#project_pj_cover').on('fileclear', function(event) {
     	$('#cover_delete').val(true);
     });
+    document.getElementById("addNewStage").addEventListener('click', function() {
+		var id =document.getElementById("project_stage_next_id").value;
+		appendStage(id, "/images/original/missing.png");
+		document.getElementById("project_stage_next_id").value++;
+	});
 });
+	function validateform(){
+		var valid = true;
+		var elements = document.getElementsByClassName("stage_title");
+		Array.prototype.forEach.call(elements, function(el) {
+    		// Do stuff here
+    		if (el.value.length == 0){
+    			el.style.border='2px solid #F0AE9E'
+    			el.style.borderRadius='5px'
+    			toastr['error']("未填寫階段名稱")	
+    			valid = false;
+    		}
+		});
+		
+		return valid;
+	};
+	function appendStage(id, image_url){
+		$("#project_stages").append(
+			"<div class='container col-md-6' id='stage_form_id_"+id+"'>"+
+				"<input id='stage_id_"+id+"' name='stage_id["+id+"]' type='hidden'>"+
+				"<input id='stage_image_delete_"+id+"' name='stage_image_delete["+id+"]' value='false' type='hidden'/>"+
+				"<table class='table'>"+
+			  		"<tr>"+
+			  			"<td>名稱:</td>"+
+			  			"<td >"+
+			  				"<input id='stage_title_"+id+"' class='form-control stage_title' name='stage_title["+id+"]' size='10' type='text'>"+
+			  			"</td>"+
+			  			"<td>"+
+			  				"<input id='del_"+id+"' class='btn btn-info delete-btn' style='font-size: 14px; width: 52px!important;' name='del["+id+"]' type='button' value='刪除'>"+
+		  				"</td>"+
+		  			"</tr>"+
+		  			"<tr>"+
+			  			"<td>日期:</td>"+
+			  			"<td>"+
+			  				"<input id='stage_date_"+id+"' class='form-control' name='stage_date["+id+"]' size='10' type='text' class='stage_date'>"+
+			  			"</td>"+
+		  			"</tr>"+
+		  			"<tr>"+
+			  			"<td>描述:</td>"+
+			  			"<td>"+
+			  				"<textarea id='stage_description_"+id+"' class='form-control' name='stage_description["+id+"]'  class='stage_description'></textarea>"+
+			  			"</td>"+
+		  			"</tr>"+
+		  			"<tr>"+
+			  			"<td>影片連結:</td>"+
+			  			"<td>"+
+			  				"<input id='stage_url_"+id+"' class='form-control' name='stage_url["+id+"]' size='10' type='text' class='stage_url'>"+
+			  			"</td>"+
+		  			"</tr>"+
+		  			"<tr>"+
+			  			"<td>圖片:</td>"+
+			  			"<td>"+
+			  				"<input id='stage_image_"+id+"' name='stage[image]["+id+"]' type='file' accept='image/*'>"+
+			  			"</td>"+
+		  			"</tr>"+
+		  		"</table>"+
+  			"</div>"
+		);
+		//delete stage by ajax
+		document.getElementById("del_"+id).addEventListener('click', function() {
+			var request = $.ajax({
+			url: "/projects/delete_stage",
+			type: "POST",
+			data: { id: id},
+			dataType: "json"
+			});
+			request.done(function( data ) {
+				if(data.success)
+				toastr['success'](data.message)		
+			});
+			request.fail(function( jqXHR, textStatus ) {
+			});	
+			
+			$("#stage_form_id_"+id).remove();
+		});
+		$("#stage_date_"+id).datetimepicker({
+			format : 'YYYY/MM/DD'		                
+        });
+        
+        //stage image upload
+        if(image_url != "/images/original/missing.png"){//initial preview image if the image exists
+		     $("#stage_image_"+id).fileinput({
+		     	initialPreview: [
+	        		"<img class='file-preview-image' src='"+image_url+"' />",
+			    ],
+				showUpload: false,
+				previewFileType: "image",
+		        browseClass: "btn btn-success",
+		        browseLabel: "Pick Image",
+		        browseIcon: "<i class=\"glyphicon glyphicon-picture\"></i> ",
+		        removeClass: "btn btn-danger",
+		        removeLabel: "Delete",
+		        removeIcon: "<i class=\"glyphicon glyphicon-trash\"></i> ",
+		    });
+	    }else{
+	    	$("#stage_image_"+id).fileinput({
+				showUpload: false,
+				previewFileType: "image",
+		        browseClass: "btn btn-success",
+		        browseLabel: "Pick Image",
+		        browseIcon: "<i class=\"glyphicon glyphicon-picture\"></i> ",
+		        removeClass: "btn btn-danger",
+		        removeLabel: "Delete",
+		        removeIcon: "<i class=\"glyphicon glyphicon-trash\"></i> ",
+		    });
+	    }
+	    $("#stage_image_"+id).on('fileloaded', function(event, file, previewId, index, reader) {
+	        $('#stage_image_delete_'+id).val(true);
+	    });
+	    $("#stage_image_"+id).on('fileclear', function(event) {
+	    	$('#stage_image_delete_'+id).val(true);
+	    });
+	}//end append stage
+	function addStageValue(id, title, date, description, url){
+		$('#stage_title_'+id).val(title);
+		$('#stage_date_'+id).val(date);
+		$('#stage_description_'+id).html(description);
+		$('#stage_url_'+id).val(url);
+	}
 </script>
