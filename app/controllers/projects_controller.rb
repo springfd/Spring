@@ -1,6 +1,7 @@
 class ProjectsController < ApplicationController
   before_filter :authenticate_user!, except: [:checkLogin]
   before_action :set_project, only: [:show, :edit, :update, :destroy]
+  before_action :get_next_stage_id, only: [:new, :edit]
 
   # GET /projects
   # GET /projects.json
@@ -30,6 +31,13 @@ class ProjectsController < ApplicationController
       @project.year = DateTime.strptime(params[:project][:year], "%Y")
     end
     @project.save!
+    #stage create
+    params[:stage_id].each do |key, value|
+      stage = Stage.create(id: key, project_id: @project.id, title: params[:stage_title][key], stageDate: params[:stage_date][key], description: params[:stage_description][key], video_url: params[:url][key])
+      store_stage_image(stage, params[:stage], key)
+      stage.save!
+    end
+    #end stage create
     redirect_to @project, pj_kind: @project.kind, notice: '成功新增計畫'
     rescue ActiveRecord::RecordInvalid
     params[:pj_kind] = params[:project][:kind].to_i
@@ -49,12 +57,34 @@ class ProjectsController < ApplicationController
     unless params[:project][:year].blank?
       @project.year = DateTime.strptime(params[:project][:year], "%Y")
     end
-    #@project.password = params[:project][:encrypted_password]
     @project.save!
     record_log
+    #stage update
+    unless params[:stage_id].blank?
+      params[:stage_id].each do |key, value|
+        stage = @project.stages.find_by_id(key)
+        #delete stage image
+        unless stage.blank?
+          if params[:stage_image_delete][key] == 'true'
+            stage.image = nil
+          end
+          stage.title = params[:stage_title][key]
+          stage.stageDate = params[:stage_date][key]
+          stage.description = params[:stage_description][key]
+          stage.video_url = params[:stage_url][key]
+          store_stage_image(stage, params[:stage], key)
+        else
+          stage = Stage.create(id: key, project_id: @project.id, title: params[:stage_title][key], stageDate: params[:stage_date][key], description: params[:stage_description][key], video_url: params[:stage_url][key])
+          store_stage_image(stage, params[:stage], key)    
+        end
+        stage.save!
+      end
+    end
+    #end stage update
     redirect_to @project, pj_kind: @project.kind, notice: '成功更新計畫'
     rescue ActiveRecord::RecordInvalid
     params[:pj_kind] = params[:project][:kind].to_i
+    get_next_stage_id
     render "edit"
   end
 
@@ -64,7 +94,13 @@ class ProjectsController < ApplicationController
     @project.destroy
     redirect_to({ controller: "projects", action: 'index' , pj_kind: @project.kind}, notice: '成功刪除計畫') 
   end
-
+  
+  def delete_stage
+    stage = Stage.find_by_id(params[:id])
+    stage.destroy
+    render json: {success: true, message: '成功刪除' }.to_json
+  end
+  
   def checkLogin
     @project = Project.find_by_account_and_password(params[:project_account], params[:project_password])
     if @project.blank?
@@ -91,6 +127,22 @@ class ProjectsController < ApplicationController
     
     def record_log
       Log.create(user_id: current_user.id, project_id: @project.id )
+    end
+    
+    def get_next_stage_id
+      unless Stage.maximum(:id).blank?
+        @stage_next_id = Stage.maximum(:id).next
+      else
+        @stage_next_id = 1
+      end
+    end
+    
+    def store_stage_image(stage, stage_params, key)
+      unless stage_params.blank?
+        unless stage_params[:image][key].blank?
+          stage.image = stage_params[:image][key]
+        end
+      end
     end
     
 end
