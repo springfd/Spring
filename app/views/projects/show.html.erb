@@ -49,7 +49,15 @@
 	  <div class="col-md-3 col-md-offset-2 show-title">帳號結束時間</div>
 	  <div class="col-md-4"> <%= @project.account_end.strftime("%Y-%m-%d") %></div>
 	</div>
+	<div class="row">
+	  <div class="col-md-3 col-md-offset-2 show-title">捐款</div>
+	</div>
 	<% end %>
+	<div class="container">
+		<% @project.donations.each do |donation| %>
+			<%= render "donations/sub_donation_panel", donation: donation %>
+		<% end %>
+	</div>
 </div>
 
 <script>
