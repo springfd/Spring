@@ -9,15 +9,41 @@
 	bottom:0;
 	background: url('<%= asset_path 'about/background.jpg' %>');
 	background-size:cover;
-	background-position: center center;	
-	z-index:1;
-
-	-webkit-filter: blur(0px) grayscale(.7);
-    -moz-filter: blur(0px) grayscale(.7);
-    -o-filter: blur(0px) grayscale(.7);
-    -ms-filter: blur(0px) grayscale(.7);
-    filter: blur(0px) grayscale(.7);	
+	background-position: center center;
+	-webkit-clip-path: polygon(0 0, 100% 0, 100% 95%, 50% 100%, 0 95%);
+	clip-path: polygon(0 0, 100% 0, 100% 95%, 50% 100%, 0 95%);		
+/*
+	-webkit-filter: blur(0px) grayscale(.7) opacity(.8) ;
+    -moz-filter: blur(0px) grayscale(.7) opacity(.8) ;
+    -o-filter: blur(0px) grayscale(.7) opacity(.8) ;
+    -ms-filter: blur(0px) grayscale(.7) opacity(.8) ;
+    filter: blur(0px) grayscale(.7) opacity(.8) ;	
+*/
 }
+.top_solgan{
+	font-size: 80px; 
+	letter-spacing: 20px;
+	width: 250px;
+	margin: 0 auto;
+	margin-top: 25vh;
+	padding-left: 20px;
+	border: 1px solid #FFFFFF;
+	color: #ffffff	
+}
+.about_arrow_container{
+	position: relative;
+	margin-top: 100px;	
+} 
+.about_arrow span{
+	position: relative;	
+	color: #ffffff;
+	font-size: 25px !important;
+	border-radius: 50%;
+	border: 1px solid #ffffff;	
+	padding: 8px;
+}
+
+
 /*=========================== quote ===================================*/
 .about_quote_line{
 	background: #b3a253; 

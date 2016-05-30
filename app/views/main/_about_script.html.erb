@@ -1,4 +1,22 @@
 <script>
+//============================= click =============================//
+$('a[href^="#"]').on('click',function (e) {
+	e.preventDefault();
+	var target = this.hash;
+	var $target = $(target);	
+	$('html, body').stop().animate({
+		'scrollTop': $target.offset().top
+		}, 900, 'swing', function () {
+			//window.location.hash = target;
+	});
+});
+//============================= arrow =============================//
+var tween = new TimelineMax()
+				.fromTo(".about_arrow span", 1,
+						{top: '0px'},
+						{top: '10px', repeat: -1, yoyo: true, ease: Circ.easeInOut})				
+				//.to(".donation_content_donate_inner", 1, {autoAlpha: 1, ease: Linear.easeNone})
+
 //============================= more =============================//
 	$('#chair_more_content').hide()
 	$('#chair_more').click(function() {
