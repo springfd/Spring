@@ -15,25 +15,29 @@
 	<table class="table donation_show_table">
 	    <tbody style="border-left: solid 13px #33CCCC!important;">
 	      <tr>
-	        <td colspan="8" class="dt-content" style="font-weight: 900!important; background: #e3e3e3; font-size: 16px;"><%= @donation.name %></td>
+	        <td colspan="8" class="dt-content" style="font-weight: 900!important; background: #e3e3e3; font-size: 16px;"><%= @project_name %>計畫</td>
 	      </tr>
 	      <tr>
+	      	<td class="dt-title">連絡人</td>
+	        <td colspan="3" class="dt-content"><%= @donation.name %></td>
 	        <td class="dt-title">編號</td>
 	        <td colspan="3" class="dt-content"><%= @donation.order_num %></td>
-	        <td colspan="2" class="dt-title">日期</td>
-	        <td colspan="2" class="dt-content"><%= @donation.donate_date.strftime("%Y-%m-%d") %></td>
 	      </tr>
 	      <tr>
 	        <td class="dt-title">金額</td>
-	        <td colspan="3" class="dt-content"><%= @donation.amount %>元整</td>
-	        <td colspan="2" class="dt-title">方式</td>
-	        <td colspan="2" class="dt-content"><%= Hash[donateWayOptions].rassoc(@donation.donate_way).first %></td>
+	        <td colspan="2" class="dt-content"><%= @donation.amount %>元整</td>
+	        <td colspan="1" class="dt-title">方式</td>
+	        <td colspan="1" class="dt-content"><%= Hash[donateWayOptions].rassoc(@donation.donate_way).first %></td>
+	      	<td colspan="1" class="dt-title">日期</td>
+	      	<td colspan="2" class="dt-content"><%= @donation.donate_date.strftime("%Y-%m-%d") %></td>
 	      </tr>
 	      <tr>
 	        <td class="dt-title">抬頭</td>
 	        <td colspan="2" class="dt-content"><%= @donation.receipt_title %></td>
 	        <td colspan="1" class="dt-title">電話</td>
-	        <td colspan="4" class="dt-content"><%= @donation.phone %></td>
+	        <td colspan="1" class="dt-content"><%= @donation.phone %></td>
+	        <td colspan="1" class="dt-title">Email</td>
+	        <td colspan="2" class="dt-content"><%= @donation.email %></td>
 	      </tr>
 	      <tr>
 	        <td class="dt-title">地址</td>

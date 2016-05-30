@@ -1,12 +1,12 @@
 class Project < ActiveRecord::Base
    has_many :donations, :dependent => :destroy
    has_many :stages, :dependent => :destroy
-   has_attached_file :pj_attachment,
+   has_attached_file :pj_attachment, :styles => { :original => "1024>" },
       :url  => "/assets/pj_attachments/:id/:style/:basename.:extension"
       #:path => ":rails_root/public/assets/pj_attachments/:id/:style/:basename.:extension"
    do_not_validate_attachment_file_type :pj_attachment
    
-   has_attached_file :pj_cover,
+   has_attached_file :pj_cover, :styles => { :original => "1024>" },
       :url  => "/assets/pj_covers/:id/:style/:basename.:extension"
       #:path => ":rails_root/public/assets/pj_covers/:id/:style/:basename.:extension"
    do_not_validate_attachment_file_type :pj_cover

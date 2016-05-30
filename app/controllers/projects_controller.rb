@@ -34,7 +34,7 @@ class ProjectsController < ApplicationController
     #stage create
     unless params[:stage_id].blank?
       params[:stage_id].each do |key, value|
-        stage = Stage.create(id: key, project_id: @project.id, title: params[:stage_title][key], stageDate: params[:stage_date][key], description: params[:stage_description][key], video_url: params[:url][key])
+        stage = Stage.create(id: key, project_id: @project.id, title: params[:stage_title][key], stageDate: params[:stage_date][key], description: params[:stage_description][key], video_url: params[:stage_url][key])
         store_stage_image(stage, params[:stage], key)
         stage.save!
       end
@@ -43,6 +43,7 @@ class ProjectsController < ApplicationController
     redirect_to @project, pj_kind: @project.kind, notice: '成功新增計畫'
     rescue ActiveRecord::RecordInvalid
     params[:pj_kind] = params[:project][:kind].to_i
+    get_next_stage_id
     render "edit"
   end
 

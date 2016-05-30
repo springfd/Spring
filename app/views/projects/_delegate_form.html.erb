@@ -105,7 +105,8 @@
 	    <script type="text/javascript">
 	            $(function () {
 	                $('#datetimepicker_donate_begin_at').datetimepicker({
-						format : 'YYYY/MM/DD'		                
+						format : 'YYYY/MM/DD',
+						defaultDate:'1990/1/1'		                
 	                });
 	                
 	                 $("#datetimepicker_donate_begin_at").on("dp.change", function(e) {
@@ -122,7 +123,8 @@
 	    <script type="text/javascript">
 	            $(function () {
 	                $('#datetimepicker_donate_end_at').datetimepicker({
-						format : 'YYYY/MM/DD'		                
+						format : 'YYYY/MM/DD',
+						defaultDate:'1990/1/2'		 		                
 	                });
 	                $("#datetimepicker_donate_end_at").on("dp.change", function(e) {
             			$('#datetimepicker_donate_begin_at').data("DateTimePicker").maxDate(e.date);

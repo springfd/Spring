@@ -11,6 +11,7 @@ class DonationsController < ApplicationController
   # GET /donations/1
   # GET /donations/1.json
   def show
+    @project_name = Project.find(@donation.project_id).name
   end
 
   # GET /donations/new
@@ -57,6 +58,6 @@ class DonationsController < ApplicationController
 
     # Never trust parameters from the scary internet, only allow the white list through.
     def donation_params
-      params.require(:donation).permit(:name, :amount, :donate_way, :donate_date)
+      params.require(:donation).permit(:name, :amount, :donate_way, :donate_date, :donate, :project_id)
     end
 end

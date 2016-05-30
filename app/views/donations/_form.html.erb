@@ -9,6 +9,7 @@
 	      </ul>
 	  </div>
 	  <% end %>
+	  <%= f.hidden_field :donate, value: true %>
 	  <div class="form-group row">
 	  	<label class="col-sm-offset-1 col-sm-2 control-label">捐款人</label>
 	  		<div class="col-sm-3">
@@ -16,19 +17,25 @@
 	    	</div>
 	  </div>
 	  <div class="form-group row">
-	  	<label class="col-sm-offset-1 col-sm-2 control-label">金額</label>
+	  	<label class="col-sm-offset-1 col-sm-2 control-label">金額*</label>
 	  		<div class="col-sm-3">
 	  			<%= f.number_field :amount, class: "form-control", placeholder: "金額" %>
 	    	</div>
 	  </div>
 	  <div class="form-group row">
-			<label class="col-sm-offset-1 col-sm-2 control-label">方式</label>
+			<label class="col-sm-offset-1 col-sm-2 control-label">方式*</label>
 			<div class="col-sm-3">
-				<%= f.select :donate_way , options_for_select([["電匯", 0], ["支票", 1], ["現金", 2]], @donation.donate_way), {include_blank: true}, class: "form-control" %>		
+				<%= f.select :donate_way , options_for_select([["電匯", 0], ["支票", 1], ["現金", 2]], @donation.donate_way) , {prompt: '選擇捐款方式'}, class: "form-control" %>		
 	  		</div>
 	  </div>
 	  <div class="form-group row">
-			<label class="col-sm-offset-1 col-sm-2 control-label">捐款日期</label>
+			<label class="col-sm-offset-1 col-sm-2 control-label">計畫*</label>
+			<div class="col-sm-3">
+	  			<%= f.select :project_id , options_from_collection_for_select(Project.all, 'id', 'name', @donation.project_id),{prompt: '選擇計畫'} , class: "form-control"%>
+	  		</div>
+	  </div>
+	  <div class="form-group row">
+			<label class="col-sm-offset-1 col-sm-2 control-label">捐款日期*</label>
 			<div class="col-sm-3">
 				<%= f.text_field :donate_date, class: "form-control", id: 'datetimepicker_donate_date', placeholder: "捐款日期" %>	
 			</div>
@@ -42,7 +49,7 @@
 	</div>
 		<div class="form-group row">
 			<div class="col-sm-offset-6 col-sm-6">
-				<%= f.submit '儲存',  class: "btn btn-primary"  %>
+				<%= f.submit '儲存',  class: "btn btn-info save-btn"  %>
 			</div>
 		</div>
 	</div>

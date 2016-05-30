@@ -87,7 +87,11 @@ class Users::ConfirmationsController < Devise::ConfirmationsController
       new_session_path(resource_name)
     end
    end
+  private
 
+  def after_sign_in_path_for(resource)#登入之後的path: users_path
+    request.env['omniauth.origin'] || stored_location_for(resource) || users_path
+  end
   # The path used after confirmation.
   # def after_confirmation_path_for(resource_name, resource)
   #   super(resource_name, resource)
