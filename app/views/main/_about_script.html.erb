@@ -41,10 +41,10 @@ var tween = new TimelineMax()
   		$('#chair_more_content_less').hide()		
   		$('#chair_more_content').show('slow')
 	});
-	$('#ceo_more_content').hide()
-	$('#ceo_more').click(function() {
-  		$('#ceo_more_content_less').hide()		
-  		$('#ceo_more_content').show('slow')
+	$('.ceo_more_content').hide()
+	$('.ceo_more').click(function() {
+  		$('.ceo_more_content_less').hide()		
+  		$('.ceo_more_content').show('slow')
 	});	
 /*
 	function pathPrepare ($el) {
@@ -88,8 +88,8 @@ var tween = new TimelineMax()
 	var tween = new TimelineMax()
 					//.to(".about_quote_title_1", 1, {autoAlpha: 1, ease: Linear.easeNone})
 					.to(".about_quote_1", 1, {autoAlpha: 1, ease: Linear.easeNone})
-					.to(".sign_chairman", 1, {autoAlpha: 1, ease: Linear.easeNone})					
-	var scene = new ScrollMagic.Scene({triggerElement: ".about_quote_1", duration: 200, tweenChanges: true})
+					//.to(".sign_chairman", 1, {autoAlpha: 1, ease: Linear.easeNone})					
+	var scene = new ScrollMagic.Scene({triggerElement: "#about_quote_title_1", duration: 200, tweenChanges: true})
 					.setTween(tween)
 					.addTo(controller);	
 
@@ -97,7 +97,7 @@ var tween = new TimelineMax()
 					//.to(".about_quote_title_1", 1, {autoAlpha: 1, ease: Linear.easeNone})
 					.to(".about_quote_2", 1, {autoAlpha: 1, ease: Linear.easeNone})
 					.to(".sign_ceo", 1, {autoAlpha: 1, ease: Linear.easeNone})					
-	var scene = new ScrollMagic.Scene({triggerElement: ".about_quote_2", duration: 200, tweenChanges: true})
+	var scene = new ScrollMagic.Scene({triggerElement: ".about_quote_title_2", duration: 200, tweenChanges: true})
 					.setTween(tween)
 					.addTo(controller);						
 

@@ -2,7 +2,7 @@
   <!-- add extra container element for Masonry -->
   <div class="grid-news">
     <div class="grid-news-sizer col-xs-12 col-sm-4 col-md-3"></div>
-    <% Story.all.order('id desc').each do |s| %>
+    <% Story.all.order('news_date desc').each do |s| %>
     	<% if s.pictures.size == 0 and s.video_url.blank? %>
     		<%= render "news_card_text", news: s %>
     	<% elsif s.pictures.size == 0 and !s.video_url.blank?%>	    	

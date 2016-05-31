@@ -27,9 +27,11 @@
 	position: relative;	
 }
 .top_solgan{
-	font-size: 80px; 
+	font-size: 70px; 
 	letter-spacing: 20px;
 	padding-left: 20px;
+	padding-top: 10px;
+	padding-bottom: 10px;
 	/*border: 1px solid #FFFFFF;*/
 	color: #ffffff;
 }
@@ -89,18 +91,18 @@
 	background: #b3a253; 
 	width: 1px; 
 	position: absolute; 
-	-ms-transform: rotate(12deg); /* IE 9 */
-    -webkit-transform: rotate(12deg); /* Chrome, Safari, Opera */
-   	transform: rotate(12deg);	
+	-ms-transform: rotate(11.5deg); /* IE 9 */
+    -webkit-transform: rotate(11.5deg); /* Chrome, Safari, Opera */
+   	transform: rotate(11.5deg);	
 }
 .about_quote_line_1{
 	height: 370px;
 	right: 310px;
 }
 .about_quote_line_2{
-	height: 300px;
+	height: 280px;
 	top: 200px;
-	right: 50px;
+	right: 56px;
 }
 .about_quote_line_3{
 	height: 370px;
@@ -114,20 +116,19 @@
 .about_quote_title{
 	letter-spacing: 2px;
 	font-size: 20px;
-	margin-top: 80px;
+	margin-top: 60px;
+	margin-bottom: 70px;	
 	width: 110px;
 }
 .about_quote_title_name{
 	font-size: 20px; 
-	margin-bottom: 90px;
 }
 .about_quote{
-	/*font-style: italic;*/	
 	visibility: hidden;
 	letter-spacing: 3px;
 	font-size: 22px;
     color: #777777;	
-	margin-bottom: 40px;    
+	margin-bottom: 40px; 
 }
 .about_more{
 	font-size: 70%;
@@ -139,7 +140,7 @@
 
 .about_chairman_container{
 	position: relative; 
-	height: 600px;
+	height: 550px;
 }
 .about_chairman_bg{
 	position: absolute;
@@ -177,7 +178,7 @@
 }
 .about_ceo_container{
 	position: relative; 
-	height: 600px;
+	height: 550px;
 }
 .about_ceo_bg{
 	position: absolute;
@@ -214,43 +215,73 @@
 	visibility: hidden;	
 	height: 85px;
 }
-@media (max-width: $screen-md-min) {
-	.about_quote{
-		font-size: 22px;		
-		margin-top: 70px;	
+@media (max-width: $screen-md-max) {
+	.about_chairman_quote_container{
+		min-height: 300px;
 	}
-	.sign_chairman{
-		margin-bottom: 70px;	
+	.about_quote_title{
+		margin-top: 10px;
 	}	
+	.about_quote{
+		color: #000000;	
+		z-index: 99;
+	}
+	.about_quote_line_1, .about_quote_line_2, 
+	.about_quote_line_3, .about_quote_line_4{
+		display: none;
+	}
 	.about_chairman_bg{
-		height: 450px;	
-		width: 370px;
+		opacity: .1;
+		position: absolute;
+		top: 0px;
+		right: 20px;
+		height: 300px;	
+		width: 240px;
+		z-index: -3;
+	}
+	.about_chairman_bg_2{
+		opacity: .1;
+		position: absolute;
+		top: 0px;
+		right: 5px;
+		height: 300px;	
+		width: 240px;
+		z-index: -2;
 	}
 	.about_chairman{
-		height: 420px;	
-	}	
-	.about_chairman_container{
-		height: 450px;
-	}	
-	.about_ceo_bg{
-		height: 440px;	
-		width: 305px;
-	}
-	.about_ceo{
-		height: 400px;		
-	}
-	.sign_ceo{
-		margin-top: 30px;
-		height: 95px;
+		opacity: .2;
+		position: absolute;
+		height: 300px;
+		top: 0px;
+	    z-index: -1;
 	}	
 	.about_ceo_container{
-		position: relative; 
-		height: 440px;
+		height: 0px;
+		min-height: 350px;
+	}	
+	.about_ceo_bg{
+		opacity: .1;
+		height: 300px;	
+		width: 253px;
+		z-index: -3;		
+	}
+	.about_ceo_bg_2{
+		opacity: .1;
+		height: 310px;	
+		width: 250px;
+		z-index: -2;
+	}	
+	.about_ceo{
+		opacity: .2;
+		height: 300px;	
+		z-index: -1;	
 	}		
-	
-		
 }
 /*=========================== original ===================================*/
+.original_section{
+	/*background: #fafafa;*/
+	padding-top: 70px;	
+} 
 .about_original_line{
 	background: #02a0eb; 
 	width: 1px; 
@@ -320,45 +351,36 @@
 	left: 140px;	
 	height: 380px;
 }
-
-
-@media (max-width: $screen-md-min) {
-	.about_original_title{
-		margin-top: 70px;
-	}
-	.about_original_content{
-		margin-bottom: 70px;		
+@media (max-width: $screen-md-max) {
+	.original_section{
+		padding-top: 0px;	
+	} 	
+	.about_original_line{
+		display: none;
 	}	
-	.about_original_bg_1{
-		height: 424px;	
-		width: 450px;
-	}
-	.about_original_1{
-		right: 80px;	
-		height: 400px;
-	}
 	.about_original_bg_1_container{
-		height: 424px;
-	}
-	.about_original_bg_2{
-		height: 447px;	
-		width: 320px;
-	}
+		position: static; height: 300px;	
+	}	
+	.about_original_1{
+		position: static;
+		margin: 30px auto;	
+		height: 300px;
+	}	
 	.about_original_2{
-		top: 65px;
-		left: 100px;	
-		height: 360px;
-	}	
-	.about_original_bg_2_container{
-		height: 430px;
-	}	
-}
+		position: static;
+		margin: 30px auto;	
+		height: 280px;
+	}		
+}	
 /*=========================== plan ===================================*/
+.plan_container{
+	margin-top: 100px;	
+}
 .about_plan_main_container{
 	padding: 30px !important;
-	height: 420px;
+	min-height: 420px;
 	margin-bottom: 20px;
-	position: absolute;
+	position: relative;
 	margin-top: 35px;
 	/*visibility: hidden;*/
 }
@@ -393,6 +415,9 @@
 	.grid-plan-item{
 		padding: 0px;
 	}
+	.plan_container{
+		margin-top: 0px;	
+	}	
 }
 
 .grid-plan-item-content {

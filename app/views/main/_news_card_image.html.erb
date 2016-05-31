@@ -6,6 +6,7 @@
 			<div class="row" style="">			
 				<div class="col-sm-12 news_card_padding">	
 					<div class="news_card_small_title"><%= news.topic %></div>
+					<div class="news_card_small_date"><small class="text-muted"><i class="glyphicon glyphicon-time"></i> <%= news.news_date.strftime("%Y/%m/%d") %></small></div>			          										
 					<div class="news_card_small_img" style="background-image: url('<%= news.pictures.first.image.url %>');"></div>	
 					<div class="news_card_small_content"><%= truncate( news.description, length: 100)%></div>
 				</div>			
@@ -17,6 +18,7 @@
 			<div class="row" style="">	
 				<div class="col-sm-12">						
 					<div class="news_card_enlarge_title"><%= news.topic %></div>
+					<div class="news_card_enlarge_date"><small class="text-muted"><i class="glyphicon glyphicon-time"></i> <%= news.news_date.strftime("%Y/%m/%d") %></small></div>			          															
 					<div class="news_card_enlarge_content"><%= simple_format( news.description )%></div>		
 					<%= image_tag news.pictures.first.image.url, class: 'news_card_enlarge_img'%>										
 				</div>				
