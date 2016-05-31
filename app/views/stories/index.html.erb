@@ -11,10 +11,13 @@
 	</div>
 </div>
 <div class="container">
-	<% @stories.each do |story| %>
+	<% @stories.each_with_index do |story, index| %>
+		<% if index%3 == 0%>
+		<div class="row">
+		<% end %>
 		<div class="col-sm-4">
 			<div class="panel panel-default">
-			  <div class="panel-body">
+			  <div class="panel-body" style="min-height: 250px;">
 			  	<div class = "story-panel-tr">
 				  	<div class="story-panel-th">標題:</div>
 				  	<div class="story-panel-td"><%= story.topic %></div>
@@ -22,11 +25,11 @@
 				<div class = "story-panel-tr">
 				  	<div class="story-panel-th">內容:</div>
 				  	<div class="story-panel-td">
-				  		<% if story.description.length > 250 %>
-						  	<%= truncate(story.description, length: 250) %>
+				  		<% if story.description.length > 150 %>
+						  	<%= truncate(story.description.gsub("\r\n", "\\n"), length: 150) %>
 						    <%= link_to '  Read more', '', class: "read-more-#{story.id}" %>
 						 <% else %>
-						    <%= story.description %>
+						    <%= story.description.gsub("\r\n", "\\n") %>
 						 <% end %>	
 				  	</div>
 				</div>
@@ -38,8 +41,10 @@
 				</div>
 				<% end %>
 			</div>
-			
 		</div>
+		<% if index%3 == 2%>
+		</div>
+		<% end %>
 	<% end %>
 </div>
 
@@ -47,7 +52,7 @@
 	<% @stories.each do |story| %>
 	  $('.read-more-<%= story.id %>').on('click', function(e) {
 	    e.preventDefault()
-	    $(this).parent().html('<%= story.description %>')
+	    $(this).parent().html('<%= story.description.gsub("\r\n", "\\n") %>')
 	  })
 	<% end %>
 </script>

@@ -25,7 +25,7 @@
 	      </tr>
 	      <tr>
 	        <td class="dt-title">金額</td>
-	        <td colspan="2" class="dt-content"><%= @donation.amount %>元整</td>
+	        <td colspan="1" class="dt-content"><%= @donation.amount %>元整</td>
 	        <td colspan="1" class="dt-title">方式</td>
 	        <td colspan="1" class="dt-content"><%= Hash[donateWayOptions].rassoc(@donation.donate_way).first %></td>
 	      	<td colspan="1" class="dt-title">日期</td>
@@ -33,7 +33,7 @@
 	      </tr>
 	      <tr>
 	        <td class="dt-title">抬頭</td>
-	        <td colspan="2" class="dt-content"><%= @donation.receipt_title %></td>
+	        <td colspan="1" class="dt-content"><%= @donation.receipt_title %></td>
 	        <td colspan="1" class="dt-title">電話</td>
 	        <td colspan="1" class="dt-content"><%= @donation.phone %></td>
 	        <td colspan="1" class="dt-title">Email</td>
