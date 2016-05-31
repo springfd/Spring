@@ -1,4 +1,40 @@
 <script>
+	var controller = new ScrollMagic.Controller();
+//============================= slogan =============================//
+
+	tween = new TimelineLite();
+	tween.fromTo(".left_vertical_solgan_line", 1, {height:0, ease: Linear.easeNone}, {height: '100%', ease: Linear.easeNone})
+		 .fromTo(".top_horizontal_solgan_line", 1, {width:0, ease: Linear.easeNone}, {width:'100%', ease: Linear.easeNone})	  	 
+		 .fromTo(".right_vertical_solgan_line", 1, {height:0, ease: Linear.easeNone}, {height:'100%', ease: Linear.easeNone})
+		 .fromTo(".bottom_horizontal_solgan_line", 1, {width:0, ease: Linear.easeNone}, {width:'100%', ease: Linear.easeNone})	  	 		 	 	
+		 .to(".slogan_1", 1, {autoAlpha: 1, ease: Linear.easeNone})
+		  .to(".slogan_2", 1, {autoAlpha: 1, ease: Linear.easeNone})
+		   .to(".slogan_3", 1, {autoAlpha: 1, ease: Linear.easeNone})
+		    .to(".slogan_4", 1, {autoAlpha: 1, ease: Linear.easeNone})
+		 .to(".about_arrow_container", 1, {autoAlpha: 1, ease: Linear.easeNone})
+	tween.timeScale(2) //play faster   			
+	var scene = new ScrollMagic.Scene({triggerElement: ".about_top", tweenChanges: true})
+					.setTween(tween)
+					.addTo(controller);	
+
+//============================= click =============================//
+$('a[href^="#"]').on('click',function (e) {
+	e.preventDefault();
+	var target = this.hash;
+	var $target = $(target);	
+	$('html, body').stop().animate({
+		'scrollTop': $target.offset().top
+		}, 900, 'swing', function () {
+			//window.location.hash = target;
+	});
+});
+//============================= arrow =============================//
+var tween = new TimelineMax()
+				.fromTo(".about_arrow span", 1,
+						{top: '0px'},
+						{top: '10px', repeat: -1, yoyo: true, ease: Circ.easeInOut})				
+				//.to(".donation_content_donate_inner", 1, {autoAlpha: 1, ease: Linear.easeNone})
+
 //============================= more =============================//
 	$('#chair_more_content').hide()
 	$('#chair_more').click(function() {
@@ -46,7 +82,7 @@
 					*/
 					
 	// init controller
-	var controller = new ScrollMagic.Controller();
+
 
 	// build tween
 	var tween = new TimelineMax()
