@@ -135,7 +135,7 @@
 			              <p><small class="text-muted"><i class="glyphicon glyphicon-time"></i> <%=s.stageDate.strftime("%Y/%m/%d") %></small></p>              
 			            </div>
 			            <div class="timeline-body">
-			              <p><%= s.description%></p>
+			              <p><%= auto_link(simple_format(s.description))%></p>
 					    	<% if s.image.blank? and !s.video_url.blank?%>	    	
 			              		<div class='embed-container'><iframe src='http://www.youtube.com/embed/<%= s.video_url %>?showinfo=0' frameborder='0' allowfullscreen></iframe></div>		    	
 					    	<% elsif !s.image.blank?  and s.video_url.blank?%>	

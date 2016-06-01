@@ -20,7 +20,7 @@
 				<div class="col-sm-12">						
 					<div class="news_card_enlarge_title"><%= news.topic %></div>
 					<div class="news_card_enlarge_date"><small class="text-muted"><i class="glyphicon glyphicon-time"></i> <%= news.news_date.strftime("%Y/%m/%d") %></small></div>			          										
-					<div class='news_card_enlarge_content'><%= simple_format( news.description )%></div>																		
+					<div class='news_card_enlarge_content'><%= auto_link(simple_format( news.description ))%></div>																		
 					<div class='news_card_enlarge_video'><iframe src='https://www.youtube.com/embed/<%= news.video_url %>' frameborder='0' allowfullscreen></iframe></div>									
 				</div>				
 			</div>	
