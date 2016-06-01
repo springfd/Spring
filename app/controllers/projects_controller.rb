@@ -50,12 +50,7 @@ class ProjectsController < ApplicationController
   # PATCH/PUT /projects/1
   # PATCH/PUT /projects/1.json
   def update
-    if params[:attachment_delete] == 'true' #delete project attachments
-      @project.pj_attachment = nil
-    end
-    if params[:cover_delete] == 'true' #delete project cover photo
-      @project.pj_cover = nil
-    end
+    check_delete exp_at: params[:exp_attachment_delete], pj_at: params[:attachment_delete], cover_at: params[:cover_delete]
     @project.update(project_params)
     unless params[:project][:year].blank?
       @project.year = DateTime.strptime(params[:project][:year], "%Y")
@@ -125,7 +120,7 @@ class ProjectsController < ApplicationController
 
     # Never trust parameters from the scary internet, only allow the white list through.
     def project_params
-      params.require(:project).permit(:kind, :year, :name, :description, :budget, :exp_personnel, :exp_business, :exp_mix, :exp_other, :exe_desc, :abbreviation, :account_begin, :account_end, :income, :account, :password, :pj_attachment, :pj_cover, :donate_begin_at, :donate_end_at)
+      params.require(:project).permit(:kind, :year, :name, :description, :budget, :balance, :exe_desc, :abbreviation, :account_begin, :account_end, :income, :account, :password, :pj_attachment, :pj_cover, :donate_begin_at, :donate_end_at, :pj_exp_attachment)
     end
     
     def record_log
@@ -145,6 +140,18 @@ class ProjectsController < ApplicationController
         unless stage_params[:image][key].blank?
           stage.image = stage_params[:image][key]
         end
+      end
+    end
+    
+    def check_delete(options = {})
+      if options[:exp_at] == 'true' #delete project expense attachments
+        @project.pj_exp_attachment = nil
+      end
+      if options[:pj_at] == 'true' #delete project attachments
+        @project.pj_attachment = nil
+      end
+      if options[:cover_at] == 'true' #delete project cover photo
+        @project.pj_cover = nil
       end
     end
     
