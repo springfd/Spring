@@ -12,6 +12,7 @@
   <%= f.hidden_field :stage_next_id, :value => @stage_next_id%>
   <%= f.hidden_field :kind, :value => GLOBAL_VAR['project_self']%>
   <%= hidden_field_tag(:attachment_delete, false) %>
+  <%= hidden_field_tag(:exp_attachment_delete, false) %>
   <%= hidden_field_tag(:cover_delete, false) %>
   <div class="form-group ">
 		<div class="col-sm-offset-10 col-sm-10">
@@ -62,39 +63,27 @@
     	</div>
   </div>
   <div class="form-group row">
+  	<label class="col-sm-offset-1 col-sm-2 control-label">餘額</label>
+  		<div class="col-sm-6">
+  			<%= f.number_field :balance, class: "form-control", placeholder: "餘額" %>
+    	</div>
+  </div>
+  <div class="form-group row">
   	<label class="col-sm-offset-1 col-sm-2 control-label">執行狀況描述*</label>
   		<div class="col-sm-6">
   			<%= f.text_area :exe_desc, class: "form-control", placeholder: "執行狀況描述" %>
     	</div>
   </div>
   <div class="form-group row">
-  	<label class="col-sm-offset-1 col-sm-2 control-label">人事支出</label>
-  		<div class="col-sm-6">
-  			<%= f.number_field :exp_personnel, class: "form-control", placeholder: "人事支出" %>
-    	</div>
-  </div>
-  <div class="form-group row">
-  	<label class="col-sm-offset-1 col-sm-2 control-label">業務支出</label>
-  		<div class="col-sm-6">
-  			<%= f.number_field :exp_business, class: "form-control", placeholder: "業務支出" %>
-    	</div>
-  </div>
-  <div class="form-group row">
-  	<label class="col-sm-offset-1 col-sm-2 control-label">雜支支出</label>
-  		<div class="col-sm-6">
-  			<%= f.number_field :exp_mix, class: "form-control", placeholder: "雜支支出" %>
-    	</div>
-  </div>
-  <div class="form-group row">
-  	<label class="col-sm-offset-1 col-sm-2 control-label">其他支出</label>
-  		<div class="col-sm-6">
-  			<%= f.number_field :exp_other, class: "form-control", placeholder: "其他支出" %>
-    	</div>
-  </div>
-  <div class="form-group row">
   	<label class="col-sm-offset-1 col-sm-2 control-label">計畫封面</label>
   	<div class="col-sm-6">
   		<%= file_field_tag "project[pj_cover]", type: :file, accept: "image/*"%>
+  	</div>
+  </div>
+  <div class="form-group row">
+  	<label class="col-sm-offset-1 col-sm-2 control-label">支出明細</label>
+  	<div class="col-sm-6">
+  		<%= file_field_tag "project[pj_exp_attachment]", type: :file%>
   	</div>
   </div>
   <div class="form-group row">
@@ -154,6 +143,30 @@ $(document).on('ready', function() {
 			addStageValue(id, '<%= s.title %>', '<%= s.stageDate.strftime("%Y-%m-%d") %>', '<%= s.description.gsub(/\r\n/, "\\n") %>', '<%= s.video_url %>');
 		<% end %>
 	<% end %>
+	
+	//project expense attachment file upload
+     $("#project_pj_exp_attachment").fileinput({
+     	initialPreview: [
+		    <% if !@project.pj_exp_attachment_file_name.blank? %>
+		    "<div class='file-preview-other'>" +
+    	    "<h2><i class='glyphicon glyphicon-file'></i></h2>" +
+            '<%= @project.pj_exp_attachment_file_name%>' + "</div>"
+			<% end %>
+		             ],
+		showUpload: false,
+        browseClass: "btn btn-success",
+        browseLabel: "Browse",
+        browseIcon: "<i class=\"glyphicon glyphicon-folder-open\"></i> ",
+        removeClass: "btn btn-danger",
+        removeLabel: "Delete",
+        removeIcon: "<i class=\"glyphicon glyphicon-trash\"></i> ",
+    });
+    $('#project_pj_exp_attachment').on('fileloaded', function(event, file, previewId, index, reader) {
+        $('#exp_attachment_delete').val(true);
+    });
+    $('#project_pj_exp_attachment').on('fileclear', function(event) {
+    	$('#exp_attachment_delete').val(true);
+    });
 	
 	//project attachment file upload
      $("#project_pj_attachment").fileinput({
