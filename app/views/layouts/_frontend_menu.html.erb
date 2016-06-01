@@ -17,12 +17,12 @@
     <!-- Collect the nav links, forms, and other content for toggling -->
     <div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
       <ul class="nav navbar-nav navbar-right">
-        <li><a href="<%=root_url%>">關於</a></li>
+        <li><%=link_to '關於', root_url %></li>
         <!--<li class="divider-vertical"></li>-->
         <li><a href="/main/news">消息</a></li>
         <!--<li class="divider-vertical"></li>-->
         <li><a href="/main/donation">捐款</a></li>        
-        <li><button type="button" class="btn btn-block donation_project_button" data-toggle="modal" data-target="#myModal">委辦計畫</button></li>  
+        <li><button type="button" class="btn donation_project_button" data-toggle="modal" data-target="#myModal">委辦計畫</button></li>  
       </ul>
     </div><!-- /.navbar-collapse -->
   </div><!-- /.container-fluid -->
@@ -96,12 +96,12 @@ var cbpAnimatedHeader = (function() {
 	var docElem = document.documentElement,
 		header = document.querySelector( '.navbar-default' ),
 		didScroll = false,
-		changeHeaderOn = 300;
+		changeHeaderOn = 200;
 	function init() {
 		window.addEventListener( 'scroll', function( event ) {
 			if( !didScroll ) {
 				didScroll = true;
-				setTimeout( scrollPage, 150 );
+				setTimeout( scrollPage, 250 );
 			}
 		}, false );
 	}

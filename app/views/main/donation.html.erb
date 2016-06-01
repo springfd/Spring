@@ -145,7 +145,7 @@ $('a[href^="#"]').on('click',function (e) {
 	var target = this.hash;
 	var $target = $(target);	
 	$('html, body').stop().animate({
-		'scrollTop': $target.offset().top
+		'scrollTop': $target.offset().top - 70
 		}, 900, 'swing', function () {
 			//window.location.hash = target;
 	});
@@ -170,7 +170,6 @@ tween.to(foo, 2, { bar: <%= Donation.where("donate_date >= ? and donate = ? ", T
 	 $('.donation_summary_number').html(Math.ceil(foo.bar).toLocaleString());}, ease: Linear.easeNone})
 	 .to(".donation_summary_ch", 1, {autoAlpha: 1, ease: Linear.easeNone})	 
 	 .to(".donation_summary_en", 1, {autoAlpha: 1, ease: Linear.easeNone})
-	 //.to(".donation_year", 1, {autoAlpha: 1, ease: Linear.easeNone})
 	 .to(".donation_range", 1, {autoAlpha: 1, ease: Linear.easeNone})
 	 //.to(".donation_content_donate_inner", 1, {autoAlpha: 1, ease: Linear.easeNone})
 	 //.from(".donation_content_donate_inner", 1,{bottom: "40px", ease: Linear.easeNone})
