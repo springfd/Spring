@@ -179,7 +179,7 @@
 }
 .about_ceo_container{
 	position: relative; 
-	height: 550px;
+	min-height: 550px;
 }
 .about_ceo_bg{
 	position: absolute;
@@ -224,7 +224,6 @@
 		margin-top: 10px;
 	}	
 	.about_quote{
-		color: #000000;	
 		z-index: 99;
 	}
 	.about_quote_line_1, .about_quote_line_2, 
@@ -353,6 +352,9 @@
 	height: 380px;
 }
 @media (max-width: $screen-md-max) {
+	.about_original_title{
+		margin-top: 0px;
+	}
 	.original_section{
 		padding-top: 0px;	
 	} 	
@@ -360,7 +362,7 @@
 		display: none;
 	}	
 	.about_original_bg_1_container{
-		position: static; height: 300px;	
+		position: static; height: 400px;	
 	}	
 	.about_original_1{
 		position: static;

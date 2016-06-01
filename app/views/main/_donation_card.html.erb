@@ -29,7 +29,9 @@
 					      </tr>
 					      <tr>
 					        <th></th>
-					        <td>附件</td>
+					        <td><% unless project.pj_attachment_file_name.blank? %>
+					        		<%= link_to project.pj_attachment_file_name, project.pj_attachment.url(:original, false) %>
+					        	<% end %></td>
 					      </tr>					      
 					    </tbody>
 					</table>											
