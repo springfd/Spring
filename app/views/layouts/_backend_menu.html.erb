@@ -14,7 +14,7 @@
 		  <li role="presentation" <%= active(controller: 'projects', pj_kind: GLOBAL_VAR['project_self'])%>>
 		  		<%=link_to "自辦計畫",{controller: '/projects', pj_kind: GLOBAL_VAR['project_self']} %>
 		  </li>
-		  <li role="presentation" <%= active(controller: 'projects', pj_kind: GLOBAL_VAR['project_delegate'])%>><%=link_to "代收代付計畫",{controller: '/projects', action: 'index', pj_kind: GLOBAL_VAR['project_delegate']} %></li>
+		  <li role="presentation" <%= active(controller: 'projects', pj_kind: GLOBAL_VAR['project_delegate'])%>><%=link_to "委辦計畫",{controller: '/projects', action: 'index', pj_kind: GLOBAL_VAR['project_delegate']} %></li>
 		  <li role="presentation" <%= active(controller: 'donations')%>><%=link_to "捐款", donations_path %></li>
 		  <li role="presentation" <%= active(controller: 'stories')%>><%=link_to "最新消息", stories_path %></li>
 		  <li role="presentation" <%= active(controller: 'links')%>><%=link_to "相關連結", links_path %></li>

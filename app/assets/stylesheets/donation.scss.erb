@@ -52,8 +52,8 @@
   font-size: 30px;
   z-index: 3;
   position: absolute;
-  right: 30px;
-  top: 20px;
+  right: 32px;
+  top: 2px;
   cursor: pointer;
   visibility: hidden;
 }
@@ -159,13 +159,14 @@
 	border-radius: 5px !important;
 	border-bottom: 3px solid #0279b1 !important;*/	
 }
-.no-touch .donation_top_button:hover, .donation_top_button:focus{
+.donation_top_button:hover, .donation_top_button:focus{
 	text-decoration: none;
 	color: #000000;	
 	border: 1px solid #000000;	
 }
 .donation_arrow_container{
 	position: relative;
+	margin-bottom: 10vh;
 } 
 .donation_arrow span{
 	position: relative;	
@@ -220,8 +221,10 @@
 	right:0;
 	top:0;
 	bottom:0;
+	/*
 	-webkit-clip-path: polygon(50% 13%, 100% 0, 100% 100%, 0 100%, 0 0);
 	clip-path: polygon(50% 13%, 100% 0, 100% 100%, 0 100%, 0 0);	
+	*/
 	background: url('<%= asset_path 'forest.jpg' %>');
 	background-size:cover;
 	background-position: center center;	
@@ -238,7 +241,7 @@
   position:relative;
 }
 .donation_content_donate_inner{
-  margin-top: 20vh; 
+  margin-top: 15vh; 
   margin-bottom: 10vh;
   background: #ffffff; 
   padding: 30px 20px; 
