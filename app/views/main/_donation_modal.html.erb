@@ -59,11 +59,11 @@
 				-->	
 				<tr>
 					<th>目前餘額:</th>
-					<td class="modal_remain"></td>
+					<td class="modal_balance"></td>
 				</tr>						
 				<tr>
 					<th>支出細項:</th>
-					<td><a href="" class="modal_file_name"></a></td>
+					<td><a href="" class="modal_exp_file_name"></a></td>
 				</tr>	
 				
 				
@@ -108,12 +108,13 @@ $( "#login_form" ).submit(function( event ) {
 					$('.modal_year').html(data.year)
 					$('.modal_name').html(data.name)
 					$('.modal_budget').html(data.budget)
-					$('.modal_file_name').html(data.file_name)
-					$('.modal_file_name').attr("href", data.file_url)
+					$('.modal_exp_file_name').html(data.exp_file_name)
+					$('.modal_exp_file_name').attr("href", data.exp_file_url)
 					$('.modal_exp_personnel').html(data.exp_personnel)
 					$('.modal_exp_mix').html(data.exp_mix)
 					$('.modal_exp_other').html(data.exp_other)
-					$('.modal_exp_business').html(data.exp_business)												
+					$('.modal_exp_business').html(data.exp_business)
+					$('.modal_balance').html(data.balance)												
 	    		}else{
 	    			 toastr['warning']('帳號密碼錯誤')
 	    		}

@@ -109,7 +109,9 @@ class ProjectsController < ApplicationController
                      description: @project.description, year: @project.year.strftime("%Y"),
                      file_name: @project.pj_attachment_file_name, file_url: @project.pj_attachment.url(:original, false),
                      exp_personnel: @project.exp_personnel, exp_mix: @project.exp_mix,
-                     exp_business: @project.exp_business, exp_other: @project.exp_other}.to_json
+                     exp_business: @project.exp_business, exp_other: @project.exp_other,
+                     balance: @project.balance, 
+                     exp_file_name: @project.pj_exp_attachment_file_name, exp_file_url: @project.pj_exp_attachment.url}.to_json
     end
   end
   private
