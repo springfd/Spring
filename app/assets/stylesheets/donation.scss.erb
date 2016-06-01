@@ -305,9 +305,10 @@
   height: 280px;
   width: 100%;
   margin-top: 15px;	  
-  /*background-image: url('<%= asset_path 'sample_2.jpg' %>');*/
   background-size: cover; 
   background-position: center center;	
+  -webkit-filter: grayscale(.8);
+  filter: grayscale(.8);	  
 }
 .donation_card_small_title{
   margin-top: 30px;
@@ -729,11 +730,11 @@
 }
 
 .timeline-badge.warning {
-    background-color: #f7d800 !important;
+    background-color: #eeeeee !important;
 }
 
 .timeline-badge.danger {
-    background-color: rgb(192, 112, 163) !important;
+    background-color: #eeeeee !important;
 }
 
 .timeline-badge.info {

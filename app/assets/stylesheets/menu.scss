@@ -52,15 +52,8 @@
   background: none;
   margin-top: 8px !important;  
   outline: none;  
-  /*
-  color: #ffffff !important;
-  border: none;
-  background: #02a0eb;  
-  padding: 10px 20px 10px !important; 
-  border-radius: 5px !important;
-  margin-top: 5px !important;
-  */
 }
+
 .no-touch .donation_project_button:hover,
 .donation_project_button:active{
   color: #ffffff;  
@@ -68,6 +61,29 @@
   border: 1px solid #02a0eb; 
   outline: none; 
 }
+
+@media (max-width: $screen-sm-min) {
+  .donation_project_button, .donation_project_button:focus{
+    font-size: 14px;  
+    letter-spacing: 2px;
+    color: #808080;
+    border: none;
+    background: none;
+    margin-top: 8px !important;
+    padding-left: 15px;  
+    outline: none;  
+    letter-spacing: 5px;
+  }
+  .no-touch .donation_project_button:hover,
+  .donation_project_button:active{
+    color: #000000;  
+    background: none;
+    border: none; 
+    outline: none; 
+    box-shadow: none;
+  }
+}
+
 
 @media (min-width:768px){
   .navbar-default{
