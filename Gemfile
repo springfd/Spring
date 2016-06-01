@@ -13,7 +13,7 @@ gem 'jbuilder', '~> 2.0'
 gem 'sdoc', '~> 0.4.0', group: :doc
 
 
-gem 'rest-client' , '~>1.6.7'
+gem 'rest-client', '1.6.7'
 gem 'devise' , '~>3.5.6'
 gem 'railties', '~>4.2.6'
 gem 'bootstrap-sass', '~> 3.3.6'
@@ -24,6 +24,7 @@ gem 'momentjs-rails', '>= 2.9.0'
 gem 'bootstrap3-datetimepicker-rails', '~> 4.0.0'
 gem 'will_paginate', '~> 3.1.0'
 gem "attr_encrypted", "~> 3.0.0"
+gem "curb-fu"
 # Use ActiveModel has_secure_password
 # gem 'bcrypt', '~> 3.1.7'
 
