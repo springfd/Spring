@@ -100,7 +100,7 @@ var tween = new TimelineMax()
 					.addTo(controller);	
 					
 	var tween = new TimelineMax()
-					.to(".about_quote_2_mobile ", 1, {autoAlpha: 1, ease: Linear.easeNone})
+					.to(".about_quote_2_mobile", 1, {autoAlpha: 1, ease: Linear.easeNone})
 	tween.timeScale(2) //play faster 
 	var scene = new ScrollMagic.Scene({triggerElement: ".about_quote_title_2_mobile ", duration: 200, tweenChanges: true})
 					.setTween(tween)
@@ -153,7 +153,7 @@ var tween = new TimelineMax()
 
 	tween.to(".plan_card_container_<%=i%>", 1, {autoAlpha: 1, ease: Linear.easeNone})	
 		 //.from(".plan_card_container_<%=i%>", 1, {right: "20px", ease: Linear.easeNone})	
-
+	tween.timeScale(2) //play faster
 	new ScrollMagic.Scene({triggerElement: ".plan_card_container_<%=i%>"})
 				  .setTween(tween)
 				  .addTo(controller) 		  
@@ -161,10 +161,9 @@ var tween = new TimelineMax()
 
 <% for i in 1..2 %>
 	tween = new TimelineLite();
-
 	//.to(".about_plan_main_container_<%=i%>", 1, {autoAlpha: 1, ease: Linear.easeNone})	
 	tween.from(".about_plan_main_container_<%=i%>", 1, {top: "30px", ease: Linear.easeNone})	
-		 	 
+	tween.timeScale(2) //play faster		 	 
 	new ScrollMagic.Scene({triggerElement: ".about_plan_main_container_<%=i%>"})
 				  .setTween(tween)
 				  .addTo(controller) 		  
