@@ -16,7 +16,7 @@
 !/log/.keep
 /tmp
 
-/public
+/public/assets
 /config/database.yml
 /config/secrets.yml
 /app/controllers/main_controller.rb
