@@ -1,6 +1,7 @@
 class ApplicationController < ActionController::Base
   # Prevent CSRF attacks by raising an exception.
   # For APIs, you may want to use :null_session instead.
+  before_filter :set_locale
   protect_from_forgery with: :exception
   rescue_from Validations::Failed, with: :validationsHandler
   rescue_from Validations::FailedRemote, with: :validationsRemoteHandler  
@@ -51,4 +52,8 @@ class ApplicationController < ActionController::Base
     def validationsRemoteHandler(exception)        
       render json: {success: false, message: exception.message }  
     end    
+    
+    def set_locale
+      I18n.locale = params[:locale] || I18n.default_locale
+    end
 end

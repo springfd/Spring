@@ -1,5 +1,7 @@
 Rails.application.routes.draw do
 
+  scope "(:locale)", locale: /en|ch/ do
+  
   
   resources :sign_reports
   resources :donations
@@ -16,7 +18,6 @@ Rails.application.routes.draw do
   post 'projects/delete_stage'
   post 'projects/ajax_update'
   
-  get  'main/result'
   get  'main/post_back'
   post 'main/result'
   post 'main/post_back'
@@ -31,6 +32,8 @@ Rails.application.routes.draw do
   get  'main/donation' 
   get  'main/downloadManual' 
   root 'main#about'
+  
+  end
 
   
 end

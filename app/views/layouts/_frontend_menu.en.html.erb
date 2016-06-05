@@ -1,0 +1,123 @@
+<nav class="navbar navbar-default menu navbar-fixed-top">
+  <div class="container-fluid">
+    <!-- Brand and toggle get grouped for better mobile display -->
+    <div class="navbar-header">
+      <button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#bs-example-navbar-collapse-1" aria-expanded="false">
+        <span class="sr-only">Toggle navigation</span>
+        <span class="icon-bar"></span>
+        <span class="icon-bar"></span>
+        <span class="icon-bar"></span>
+      </button>
+ 	  <%=link_to root_url, class: 'navbar-brand' do%>
+	  	<%=image_tag 'logo_text.png', class: 'logo_text' %>
+	  	<%=image_tag 'logo_text_only.png', class: 'logo_text_only' %> 	
+	  <%end%>      
+    </div>
+
+    <!-- Collect the nav links, forms, and other content for toggling -->
+    <div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
+      <ul class="nav navbar-nav navbar-right">
+        <li><%=link_to 'About', root_url %></li>
+        <!--<li class="divider-vertical"></li>-->
+        <li><a href="/main/news">News</a></li>
+        <!--<li class="divider-vertical"></li>-->
+        <li><a href="/main/donation">Donation</a></li>        
+        <li><button type="button" class="btn donation_project_button" data-toggle="modal" data-target="#myModal">Delegate Project</button></li>  
+      </ul>
+    </div><!-- /.navbar-collapse -->
+  </div><!-- /.container-fluid -->
+</nav>
+<%=render "main/donation_modal"%>
+<script>
+//================================== menu shrink =================================//
+// classie
+( function( window ) {
+
+'use strict';
+// class helper functions from bonzo https://github.com/ded/bonzo
+function classReg( className ) {
+  return new RegExp("(^|\\s+)" + className + "(\\s+|$)");
+}
+// classList support for class management
+// altho to be fair, the api sucks because it won't accept multiple classes at once
+var hasClass, addClass, removeClass;
+if ( 'classList' in document.documentElement ) {
+  hasClass = function( elem, c ) {
+    return elem.classList.contains( c );
+  };
+  addClass = function( elem, c ) {
+    elem.classList.add( c );
+  };
+  removeClass = function( elem, c ) {
+    elem.classList.remove( c );
+  };
+}
+else {
+  hasClass = function( elem, c ) {
+    return classReg( c ).test( elem.className );
+  };
+  addClass = function( elem, c ) {
+    if ( !hasClass( elem, c ) ) {
+      elem.className = elem.className + ' ' + c;
+    }
+  };
+  removeClass = function( elem, c ) {
+    elem.className = elem.className.replace( classReg( c ), ' ' );
+  };
+}
+function toggleClass( elem, c ) {
+  var fn = hasClass( elem, c ) ? removeClass : addClass;
+  fn( elem, c );
+}
+var classie = {
+  // full names
+  hasClass: hasClass,
+  addClass: addClass,
+  removeClass: removeClass,
+  toggleClass: toggleClass,
+  // short names
+  has: hasClass,
+  add: addClass,
+  remove: removeClass,
+  toggle: toggleClass
+};
+// transport
+if ( typeof define === 'function' && define.amd ) {
+  // AMD
+  define( classie );
+} else {
+  // browser global
+  window.classie = classie;
+}
+})( window );
+
+//cbp
+var cbpAnimatedHeader = (function() {
+	var docElem = document.documentElement,
+		header = document.querySelector( '.navbar-default' ),
+		didScroll = false,
+		changeHeaderOn = 200;
+	function init() {
+		window.addEventListener( 'scroll', function( event ) {
+			if( !didScroll ) {
+				didScroll = true;
+				setTimeout( scrollPage, 250 );
+			}
+		}, false );
+	}
+	function scrollPage() {
+		var sy = scrollY();
+		if ( sy >= changeHeaderOn ) {
+			classie.add( header, 'navbar-shrink' );
+		}
+		else {
+			classie.remove( header, 'navbar-shrink' );
+		}
+		didScroll = false;
+	}
+	function scrollY() {
+		return window.pageYOffset || docElem.scrollTop;
+	}
+	init();
+})();
+</script>
