@@ -28,6 +28,10 @@ Rails.application.routes.draw do
   get  'donation', to: 'main#donation'
   
   get  'main/about'
+  get  'main/boardMembers'
+  get  'main/meetings' 
+  get  'main/contactUs' 
+  get  'main/otherLinks'        
   get  'main/news'
   get  'main/donation' 
   get  'main/downloadManual' 

@@ -4,21 +4,21 @@
 		<div class="col-sm-offset-2 col-sm-2">
 			<div class="footer_title">董事</div>
 			<ul style="">
-				<li><a href="">董事會成員</a></li>
-				<li><a href="">重要會議記事</a></li>
+				<li><%= link_to '董事會成員', '/main/boardMembers'%></li>
+				<li><%= link_to '重要會議記事', '/main/meetings'%></li>
 			</ul>	
 		</div>	
 		<div class="col-sm-2" style="">
 			<div class="footer_title">聯絡</div>
 			<ul style="">
-				<li><a href="">聯絡資訊</a></li>
+				<li><%= link_to '聯絡資訊', '/main/contactUs'%></li>
 			</ul>				
 		</div>				
 		<div class="col-sm-2" style="">
 			<div class="footer_title">其他</div>
 			<ul style="">
-				<li><a href="">相關連結</a></li> 
-				<li><%= link_to '本會手冊', 'main/downloadManual'%></a></li> 
+				<li><%= link_to '相關連結', '/main/otherLinks'%></li> 
+				<li><%= link_to '本會手冊', '/main/downloadManual'%></li> 
 			</ul>				
 		</div>	
 		<div class="col-sm-2" style="">
