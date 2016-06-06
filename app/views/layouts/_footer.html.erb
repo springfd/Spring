@@ -22,10 +22,10 @@
 			</ul>				
 		</div>	
 		<div class="col-sm-2" style="">
-			<div class="footer_title">語言</div>
+			<div class="footer_title">語言<%= I18n.locale%></div>
 			<ul style="">
-				<li><%= link_to '中文', root_url %></li> 
-				<li><%= link_to 'English', root_url(locale: :en ) %></li> 
+				<li><%= link_to '中文', root_url(locale: "zh-TW" ) %></li> 
+				<li><%= link_to 'English', root_url(locale: "en" ) %></li> 
 			</ul>				
 		</div>							
 	</div>	

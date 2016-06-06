@@ -39,6 +39,10 @@ class ApplicationController < ActionController::Base
     end
   end
   
+  def default_url_options(options={})#to hide the default locale in url
+    { :locale => ((I18n.locale == I18n.default_locale) ? nil : I18n.locale) }
+  end
+  
   private
     def validationsHandler(exception)  
       flash[:error]=""
@@ -55,5 +59,6 @@ class ApplicationController < ActionController::Base
     
     def set_locale
       I18n.locale = params[:locale] || I18n.default_locale
+      Rails.application.routes.default_url_options[:locale]= I18n.locale #don't have to add every params locale after changing the language
     end
 end
