@@ -5,8 +5,6 @@ class UsersController < ApplicationController
     @users = User.all
   end
 
-  def show
-  end
   #def edit
   #end
   
@@ -32,9 +30,5 @@ class UsersController < ApplicationController
   end
 
   def user_params
-    #params[:user][:phone_no] = params[:phone_no_full]
-    #accessible = [ :first_name, :last_name, :avatar, :phone_no, :email, 
-    #               addresses_attributes:[:id, :postal, :county, :district, :address]] 
-    #params.require(:user).permit(:email, :current_password, :password, :password_confirmation)
   end
 end

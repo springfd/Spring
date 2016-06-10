@@ -2,27 +2,27 @@
 <div class="container">
 	<div class="row" style="margin-top: 10px;">	
 		<div class="col-sm-offset-2 col-sm-2">
-			<div class="footer_title">董事</div>
+			<div class="footer_title"><%= t("董事") %></div>
 			<ul style="">
-				<li><%= link_to '董事會成員', '/main/boardMembers'%></li>
-				<li><%= link_to '重要會議記事', '/main/meetings'%></li>
+				<li><%= link_to t("董事會成員"), main_boardMembers_path%></li>
+				<li><%= link_to t("重要會議記事"), main_meetings_path%></li>
 			</ul>	
 		</div>	
 		<div class="col-sm-2" style="">
-			<div class="footer_title">聯絡</div>
+			<div class="footer_title"><%= t("聯絡") %></div>
 			<ul style="">
-				<li><%= link_to '聯絡資訊', '/main/contactUs'%></li>
+				<li><%= link_to t("聯絡資訊"), main_contactUs_path%></li>
 			</ul>				
 		</div>				
 		<div class="col-sm-2" style="">
-			<div class="footer_title">其他</div>
+			<div class="footer_title"><%= t("其他") %></div>
 			<ul style="">
-				<li><%= link_to '相關連結', '/main/otherLinks'%></li> 
-				<li><%= link_to '本會手冊', '/main/downloadManual'%></li> 
+				<li><%= link_to t("相關連結"), main_otherLinks_path%></li> 
+				<li><%= link_to t("本會手冊"), '/main/downloadManual'%></li> 
 			</ul>				
 		</div>	
 		<div class="col-sm-2" style="">
-			<div class="footer_title">語言<%= I18n.locale%></div>
+			<div class="footer_title"><%= t("語言") %></div>
 			<ul style="">
 				<li><%= link_to '中文', root_url(locale: "zh-TW" ) %></li> 
 				<li><%= link_to 'English', root_url(locale: "en" ) %></li> 

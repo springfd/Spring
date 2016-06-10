@@ -12,39 +12,7 @@
 </div>
 <div class="container">
 	<% @stories.each_with_index do |story, index| %>
-		<% if index%3 == 0%>
-		<div class="row">
-		<% end %>
-		<div class="col-sm-4">
-			<div class="panel panel-default">
-			  <div class="panel-body" style="min-height: 250px;">
-			  	<div class = "story-panel-tr">
-				  	<div class="story-panel-th">標題:</div>
-				  	<div class="story-panel-td"><%= story.topic %></div>
-				</div>
-				<div class = "story-panel-tr">
-				  	<div class="story-panel-th">內容:</div>
-				  	<div class="story-panel-td">
-				  		<% if story.description.length > 150 %>
-						  	<%= truncate(story.description.gsub("\r\n", "\\n"), length: 150) %>
-						    <%= link_to '  Read more', '', class: "read-more-#{story.id}" %>
-						 <% else %>
-						    <%= story.description.gsub("\r\n", "\\n") %>
-						 <% end %>	
-				  	</div>
-				</div>
-			  </div>
-			  <%= link_to story_path(story)  do%>
-				<div class = "story-panel-view-btn">
-					瀏覽
-					
-				</div>
-				<% end %>
-			</div>
-		</div>
-		<% if index%3 == 2%>
-		</div>
-		<% end %>
+    	<%= render "sub_story_table", story: story , index:index%>
 	<% end %>
 </div>
 

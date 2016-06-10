@@ -32,22 +32,6 @@ span.glyphicon {
 }
 
 // donation design
-
-.donation_backend_table{
-  background-color: #fff;
-  font-size: 14px;    
-  margin-top: 30px;
-}
-.donation_backend_table th{
-  border: none !important;
-  min-width: 70px;
-  color: #000;
-}
-.donation_backend_table td{
-  border: none  !important;
-  color: #878787;
-}
-
 .borderless td, .borderless th {
     border: none;
 }
@@ -89,24 +73,6 @@ span.glyphicon {
   background-repeat: no-repeat;
   background-position: center center;
   background-size: cover;  
-}
-
-.story-panel-tr{
-  width: 100%;
-  display: table-row; 
-  height: 29px;
-}
-
-.story-panel-th{
-  width: 20%;
-  display: table-cell; 
-  margin-right: 10px;
-  color: black;
-}
-
-.story-panel-td{
-  display: table-cell; 
-  color: #878787;
 }
 
 .story-panel-view-btn{
@@ -231,11 +197,29 @@ span.glyphicon {
   text-overflow: ellipsis;
 }
 
-// project design
-.project-panel-title{
-  white-space: nowrap; 
-  max-width: 120px;
-  overflow: hidden;
-  text-overflow: ellipsis;
+// backend index table design
+.backend_index_table{
+  background-color: #fff;
+  font-size: 14px;    
+  margin-top: 30px;
 }
 
+.backend_index_table tr:first-child {
+    border-left: solid black 5px;
+}
+
+.backend_index_table tr:first-child td {
+    color: black;
+}
+
+.backend_index_table th{
+  border: none !important;
+  min-width: 70px;
+  color: #000;
+}
+.backend_index_table td{
+  font-size: 18px;
+  border: none  !important;
+  padding: 3px 13px 3px 13px !important;
+  color: #878787;
+}

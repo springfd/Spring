@@ -129,7 +129,7 @@ class ProjectsController < ApplicationController
       Log.create(user_id: current_user.id, project_id: @project.id )
     end
     
-    def get_next_stage_id
+    def get_next_stage_id #so that we can generate a Stage id won't collide with existing Stage id
       unless Stage.maximum(:id).blank?
         @stage_next_id = Stage.maximum(:id).next
       else

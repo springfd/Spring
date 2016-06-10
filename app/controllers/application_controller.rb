@@ -11,7 +11,7 @@ class ApplicationController < ActionController::Base
       case d[:type]
       when 'presence'     
         if d[:data].blank?
-          validation_result.push({type: 'presence', message: '請填寫 '+d[:title]})
+          validation_result.push({type: 'presence', message: t('請填寫')+" "+d[:title]})
         end  
       when 'date_range'
         unless (d[:from].to_date..d[:to].to_date).include?(Date.today)

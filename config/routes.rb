@@ -30,10 +30,8 @@ Rails.application.routes.draw do
     get  'main/contactUs' 
     get  'main/otherLinks'        
     get  'main/news'
-    get  'main/donation' 
+    get  'main/donation'
     get  'main/downloadManual' 
     root 'main#about'
-  
   end
-  
 end

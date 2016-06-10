@@ -1,8 +1,8 @@
 <%= link_to donation_path(donation) do %>
 	<div class="col-md-4">
-	  <table class="table donation_backend_table">
+	  <table class="table backend_index_table">
 	  	<tbody>
-	      <tr style="border-left: solid black 5px;">
+	      <tr>
 	        <td><%= Project.find(donation.project_id).name%></td>
 	      </tr>
 	      <tr>

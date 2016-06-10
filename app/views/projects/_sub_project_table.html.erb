@@ -1,0 +1,20 @@
+<%= link_to project_path(project, :pj_kind => project.kind) do %>
+	<div class="col-md-4">
+		<table class="table backend_index_table">
+			<tbody>
+		      <tr>
+		        <td><%= project.name %></td>
+		      </tr>
+		      <tr>
+		        <td style="text-align:center;">
+		        	<% if project.pj_cover.exists? %>
+				 	<%= image_tag project.pj_cover.url , :size => "100x100", :style =>"margin:0 auto;"%>
+				 	<% else %>
+				 	<%= image_tag "/assets/noPhoto-icon.png" , :size => "100x100", :style =>"margin:0 auto;"%>
+				 	<% end %>
+		        </td>
+		      </tr>
+	    	</tbody>
+	  	</table>
+	</div>
+<% end %>
