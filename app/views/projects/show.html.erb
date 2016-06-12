@@ -1,8 +1,6 @@
-<div class="container" style="margin-bottom: 20px;">
-  <div class="row">
-  	<h3 class="col-sm-5 "><%= @project.name %>計畫</h3>
+  <div class="row" style="margin-bottom: 20px;">
+  	<h3 class="col-md-offset-1 col-sm-5 top-title"><%= @project.name %><span class="top-title-span">計畫</span></h3>
   </div>
-</div>
 <div class="container-fluid">
 	<div class="row">	
 		<div class="col-md-offset-9">
@@ -14,7 +12,7 @@
 <div class="container-fluid">
 	<div class="row">
 		<div class="col-md-offset-2 col-md-3 ">
-			<div id="doughnutChart_expense" class="chart" style="position: relative;"></div>
+			<div id="doughnutChart_revenue" class="chart" style="position: relative;"></div>
 		</div>
 		<div class="col-md-2 col-md-offset-1 show-title">簡稱</div>
 	    <div class="col-md-4 show-content" style="font-size: 24px;"> <%= @project.abbreviation %></div>
@@ -26,6 +24,8 @@
 		<div class="col-md-3 show-content" style="font-size: 24px;"> <%= @project.budget%> 元</div>
 		<div class="col-md-2 col-md-offset-1 show-title">收入</div>
 	    <div class="col-md-3 show-content" style="font-size: 24px;"> <%= @project.income%> 元</div>
+	    <div class="col-md-2 col-md-offset-1 show-title">餘額</div>
+	    <div class="col-md-3 show-content" style="font-size: 24px;"> <%= @project.balance%> 元</div>
 	</div>
 	<div class="row">		
 		<div class="col-md-offset-1 col-md-10" style="margin-top: 40px;">
@@ -53,20 +53,32 @@
 	  <div class="col-md-3 col-md-offset-2 show-title">捐款</div>
 	</div>
 	<% end %>
+	<div class="row" style="margin: 20px 0px;">
+  		<h3 class="col-md-offset-1 col-sm-5 top-title">捐款<span class="top-title-span">明細</span></h3>
+  	</div>
 	<div class="container">
 		<% @project.donations.each do |donation| %>
-			<%= render "donations/sub_donation_panel", donation: donation %>
+			<%= render "sub_donation_table", donation: donation %>
 		<% end %>
 	</div>
 </div>
 
 <script>
- $("#doughnutChart_expense").drawDoughnutChart([
-    { title: "人事", value : <%= @project.exp_personnel %>,  color: "#02a0eb" },
-    { title: "雜支", value:  <%= @project.exp_mix %>,   color: "#c070a3" },
-    { title: "業務", value:  <%= @project.exp_business %>,   color: "#f4a301" },
-    { title: "其他", value : <%= @project.exp_other %>,   color: "#b3a253" }
-  ]);  
+  build_revenue_chart(check_empty(<%= @project.budget %>), check_empty(<%= @project.income %>), check_empty(<%= @project.balance %>))
+ function build_revenue_chart(budget, income, balance){
+ 	
+ 	$("#doughnutChart_revenue").drawDoughnutChart([
+ 		{ title: "收入", value: income,   color: "#c070a3" },
+	    { title: "餘額", value: balance,  color: "#02a0eb" },
+	  ]);
+ }
+ function check_empty(number){
+ 	if (number===undefined)
+		return 0; 	
+ 	else
+ 		return number;
+ }
+   
 </script>
 
 
