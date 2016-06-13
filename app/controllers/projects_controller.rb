@@ -50,7 +50,7 @@ class ProjectsController < ApplicationController
   # PATCH/PUT /projects/1
   # PATCH/PUT /projects/1.json
   def update
-    check_delete exp_at: params[:exp_attachment_delete], pj_at: params[:attachment_delete], cover_at: params[:cover_delete]
+    check_delete exp_at: params[:exp_attachment_delete], don_at: params[:donation_attachment_delete], pj_at: params[:attachment_delete], cover_at: params[:cover_delete]
     @project.update(project_params)
     unless params[:project][:year].blank?
       @project.year = DateTime.strptime(params[:project][:year], "%Y")
@@ -122,7 +122,7 @@ class ProjectsController < ApplicationController
 
     # Never trust parameters from the scary internet, only allow the white list through.
     def project_params
-      params.require(:project).permit(:kind, :year, :name, :description, :budget, :balance, :exe_desc, :abbreviation, :account_begin, :account_end, :income, :account, :password, :pj_attachment, :pj_cover, :donate_begin_at, :donate_end_at, :pj_exp_attachment)
+      params.require(:project).permit(:kind, :year, :name, :description, :budget, :balance, :exe_desc, :abbreviation, :account_begin, :account_end, :income, :account, :password, :pj_attachment, :pj_cover, :donate_begin_at, :donate_end_at, :pj_exp_attachment, :pj_donation_attachment, :email, :phone, :holder)
     end
     
     def record_log
@@ -148,6 +148,9 @@ class ProjectsController < ApplicationController
     def check_delete(options = {})
       if options[:exp_at] == 'true' #delete project expense attachments
         @project.pj_exp_attachment = nil
+      end
+      if options[:don_at] == 'true' #delete project donation attachments
+        @project.pj_donation_attachment = nil
       end
       if options[:pj_at] == 'true' #delete project attachments
         @project.pj_attachment = nil

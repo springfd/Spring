@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20160601142947) do
+ActiveRecord::Schema.define(version: 20160613162103) do
 
   create_table "donations", force: :cascade do |t|
     t.string   "name",            limit: 255
@@ -55,38 +55,45 @@ ActiveRecord::Schema.define(version: 20160601142947) do
 
   create_table "projects", force: :cascade do |t|
     t.datetime "year"
-    t.string   "name",                           limit: 255
-    t.integer  "kind",                           limit: 4
-    t.integer  "budget",                         limit: 4
-    t.integer  "income",                         limit: 4
-    t.integer  "exp_personnel",                  limit: 4
-    t.integer  "exp_business",                   limit: 4
-    t.integer  "exp_mix",                        limit: 4
-    t.integer  "exp_other",                      limit: 4
-    t.text     "exe_desc",                       limit: 65535
-    t.text     "description",                    limit: 65535
-    t.string   "abbreviation",                   limit: 255
+    t.string   "name",                                limit: 255
+    t.integer  "kind",                                limit: 4
+    t.integer  "budget",                              limit: 4
+    t.integer  "income",                              limit: 4
+    t.integer  "exp_personnel",                       limit: 4
+    t.integer  "exp_business",                        limit: 4
+    t.integer  "exp_mix",                             limit: 4
+    t.integer  "exp_other",                           limit: 4
+    t.text     "exe_desc",                            limit: 65535
+    t.text     "description",                         limit: 65535
+    t.string   "abbreviation",                        limit: 255
     t.datetime "donate_begin_at"
     t.datetime "donate_end_at"
     t.datetime "account_begin"
     t.datetime "account_end"
-    t.string   "account",                        limit: 255
-    t.string   "password",                       limit: 255
-    t.datetime "created_at",                                   null: false
-    t.datetime "updated_at",                                   null: false
-    t.string   "pj_attachment_file_name",        limit: 255
-    t.string   "pj_attachment_content_type",     limit: 255
-    t.integer  "pj_attachment_file_size",        limit: 4
+    t.string   "account",                             limit: 255
+    t.string   "password",                            limit: 255
+    t.datetime "created_at",                                        null: false
+    t.datetime "updated_at",                                        null: false
+    t.string   "pj_attachment_file_name",             limit: 255
+    t.string   "pj_attachment_content_type",          limit: 255
+    t.integer  "pj_attachment_file_size",             limit: 4
     t.datetime "pj_attachment_updated_at"
-    t.string   "pj_cover_file_name",             limit: 255
-    t.string   "pj_cover_content_type",          limit: 255
-    t.integer  "pj_cover_file_size",             limit: 4
+    t.string   "pj_cover_file_name",                  limit: 255
+    t.string   "pj_cover_content_type",               limit: 255
+    t.integer  "pj_cover_file_size",                  limit: 4
     t.datetime "pj_cover_updated_at"
-    t.integer  "balance",                        limit: 4
-    t.string   "pj_exp_attachment_file_name",    limit: 255
-    t.string   "pj_exp_attachment_content_type", limit: 255
-    t.integer  "pj_exp_attachment_file_size",    limit: 4
+    t.integer  "balance",                             limit: 4
+    t.string   "pj_exp_attachment_file_name",         limit: 255
+    t.string   "pj_exp_attachment_content_type",      limit: 255
+    t.integer  "pj_exp_attachment_file_size",         limit: 4
     t.datetime "pj_exp_attachment_updated_at"
+    t.string   "holder",                              limit: 255
+    t.string   "phone",                               limit: 255
+    t.string   "email",                               limit: 255
+    t.string   "pj_donation_attachment_file_name",    limit: 255
+    t.string   "pj_donation_attachment_content_type", limit: 255
+    t.integer  "pj_donation_attachment_file_size",    limit: 4
+    t.datetime "pj_donation_attachment_updated_at"
   end
 
   create_table "sign_reports", force: :cascade do |t|

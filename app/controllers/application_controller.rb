@@ -15,7 +15,7 @@ class ApplicationController < ActionController::Base
         end  
       when 'date_range'
         unless (d[:from].to_date..d[:to].to_date).include?(Date.today)
-          validation_result.push({type: 'date_range', message: '今天無法捐款<br>' + d[:title] + ': ' + d[:from].strftime('%Y-%m-%d').to_s + '~' +d[:to].strftime('%Y-%m-%d').to_s})
+          validation_result.push({type: 'date_range', message: t('今天無法捐款')+'<br>' + d[:title] + ': ' + d[:from].strftime('%Y-%m-%d').to_s + '~' +d[:to].strftime('%Y-%m-%d').to_s})
         end
       end
     end       

@@ -86,8 +86,8 @@
 			                </label> 			                			                		                            			                
 		           		</div>    
 						<div class="form-group form-inline"> 
-						  	<%= text_field_tag 'amount_others', nil, class: 'form-control amount_others', placeholder: "或輸入您想捐款的金額" %>
-						<%= submit_tag t('捐款'), class: "btn donation_button" %>
+						  	<%= text_field_tag 'amount_others', nil, class: 'form-control amount_others', placeholder: t('或輸入您想捐款的金額') %>
+							<%= submit_tag t("捐款"), class: "btn donation_button"%>
 						</div>  
 			<% end -%>
 			<p style="color: #888888">*<%= t("款項將直接用於本會所執行，但經費仍不足之各項計畫。") %></p>	
@@ -114,7 +114,7 @@
 			  	<option><%= t("請選擇") %></option>			
 			  	<% SignReport.all.order('year').each do |s|%>
 					<option value="<%= s.sr_attachment.url%>">
-					<%= s.year.strftime("%Y")+"年度" %>
+					<%= s.year.strftime("%Y")+t("年度") %>
 					</option>
 				<% end %>
 			  </select>
@@ -123,7 +123,7 @@
 	</div>		
 </div>	
 <script>
-$(document).ready(function(){		
+$(document).ready(function(){	
 	var link = document.URL.split('#')[1];	
 	if ( link != 'grid_container' && link != 'donation_content_donate_inner' && link) {		
 		$('#'+link).click()

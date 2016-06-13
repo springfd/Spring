@@ -12,7 +12,13 @@
   <%= f.hidden_field :kind, :value => GLOBAL_VAR['project_delegate']%>
   <%= hidden_field_tag(:attachment_delete, false) %>
   <%= hidden_field_tag(:exp_attachment_delete, false) %>
+  <%= hidden_field_tag(:donation_attachment_delete, false) %>
   <%= hidden_field_tag(:cover_delete, false) %>
+  <div class="form-group ">
+		<div class="col-sm-offset-10 col-sm-10">
+			<%= f.submit '儲存',  class: "btn btn-info save-btn"  %>
+		</div>
+  </div>
   <div class="form-group row">
   	<label class="col-sm-offset-1 col-sm-2 control-label">全稱*</label>
   		<div class="col-sm-6">
@@ -43,6 +49,24 @@
 	                });
 	            });
 	    </script>	
+  </div>
+  <div class="form-group row">
+  	<label class="col-sm-offset-1 col-sm-2 control-label">主持人</label>
+  		<div class="col-sm-6">
+  			<%= f.text_field :holder, class: "form-control", placeholder: "主持人" %>
+    	</div>
+  </div>
+  <div class="form-group row">
+  	<label class="col-sm-offset-1 col-sm-2 control-label">電話</label>
+  		<div class="col-sm-6">
+  			<%= f.phone_field :phone, class: "form-control", placeholder: "電話" %>
+    	</div>
+  </div>
+  <div class="form-group row">
+  	<label class="col-sm-offset-1 col-sm-2 control-label">Email</label>
+  		<div class="col-sm-6">
+  			<%= f.email_field :email, class: "form-control", placeholder: "Email" %>
+    	</div>
   </div>
   <div class="form-group row">
   	<label class="col-sm-offset-1 col-sm-2 control-label">預算</label>
@@ -78,6 +102,12 @@
   	<label class="col-sm-offset-1 col-sm-2 control-label">支出明細</label>
   	<div class="col-sm-6">
   		<%= file_field_tag "project[pj_exp_attachment]", type: :file%>
+  	</div>
+  </div>
+  <div class="form-group row">
+  	<label class="col-sm-offset-1 col-sm-2 control-label">捐款名冊</label>
+  	<div class="col-sm-6">
+  		<%= file_field_tag "project[pj_donation_attachment]", type: :file%>
   	</div>
   </div>
   <div class="form-group row">
@@ -167,85 +197,11 @@
 	    </script>	
   </div>
   <% end %>
-  <div class="form-group ">
-		<div class="col-sm-offset-10 col-sm-10">
-			<%= f.submit '儲存',  class: "btn btn-info save-btn"  %>
-		</div>
-  </div>
 </div>
 <% end %>
+<%=render "projects/script" %>   
 <script>
 $(document).on('ready', function() {
 	$('#project_kind').val('<%= GLOBAL_VAR['project_delegate']%>');
-	//project expense attachment file upload
-     $("#project_pj_exp_attachment").fileinput({
-     	initialPreview: [
-		    <% if !@project.pj_exp_attachment_file_name.blank? %>
-		    "<div class='file-preview-other'>" +
-    	    "<h2><i class='glyphicon glyphicon-file'></i></h2>" +
-            '<%= @project.pj_exp_attachment_file_name%>' + "</div>"
-			<% end %>
-		             ],
-		showUpload: false,
-        browseClass: "btn btn-success",
-        browseLabel: "Browse",
-        browseIcon: "<i class=\"glyphicon glyphicon-folder-open\"></i> ",
-        removeClass: "btn btn-danger",
-        removeLabel: "Delete",
-        removeIcon: "<i class=\"glyphicon glyphicon-trash\"></i> ",
-    });
-    $('#project_pj_exp_attachment').on('fileloaded', function(event, file, previewId, index, reader) {
-        $('#exp_attachment_delete').val(true);
-    });
-    $('#project_pj_exp_attachment').on('fileclear', function(event) {
-    	$('#exp_attachment_delete').val(true);
-    });
-    
-    //project attachment file upload
-     $("#project_pj_attachment").fileinput({
-     	initialPreview: [
-		    <% if !@project.pj_attachment_file_name.blank? %>
-		    "<div class='file-preview-other'>" +
-    	    "<h2><i class='glyphicon glyphicon-file'></i></h2>" +
-            '<%= @project.pj_attachment_file_name%>' + "</div>"
-			<% end %>
-		             ],
-		showUpload: false,
-        browseClass: "btn btn-success",
-        browseLabel: "Browse",
-        browseIcon: "<i class=\"glyphicon glyphicon-folder-open\"></i> ",
-        removeClass: "btn btn-danger",
-        removeLabel: "Delete",
-        removeIcon: "<i class=\"glyphicon glyphicon-trash\"></i> ",
-    });
-    $('#project_pj_attachment').on('fileloaded', function(event, file, previewId, index, reader) {
-        $('#attachment_delete').val(true);
-    });
-    $('#project_pj_attachment').on('fileclear', function(event) {
-    	$('#attachment_delete').val(true);
-    });
-    
-    //project cover file upload
-     $("#project_pj_cover").fileinput({
-     	initialPreview: [
-		    <% if !@project.pj_cover_file_name.blank? %>
-        		'<%= image_tag @project.pj_cover.url, class: 'file-preview-image' %>',
-			<% end %>
-		             ],
-		showUpload: false,
-		previewFileType: "image",
-        browseClass: "btn btn-success",
-        browseLabel: "Pick Image",
-        browseIcon: "<i class=\"glyphicon glyphicon-picture\"></i> ",
-        removeClass: "btn btn-danger",
-        removeLabel: "Delete",
-        removeIcon: "<i class=\"glyphicon glyphicon-trash\"></i> ",
-    });
-    $('#project_pj_cover').on('fileloaded', function(event, file, previewId, index, reader) {
-        $('#cover_delete').val(true);
-    });
-    $('#project_pj_cover').on('fileclear', function(event) {
-    	$('#cover_delete').val(true);
-    });
 });
 </script>
