@@ -1,0 +1,21 @@
+<div class="container-fluid other_links" style="min-height: 100vh;">
+	<div class="other_links_background_image"></div>
+	<div class="row">
+		<div class="col-lg-offset-2 col-lg-8">
+			<div class="other_links_container text-center">			
+				<div class="other_links_title">
+					文件<span style="color: #02a0eb;">下載</span>	
+				</div>	
+				<div class="other_links_sub_container">	
+					<%= link_to t("本會手冊"), '/main/downloadManual', class: 'other_links_link'%>
+				</div>					
+				<% Link.all.each do |l| %>
+					<div class="other_links_sub_container">
+						<%=link_to l.name, l.web_addr, class: 'other_links_link'%>
+					</div>				
+				<% end %>																						
+			</div>	
+				
+		</div>
+	</div>		
+</div>	

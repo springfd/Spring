@@ -6,6 +6,7 @@ Rails.application.routes.draw do
     resources :projects
     resources :stories
     resources :links
+    resources :downloaded
     as :user do
         patch '/user/confirmation' => 'users/confirmations#update', :via => :patch, :as => :update_user_confirmation
     end
@@ -31,6 +32,7 @@ Rails.application.routes.draw do
     get  'main/otherLinks'        
     get  'main/news'
     get  'main/donation'
+    get  'main/downloaded'
     get  'main/downloadManual' 
     root 'main#about'
   end
