@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20160613162103) do
+ActiveRecord::Schema.define(version: 20160617142326) do
 
   create_table "donations", force: :cascade do |t|
     t.string   "name",            limit: 255
@@ -27,6 +27,16 @@ ActiveRecord::Schema.define(version: 20160613162103) do
     t.datetime "created_at",                                  null: false
     t.datetime "updated_at",                                  null: false
     t.integer  "project_id",      limit: 4
+  end
+
+  create_table "downloads", force: :cascade do |t|
+    t.string   "title",                limit: 255
+    t.datetime "created_at",                       null: false
+    t.datetime "updated_at",                       null: false
+    t.string   "file_at_file_name",    limit: 255
+    t.string   "file_at_content_type", limit: 255
+    t.integer  "file_at_file_size",    limit: 4
+    t.datetime "file_at_updated_at"
   end
 
   create_table "links", force: :cascade do |t|
@@ -120,12 +130,14 @@ ActiveRecord::Schema.define(version: 20160613162103) do
   end
 
   create_table "stories", force: :cascade do |t|
-    t.text     "description", limit: 65535
-    t.string   "topic",       limit: 255
-    t.string   "video_url",   limit: 255
-    t.datetime "created_at",                null: false
-    t.datetime "updated_at",                null: false
+    t.text     "description",    limit: 65535
+    t.string   "topic",          limit: 255
+    t.string   "video_url",      limit: 255
+    t.datetime "created_at",                   null: false
+    t.datetime "updated_at",                   null: false
     t.datetime "news_date"
+    t.string   "topic_en",       limit: 255
+    t.string   "description_en", limit: 255
   end
 
   create_table "users", force: :cascade do |t|

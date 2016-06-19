@@ -106,14 +106,14 @@ span.glyphicon {
 .add-btn{
   width: 70px !important;
   font-size: 16px;
-  background-color: #33CC99;
+  background-color: #f4a301;
   border-radius: 38px;
   border: 0px;
 }
 
 .btn.add-btn:hover,.btn.add-btn:active ,.btn.add-btn:focus {
     /* here copy default .btn class styles */
-    background-color : #33CC99;
+    background-color : #f4a301;
     border: 0px; 
     box-shadow: 1px 1px 5px #167447;
     /* or something like that */
@@ -154,14 +154,14 @@ span.glyphicon {
 .save-btn{
   width: 70px !important;
   font-size: 16px;
-  background-color: #33CCCC;
+  background-color: #194180;
   border-radius: 38px;
   border: 0px;
 }
 
 .btn.save-btn:hover,.btn.save-btn:active ,.btn.save-btn:focus {
     /* here copy default .btn class styles */
-    background-color : #33CCCC;
+    background-color : #194180;
     border: 0px; 
     box-shadow: 1px 1px 5px #157879;
     /* or something like that */
@@ -224,13 +224,3 @@ span.glyphicon {
   color: #878787;
 }
 
-//header design
-.top-title{
-  color: #194180;
-}
-
-.top-title-span{
-  border-radius: 17px;
-  background-color: #194180; 
-  color: white;
-}

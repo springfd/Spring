@@ -1,18 +1,17 @@
 <div class="container">
 	<div class="row">
-		<h3>捐款</h3>
+		<h3>相關下載</h3>
 	</div>
 </div>
 <div class="container-fluid">
 	<div class="row">	
 		<div class="col-md-offset-11">
-			<%= link_to "新增", new_donation_path, class: 'btn btn-info add-btn' %>
+			<%= link_to "新增", new_download_path, class: 'btn btn-info add-btn' %>
 		</div>
 	</div>
 </div>
 <div class="container">
-	<% @donations.each do |donation| %>
-		<%= render "sub_donation_table", donation: donation %>
+	<% @downloads.each do |download| %>
+		<%= render "sub_download_table", download: download %>
 	<% end %>
 </div>
-

@@ -1,5 +1,6 @@
 Rails.application.routes.draw do
 
+  resources :downloads
   scope "(:locale)", locale: /en|zh-TW/ do
     resources :sign_reports
     resources :donations

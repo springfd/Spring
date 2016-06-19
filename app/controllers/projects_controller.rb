@@ -17,10 +17,12 @@ class ProjectsController < ApplicationController
   # GET /projects/new
   def new
     @project = Project.new
+    set_pj_account
   end
 
   # GET /projects/1/edit
   def edit
+    @pj_account = DateTime.now.strftime("%Y%d%m")+"_"+@project.id.to_s
   end
 
   # POST /projects
@@ -44,6 +46,7 @@ class ProjectsController < ApplicationController
     rescue ActiveRecord::RecordInvalid
     params[:pj_kind] = params[:project][:kind].to_i
     get_next_stage_id
+    set_pj_account
     render "edit"
   end
 
@@ -83,6 +86,7 @@ class ProjectsController < ApplicationController
     rescue ActiveRecord::RecordInvalid
     params[:pj_kind] = params[:project][:kind].to_i
     get_next_stage_id
+    @pj_account = DateTime.now.strftime("%Y%d%m")+"_"+@project.id.to_s
     render "edit"
   end
 
@@ -135,6 +139,19 @@ class ProjectsController < ApplicationController
       else
         @stage_next_id = 1
       end
+    end
+    
+    def get_next_project_id
+      unless Project.maximum(:id).blank?
+        @pj_next_id = Project.maximum(:id).next
+      else
+        @pj_next_id = 1
+      end
+    end
+    
+    def set_pj_account
+      get_next_project_id
+      @pj_account = DateTime.now.strftime("%Y%d%m")+"_"+@pj_next_id.to_s
     end
     
     def store_stage_image(stage, stage_params, key)

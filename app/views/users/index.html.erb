@@ -5,33 +5,16 @@
 </div>
 <div class="container-fluid">
 	<div class="row">	
-		<div class="col-md-offset-9">
+		<div class="col-md-offset-11">
 			<%= link_to "新增", new_user_registration_path, class: 'btn btn-info add-btn' %>
 		</div>
 	</div>
 </div>
 
 <div class="container">
-	<div class="col-md-offset-1 col-md-9">
-		  <!-- Table -->
-		  <table class="table table-striped table-hover" style="margin-top: 12px; ">
-		  	<tbody>
-		    <% @users.each do |user| %>
-		      <tr>
-		        <td style="line-height: 34px; font-size: 19px; padding: 8px 20px !important;">
-		        	<%= user.email %>
-		        	<%= link_to '刪除', user, method: :delete, data: { confirm: 'Are you sure?' } , class: 'btn btn-danger delete-btn pull-right'%>
-		        	<%= link_to new_confirmation_path(:user) , class: 'btn btn-default edit-btn pull-right' , style: "margin-right: 5px; width: 153px !important;" do %>
-		        		<span class="glyphicon glyphicon-envelope" aria-hidden="true"></span>  重寄註冊信
-		        	<% end %>
-				</td>
-		      </tr>
-		    <% end %>
-		  </tbody>
-		  </table>
-	</div>
+    <% @users.each do |user| %>
+    	<%= render "sub_user_table", user: user %>
+    <% end %>
 </div>
 
 <br>
-<script>
-</script>

@@ -15,8 +15,16 @@
     <div class="col-sm-4"><%= f.text_field :topic, class: "form-control", placeholder: '標題' %></div>
   </div>
   <div class="form-group">
+    <label class="col-sm-offset-1 col-sm-2 control-label">英文標題</label>
+    <div class="col-sm-4"><%= f.text_field :topic_en, class: "form-control", placeholder: '英文標題' %></div>
+  </div>
+  <div class="form-group">
     <label class="col-sm-offset-1 col-sm-2 control-label">描述*</label>
     <div class="col-sm-4"><%= f.text_area :description , class: "form-control", placeholder: '描述'%></div>
+  </div>
+  <div class="form-group">
+    <label class="col-sm-offset-1 col-sm-2 control-label">英文描述</label>
+    <div class="col-sm-4"><%= f.text_area :description_en , class: "form-control", placeholder: '英文描述'%></div>
   </div>
   <div class="form-group row">
 		<label class="col-sm-offset-1 col-sm-2 control-label">時間*</label>
