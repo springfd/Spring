@@ -122,14 +122,14 @@ span.glyphicon {
 .delete-btn{
   width: 70px !important;
   font-size: 16px;
-  background-color: #830000;
+  background-color: #F4A301;
   border-radius: 5px;
   border: 0px;
 }
 
 .btn.delete-btn:hover,.btn.delete-btn:active ,.btn.delete-btn:focus {
     /* here copy default .btn class styles */
-    background-color : #830000;
+    background-color : #F4A301;
     border: 0px; 
     box-shadow: 1px 1px 5px #B74F37;
     /* or something like that */
@@ -192,8 +192,8 @@ span.glyphicon {
 }
 
 .btn-danger, .btn-danger:hover{
-  background-color: #830000;
-  border-color: #830000;
+  background-color: #F4A301;
+  border-color: #F4A301;
 }
 
 // links design
