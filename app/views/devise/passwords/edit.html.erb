@@ -10,17 +10,17 @@
   <%= f.hidden_field :reset_password_token %>
 
 	  <div class="form-group row">
-	      <label class="col-sm-offset-1 col-sm-2 control-label">新密碼 ( 密碼最少 <%= @minimum_password_length %> 字元)</label>
+	      <label class="col-sm-offset-2 col-sm-2 control-label">新密碼 ( 密碼最少 <%= @minimum_password_length %> 字元)</label>
 	      <div class="col-sm-4"><%= f.password_field :password, autofocus: true, autocomplete: "off", class: "form-control", placeholder: '新密碼'%></div>
 	  </div>
 	
 	  <div class="form-group row">
-	    <label class="col-sm-offset-1 col-sm-2 control-label">密碼確認</label>
+	    <label class="col-sm-offset-2 col-sm-2 control-label">密碼確認</label>
 	    <div class="col-sm-4"><%= f.password_field :password_confirmation, autofocus: true, autocomplete: "off", class: "form-control", placeholder: '密碼確認'%></div>
 	  </div>
 
 	  <div class="form-group row">
-		  <div class="col-sm-offset-6 col-sm-10">
+		  <div class="col-sm-offset-9 col-sm-2 pull-right-lg">
 			  <%= f.submit '寄信',  class: "btn btn-default" %>
 		  </div>
 	  </div>

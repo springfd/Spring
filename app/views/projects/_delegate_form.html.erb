@@ -14,31 +14,31 @@
   <%= hidden_field_tag(:exp_attachment_delete, false) %>
   <%= hidden_field_tag(:donation_attachment_delete, false) %>
   <%= hidden_field_tag(:cover_delete, false) %>
-  <div class="form-group ">
-		<div class="col-sm-offset-10 col-sm-10">
+  <div class="form-group row">
+		<div class="col-sm-offset-11 col-sm-2 pull-right-lg">
 			<%= f.submit '儲存',  class: "btn btn-info save-btn"  %>
 		</div>
   </div>
   <div class="form-group row">
-  	<label class="col-sm-offset-1 col-sm-2 control-label">全稱*</label>
+  	<label class="col-sm-offset-2 col-sm-2 control-label">全稱*</label>
   		<div class="col-sm-6">
   			<%= f.text_field :name, class: "form-control", placeholder: "全稱" %>
     	</div>
   </div>
   <div class="form-group row">
-  	<label class="col-sm-offset-1 col-sm-2 control-label">描述</label>
+  	<label class="col-sm-offset-2 col-sm-2 control-label">描述</label>
   		<div class="col-sm-6">
   			<%= f.text_area :description, class: "form-control", placeholder: "描述" %>
     	</div>
   </div>
   <div class="form-group row">
-  	<label class="col-sm-offset-1 col-sm-2 control-label">簡稱</label>
+  	<label class="col-sm-offset-2 col-sm-2 control-label">簡稱</label>
   		<div class="col-sm-6">
   			<%= f.text_field :abbreviation, class: "form-control", placeholder: "簡稱" %>
     	</div>
   </div>
   <div class="form-group row">
-		<label class="col-sm-offset-1 col-sm-2 control-label">西元年度*</label>
+		<label class="col-sm-offset-2 col-sm-2 control-label">西元年度*</label>
 		<div class="col-sm-6">
 			<%= f.text_field :year, class: "form-control", id: 'datetimepicker_year', placeholder: "西元年度" %>	
 		</div>
@@ -51,73 +51,73 @@
 	    </script>	
   </div>
   <div class="form-group row">
-  	<label class="col-sm-offset-1 col-sm-2 control-label">主持人</label>
+  	<label class="col-sm-offset-2 col-sm-2 control-label">主持人</label>
   		<div class="col-sm-6">
   			<%= f.text_field :holder, class: "form-control", placeholder: "主持人" %>
     	</div>
   </div>
   <div class="form-group row">
-  	<label class="col-sm-offset-1 col-sm-2 control-label">聯絡人電話</label>
+  	<label class="col-sm-offset-2 col-sm-2 control-label">聯絡人電話</label>
   		<div class="col-sm-6">
   			<%= f.phone_field :phone, class: "form-control", placeholder: "聯絡人電話" %>
     	</div>
   </div>
   <div class="form-group row">
-  	<label class="col-sm-offset-1 col-sm-2 control-label">Email</label>
+  	<label class="col-sm-offset-2 col-sm-2 control-label">Email</label>
   		<div class="col-sm-6">
   			<%= f.email_field :email, class: "form-control", placeholder: "Email" %>
     	</div>
   </div>
   <div class="form-group row">
-  	<label class="col-sm-offset-1 col-sm-2 control-label">預算</label>
+  	<label class="col-sm-offset-2 col-sm-2 control-label">預算</label>
   		<div class="col-sm-6">
   			<%= f.number_field :budget, class: "form-control", placeholder: "預算" %>
     	</div>
   </div>
   <div class="form-group row">
-  	<label class="col-sm-offset-1 col-sm-2 control-label">收入</label>
+  	<label class="col-sm-offset-2 col-sm-2 control-label">收入</label>
   		<div class="col-sm-6">
   			<%= f.number_field :income, class: "form-control", placeholder: "收入" %>
     	</div>
   </div>
   <div class="form-group row">
-  	<label class="col-sm-offset-1 col-sm-2 control-label">餘額</label>
+  	<label class="col-sm-offset-2 col-sm-2 control-label">餘額</label>
   		<div class="col-sm-6">
   			<%= f.number_field :balance, class: "form-control", placeholder: "餘額" %>
     	</div>
   </div>
   <div class="form-group row">
-  	<label class="col-sm-offset-1 col-sm-2 control-label">執行狀況描述*</label>
+  	<label class="col-sm-offset-2 col-sm-2 control-label">執行狀況描述*</label>
   		<div class="col-sm-6">
   			<%= f.text_area :exe_desc, class: "form-control", placeholder: "執行狀況描述" %>
     	</div>
   </div>
   <div class="form-group row">
-  	<label class="col-sm-offset-1 col-sm-2 control-label">計畫封面</label>
+  	<label class="col-sm-offset-2 col-sm-2 control-label">計畫封面</label>
   	<div class="col-sm-6">
   		<%= file_field_tag "project[pj_cover]", type: :file, accept: "image/*"%>
   	</div>
   </div>
   <div class="form-group row">
-  	<label class="col-sm-offset-1 col-sm-2 control-label">支出明細</label>
+  	<label class="col-sm-offset-2 col-sm-2 control-label">支出明細</label>
   	<div class="col-sm-6">
   		<%= file_field_tag "project[pj_exp_attachment]", type: :file%>
   	</div>
   </div>
   <div class="form-group row">
-  	<label class="col-sm-offset-1 col-sm-2 control-label">捐款名冊</label>
+  	<label class="col-sm-offset-2 col-sm-2 control-label">捐款名冊</label>
   	<div class="col-sm-6">
   		<%= file_field_tag "project[pj_donation_attachment]", type: :file%>
   	</div>
   </div>
   <div class="form-group row">
-  	<label class="col-sm-offset-1 col-sm-2 control-label">附件</label>
+  	<label class="col-sm-offset-2 col-sm-2 control-label">附件</label>
   	<div class="col-sm-6">
   		<%= file_field_tag "project[pj_attachment]", type: :file%>
   	</div>
   </div>
   <div class="form-group row">
-		<label class="col-sm-offset-1 col-sm-2 control-label">捐款開始*</label>
+		<label class="col-sm-offset-2 col-sm-2 control-label">捐款開始*</label>
 		<div class="col-sm-6">
 			<%= f.text_field :donate_begin_at, class: "form-control", id: 'datetimepicker_donate_begin_at', placeholder: "日期" %>	
 		</div>
@@ -135,7 +135,7 @@
 	    </script>	
   </div>
   <div class="form-group row">
-		<label class="col-sm-offset-1 col-sm-2 control-label">捐款結束*</label>
+		<label class="col-sm-offset-2 col-sm-2 control-label">捐款結束*</label>
 		<div class="col-sm-6">
 			<%= f.text_field :donate_end_at, class: "form-control", id: 'datetimepicker_donate_end_at', placeholder: "日期" %>	
 		</div>
@@ -153,19 +153,19 @@
   </div>
   <% if params[:pj_kind].to_i==GLOBAL_VAR['project_delegate']%>
   <div class="form-group row">
-  	<label class="col-sm-offset-1 col-sm-2 control-label">臨時帳號*</label>
+  	<label class="col-sm-offset-2 col-sm-2 control-label">臨時帳號*</label>
   		<div class="col-sm-6">
   			<%= f.text_field :account, class: "form-control", placeholder: "臨時帳號" %>
     	</div>
   </div>
   <div class="form-group row">
-  	<label class="col-sm-offset-1 col-sm-2 control-label">臨時密碼*</label>
+  	<label class="col-sm-offset-2 col-sm-2 control-label">臨時密碼*</label>
   		<div class="col-sm-6">
   			<%= f.text_field :password, class: "form-control", placeholder: "臨時密碼" %>
     	</div>
   </div>
   <div class="form-group row">
-		<label class="col-sm-offset-1 col-sm-2 control-label">帳號開始*</label>
+		<label class="col-sm-offset-2 col-sm-2 control-label">帳號開始*</label>
 		<div class="col-sm-6">
 			<%= f.text_field :account_begin, class: "form-control", id: 'datetimepicker_account_begin', placeholder: "日期" %>	
 		</div>
@@ -181,7 +181,7 @@
 	    </script>	
   </div>
   <div class="form-group row">
-		<label class="col-sm-offset-1 col-sm-2 control-label">帳號結束*</label>
+		<label class="col-sm-offset-2 col-sm-2 control-label">帳號結束*</label>
 		<div class="col-sm-6">
 			<%= f.text_field :account_end, class: "form-control", id: 'datetimepicker_account_end', placeholder: "日期" %>	
 		</div>

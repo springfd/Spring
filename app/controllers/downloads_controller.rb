@@ -27,7 +27,8 @@ class DownloadsController < ApplicationController
   def create
     @download = Download.new(download_params)
     @download.save!
-    redirect_to action: "index", notice: '成功新增下載' 
+    flash[:notice] = '成功新增下載'
+    redirect_to action: :index
     rescue ActiveRecord::RecordInvalid
     render :action=>:edit
   end
@@ -39,7 +40,8 @@ class DownloadsController < ApplicationController
       @download.file_at = nil
     end
     if @download.update(download_params)
-      redirect_to action: "index", notice: '成功更新下載'
+      flash[:notice] = '成功更新下載'
+      redirect_to action: "index"
     else
       render :edit
     end

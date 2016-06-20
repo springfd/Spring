@@ -24,7 +24,7 @@ span.glyphicon {
 
 .login-head{
   font-size: 23px;
-  border-left: 7px solid #33CCCC !important;  
+  border-left: 7px solid #194180 !important;  
 }
 
 .login-body{
@@ -106,14 +106,14 @@ span.glyphicon {
 .add-btn{
   width: 70px !important;
   font-size: 16px;
-  background-color: #f4a301;
-  border-radius: 38px;
+  background-color: #02A0EB;
+  border-radius: 5px;
   border: 0px;
 }
 
 .btn.add-btn:hover,.btn.add-btn:active ,.btn.add-btn:focus {
     /* here copy default .btn class styles */
-    background-color : #f4a301;
+    background-color : #02A0EB;
     border: 0px; 
     box-shadow: 1px 1px 5px #167447;
     /* or something like that */
@@ -122,14 +122,14 @@ span.glyphicon {
 .delete-btn{
   width: 70px !important;
   font-size: 16px;
-  background-color: #EC7E64;
-  border-radius: 38px;
+  background-color: #830000;
+  border-radius: 5px;
   border: 0px;
 }
 
 .btn.delete-btn:hover,.btn.delete-btn:active ,.btn.delete-btn:focus {
     /* here copy default .btn class styles */
-    background-color : #EC7E64;
+    background-color : #830000;
     border: 0px; 
     box-shadow: 1px 1px 5px #B74F37;
     /* or something like that */
@@ -139,7 +139,7 @@ span.glyphicon {
   width: 70px !important;
   font-size: 16px;
   background-color: #fff;
-  border-radius: 38px;
+  border-radius: 5px;
   border: 0px;
 }
 
@@ -155,7 +155,7 @@ span.glyphicon {
   width: 70px !important;
   font-size: 16px;
   background-color: #194180;
-  border-radius: 38px;
+  border-radius: 5px;
   border: 0px;
 }
 
@@ -172,18 +172,28 @@ span.glyphicon {
   width: 90px !important;
   text-align: center;
   font-size: 14px;
-  background-color: #33CCCC;
+  background-color: #194180;
   color: #fff;
-  border-radius: 38px;
+  border-radius: 5px;
   border: 0px;
 }
 
 .btn.print-btn:hover,.btn.print-btn:active ,.btn.print-btn:focus {
     /* here copy default .btn class styles */
-    background-color : #33CCCC;
+    background-color : #194180;
     border: 0px; 
     box-shadow: 1px 1px 5px #157879;
     /* or something like that */
+}
+
+.btn-file, .btn:hover{
+  background-color: #02A0EB;
+  border-color: #02A0EB;
+}
+
+.btn-danger, .btn-danger:hover{
+  background-color: #830000;
+  border-color: #830000;
 }
 
 // links design
@@ -199,6 +209,7 @@ span.glyphicon {
 
 // backend index table design
 .backend_index_table{
+  border-radius: 5px;
   background-color: #fff;
   font-size: 14px;    
   margin-top: 30px;
@@ -224,3 +235,8 @@ span.glyphicon {
   color: #878787;
 }
 
+@media (max-width: 992px) {
+    .pull-right-lg {
+        float: right;
+    }
+}

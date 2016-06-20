@@ -1,11 +1,11 @@
 <div class="container" style="margin-bottom: 20px;">
   <div class="row">
-	<h3 class="col-sm-5 ">捐款<span class="top-title-span">明細</h3>
+	<h3 class="col-sm-5">捐款明細</h3>
   </div>
 </div>
 <div class="container-fluid">
 	<div class="row">	
-		<div class="col-md-offset-9">
+		<div class="col-md-offset-9 pull-right-lg">
 			<%= link_to "編輯", edit_donation_path(@donation), class: 'btn btn-default edit-btn' %>
 			<%= link_to '刪除', @donation, method: :delete, data: { confirm: 'Are you sure?' } , class: 'btn btn-danger delete-btn'%>
 		</div>
@@ -13,7 +13,7 @@
 </div>
 <div class="container-fluid">
 	<table class="table donation_show_table">
-	    <tbody style="border-left: solid 13px #33CCCC!important;">
+	    <tbody style="border-left: solid 13px #194180!important;">
 	      <tr>
 	        <td colspan="8" class="dt-content" style="font-weight: 900!important; background: #e3e3e3; font-size: 16px;"><%= @project_name %>計畫</td>
 	      </tr>

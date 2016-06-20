@@ -5,7 +5,7 @@
 </div>
 <div class="container-fluid">
 	<div class="row">	
-		<div class="col-md-offset-9">
+		<div class="col-md-offset-9 pull-right-lg">
 			<%= link_to '編輯', edit_story_path(@story) , data: { no_turbolink: true }, class: 'btn btn-default edit-btn'%> 
 			<%= link_to '刪除', @story, method: :delete, data: { confirm: '確定要刪除嗎?' } , class: 'btn btn-danger delete-btn'%>
 		</div>

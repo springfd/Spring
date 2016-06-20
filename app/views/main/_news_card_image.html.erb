@@ -20,7 +20,43 @@
 					<div class="news_card_enlarge_title"><%= news.topic %></div>
 					<div class="news_card_enlarge_date"><small class="text-muted"><i class="glyphicon glyphicon-time"></i> <%= news.news_date.strftime("%Y/%m/%d") %></small></div>			          															
 					<div class="news_card_enlarge_content"><%= auto_link(simple_format( news.description ))%></div>		
-					<%= image_tag news.pictures.first.image.url, class: 'news_card_enlarge_img'%>										
+			
+					<div id="carousel_<%=news.id %>" class="carousel slide" data-ride="carousel">
+					  <!-- Indicators -->
+					  <ol class="carousel-indicators">
+					  	<% news.pictures.each_with_index do | i, p|%>
+					    	<li data-target="#carousel_<%=news.id %>" data-slide-to="<%= p%>"></li>
+					 	<%end%>
+					  </ol>
+					  <!-- Wrapper for slides -->
+					  <div class="carousel-inner" role="listbox">
+					    <div class="item active">
+					      <%= image_tag news.pictures.first.image.url%>
+					    </div>
+					
+					    <div class="item">
+					      <%= image_tag 'forest.jpg'%>
+					    </div>
+					
+					    <div class="item">
+					      <%= image_tag 'sample_2.jpg'%>
+					    </div>
+					
+					    <div class="item">
+					      <%= image_tag 'sample_3.jpg'%>
+					    </div>
+					  </div>
+					  <!-- Left and right controls -->
+					  <a class="left carousel-control" href="#carousel_<%=news.id %>" role="button" data-slide="prev">
+					    <span class="glyphicon glyphicon-chevron-left" aria-hidden="true"></span>
+					    <span class="sr-only">Previous</span>
+					  </a>
+					  <a class="right carousel-control" href="#carousel_<%=news.id %>" role="button" data-slide="next">
+					    <span class="glyphicon glyphicon-chevron-right" aria-hidden="true"></span>
+					    <span class="sr-only">Next</span>
+					  </a>
+					</div>
+								
 				</div>				
 			</div>	
 		</div> 	

@@ -13,13 +13,13 @@
 
   <%= hidden_field_tag(:sr_attachment_delete, false) %>
   <div class="form-group row">
-  	<label class="col-sm-offset-1 col-sm-2 control-label">標題*</label>
+  	<label class="col-sm-offset-2 col-sm-2 control-label">標題*</label>
   		<div class="col-sm-3">
   			<%= f.text_field :title, class: "form-control", placeholder: "全稱" %>
     	</div>
   </div>
   <div class="form-group row">
-		<label class="col-sm-offset-1 col-sm-2 control-label">西元年度*</label>
+		<label class="col-sm-offset-2 col-sm-2 control-label">西元年度*</label>
 		<div class="col-sm-3">
 			<%= f.text_field :year, class: "form-control", id: 'datetimepicker_year', placeholder: "西元年度" %>	
 		</div>
@@ -32,13 +32,13 @@
 	    </script>	
   </div>
   <div class="form-group row">
-  	<label class="col-sm-offset-1 col-sm-2 control-label">附件</label>
-  	<div class="col-sm-6">
+  	<label class="col-sm-offset-2 col-sm-2 control-label">附件</label>
+  	<div class="col-sm-4">
   		<%= file_field_tag "sign_report[sr_attachment]", type: :file%>
   	</div>
   </div>
-  <div class="form-group ">
-		<div class="col-sm-offset-10 col-sm-10">
+  <div class="form-group row">
+		<div class="col-sm-offset-9 col-sm-2 pull-right-lg">
 			<%= f.submit '儲存',  class: "btn btn-info save-btn"  %>
 		</div>
   </div>
