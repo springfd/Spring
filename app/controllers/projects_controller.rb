@@ -22,7 +22,7 @@ class ProjectsController < ApplicationController
 
   # GET /projects/1/edit
   def edit
-    @pj_account = DateTime.now.strftime("%Y%d%m")+"_"+@project.id.to_s
+    @pj_account = DateTime.now.strftime("%Y%m%d")+"_"+@project.id.to_s
   end
 
   # POST /projects
@@ -151,7 +151,7 @@ class ProjectsController < ApplicationController
     
     def set_pj_account
       get_next_project_id
-      @pj_account = DateTime.now.strftime("%Y%d%m")+"_"+@pj_next_id.to_s
+      @pj_account = DateTime.now.strftime("%Y%m%d")+"_"+@pj_next_id.to_s
     end
     
     def store_stage_image(stage, stage_params, key)
