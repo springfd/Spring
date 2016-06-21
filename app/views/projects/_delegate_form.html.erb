@@ -153,13 +153,13 @@
   </div>
   <% if params[:pj_kind].to_i==GLOBAL_VAR['project_delegate']%>
   <div class="form-group row">
-  	<label class="col-sm-offset-2 col-sm-2 control-label">臨時帳號*</label>
+  	<label class="col-sm-offset-2 col-sm-2 control-label">計畫代號*</label>
   		<div class="col-sm-6">
   			<%= f.text_field :account, class: "form-control", placeholder: "臨時帳號", :readonly => true %>
     	</div>
   </div>
   <div class="form-group row">
-  	<label class="col-sm-offset-2 col-sm-2 control-label">臨時密碼*</label>
+  	<label class="col-sm-offset-2 col-sm-2 control-label">計畫密碼*</label>
   		<div class="col-sm-6">
   			<%= f.text_field :password, class: "form-control", placeholder: "臨時密碼" %>
     	</div>
