@@ -8,9 +8,9 @@
 		      <tr>
 		        <td style="text-align:center;">
 		        	<% if project.pj_cover.exists? %>
-				 	<%= image_tag project.pj_cover.url , :size => "100x100", :style =>"margin:0 auto;"%>
+				 		<%= image_tag project.pj_cover.url, class: "backend_index_table_image"%>
 				 	<% else %>
-				 	<%= image_tag "/assets/noPhoto-icon.png" , :size => "100x100", :style =>"margin:0 auto;"%>
+				 		<%= image_tag "/assets/noPhoto-icon.png" , class: "backend_index_table_image"%>
 				 	<% end %>
 		        </td>
 		      </tr>

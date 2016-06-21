@@ -9,9 +9,9 @@
 				<div class="other_links_sub_container">	
 					<%= link_to t("本會手冊"), '/main/downloadManual', class: 'other_links_link'%>
 				</div>					
-				<% Link.all.each do |l| %>
+				<% Download.all.each do |d| %>
 					<div class="other_links_sub_container">
-						<%=link_to l.name, l.web_addr, class: 'other_links_link'%>
+						<%=link_to d.title, d.file_at.url, class: 'other_links_link'%>
 					</div>				
 				<% end %>																						
 			</div>	
