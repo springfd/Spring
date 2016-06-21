@@ -1,18 +1,17 @@
 <div class="container">
 	<div class="row">
-		<h3>使用者</h3>
-	</div>
-	<div class="row">	
-		<div class="col-md-offset-11 pull-right-lg">
-			<%= link_to "新增", new_user_registration_path, class: 'btn btn-info add-btn' %>
-		</div>
+		<div class="col-md-12">	
+			<h3 style="letter-spacing: 2px;">帳號管理</h3>
+			<%= link_to "新增", new_user_registration_path, class: 'add-btn pull-right' %>
+		</div>		
 	</div>
 </div>
-
 <div class="container">
-    <% @users.each do |user| %>
-    	<%= render "sub_user_table", user: user %>
-    <% end %>
+	<div class="row">
+	    <% @users.each do |user| %>
+	    	<%= render "sub_user_table", user: user %>
+	    <% end %>
+    </div>
 </div>
 
 <br>

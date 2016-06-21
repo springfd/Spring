@@ -1,15 +1,15 @@
 <div class="container">
 	<div class="row">
-		<h3>文件下載</h3>
-	</div>
-	<div class="row">	
-		<div class="col-md-offset-11 pull-right-lg">
-			<%= link_to "新增", new_download_path, class: 'btn btn-info add-btn' %>
-		</div>
+		<div class="col-md-12">	
+			<h3 style="letter-spacing: 2px;">文件下載</h3>
+			<%= link_to "新增", new_download_path, class: 'add-btn pull-right' %>
+		</div>		
 	</div>
 </div>
 <div class="container">
+	<div class="row">
 	<% @downloads.each do |download| %>
 		<%= render "sub_download_table", download: download %>
 	<% end %>
+	</div>
 </div>

@@ -1,18 +1,16 @@
 <div class="container">
 	<div class="row">
-		<h3>簽證報告</h3>
-	</div>
-</div>
-<div class="container-fluid">
-	<div class="row">	
-		<div class="col-md-offset-10 pull-right-lg">
-			<%= link_to "新增", new_sign_report_path, class: 'btn btn-info add-btn' %>
-		</div>
+		<div class="col-md-12">	
+			<h3 style="letter-spacing: 2px;">簽證報告</h3>
+			<%= link_to "新增", new_sign_report_path, class: 'add-btn pull-right' %>
+		</div>		
 	</div>
 </div>
 <div class="container">
-	<% @sign_reports.each do |sign_report| %>
-		<%= render "sub_sign_report_table", sign_report: sign_report %>
-	<% end %>
+	<div class="row">
+		<% @sign_reports.each do |sign_report| %>
+			<%= render "sub_sign_report_table", sign_report: sign_report %>
+		<% end %>
+	</div>
 </div>
 
