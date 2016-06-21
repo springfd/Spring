@@ -6,22 +6,26 @@
 	        <td colspan="2"><%= Project.find(donation.project_id).name%></td>
 	      </tr>
 	      <tr>
-	        <th>連絡人: </th>
+	        <th>編號 </th>
+	        <td><%= donation.order_num %></td>
+	      </tr>	      
+	      <tr>
+	        <th>連絡人 </th>
 	        <td><%= donation.name %></td>
 	      </tr>
 	      <tr>
-	        <th>金額: </th>
-	        <td><%= donation.amount %></td>
+	        <th>金額 </th>
+	        <td><%= donation.amount %>元</td>
 	      </tr>
 	      <tr>
-	        <th>方式: </th>
+	        <th>方式 </th>
 	        <td><%= Hash[donateWayOptions].rassoc(donation.donate_way).first %></td>
 	      </tr>
 	      <tr>
 	      	<% if donation.donate %>
 	      		<th>已捐款</th>
 	      	<% else %>
-	      		<th>尚未捐款</th>
+	      		<th style="color: #b30000">尚未捐款</th>
 	      	<% end %>
 	      </tr>
 	      <tr>

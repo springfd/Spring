@@ -6,10 +6,8 @@
 	      </tr>
 	      <tr style="text-align: center;">
 		    <td colspan="2">
-	        	<%= link_to new_confirmation_path(:user) , class: 'btn btn-default edit-btn' , style: "margin-right: 5px; width: 153px !important;" do %>
-	        		<span class="glyphicon glyphicon-envelope" aria-hidden="true"></span>  重寄註冊信
-	        	<% end %>
-	        	<%= link_to '刪除', user, method: :delete, data: { confirm: 'Are you sure?' } , class: 'btn btn-danger delete-btn'%>
+	        	<%= link_to new_confirmation_path(:user) , class: 'edit-btn' , style: "margin-right: 5px;" do %>重寄註冊信<% end %>
+	        	<%= link_to '刪除', user, method: :delete, data: { confirm: 'Are you sure?' } , class: 'delete-btn'%>
 		    </td>
 	      </tr>
 	    </tbody>
