@@ -49,30 +49,6 @@
 	    </tbody>
 	</table>
 </div>
-
-<script>
-function printData() {    
-               var data = document.getElementById('printTable').innerHTML;
-     var popupWindow = window.open('','printwin',
-          'left=100,top=100,width=400,height=400');
-     popupWindow.document.write('<HTML>\n<HEAD>\n');
-     popupWindow.document.write('<TITLE></TITLE>\n');
-     popupWindow.document.write('<URL></URL>\n');
-     //popupWindow.document.write("<link href='/assets/print.css' media='print' rel='stylesheet' type='text/css' />\n");
-     popupWindow.document.write('<script>\n');
-     popupWindow.document.write('function print_win(){\n');
-     popupWindow.document.write('\nwindow.print();\n');
-     popupWindow.document.write('\nwindow.close();\n');
-     popupWindow.document.write('}\n');
-     popupWindow.document.write('<\/script>\n');
-     popupWindow.document.write('</HEAD>\n');
-     popupWindow.document.write('<BODY onload="print_win()">\n');
-     popupWindow.document.write(data);
-     popupWindow.document.write('</BODY>\n');
-     popupWindow.document.write('</HTML>\n');
-     popupWindow.document.close();
-}
-</script>
 <div id="printTable" style="display: none;">
 <div style="text-align: right;">捐款收據編號ID:<%= @donation.order_num %></div>
 <style>
@@ -103,6 +79,7 @@ function printData() {
 				 新竹市大學路1001號 負責人: 胡定華<br>
 				 郵政劃撥儲金帳戶: 18372451 號 財團法人交大思源基金會
 			</div>
+			<div style="float: right">中華民國<span style="margin-left: 39px;">年</span><span style="margin-left: 23px;">月</span><span style="margin-left: 23px;">日</span></div>
 		</td>
 	</tr>
 	<tr >
@@ -111,7 +88,7 @@ function printData() {
 	</tr>
 	<tr>
 		<th>金額</th>
-		<td colspan="7" style="text-align: left;"><%= @donation.amount %></td>
+		<td colspan="7" style="text-align: left;" id="print_amount"></td>
 	</tr>
 		<th>說明</th>
 		<td colspan="7" style="text-align: left;"></td>
@@ -129,3 +106,52 @@ function printData() {
 </table>
 <div>承蒙慷慨贊助，敬致謝枕</div>
 </div>
+<script>
+$(document).on('ready', function() {
+   var digit_uppercase = function (n) {
+    var digit = [
+        '零' , '壹' , '貳' , '叁' , '肆' ,
+        '伍' , '陸' , '柒' , '捌' , '玖'
+    ];
+    var unit = [ '' , '拾' , '佰' , '仟' ];
+    var group = [ '元' , '萬' , '億' ];
+ 
+    var s = '' ;
+    for ( var i = 0; i < group.length && n > 0; i++) {
+        var p = '' ;
+        for ( var j = 0; j < unit.length && n > 0; j++) {
+            p = digit[n % 10] + unit[j] + p;
+            n = Math. floor (n / 10);
+        }
+        s = p.replace(/(零.)*零$/, '' )
+             .replace(/^$/, '零' )
+          + group[i] + s;
+    }
+    return s.replace(/(零.)*零元/, '元' )
+            .replace(/(零.)+/g, '零' )
+            .replace(/^$/, '零元' ) + '整' ;
+};
+	document.getElementById('print_amount').innerHTML = digit_uppercase('<%= @donation.amount %>')
+});
+function printData() {    
+               var data = document.getElementById('printTable').innerHTML;
+     var popupWindow = window.open('','printwin',
+          'left=100,top=100,width=400,height=400');
+     popupWindow.document.write('<HTML>\n<HEAD>\n');
+     popupWindow.document.write('<TITLE></TITLE>\n');
+     popupWindow.document.write('<URL></URL>\n');
+     //popupWindow.document.write("<link href='/assets/print.css' media='print' rel='stylesheet' type='text/css' />\n");
+     popupWindow.document.write('<script>\n');
+     popupWindow.document.write('function print_win(){\n');
+     popupWindow.document.write('\nwindow.print();\n');
+     popupWindow.document.write('\nwindow.close();\n');
+     popupWindow.document.write('}\n');
+     popupWindow.document.write('<\/script>\n');
+     popupWindow.document.write('</HEAD>\n');
+     popupWindow.document.write('<BODY onload="print_win()">\n');
+     popupWindow.document.write(data);
+     popupWindow.document.write('</BODY>\n');
+     popupWindow.document.write('</HTML>\n');
+     popupWindow.document.close();
+}
+</script>
