@@ -114,7 +114,8 @@ class ProjectsController < ApplicationController
                      file_name: @project.pj_attachment_file_name, file_url: @project.pj_attachment.url(:original, false),
                      exp_personnel: @project.exp_personnel, exp_mix: @project.exp_mix,
                      exp_business: @project.exp_business, exp_other: @project.exp_other,
-                     balance: @project.balance, 
+                     balance: @project.balance,                      
+                     income: @project.donations.where("donate_date >= ? and donate = ? ", Time.zone.now.beginning_of_year, true ).sum(:amount),
                      exp_file_name: @project.pj_exp_attachment_file_name, exp_file_url: @project.pj_exp_attachment.url}.to_json
     end
   end
