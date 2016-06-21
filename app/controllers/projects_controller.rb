@@ -22,7 +22,7 @@ class ProjectsController < ApplicationController
 
   # GET /projects/1/edit
   def edit
-    @pj_account = DateTime.now.strftime("%Y%m%d")+"_"+@project.id.to_s
+    @pj_account = @project.account
   end
 
   # POST /projects
@@ -86,7 +86,7 @@ class ProjectsController < ApplicationController
     rescue ActiveRecord::RecordInvalid
     params[:pj_kind] = params[:project][:kind].to_i
     get_next_stage_id
-    @pj_account = DateTime.now.strftime("%Y%d%m")+"_"+@project.id.to_s
+    @pj_account = @project.account
     render "edit"
   end
 
