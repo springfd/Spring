@@ -3,15 +3,17 @@
 	<h3 class="col-sm-5">捐款明細</h3>
   </div>
 </div>
-<div class="container-fluid">
+<div class="container">
 	<div class="row">	
-		<div class="col-md-offset-9 pull-right-lg">
-			<%= link_to "編輯", edit_donation_path(@donation), class: 'btn btn-default edit-btn' %>
-			<%= link_to '刪除', @donation, method: :delete, data: { confirm: 'Are you sure?' } , class: 'btn btn-danger delete-btn'%>
+		<div class="col-md-12">
+			<%= link_to '刪除', @donation, method: :delete, data: { confirm: 'Are you sure?' } , class: 'delete-btn pull-right'%>			
+			<%= link_to "編輯", edit_donation_path(@donation), class: 'edit-btn pull-right', style: "margin-right: 20px" %>
 		</div>
 	</div>
 </div>
-<div class="container-fluid">
+<div class="container">
+	  <div class="row">
+
 	<table class="table donation_show_table">
 	    <tbody style="border-left: solid 13px #194180 !important;">
 	      <tr>
@@ -48,6 +50,7 @@
 	      </tr>
 	    </tbody>
 	</table>
+	</div>
 </div>
 <div id="printTable" style="display: none;">
 <div style="text-align: right;">捐款收據編號ID:<%= @donation.order_num %></div>

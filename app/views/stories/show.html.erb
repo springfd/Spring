@@ -1,20 +1,20 @@
 <div class="container" style="margin-bottom: 20px;">
   <div class="row">
-	<h3 class="col-sm-5">最新消息</h3>
+	<h3 class="col-md-offset-2 col-md-8">最新消息</h3>
   </div>
 </div>
-<div class="container-fluid">
+<div class="container">
 	<div class="row">	
-		<div class="col-md-offset-9 pull-right-lg">
-			<%= link_to '編輯', edit_story_path(@story) , data: { no_turbolink: true }, class: 'btn btn-default edit-btn'%> 
-			<%= link_to '刪除', @story, method: :delete, data: { confirm: '確定要刪除嗎?' } , class: 'btn btn-danger delete-btn'%>
+		<div class="col-md-10">
+			<%= link_to '刪除', @story, method: :delete, data: { confirm: '確定要刪除嗎?' } , class: 'delete-btn pull-right'%>			
+			<%= link_to '編輯', edit_story_path(@story) , data: { no_turbolink: true }, class: 'edit-btn pull-right', style: 'margin-right: 20px;'%> 
 		</div>
 	</div>
 </div>
-<div class="container-fluid" style="margin-top: 23px;">
+<div class="container" style="margin-top: 23px;">
 	<% unless @story.pictures.blank? %>
 	<div class="row">
-		<div class="col-md-offset-3 col-md-6">
+		<div class="col-md-offset-2 col-md-8">
 			<div id="myCarousel" class="carousel slide" data-ride="carousel">
 			  <!-- Indicators -->
 			  <ol class="carousel-indicators">
@@ -56,23 +56,23 @@
 	</div>
 	<% end %>
 	<div class="row" style="margin-top: 23px;">
-	  	<div class="col-md-2 col-md-offset-3 show-title">標題</div>
+	  	<div class="col-md-offset-2 col-md-2 show-title">標題</div>
 	  	<div class="col-md-4 show-content"> <%= @story.topic %></div>
 	</div>
 	<div class="row">
-	  	<div class="col-md-2 col-md-offset-3 show-title">英文標題</div>
+	  	<div class="col-md-offset-2 col-md-2 show-title">英文標題</div>
 	  	<div class="col-md-4 show-content"> <%= @story.topic_en %></div>
 	</div>
 	<div class="row">
-	  	<div class="col-md-2 col-md-offset-3 show-title">描述</div>
+	  	<div class="col-md-offset-2 col-md-2 show-title">描述</div>
 	  	<div class="col-md-4 show-content"> <%= @story.description %></div>
 	</div>
 	<div class="row">
-	  	<div class="col-md-2 col-md-offset-3 show-title">描述</div>
+	  	<div class="col-md-offset-2 col-md-2 show-title">英文描述</div>
 	  	<div class="col-md-4 show-content"> <%= @story.description_en %></div>
 	</div>
 	<div class="row">
-	  <div class="col-md-2 col-md-offset-3 show-title">影片</div>
+	  <div class="col-md-2 col-md-offset-2 show-title">Youtube嵌入碼</div>
 	  <div class="col-md-5" style="padding: 23px;"><%= show_video(data: @story.video_url) %> </div>
 	</div>
 </div>
