@@ -8,22 +8,16 @@
 			  </div>
 			
 			  <div class="form-group row">
-			    <label class="col-md-5 control-label">Password</label>
+			    <label class="col-md-5 control-label">密碼</label>
 			    <%= f.password_field :password, autocomplete: "off" , class: "col-md-7 form-control"%>
 			  </div>
 			
-			  <% if devise_mapping.rememberable? -%>
-			    <div class="form-group row">
-			      <%= f.check_box :remember_me , class: "col-md-1"%>
-			      <label class="col-md-3 control-label">記得我</label>
-			    </div>
-			  <% end -%>
-			  <div class="row pull-right-lg">
+			  <div class="row">
 				  <%- if devise_mapping.recoverable? && controller_name != 'passwords' && controller_name != 'registrations' %>
-					<%= link_to "忘記密碼?", new_password_path(resource_name) , class: "col-md-offset-7 col-md-3" , style: "color: #194180; padding-top: 5px;"%>
+					<%= link_to "忘記密碼?", new_password_path(resource_name) , class: "col-md-4" , style: "color: #194180; padding-top: 5px;"%>
 				  <% end -%>
 				  <div class="actions" style="display: inline;">
-				    <%= f.submit "登入" , class: " col-md-3 btn btn-info save-btn"%>
+				    <%= f.submit "登入" , class: " pull-right col-md-4 btn btn-info save-btn"%>
 				  </div>
 			  </div>
 		  </div>
