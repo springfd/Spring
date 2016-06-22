@@ -19,5 +19,63 @@
 # To learn more, please read the Rails Internationalization guide
 # available at http://guides.rubyonrails.org/i18n.html.
 
+# ruby encoding: utf-8
 en:
-  hello: "Hello world"
+        關於: About
+        消息: News
+        捐款: Donate
+        委辦計畫: Delegate Project
+        閱讀更多: Read More
+        已募: Donated
+        累積期間: "Period: "
+        一般性用途捐款: General
+        指定計畫捐款: Designated
+        一般性用途: General
+        指定計畫: Designated
+        收據: Receipt
+        金額: Amount
+        是: "Yes"
+        否: "No"
+        收據抬頭: Title
+        聯絡人: Contact
+        電話: Tele
+        地址: Address
+        或輸入您想捐款的金額: Either you can type the amount you want to donate
+        款項將直接用於本會所執行，但經費仍不足之各項計畫。: The donation will be used by our fundation to support each project in need of money
+        點擊捐款: Click and Donate    
+        會計師: Accountant
+        簽證報告: Signed Report
+        請選擇: Please select     
+        年度: Year
+        預算: Budget
+        執行狀況: Status of implementation
+        董事: Directors
+        董事會成員: Board of Directors
+        重要會務記事: Conference Record
+        聯絡: Contact
+        聯絡資訊: Contact Information
+        其他: Other
+        相關連結: Related Links
+        本會手冊: Fundation Manual
+        語言: Language
+        查詢委辦計畫: Search Delegate Project
+        計畫代號: Project Account
+        密碼: Password
+        查詢: Search
+        西元年度: Year
+        名稱: Name
+        預算: Budget
+        收入累計: Accumulated Income
+        目前餘額:  Balance
+        支出細項: Expense Item
+        關閉: Close
+        請填寫: Please fill in
+        今天無法捐款: "Not permitted to donate today"
+        捐款期間: Donation Period
+        帳號密碼錯誤: Account or Password is incorrect
+        請輸入帳號密碼: Please enter you account and password
+        文件下載: Document Download
+        文件: Document 
+        下載: Download
+        
+         

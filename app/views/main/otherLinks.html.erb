@@ -1,0 +1,18 @@
+<div class="container-fluid other_links" style="min-height: 100vh;">
+	<div class="other_links_background_image"></div>
+	<div class="row">
+		<div class="col-lg-offset-2 col-lg-8">
+			<div class="other_links_container text-center">			
+				<div class="other_links_title">
+					相關<span style="color: rgb(192, 112, 163);">連結</span>	
+				</div>		
+				<% Link.all.each do |l| %>
+					<div class="other_links_sub_container">
+						<%=link_to l.name, l.web_addr, class: 'other_links_link'%>
+					</div>				
+				<% end %>																						
+			</div>	
+				
+		</div>
+	</div>		
+</div>	

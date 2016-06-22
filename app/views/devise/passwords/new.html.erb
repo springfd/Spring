@@ -8,12 +8,12 @@
   <%= devise_error_messages! %>
 
     <div class="form-group row">
-        <label class="col-sm-offset-1 col-sm-2 control-label">Email</label>
+        <label class="col-sm-offset-2 col-sm-2 control-label">Email</label>
         <div class="col-sm-4"><%= f.email_field :email, autofocus: true, class: "form-control", placeholder: 'Email'%></div>
     </div>
 
     <div class="form-group row">
-		<div class="col-sm-offset-6 col-sm-10">
+		<div class="col-sm-offset-9 col-sm-2 pull-right-lg">
 			<%= f.submit '寄信',  class: "btn btn-info save-btn" %>
 		</div>
   	</div>

@@ -1,0 +1,21 @@
+	<div class="col-md-4">
+	  <table class="table backend_index_table">
+	  	<tbody>
+	      <tr>
+	        <td colspan="2"><%= sign_report.title %></td>
+	      </tr>
+	      <tr>
+	        <th>年度</th>
+	        <td><%= sign_report.year.strftime("%Y") %></td>
+	      </tr>
+	      <tr style="text-align: center;">
+	      	<td colspan="2">
+	      		<% unless sign_report.sr_attachment_file_name.blank? %><%= link_to sign_report.sr_attachment_file_name, sign_report.sr_attachment.url(:original, false) %><% end %>
+	      	</td>
+	      </tr>
+	      <tr style="text-align: center;">
+		    <td colspan="2"><%= link_to "編輯", edit_sign_report_path(sign_report), data: { no_turbolink: true }, class: 'edit-btn', style: "" %><%= link_to '刪除', sign_report, method: :delete, data: { confirm: 'Are you sure?' } , class: 'delete-btn', style: "margin-left:24px;"%></td>
+	      </tr>
+	    </tbody>
+	  </table>
+	</div>

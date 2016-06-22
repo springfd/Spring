@@ -8,15 +8,15 @@
 		-->		
 				<div class="donation_summary text-center">
 					<div class="donation_summary_inner">
-						<div class="donation_summary_ch">已募</div>
+						<div class="donation_summary_ch"><%= t("已募") %></div>
 						<div class="donation_summary_number"></div>
 						<div class="donation_summary_en">NT</div>	
 					</div>
-					<div class="donation_range text-right">累積期間 <%=Time.zone.now().year%>/01/01~<%=Time.zone.now().strftime("%Y/%m/%d")  %></div>	
+					<div class="donation_range text-right"><%= t("累積期間") %> <%=Time.zone.now().year%>/01/01~<%=Time.zone.now().strftime("%Y/%m/%d")  %></div>	
 				</div>
 				<div class="text-center" style="margin-bottom: 10vh;">
-					<a href="#donation_content_donate" class="donation_top_button">一般性用途捐款</a>
-					<a href="#donation-no-span" class="donation_top_button">指定計畫捐款</a>
+					<a href="#donation_content_donate" class="donation_top_button"><%= t("一般性用途捐款") %></a>
+					<a href="#donation-no-span" class="donation_top_button"><%= t("指定計畫捐款") %></a>
 				</div>
 				<div class="donation_arrow_container text-center">
 					<a href="#donation_content_donate" class="donation_arrow">
@@ -30,29 +30,29 @@
 	<div class="donation_content_background_image"></div>
 	<div class="row" style="position:relative; z-index:2;" id="credit">
 		<div class="col-lg-offset-3 col-lg-6 col-sm-offset-2 col-sm-8 donation_content_donate_inner" id="donation_content_donate_inner">
-			<p class="text-center" style="font-size: 22px; letter-spacing: 2px;">一般性用途<span style="color: #02a0eb;">捐款</span></p>		
-			<%= form_tag('/main/donation', class: "donation_form") do -%>
+			<p class="text-center" style="font-size: 22px; letter-spacing: 2px;"><%= t("一般性用途") %> <span style="color: #02a0eb;"><%= t("捐款") %></span></p>		
+			<%= form_tag(main_donation_path(locale: I18n.locale), class: "donation_form") do -%>
 						<%= hidden_field_tag 'id', 1, class: 'form-control'%>
-						<div class="donation_form_title">收據</div> 
+						<div class="donation_form_title"><%= t("收據") %></div> 
 						<div class="btn-group donation_btn_group" data-toggle="buttons">
 			                <label class="btn btn-default donation_gray_btn">
-			                    <input type="radio" name="receipt" autocomplete="off" value="true" id="1" /> 是                
+			                    <input type="radio" name="receipt" autocomplete="off" value="true" id="1" /> <%= t("是") %>                
 			                </label> 
 			                <label class="btn btn-default donation_gray_btn">
-			                    <input type="radio" name="receipt" autocomplete="off" value="false" id="1" /> 否	                
+			                    <input type="radio" name="receipt" autocomplete="off" value="false" id="1" /> <%= t("否") %>	                
 			                </label>   
 			            </div>	
 			            <div class="form_group_donation form_group_donation_hidden form_group_donation_1">						            				
 							<div class="form-group">
-								<div class="donation_form_title">收據抬頭</div> 
+								<div class="donation_form_title"><%= t("收據抬頭") %></div> 
 							  	<%= text_field_tag 'title', nil, class: 'form-control' %>
 							</div>
 						    <div class="form-group">
-						    	<div class="donation_form_title">聯絡人</div>   
+						    	<div class="donation_form_title"><%= t("聯絡人") %></div>   
 						  		<%= text_field_tag 'name', nil, class: 'form-control' %>
 						    </div>							
 						    <div class="form-group">
-						    	<div class="donation_form_title">電話</div>   
+						    	<div class="donation_form_title"><%= t("電話") %></div>   
 						  		<%= text_field_tag 'phone', nil, class: 'form-control' %>
 						    </div>  
 						    <div class="form-group">
@@ -60,11 +60,11 @@
 						  		<%= email_field_tag 'email', nil, class: 'form-control' %>
 						    </div>						    
 						    <div class="form-group">
-						    	<div class="donation_form_title">地址</div>   
+						    	<div class="donation_form_title"><%= t("地址") %></div>   
 						  		<%= text_field_tag 'address', nil, class: 'form-control' %>
 						  	</div>  
 						</div>						  					  	 
-					  	<div class="donation_form_title">金額</div>  
+					  	<div class="donation_form_title"><%= t("金額") %></div>  
 						<div class="btn-group donation_btn_group" data-toggle="buttons">
 			                <label class="btn btn-default donation_gray_btn">
 			                    <input type="radio" name="amount" autocomplete="off" value="1000" /> $1000	                
@@ -86,16 +86,16 @@
 			                </label> 			                			                		                            			                
 		           		</div>    
 						<div class="form-group form-inline"> 
-						  	<%= text_field_tag 'amount_others', nil, class: 'form-control amount_others', placeholder: '或輸入您想捐款的金額'%>
-							<%= submit_tag '捐款', class: "btn donation_button" %>
+						  	<%= text_field_tag 'amount_others', nil, class: 'form-control amount_others', placeholder: t('或輸入您想捐款的金額') %>
+							<%= submit_tag t("捐款"), class: "btn donation_button"%>
 						</div>  
 			<% end -%>
-			<p style="color: #888888">*款項將直接用於本會所執行，但經費仍不足之各項計畫。</p>	
+			<p style="color: #888888">*<%= t("款項將直接用於本會所執行，但經費仍不足之各項計畫。") %></p>	
 		</div>
 	</div>	
 </div>	
 <div class="container">
-<h2 class="donation-no-span" id="donation-no-span">指定計畫<span style="color: #02a0eb;">捐款<span></h2>
+<h2 class="donation-no-span" id="donation-no-span"><%= t("指定計畫") %> <span style="color: #02a0eb;"><%= t("捐款") %><span></h2>
 </div>
 <div class="container-fluid">
 	<div class="grid" id="grid_container">
@@ -109,12 +109,12 @@
 	<div class="row" style="margin-bottom: 40px; margin-top: 40px;">
 		<div class="col-lg-12 donation_accounting">
 			<div class="form-group form-inline">
-			  <label for="sign_report">會計師<span style="color: #02a0eb">簽證報告</span></label>
+			  <label for="sign_report"><%= t("會計師") %> <span style="color: #02a0eb"><%= t("簽證報告") %></span></label>
 			  <select class="form-control" id="sign_report">	
-			  	<option>請選擇</option>			
+			  	<option><%= t("請選擇") %></option>			
 			  	<% SignReport.all.order('year').each do |s|%>
 					<option value="<%= s.sr_attachment.url%>">
-					<%= s.year.strftime("%Y")+'年度' %>
+					<%= s.year.strftime("%Y")+t("年度") %>
 					</option>
 				<% end %>
 			  </select>
@@ -123,7 +123,7 @@
 	</div>		
 </div>	
 <script>
-$(document).ready(function(){		
+$(document).ready(function(){	
 	var link = document.URL.split('#')[1];	
 	if ( link != 'grid_container' && link != 'donation_content_donate_inner' && link) {		
 		$('#'+link).click()

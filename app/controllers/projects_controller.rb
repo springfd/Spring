@@ -17,10 +17,12 @@ class ProjectsController < ApplicationController
   # GET /projects/new
   def new
     @project = Project.new
+    set_pj_account
   end
 
   # GET /projects/1/edit
   def edit
+    @pj_account = @project.account
   end
 
   # POST /projects
@@ -44,13 +46,14 @@ class ProjectsController < ApplicationController
     rescue ActiveRecord::RecordInvalid
     params[:pj_kind] = params[:project][:kind].to_i
     get_next_stage_id
+    set_pj_account
     render "edit"
   end
 
   # PATCH/PUT /projects/1
   # PATCH/PUT /projects/1.json
   def update
-    check_delete exp_at: params[:exp_attachment_delete], pj_at: params[:attachment_delete], cover_at: params[:cover_delete]
+    check_delete exp_at: params[:exp_attachment_delete], don_at: params[:donation_attachment_delete], pj_at: params[:attachment_delete], cover_at: params[:cover_delete]
     @project.update(project_params)
     unless params[:project][:year].blank?
       @project.year = DateTime.strptime(params[:project][:year], "%Y")
@@ -83,6 +86,7 @@ class ProjectsController < ApplicationController
     rescue ActiveRecord::RecordInvalid
     params[:pj_kind] = params[:project][:kind].to_i
     get_next_stage_id
+    @pj_account = @project.account
     render "edit"
   end
 
@@ -122,19 +126,32 @@ class ProjectsController < ApplicationController
 
     # Never trust parameters from the scary internet, only allow the white list through.
     def project_params
-      params.require(:project).permit(:kind, :year, :name, :description, :budget, :balance, :exe_desc, :abbreviation, :account_begin, :account_end, :income, :account, :password, :pj_attachment, :pj_cover, :donate_begin_at, :donate_end_at, :pj_exp_attachment)
+      params.require(:project).permit(:kind, :year, :name, :description, :budget, :balance, :exe_desc, :abbreviation, :account_begin, :account_end, :income, :account, :password, :pj_attachment, :pj_cover, :donate_begin_at, :donate_end_at, :pj_exp_attachment, :pj_donation_attachment, :email, :phone, :holder)
     end
     
     def record_log
       Log.create(user_id: current_user.id, project_id: @project.id )
     end
     
-    def get_next_stage_id
+    def get_next_stage_id #so that we can generate a Stage id won't collide with existing Stage id
       unless Stage.maximum(:id).blank?
         @stage_next_id = Stage.maximum(:id).next
       else
         @stage_next_id = 1
       end
+    end
+    
+    def get_next_project_id
+      unless Project.maximum(:id).blank?
+        @pj_next_id = Project.maximum(:id).next
+      else
+        @pj_next_id = 1
+      end
+    end
+    
+    def set_pj_account
+      get_next_project_id
+      @pj_account = DateTime.now.strftime("%Y%m%d")+"_"+@pj_next_id.to_s
     end
     
     def store_stage_image(stage, stage_params, key)
@@ -148,6 +165,9 @@ class ProjectsController < ApplicationController
     def check_delete(options = {})
       if options[:exp_at] == 'true' #delete project expense attachments
         @project.pj_exp_attachment = nil
+      end
+      if options[:don_at] == 'true' #delete project donation attachments
+        @project.pj_donation_attachment = nil
       end
       if options[:pj_at] == 'true' #delete project attachments
         @project.pj_attachment = nil

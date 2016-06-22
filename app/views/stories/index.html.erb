@@ -1,51 +1,15 @@
 <div class="container">
 	<div class="row">
-		<h3>最新消息</h3>
-	</div>
-</div>
-<div class="container-fluid">
-	<div class="row">	
-		<div class="col-md-offset-9">
-			<%= link_to "新增", new_story_path, data: { no_turbolink: true }, class: 'btn btn-info add-btn' %>
-		</div>
+		<div class="col-md-12">	
+			<h3 style="letter-spacing: 2px;">最新消息</h3>
+			<%= link_to "新增", new_story_path, data: { no_turbolink: true }, class: 'add-btn pull-right' %>				
+		</div>		
 	</div>
 </div>
 <div class="container">
-	<% @stories.each_with_index do |story, index| %>
-		<% if index%3 == 0%>
-		<div class="row">
+		<% @stories.order('news_date desc').each_with_index do |story, index| %>
+    		<%= render "sub_story_table", story: story , index: index%>
 		<% end %>
-		<div class="col-sm-4">
-			<div class="panel panel-default">
-			  <div class="panel-body" style="min-height: 250px;">
-			  	<div class = "story-panel-tr">
-				  	<div class="story-panel-th">標題:</div>
-				  	<div class="story-panel-td"><%= story.topic %></div>
-				</div>
-				<div class = "story-panel-tr">
-				  	<div class="story-panel-th">內容:</div>
-				  	<div class="story-panel-td">
-				  		<% if story.description.length > 150 %>
-						  	<%= truncate(story.description.gsub("\r\n", "\\n"), length: 150) %>
-						    <%= link_to '  Read more', '', class: "read-more-#{story.id}" %>
-						 <% else %>
-						    <%= story.description.gsub("\r\n", "\\n") %>
-						 <% end %>	
-				  	</div>
-				</div>
-			  </div>
-			  <%= link_to story_path(story)  do%>
-				<div class = "story-panel-view-btn">
-					瀏覽
-					
-				</div>
-				<% end %>
-			</div>
-		</div>
-		<% if index%3 == 2%>
-		</div>
-		<% end %>
-	<% end %>
 </div>
 
 <script>

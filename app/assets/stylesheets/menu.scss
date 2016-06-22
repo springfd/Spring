@@ -137,16 +137,19 @@
 
 
 /*======================================= backend =======================================*/
-
-@media (max-width: $screen-sm-min) {
-    .navbar-collapse .nav > .divider-vertical {
-        display: none;
-     }
+.back_brand img{
+  height: 20px !important;
+}   
+@media (max-width: $screen-sm-min) { 
+    .back_brand img{
+      height: 30px !important;
+    }         
 }
 
 .backmenubar > ul > li > a{
-  color: #c0c0c0 !important;
-  font-size: 18px;
+  color: #808080 !important;
+  font-size: 16px;
+  letter-spacing: 2px !important;
   padding: 7.5px 0px;
   margin: 7.5px 10px;
   border-radius: 0px;
@@ -162,7 +165,7 @@
   width: auto !important;
   background: rgba( 255, 255, 255, 1);
   border-bottom: none;
-  box-shadow: 1px 1px 10px rgba(0, 0, 0, .1);
+  box-shadow: none;
 }
 /*
 .navbar-brand{

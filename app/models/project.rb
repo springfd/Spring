@@ -6,6 +6,11 @@ class Project < ActiveRecord::Base
       #:path => ":rails_root/public/assets/pj_exp_attachments/:id/:style/:basename.:extension"
    do_not_validate_attachment_file_type :pj_exp_attachment
    
+   has_attached_file :pj_donation_attachment,
+      :url  => "/assets/pj_donation_attachments/:id/:style/:basename.:extension"
+      #:path => ":rails_root/public/assets/pj_donation_attachments/:id/:style/:basename.:extension"
+   do_not_validate_attachment_file_type :pj_donation_attachment
+   
    has_attached_file :pj_attachment,
       :url  => "/assets/pj_attachments/:id/:style/:basename.:extension"
       #:path => ":rails_root/public/assets/pj_attachments/:id/:style/:basename.:extension"

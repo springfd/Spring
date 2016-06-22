@@ -25,12 +25,13 @@
 }
 .grid-news-item-button{
   color: #02a0eb !important;
-  font-size: 16px;
+  font-size: 15px;
   z-index: 3;
   position: absolute;
   right: 40px;
   bottom: 15px;
-  cursor: pointer;  
+  cursor: pointer; 
+  letter-spacing: 1px; 
 }
 .no-touch .grid-news-item-button:hover{
   color: #0279b1;  
@@ -64,7 +65,8 @@
 }
 .news_card_small_title{
   margin-top: 15px;
-  font-size: 20px;		
+  font-size: 18px;	
+  letter-spacing: 2px;	
 }
 .news_card_small_date{
   margin-top: 10px;	
@@ -72,7 +74,7 @@
 .news_card_small_content{
   font-size: 16px;	
   line-height: 30px;
-  letter-spacing: 2px;
+  letter-spacing: 1px;
   color: #878787;
   margin-top: 10px;  
 }
@@ -106,7 +108,8 @@
 
 .news_card_enlarge_title{
   margin-top: 15px;
-  font-size: 20px;		
+  font-size: 18px;
+  letter-spacing: 2px;  		
 }
 .news_card_enlarge_date{
   margin-top: 10px;	
@@ -114,14 +117,31 @@
 .news_card_enlarge_content{
   font-size: 16px;	
   line-height: 30px;
-  letter-spacing: 2px;
+  letter-spacing: 1px;
   color: #878787;
   margin-top: 10px;
 }
+.carousel-inner>.item>img, .carousel-inner>.item>a>img {
+	display: block;
+	height: auto;
+	max-width: 100%;
+	line-height: 1;
+	width: 100%; // Add this
+}
+.carousel-control.left, .carousel-control.right {
+    background-image: none
+}
+/*
 .news_card_enlarge_img{
   margin-top: 10px;	
   width: 100%;
 }
+*/
+
+
+
+
+
 
 .news_card_enlarge_video { 
 	position: relative; 

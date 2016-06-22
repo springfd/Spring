@@ -24,7 +24,7 @@ span.glyphicon {
 
 .login-head{
   font-size: 23px;
-  border-left: 7px solid #33CCCC !important;  
+  border-left: 7px solid #194180 !important;  
 }
 
 .login-body{
@@ -32,22 +32,6 @@ span.glyphicon {
 }
 
 // donation design
-
-.donation_backend_table{
-  background-color: #fff;
-  font-size: 14px;    
-  margin-top: 30px;
-}
-.donation_backend_table th{
-  border: none !important;
-  min-width: 70px;
-  color: #000;
-}
-.donation_backend_table td{
-  border: none  !important;
-  color: #878787;
-}
-
 .borderless td, .borderless th {
     border: none;
 }
@@ -91,24 +75,6 @@ span.glyphicon {
   background-size: cover;  
 }
 
-.story-panel-tr{
-  width: 100%;
-  display: table-row; 
-  height: 29px;
-}
-
-.story-panel-th{
-  width: 20%;
-  display: table-cell; 
-  margin-right: 10px;
-  color: black;
-}
-
-.story-panel-td{
-  display: table-cell; 
-  color: #878787;
-}
-
 .story-panel-view-btn{
   font-size: 24px;
   height:39px;
@@ -138,64 +104,67 @@ span.glyphicon {
 //     button design
 
 .add-btn{
-  width: 70px !important;
-  font-size: 16px;
-  background-color: #33CC99;
-  border-radius: 38px;
-  border: 0px;
+  font-size: 14px;  
+  letter-spacing: 3px;
+  color: #ffffff !important;
+  border: none;
+  background: #02a0eb;  
+  padding: 9px 20px 7px !important; 
+  border-radius: 5px !important;
+  border-bottom: 2px solid #0279b1 !important; 
 }
 
-.btn.add-btn:hover,.btn.add-btn:active ,.btn.add-btn:focus {
-    /* here copy default .btn class styles */
-    background-color : #33CC99;
-    border: 0px; 
-    box-shadow: 1px 1px 5px #167447;
-    /* or something like that */
+.no-touch .add-btn:hover, .add-btn:active, .add-btn:focus {
+  color: #ffffff;  
+  background: #0279b1 !important; 
+  text-decoration: none;   
 }
 
 .delete-btn{
-  width: 70px !important;
-  font-size: 16px;
-  background-color: #EC7E64;
-  border-radius: 38px;
-  border: 0px;
+  font-size: 14px;  
+  letter-spacing: 3px;
+  color: #ffffff !important;
+  border: none;
+  background: #800000;  
+  padding: 9px 20px 7px !important; 
+  border-radius: 5px !important;
+  border-bottom: 2px solid #800000 !important;
 }
 
-.btn.delete-btn:hover,.btn.delete-btn:active ,.btn.delete-btn:focus {
-    /* here copy default .btn class styles */
-    background-color : #EC7E64;
-    border: 0px; 
-    box-shadow: 1px 1px 5px #B74F37;
-    /* or something like that */
+.no-touch .delete-btn:hover,.btn.delete-btn:active ,.btn.delete-btn:focus {
+  color: #ffffff;  
+  background: #800000 !important; 
+  text-decoration: none;  
 }
 
 .edit-btn{
-  width: 70px !important;
-  font-size: 16px;
-  background-color: #fff;
-  border-radius: 38px;
-  border: 0px;
+  font-size: 14px;  
+  letter-spacing: 3px;
+  color: #ffffff !important;
+  border: none;
+  background: #b3b3b3;  
+  padding: 9px 20px 7px !important; 
+  border-radius: 5px !important;
+  border-bottom: 2px solid #8c8c8c !important;
 }
 
-.btn.edit-btn:hover,.btn.edit-btn:active ,.btn.edit-btn:focus {
-    /* here copy default .btn class styles */
-    background-color : #fff;
-    border: 0px; 
-    box-shadow: 1px 1px 5px gray;
-    /* or something like that */
+.no-touch .edit-btn:hover,.btn.edit-btn:active ,.btn.edit-btn:focus {
+  color: #ffffff;  
+  background: #8c8c8c !important; 
+  text-decoration: none;  
 }
 
 .save-btn{
   width: 70px !important;
   font-size: 16px;
-  background-color: #33CCCC;
-  border-radius: 38px;
+  background-color: #194180;
+  border-radius: 5px;
   border: 0px;
 }
 
 .btn.save-btn:hover,.btn.save-btn:active ,.btn.save-btn:focus {
     /* here copy default .btn class styles */
-    background-color : #33CCCC;
+    background-color : #194180;
     border: 0px; 
     box-shadow: 1px 1px 5px #157879;
     /* or something like that */
@@ -206,18 +175,28 @@ span.glyphicon {
   width: 90px !important;
   text-align: center;
   font-size: 14px;
-  background-color: #33CCCC;
+  background-color: #194180;
   color: #fff;
-  border-radius: 38px;
+  border-radius: 5px;
   border: 0px;
 }
 
 .btn.print-btn:hover,.btn.print-btn:active ,.btn.print-btn:focus {
     /* here copy default .btn class styles */
-    background-color : #33CCCC;
+    background-color : #194180;
     border: 0px; 
     box-shadow: 1px 1px 5px #157879;
     /* or something like that */
+}
+
+.btn-file, .btn:hover{
+  background-color: #02A0EB;
+  border-color: #02A0EB;
+}
+
+.btn-danger, .btn-danger:hover{
+  background-color: #800000;
+  border-color: #800000;
 }
 
 // links design
@@ -231,11 +210,48 @@ span.glyphicon {
   text-overflow: ellipsis;
 }
 
-// project design
-.project-panel-title{
-  white-space: nowrap; 
-  max-width: 120px;
-  overflow: hidden;
-  text-overflow: ellipsis;
+// backend index table design
+.backend_index_table{
+  border-radius: 5px;
+  background-color: #fff;
+  font-size: 14px;    
+  margin-top: 30px;
 }
 
+.backend_index_table tr:first-child {
+    border-left: solid #194180 5px;
+    letter-spacing: 2px;
+}
+
+.backend_index_table tr:first-child td {
+    padding-top: 10px !important;
+    color: #333333;
+}
+
+.backend_index_table th{
+  font-size: 18px;
+  border: none !important;
+  min-width: 60px;
+  color: #000;
+}
+.backend_index_table td{
+  font-size: 18px;
+  border: none  !important;
+  color: #878787;
+}
+.backend_index_table_image{
+  height: 200px !important;
+  width: 100%;
+  margin-top: 10px;
+  margin-bottom: 10px;
+  
+}
+@media (max-width: 992px) {
+    .pull-right-lg {
+        float: right;
+    }
+}
+
+.row > h3{
+  font-size: 29px;
+}

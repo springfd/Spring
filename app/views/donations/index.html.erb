@@ -1,18 +1,16 @@
 <div class="container">
 	<div class="row">
-		<h3>捐款</h3>
-	</div>
-</div>
-<div class="container-fluid">
-	<div class="row">	
-		<div class="col-md-offset-9">
-			<%= link_to "新增", new_donation_path, class: 'btn btn-info add-btn' %>
-		</div>
+		<div class="col-md-12">	
+			<h3 style="letter-spacing: 2px;">捐款</h3>	
+			<%= link_to "新增", new_donation_path, class: 'add-btn pull-right' %>				
+		</div>		
 	</div>
 </div>
 <div class="container">
-	<% @donations.each do |donation| %>
-		<%= render "sub_donation_panel", donation: donation %>
-	<% end %>
+	<div class="row">
+		<% @donations.order('id desc').each do |donation| %>
+			<%= render "sub_donation_table", donation: donation %>
+		<% end %>
+    </div>	
 </div>
 

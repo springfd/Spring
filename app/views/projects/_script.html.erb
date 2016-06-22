@@ -1,0 +1,98 @@
+<script>
+$(document).on('ready', function() {
+	//project donation attachment file upload
+     $("#project_pj_donation_attachment").fileinput({
+     	initialPreview: [
+		    <% if !@project.pj_donation_attachment_file_name.blank? %>
+		    "<div class='file-preview-other'>" +
+    	    "<h2><i class='glyphicon glyphicon-file'></i></h2>" +
+            '<%= @project.pj_donation_attachment_file_name%>' + "</div>"
+			<% end %>
+		             ],
+		showUpload: false,
+        browseClass: "btn btn-success",
+        browseLabel: "Browse",
+        browseIcon: "<i class=\"glyphicon glyphicon-folder-open\"></i> ",
+        removeClass: "btn btn-danger",
+        removeLabel: "Delete",
+        removeIcon: "<i class=\"glyphicon glyphicon-trash\"></i> ",
+    });
+    $('#project_pj_donation_attachment').on('fileloaded', function(event, file, previewId, index, reader) {
+        $('#donation_attachment_delete').val(true);
+    });
+    $('#project_pj_donation_attachment').on('fileclear', function(event) {
+    	$('#donation_attachment_delete').val(true);
+    });
+	
+	//project expense attachment file upload
+     $("#project_pj_exp_attachment").fileinput({
+     	initialPreview: [
+		    <% if !@project.pj_exp_attachment_file_name.blank? %>
+		    "<div class='file-preview-other'>" +
+    	    "<h2><i class='glyphicon glyphicon-file'></i></h2>" +
+            '<%= @project.pj_exp_attachment_file_name%>' + "</div>"
+			<% end %>
+		             ],
+		showUpload: false,
+        browseClass: "btn btn-success",
+        browseLabel: "Browse",
+        browseIcon: "<i class=\"glyphicon glyphicon-folder-open\"></i> ",
+        removeClass: "btn btn-danger",
+        removeLabel: "Delete",
+        removeIcon: "<i class=\"glyphicon glyphicon-trash\"></i> ",
+    });
+    $('#project_pj_exp_attachment').on('fileloaded', function(event, file, previewId, index, reader) {
+        $('#exp_attachment_delete').val(true);
+    });
+    $('#project_pj_exp_attachment').on('fileclear', function(event) {
+    	$('#exp_attachment_delete').val(true);
+    });
+    
+    //project attachment file upload
+     $("#project_pj_attachment").fileinput({
+     	initialPreview: [
+		    <% if !@project.pj_attachment_file_name.blank? %>
+		    "<div class='file-preview-other'>" +
+    	    "<h2><i class='glyphicon glyphicon-file'></i></h2>" +
+            '<%= @project.pj_attachment_file_name%>' + "</div>"
+			<% end %>
+		             ],
+		showUpload: false,
+        browseClass: "btn btn-success",
+        browseLabel: "Browse",
+        browseIcon: "<i class=\"glyphicon glyphicon-folder-open\"></i> ",
+        removeClass: "btn btn-danger",
+        removeLabel: "Delete",
+        removeIcon: "<i class=\"glyphicon glyphicon-trash\"></i> ",
+    });
+    $('#project_pj_attachment').on('fileloaded', function(event, file, previewId, index, reader) {
+        $('#attachment_delete').val(true);
+    });
+    $('#project_pj_attachment').on('fileclear', function(event) {
+    	$('#attachment_delete').val(true);
+    });
+    
+    //project cover file upload
+     $("#project_pj_cover").fileinput({
+     	initialPreview: [
+		    <% if !@project.pj_cover_file_name.blank? %>
+        		'<%= image_tag @project.pj_cover.url, class: 'file-preview-image' %>',
+			<% end %>
+		             ],
+		showUpload: false,
+		previewFileType: "image",
+        browseClass: "btn btn-success",
+        browseLabel: "Pick Image",
+        browseIcon: "<i class=\"glyphicon glyphicon-picture\"></i> ",
+        removeClass: "btn btn-danger",
+        removeLabel: "Delete",
+        removeIcon: "<i class=\"glyphicon glyphicon-trash\"></i> ",
+    });
+    $('#project_pj_cover').on('fileloaded', function(event, file, previewId, index, reader) {
+        $('#cover_delete').val(true);
+    });
+    $('#project_pj_cover').on('fileclear', function(event) {
+    	$('#cover_delete').val(true);
+    });
+});
+</script>
