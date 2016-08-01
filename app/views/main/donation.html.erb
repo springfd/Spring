@@ -100,7 +100,7 @@
 <div class="container-fluid">
 	<div class="grid" id="grid_container">
 		<div class="grid-sizer col-xs-12 col-sm-4"></div>				
-		<% Project.where('id <> 1 and donate_begin_at <= ? and donate_end_at >= ?', Time.zone.now, Time.zone.now).each do |project|%>
+		<% Project.where('id <> 1 and visible = 1 and donate_begin_at <= ? and donate_end_at >= ?', Time.zone.now, Time.zone.now).each do |project|%>
 			<%=render "donation_card", project: project%>	
 		<% end %>	  		 				
 	</div>	
