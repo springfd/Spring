@@ -127,7 +127,7 @@ class ProjectsController < ApplicationController
 
     # Never trust parameters from the scary internet, only allow the white list through.
     def project_params
-      params.require(:project).permit(:kind, :year, :name, :description, :budget, :balance, :exe_desc, :abbreviation, :account_begin, :account_end, :income, :account, :password, :pj_attachment, :pj_cover, :donate_begin_at, :donate_end_at, :pj_exp_attachment, :pj_donation_attachment, :email, :phone, :holder, :visible)
+      params.require(:project).permit(:kind, :year, :name, :description, :budget, :balance, :exe_desc, :abbreviation, :account_begin, :account_end, :income, :account, :password, :pj_attachment, :pj_cover, :donate_begin_at, :donate_end_at, :pj_exp_attachment, :pj_donation_attachment, :email, :phone, :holder, :visible, :last_year_exp, :last_year_balance)
     end
     
     def record_log

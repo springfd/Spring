@@ -88,6 +88,18 @@
     	</div>
   </div>
   <div class="form-group row">
+  	<label class="col-sm-offset-2 col-sm-2 control-label">去年支出</label>
+  		<div class="col-sm-6">
+  			<%= f.number_field :last_year_exp, class: "form-control", placeholder: "去年支出" %>
+    	</div>
+  </div>
+  <div class="form-group row">
+  	<label class="col-sm-offset-2 col-sm-2 control-label">去年餘額</label>
+  		<div class="col-sm-6">
+  			<%= f.number_field :last_year_balance, class: "form-control", placeholder: "去年餘額" %>
+    	</div>
+  </div>
+  <div class="form-group row">
   	<label class="col-sm-offset-2 col-sm-2 control-label">餘額</label>
   		<div class="col-sm-6">
   			<%= f.number_field :balance, class: "form-control", placeholder: "餘額" %>

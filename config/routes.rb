@@ -11,7 +11,7 @@ Rails.application.routes.draw do
     as :user do
         patch '/user/confirmation' => 'users/confirmations#update', :via => :patch, :as => :update_user_confirmation
     end
-    devise_for :users, :controllers => { :registrations => "registrations", :confirmations => "users/confirmations" } # be careful of the order with resources users
+    devise_for :users, :controllers => { :registrations => "registrations", :confirmations => "users/confirmations", :passwords => 'users/passwords' } # be careful of the order with resources users
     resources :users, only: [:index, :show, :destroy]
     
     post 'projects/checkLogin'

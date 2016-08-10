@@ -43,6 +43,15 @@ class ApplicationController < ActionController::Base
     { :locale => ((I18n.locale == I18n.default_locale) ? nil : I18n.locale) }
   end
   
+  def after_sign_in_path_for(resource)#modified after user sign in path including if it is already sign in
+    sign_in_url = new_user_session_url
+    if request.referer == sign_in_url
+      super
+    else
+      stored_location_for(resource) || request.referer || users_path
+    end
+  end
+  
   private
     def validationsHandler(exception)  
       flash[:error]=""
