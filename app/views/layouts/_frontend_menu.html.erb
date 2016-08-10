@@ -23,7 +23,6 @@
         <!--<li class="divider-vertical"></li>-->
         <li><%=link_to t("捐款"), main_donation_path %></li>        
         <li><button type="button" class="btn donation_project_button" data-toggle="modal" data-target="#myModal"><%= t("委辦計畫") %></button></li>  
-        <% if user_signed_in? %><li><%= link_to "帳號管理", users_path %></li><% end %>
       </ul>
     </div><!-- /.navbar-collapse -->
   </div><!-- /.container-fluid -->
