@@ -1,4 +1,4 @@
-<div class="container-fluid about_top" style="height: 100vh;">
+<div class="container-fluid about_top">
 	<div class="about_top_background_image"></div>
 	<div class="row">
 		<div class="col-lg-12">
@@ -24,11 +24,10 @@
 </div>	
 <div class="container" style="padding-top: 50px;" id="about_1">
 	<div class="row">
-		<div class="col-lg-6 about_chairman_quote_container text-right" style="position: relative">	
-			<!--<div class="about_quote_line about_quote_line_2"></div>
-			<div class="about_original_title text-left" style="margin-top: 40px; margin-bottom: 20px;">董事長<span style="color: #b3a253;">的話</span></div>
-			<div class="about_original_content text-left" style="margin-top: 0px;"><span style="font-size: 150%">交</span>通大學特殊的校風與傳承，就是校友們強大的內聚力以及對學校無私的支持。秉持這項傳統，一步一步，交大思源基金會也已經跨過了廿個年頭。本基金會的資產，除了創辦之初的捐款外，多年來也有校友及熱心夥伴們新增的捐助及積累，在歷屆董事會的指導下，本會贊助並參與許許多多的學校發展計畫及校園活動，與時俱進，兢兢業業，不敢辜負校友及捐贈者的期許。<br>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;希望在承先啟後的長流裡，以此平台，凝聚校友的力量，擴展更多的資源，和學校有更積極性的互動，創造更多的價值。<br>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;感謝所有交大思源基金會的朋友們，讓我們大家為交通大學繼續共同努力！</div>			
-			-->
+		<div class="col-md-6 about_chairman_container text-center hidden-md hidden-lg">		
+			<%=image_tag 'about/chairman_p.png', class: 'about_chairman_p' %>
+		</div>
+		<div class="col-md-6 about_chairman_quote_container text-right" style="position: relative">	
 			<div class="about_quote_title about_quote_title_1 text-left" id="about_quote_title_1">
 			董事長<span style="color: #b3a253;">的話</span>			
 			<div class="text-right about_quote_title_name">吳廣義</div>					
@@ -40,27 +39,22 @@
 				</div>
 				<div id="chair_more_content" class="about_original_content text-left" style="margin-top: -50px;"><span style="font-size: 150%">交</span>通大學特殊的校風與傳承，就是校友們強大的內聚力以及對學校無私的支持。秉持這項傳統，一步一步，交大思源基金會也已經跨過了廿個年頭。本基金會的資產，除了創辦之初的捐款外，多年來也有校友及熱心夥伴們新增的捐助及積累，在歷屆董事會的指導下，本會贊助並參與許許多多的學校發展計畫及校園活動，與時俱進，兢兢業業，不敢辜負校友及捐贈者的期許。<br>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;希望在承先啟後的長流裡，以此平台，凝聚校友的力量，擴展更多的資源，和學校有更積極性的互動，創造更多的價值。<br>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;感謝所有交大思源基金會的朋友們，讓我們大家為交通大學繼續共同努力！</div>					
 			</div>		
-			<div class="about_chairman_bg_2 hidden-lg"></div>
-			<%=image_tag 'about/chairman.jpg', class: 'about_chairman hidden-lg' %>
 		</div>
-		<div class="col-lg-6 about_chairman_container hidden-md hidden-sm hidden-xs">		
-			<div class="about_quote_line about_quote_line_1"></div>	
-			<!--<div class="about_quote_line about_quote_line_2"></div>-->							
-			<div class="about_chairman_bg"></div>	
-			<div class="about_chairman_bg_2"></div>
-			<%=image_tag 'about/chairman.jpg', class: 'about_chairman' %>
+		<div class="col-md-6 about_chairman_container hidden-sm hidden-xs">		
+			<%=image_tag 'about/chairman_p.png', class: 'about_chairman_p' %>
 		</div>
 	</div>		
 </div>
 <div class="container">
 	<div class="row">
-		<div class="col-lg-6 about_ceo_container">	
+		<div class="col-md-6 about_ceo_container text-center">
+			<%=image_tag 'about/CEO_p.png', class: 'about_CEO_p' %>
+			<!--				
 			<div class="about_quote_line about_quote_line_3"></div>	
-			<!--<div class="about_quote_line about_quote_line_4"></div>-->							
 			<div class="about_ceo_bg hidden-md hidden-sm hidden-xs"></div>	
 			<div class="about_ceo_bg_2"></div>		
-			<%=image_tag 'about/CEO.jpg', class: 'about_ceo' %>	
-			<div style="height: 140px; position: relative">				
+			<%=image_tag 'about/CEO.jpg', class: 'about_ceo' %>
+			<div style="height: 140px; position: relative">								
 				<div class="about_quote_title about_quote_title_2_mobile text-right hidden-lg" style="position: absolute; right: 0px;">
 					執行長<span style="color: #b3a253;">的話</span>			
 					<div class="text-right about_quote_title_name">黃種智</div>					
@@ -72,9 +66,10 @@
 				<span style="font-size: 70%;" class="ceo_more about_more hidden-xs">...more</span>
 				</div>
 				<div class="ceo_more_content about_original_content text-left" style="margin-top: -40px;"><span style="font-size: 150%">飲</span>水思源，是所有交大人一向秉持的重要價值與觀念，種智有幸銜思源基金會董事會之命，擔任由校友前輩們所共同創立的財團法人交大思源基金會執行長一職，貫徹執行董事會的決議。<br>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;本會雖囿於人力、財力之限制，及大環境快速變化下之嚴峻挑戰，我們仍基於校友們期盼母校成為國際一流大學之殷切心情，未來將與交大校友總會更緊密合作，善用校友經驗與社會資源，扮演母校最堅實的後盾與夥伴。 我們將建立更透明的捐款流向與相關計畫執行成效，珍惜與善用每筆捐款，讓本會成為校友與社會人士支持交大最有效益的平台。期盼大家一齊努力，再創交大發展巔峰!</div>								
-			</div>		
+			</div>
+			-->		
 		</div>		
-		<div class="col-lg-6 text-right hidden-md hidden-sm hidden-xs">
+		<div class="col-md-6 text-right">
 			<div class="about_quote_title about_quote_title_2 text-left">
 			執行長<span style="color: #b3a253;">的話</span>			
 			<div class="text-right about_quote_title_name">黃種智</div>					

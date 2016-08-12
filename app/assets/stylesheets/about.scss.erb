@@ -1,4 +1,5 @@
 .about_top{
+  height: 100vh;	
   position:relative;	
 }
 .about_top_background_image{
@@ -88,6 +89,7 @@
 
 
 /*=========================== quote ===================================*/
+
 .about_quote_line{
 	background: #b3a253; 
 	width: 1px; 
@@ -96,23 +98,14 @@
     -webkit-transform: rotate(11.5deg); /* Chrome, Safari, Opera */
    	transform: rotate(11.5deg);	
 }
+/*
 .about_quote_line_1{
 	height: 370px;
 	right: 310px;
-}
-.about_quote_line_2{
-	height: 280px;
-	top: 200px;
-	right: 56px;
-}
+}*/
 .about_quote_line_3{
 	height: 370px;
 	left: 30px;
-}
-.about_quote_line_4{
-	height: 300px;
-	top: 200px;
-	left: 300px;
 }
 .about_quote_title{
 	letter-spacing: 2px;
@@ -146,6 +139,7 @@
 	position: relative; 
 	height: 550px;
 }
+/*
 .about_chairman_bg{
 	position: absolute;
 	right: 20px;
@@ -176,14 +170,23 @@
     -ms-filter:grayscale(.9);
     filter: grayscale(.9);	
 }
-.sign_chairman{
-	/*visibility: hidden;*/
-	height: 60px;
+*/
+.about_chairman_p{
+	position: absolute;
+	right: 0px;		
+	height: 400px;
 }
+
 .about_ceo_container{
 	position: relative; 
-	min-height: 550px;
+	min-height: 500px;
 }
+.about_CEO_p{
+	position: absolute;
+	left: 0px;		
+	height: 380px;
+}
+/*
 .about_ceo_bg{
 	position: absolute;
 	left: 0px;
@@ -215,11 +218,60 @@
     -ms-filter:grayscale(.9);
     filter: grayscale(.9);		
 }
-.sign_ceo{
-	/*visibility: hidden;*/	
-	height: 85px;
-}
-@media (max-width: $screen-md-max) {
+*/
+@media (max-width: $screen-sm-max) {
+	.about_chairman_container{
+		height: 300px;
+	}
+	.about_chairman_p{
+		position: static;
+		margin: 0px auto;	
+		height: 300px;
+	}	
+	.about_ceo_container{
+		position: relative; 
+		min-height: 300px;
+	}
+	.about_CEO_p{
+		position: static;
+		margin: 0px auto;	
+		margin-top: 50px;
+		height: 300px;	
+	}
+	
+	/*
+	.about_chairman_bg{
+		position: absolute;
+		right: 100px;
+		height: 400px;	
+		width: 320px;
+	}	
+	
+	
+	
+	.about_chairman_bg_2{
+		position: absolute;
+		right: 5px;
+		height: 400px;	
+		width: 310px;
+		background-color: #b3a253;
+		-webkit-clip-path: polygon(25% 0%, 100% 0%, 75% 100%, 0% 100%);
+		clip-path: polygon(25% 0%, 100% 0%, 75% 100%, 0% 100%);
+	}
+	.about_chairman{
+		position: absolute;
+		right: 20px;	
+		height: 400px;
+		-webkit-clip-path: polygon(25% 0%, 100% 0%, 75% 100%, 0% 100%);
+		clip-path: polygon(25% 0%, 100% 0%, 75% 100%, 0% 100%);
+		-webkit-filter: grayscale(.9);
+	    -moz-filter: grayscale(.9);
+	    -o-filter: grayscale(.9);
+	    -ms-filter:grayscale(.9);
+	    filter: grayscale(.9);	
+	}
+*/
+	/*	
 	.about_chairman_quote_container{
 		min-height: 300px;
 	}
@@ -278,7 +330,7 @@
 		opacity: .2;
 		height: 300px;	
 		z-index: -1;	
-	}		
+	}		*/
 }
 /*=========================== original ===================================*/
 .original_section{

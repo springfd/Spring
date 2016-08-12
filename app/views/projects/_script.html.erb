@@ -94,5 +94,9 @@ $(document).on('ready', function() {
     $('#project_pj_cover').on('fileclear', function(event) {
     	$('#cover_delete').val(true);
     });
+    // check the radio botton if we decide to show the project on the front end 
+    <% if @project.visible %>
+		$("#project_visible_1").attr("checked",true);
+	<% end %>
 });
 </script>
