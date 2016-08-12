@@ -37,4 +37,6 @@ Rails.application.routes.draw do
     get  'main/downloadManual' 
     root 'main#about'
   end
+
+	
 end
