@@ -15,7 +15,7 @@
   <%= hidden_field_tag(:donation_attachment_delete, false) %>
   <%= hidden_field_tag(:cover_delete, false) %>
   <div class="form-group row">
-		<div class="col-sm-offset-11 col-sm-2 pull-right-lg">
+		<div class="col-sm-offset-9 col-sm-2 pull-right-lg">
 			<%= f.submit '儲存',  class: "btn btn-info save-btn"  %>
 		</div>
   </div>
@@ -88,6 +88,12 @@
     	</div>
   </div>
   <div class="form-group row">
+  	<label class="col-sm-offset-2 col-sm-2 control-label">目前餘額</label>
+  		<div class="col-sm-6">
+  			<%= f.number_field :balance, class: "form-control", placeholder: "目前餘額" %>
+    	</div>
+  </div>
+  <div class="form-group row">
   	<label class="col-sm-offset-2 col-sm-2 control-label">去年支出</label>
   		<div class="col-sm-6">
   			<%= f.number_field :last_year_exp, class: "form-control", placeholder: "去年支出" %>
@@ -97,12 +103,6 @@
   	<label class="col-sm-offset-2 col-sm-2 control-label">去年餘額</label>
   		<div class="col-sm-6">
   			<%= f.number_field :last_year_balance, class: "form-control", placeholder: "去年餘額" %>
-    	</div>
-  </div>
-  <div class="form-group row">
-  	<label class="col-sm-offset-2 col-sm-2 control-label">餘額</label>
-  		<div class="col-sm-6">
-  			<%= f.number_field :balance, class: "form-control", placeholder: "餘額" %>
     	</div>
   </div>
   <div class="form-group row">

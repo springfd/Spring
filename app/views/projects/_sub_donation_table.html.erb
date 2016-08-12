@@ -8,7 +8,7 @@
 	      </tr>
 	      <tr>
 	        <th>金額: </th>
-	        <td><%= donation.amount %></td>
+	        <td><%= number_with_delimiter donation.amount || 0%>元</td>
 	      </tr>
 	      <tr>
 	        <th>方式: </th>
