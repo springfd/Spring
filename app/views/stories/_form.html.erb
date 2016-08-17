@@ -41,11 +41,16 @@
   </div>
   <div class="form-group">
     <label class="col-sm-offset-2 col-sm-2 control-label">Youtube嵌入碼</label>
-    <div class="col-sm-4"><%= f.text_field :video_url, class: "form-control", placeholder: '網址' %></div>
+    <div class="col-sm-4"><%= f.text_field :video_url, class: "form-control", placeholder: '嵌入碼' %></div>
   </div>
   <div class="form-group row">
+  	<label class="col-sm-offset-2 col-sm-2 control-label"></label>
+  	<div class="col-sm-6"><%=image_tag 'embedded.jpg', style: "width: 100%;" %></div>
+  </div>
+  
+  <div class="form-group row">
   	<label class="col-sm-offset-2 col-sm-2 control-label">圖片</label>
-  	<div class="col-sm-4"><%= file_field_tag "images[]", type: :file, accept: "image/*", multiple: true%>
+  	<div class="col-sm-4"><%= file_field_tag "images[]", type: :file, accept: "image/*", multiple: true%></div>
   </div>
   <div class="form-group row">
 		<div class="col-sm-offset-9 col-sm-2">

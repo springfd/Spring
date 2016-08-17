@@ -37,27 +37,7 @@
   			<%= f.text_field :abbreviation, class: "form-control", placeholder: "簡稱" %>
     	</div>
   </div>
-  <div class="form-group row">
-		<label class="col-sm-offset-2 col-sm-2 control-label">西元年度*</label>
-		<div class="col-sm-6">
-			<%= f.text_field :year, class: "form-control", id: 'datetimepicker_year', placeholder: "西元年度" %>	
-		</div>
-	    <script type="text/javascript">
-	            $(function () {
-	                $('#datetimepicker_year').datetimepicker({
-						format : 'YYYY'		                
-	                });
-	            });
-	    </script>	
-  </div>
-  <div class="form-group row">
-  	<label class="col-sm-offset-2 col-sm-2 control-label">前台顯示</label>
-  		<div class="col-sm-6">
-  			<%= f.radio_button :visible, "1"%>是      
-  			<%= f.radio_button :visible, "0",:checked => true, :style => "margin-left:20px;"%>否
-		</div>
-  </div>
-  <div class="form-group row">
+<div class="form-group row">
   	<label class="col-sm-offset-2 col-sm-2 control-label">主持人</label>
   		<div class="col-sm-6">
   			<%= f.text_field :holder, class: "form-control", placeholder: "主持人" %>
@@ -74,7 +54,26 @@
   		<div class="col-sm-6">
   			<%= f.email_field :email, class: "form-control", placeholder: "Email" %>
     	</div>
+  </div>  
+  <div class="form-group row">
+		<label class="col-sm-offset-2 col-sm-2 control-label">西元年度*</label>
+		<div class="col-sm-6">
+			<%= f.text_field :year, class: "form-control", id: 'datetimepicker_year', placeholder: "西元年度" %>	
+		</div>
+	    <script type="text/javascript">
+	            $(function () {
+	                $('#datetimepicker_year').datetimepicker({
+						format : 'YYYY'		                
+	                });
+	            });
+	    </script>	
   </div>
+  <div class="form-group row">
+  	<label class="col-sm-offset-2 col-sm-2 control-label">去年餘額</label>
+  		<div class="col-sm-6">
+  			<%= f.number_field :last_year_balance, class: "form-control", placeholder: "去年餘額" %>
+    	</div>
+  </div>  
   <div class="form-group row">
   	<label class="col-sm-offset-2 col-sm-2 control-label">預算</label>
   		<div class="col-sm-6">
@@ -88,23 +87,24 @@
     	</div>
   </div>
   <div class="form-group row">
-  	<label class="col-sm-offset-2 col-sm-2 control-label">目前餘額</label>
+  	<label class="col-sm-offset-2 col-sm-2 control-label">支出</label>
+  		<div class="col-sm-6">
+  			<%= f.number_field :last_year_exp, class: "form-control", placeholder: "去年支出" %>
+    	</div>
+  </div>  
+  <div class="form-group row">
+  	<label class="col-sm-offset-2 col-sm-2 control-label">餘額</label>
   		<div class="col-sm-6">
   			<%= f.number_field :balance, class: "form-control", placeholder: "目前餘額" %>
     	</div>
   </div>
   <div class="form-group row">
-  	<label class="col-sm-offset-2 col-sm-2 control-label">去年支出</label>
+  	<label class="col-sm-offset-2 col-sm-2 control-label">前台顯示</label>
   		<div class="col-sm-6">
-  			<%= f.number_field :last_year_exp, class: "form-control", placeholder: "去年支出" %>
-    	</div>
-  </div>
-  <div class="form-group row">
-  	<label class="col-sm-offset-2 col-sm-2 control-label">去年餘額</label>
-  		<div class="col-sm-6">
-  			<%= f.number_field :last_year_balance, class: "form-control", placeholder: "去年餘額" %>
-    	</div>
-  </div>
+  			<%= f.radio_button :visible, "1"%>是      
+  			<%= f.radio_button :visible, "0",:checked => true, :style => "margin-left:20px;"%>否
+		</div>
+  </div>  
   <div class="form-group row">
   	<label class="col-sm-offset-2 col-sm-2 control-label">執行狀況描述*</label>
   		<div class="col-sm-6">
