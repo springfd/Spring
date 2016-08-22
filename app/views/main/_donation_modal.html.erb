@@ -30,15 +30,23 @@
 				<tr>
 					<th><%= t("名稱")%>:</th>
 					<td class="modal_name"></td>
-				</tr>									
+				</tr>										
 				<tr>
-					<th><%= t("預算")%>:</th>
-					<td class="modal_budget"></td>
+					<th><%= t("去年餘額")%>:</th>
+					<td class="modal_last_year_balance"></td>
 				</tr>
 				<tr>
-					<th><%= t("收入累計")%>:</th>
+					<th><%= t("收入")%>:</th>
 					<td class="modal_income"></td>
 				</tr>
+				<tr>
+					<th><%= t("支出")%>:</th>
+					<td class="modal_last_year_exp"></td>
+				</tr>
+				<tr>
+					<th><%= t("餘額")%>:</th>
+					<td class="modal_balance"></td>
+				</tr>								
 				<!--				
 				<tr>
 					<th>人事支出:</th>
@@ -56,14 +64,14 @@
 					<th>其他支出:</th>
 					<td class="modal_exp_other"></td>
 				</tr>	
-				-->	
 				<tr>
 					<th><%= t("目前餘額")%>:</th>
 					<td class="modal_balance"></td>
-				</tr>						
+				</tr>	
+				-->						
 				<tr>
-					<th><%= t("支出細項")%>:</th>
-					<td><a href="" class="modal_exp_file_name"></a></td>
+					<th><%= t("附件")%>:</th>
+					<td><a href="" class="modal_file_name"></a></td>
 				</tr>	
 				
 				
@@ -108,14 +116,16 @@ $( "#login_form" ).submit(function( event ) {
 					$('.modal_year').html(data.year)
 					$('.modal_name').html(data.name)
 					$('.modal_budget').html(data.budget)
-					$('.modal_exp_file_name').html(data.exp_file_name)
-					$('.modal_exp_file_name').attr("href", data.exp_file_url)
+					$('.modal_file_name').html(data.file_name)
+					$('.modal_file_name').attr("href", data.file_url)
 					$('.modal_exp_personnel').html(data.exp_personnel)
 					$('.modal_exp_mix').html(data.exp_mix)
 					$('.modal_exp_other').html(data.exp_other)
 					$('.modal_exp_business').html(data.exp_business)
 					$('.modal_income').html(data.income)
-					$('.modal_balance').html(data.balance)												
+					$('.modal_balance').html(data.balance)	
+					$('.modal_last_year_exp').html(data.last_year_exp)											
+					$('.modal_last_year_balance').html(data.last_year_balance)											
 	    		}else{
 	    			 toastr['warning']('<%= t("帳號密碼錯誤") %>')
 	    		}

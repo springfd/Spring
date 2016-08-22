@@ -35,6 +35,7 @@ Rails.application.routes.draw do
     get  'main/donation'
     get  'main/downloaded'
     get  'main/downloadManual' 
+    get  'main/downloadBoardLists'     
     root 'main#about'
   end
 end
