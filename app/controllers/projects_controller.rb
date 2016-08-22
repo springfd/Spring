@@ -111,10 +111,13 @@ class ProjectsController < ApplicationController
       render json: { success: true, id: @project.id, 
                      name: @project.name, budget: @project.budget, exe_desc: @project.exe_desc,
                      description: @project.description, year: @project.year.strftime("%Y"),
-                     file_name: @project.pj_attachment_file_name, file_url: @project.pj_attachment.url(:original, false),
+                     file_name: @project.pj_attachment_file_name, file_url: @project.pj_attachment.url,
                      exp_personnel: @project.exp_personnel, exp_mix: @project.exp_mix,
                      exp_business: @project.exp_business, exp_other: @project.exp_other,
-                     balance: @project.balance, income: @project.income, 
+                     balance: @project.balance,                      
+                     income: @project.donations.where("donate_date >= ? and donate = ? ", Time.zone.now.beginning_of_year, true ).sum(:amount),
+                     last_year_balance: @project.last_year_balance,
+                     last_year_exp: @project.last_year_exp,
                      exp_file_name: @project.pj_exp_attachment_file_name, exp_file_url: @project.pj_exp_attachment.url}.to_json
     end
   end
