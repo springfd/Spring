@@ -121,16 +121,11 @@ $( "#login_form" ).submit(function( event ) {
 					$('.modal_exp_personnel').html(data.exp_personnel)
 					$('.modal_exp_mix').html(data.exp_mix)
 					$('.modal_exp_other').html(data.exp_other)
-<<<<<<< HEAD
-					$('.modal_exp_business').html(data.exp_business), $('.modal_income').html(data.income),
-					$('.modal_balance').html(data.balance)												
-=======
 					$('.modal_exp_business').html(data.exp_business)
 					$('.modal_income').html(data.income)
 					$('.modal_balance').html(data.balance)	
 					$('.modal_last_year_exp').html(data.last_year_exp)											
 					$('.modal_last_year_balance').html(data.last_year_balance)											
->>>>>>> 358e02a610e674bea2db15eb355f023a89b35f5f
 	    		}else{
 	    			 toastr['warning']('<%= t("帳號密碼錯誤") %>')
 	    		}
