@@ -46,6 +46,10 @@
 	        <td colspan="7" class="dt-content"><%= @donation.receipt_address %></td>
 	      </tr>
 	      <tr>
+	        <td class="dt-title">說明</td>
+	        <td colspan="7" class="dt-content"><%= @donation.description %></td>
+	      </tr>	      
+	      <tr>
 	        <td colspan="8" class="dt-content" style="padding:4px 16px!important;"><%= link_to "列印收據", "#", onclick:"printData();", class: 'btn btn-info print-btn pull-right' %></td>
 	      </tr>
 	    </tbody>
@@ -53,13 +57,16 @@
 	</div>
 </div>
 <div id="printTable" style="display: none;">
-<div style="text-align: right;">捐款收據編號ID:<%= @donation.order_num %></div>
 <style>
+.logo_text{
+	height: 42px;
+}
 .print-table {
 	border-collapse: collapse;
 	font-size: 20px;
     width: 210mm;
     border: 1px solid;
+    font-size: 14px;
 }
 .print-table th {
     height: 10mm;
@@ -72,31 +79,33 @@
     border: 2px solid;
     text-align: center;
 } 
+@page{size:auto; margin:5mm;}
 </style>
+<div style="text-align: right; font-size: 13px;">捐款收據編號: <%= @donation.order_num %></div>
 <table class="print-table">
 <tbody>
 	<tr>
-		<td colspan="8"><%=image_tag 'logo_text.png', class: 'logo_text' %><span style="margin-left: 8px;">捐款收據</span>
-			<div style="font-size:13px">法人登記簿第11冊第17頁第295號 國稅局統一編號:98285331<br>
+		<td colspan="8"><%=image_tag 'logo_text.png', class: 'logo_text'%><span style="margin-left: 8px;">捐款收據</span>
+			<div style="font-size: 80%">法人登記簿第11冊第17頁第295號 國稅局統一編號:98285331<br>
 				 所得稅減免字號: 北區國稅竹市資第8300115086號<br>
-				 新竹市大學路1001號 負責人: 胡定華<br>
+				 新竹市大學路1001號 負責人: 吳廣義<br>
 				 郵政劃撥儲金帳戶: 18372451 號 財團法人交大思源基金會
 			</div>
-			<div style="float: right">中華民國<span style="margin-left: 39px;">年</span><span style="margin-left: 23px;">月</span><span style="margin-left: 23px;">日</span></div>
+			<div style="float: right; margin-right: 15px;">中華民國<span style="margin-left: 39px;">年</span><span style="margin-left: 23px;">月</span><span style="margin-left: 23px;">日</span></div>
 		</td>
 	</tr>
 	<tr >
 		<th>茲收到</th>
-		<td colspan="7" style="text-align: left;"><%= @donation.name %></td>
+		<td colspan="7" style="text-align: left;"><%= @donation.receipt_title %></td>
 	</tr>
 	<tr>
 		<th>金額</th>
-		<td colspan="7" style="text-align: left;" id="print_amount"></td>
+		<td colspan="7" style="text-align: left;" class="print_amount"></td>
 	</tr>
 		<th>說明</th>
-		<td colspan="7" style="text-align: left;"></td>
+		<td colspan="7" style="text-align: left;"><%= @donation.description %></td>
 	<tr>
-		<td>執行長或受全代理人</td>
+		<td>執行長或授權代理人</td>
 		<td></td>
 		<td>會計</td>
 		<td></td>
@@ -107,7 +116,92 @@
 	</tr>
 </tbody>
 </table>
-<div>承蒙慷慨贊助，敬致謝枕</div>
+<div style="font-size: 13px; height: 35px;">
+	<div style="float: left">承蒙慷慨贊助，敬致謝枕</div>
+	<div style="float: right; color: red;">收執聯</div>
+</div>
+<div style="text-align: right; font-size: 13px; border-top: 2px dashed #000000; padding-top: 15px;">捐款收據編號: <%= @donation.order_num %></div>
+<table class="print-table">
+<tbody>
+	<tr>
+		<td colspan="8"><%=image_tag 'logo_text.png', class: 'logo_text' %><span style="margin-left: 8px;">捐款收據</span>
+			<div style="font-size: 80%">法人登記簿第11冊第17頁第295號 國稅局統一編號:98285331<br>
+				 所得稅減免字號: 北區國稅竹市資第8300115086號<br>
+				 新竹市大學路1001號 負責人: 吳廣義<br>
+				 郵政劃撥儲金帳戶: 18372451 號 財團法人交大思源基金會
+			</div>
+			<div style="float: right; margin-right: 15px;">中華民國<span style="margin-left: 39px;">年</span><span style="margin-left: 23px;">月</span><span style="margin-left: 23px;">日</span></div>
+		</td>
+	</tr>
+	<tr >
+		<th>茲收到</th>
+		<td colspan="7" style="text-align: left;"><%= @donation.receipt_title %></td>
+	</tr>
+	<tr>
+		<th>金額</th>
+		<td colspan="7" style="text-align: left;" class="print_amount"></td>
+	</tr>
+		<th>說明</th>
+		<td colspan="7" style="text-align: left;"><%= @donation.description %></td>
+	<tr>
+		<td>執行長或授權代理人</td>
+		<td></td>
+		<td>會計</td>
+		<td></td>
+		<td>出納</td>
+		<td></td>
+		<td>經手人</td>
+		<td></td>
+	</tr>
+</tbody>
+</table>
+<div style="font-size: 13px; height: 35px;">
+	<div style="float: left">承蒙慷慨贊助，敬致謝枕</div>
+	<div style="float: right; color: red;">出納聯</div>
+</div>
+<div style="text-align: right; font-size: 13px; border-top: 2px dashed #000000; padding-top: 15px;">捐款收據編號: <%= @donation.order_num %></div>
+<table class="print-table">
+<tbody>
+	<tr>
+		<td colspan="8"><%=image_tag 'logo_text.png', class: 'logo_text' %><span style="margin-left: 8px;">捐款收據</span>
+			<div style="font-size: 80%">法人登記簿第11冊第17頁第295號 國稅局統一編號:98285331<br>
+				 所得稅減免字號: 北區國稅竹市資第8300115086號<br>
+				 新竹市大學路1001號 負責人: 吳廣義<br>
+				 郵政劃撥儲金帳戶: 18372451 號 財團法人交大思源基金會
+			</div>
+			<div style="float: right; margin-right: 15px;">中華民國<span style="margin-left: 39px;">年</span><span style="margin-left: 23px;">月</span><span style="margin-left: 23px;">日</span></div>
+		</td>
+	</tr>
+	<tr >
+		<th>茲收到</th>
+		<td colspan="7" style="text-align: left;"><%= @donation.receipt_title %></td>
+	</tr>
+	<tr>
+		<th>金額</th>
+		<td colspan="7" style="text-align: left;" class="print_amount"></td>
+	</tr>
+		<th>說明</th>
+		<td colspan="7" style="text-align: left;"><%= @donation.description %></td>
+	<tr>
+		<td>執行長或授權代理人</td>
+		<td></td>
+		<td>會計</td>
+		<td></td>
+		<td>出納</td>
+		<td></td>
+		<td>經手人</td>
+		<td></td>
+	</tr>
+</tbody>
+</table>
+<div style="font-size: 13px; height: 35px;">
+	<div style="float: left">承蒙慷慨贊助，敬致謝枕</div>
+	<div style="float: right; color: red;">會計聯</div>
+</div>
+
+
+
+
 </div>
 <script>
 $(document).on('ready', function() {
@@ -134,12 +228,12 @@ $(document).on('ready', function() {
             .replace(/(零.)+/g, '零' )
             .replace(/^$/, '零元' ) + '整' ;
 };
-	document.getElementById('print_amount').innerHTML = digit_uppercase('<%= @donation.amount %>')
+	$('.print_amount').text( digit_uppercase('<%= @donation.amount %>') )
 });
 function printData() {    
                var data = document.getElementById('printTable').innerHTML;
      var popupWindow = window.open('','printwin',
-          'left=100,top=100,width=400,height=400');
+          'left=100,top=50,width=400,height=400');
      popupWindow.document.write('<HTML>\n<HEAD>\n');
      popupWindow.document.write('<TITLE></TITLE>\n');
      popupWindow.document.write('<URL></URL>\n');
