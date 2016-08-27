@@ -26,8 +26,10 @@ class DonationsController < ApplicationController
   # POST /donations
   # POST /donations.json
   def create
-    @donation = Donation.new(donation_params)
+    @donation = Donation.new(donation_params) 
     @donation.save!
+    @donation.order_num = generate_order_num()    
+    @donation.save!  
     redirect_to @donation, notice: '成功新增捐款' 
     rescue ActiveRecord::RecordInvalid
     render :edit
@@ -51,6 +53,13 @@ class DonationsController < ApplicationController
   end
 
   private
+    def generate_order_num
+      order_no = "NO"; 
+      order_no  << Date.today.to_s.gsub(/[^0-9]/, '')
+      order_no << "_"+@donation.id.to_s
+      return order_no
+    end
+      
     # Use callbacks to share common setup or constraints between actions.
     def set_donation
       @donation = Donation.find(params[:id])
@@ -58,6 +67,6 @@ class DonationsController < ApplicationController
 
     # Never trust parameters from the scary internet, only allow the white list through.
     def donation_params
-      params.require(:donation).permit(:name, :amount, :donate_way, :donate_date, :donate, :project_id, :receipt_title, :receipt_address, :phone, :email)
+      params.require(:donation).permit(:name, :amount, :donate_way, :donate_date, :donate, :project_id, :receipt_title, :receipt_address, :phone, :email, :description)
     end
 end

@@ -51,8 +51,8 @@
 	  <div class="col-md-3 show-content" style="font-size: 24px;"> <%= @project.exe_desc  %></div>
 	</div>
 	<div class="row" >
-	  <div class="col-md-3 col-md-offset-3 show-title">附件</div>
-	  <div class="col-md-3 show-content"> <% unless @project.pj_attachment_file_name.blank? %><%= link_to @project.pj_attachment_file_name, @project.pj_attachment.url(:original, false) %><% end %></div>
+	  <div class="col-md-3 col-md-offset-3 show-title">支出明細</div>
+	  <div class="col-md-3 show-content"> <% unless @project.pj_exp_attachment_file_name.blank? %><%= link_to @project.pj_exp_attachment_file_name, @project.pj_exp_attachment.url(:original, false) %><% end %></div>
 	</div>
 	<% if @project.kind == GLOBAL_VAR['project_delegate']%>
 	<div class="row">
