@@ -166,7 +166,7 @@ var controller = new ScrollMagic.Controller();
 $('.donation_summary_number').html( Math.ceil(0).toLocaleString() )
 var foo = { bar: 0 };		
 tween = new TimelineLite();
-tween.to(foo, 2, { bar: <%= Donation.where("donate_date >= ? and donate = ? ", Time.zone.now.beginning_of_year, true ).sum(:amount)%>, onUpdate: function() {
+tween.to(foo, 2, { bar: <%= Donation.joins(:project).where("projects.kind = 0 and donate_date >= ? and donate = ? ", Time.zone.now.beginning_of_year, true ).sum(:amount)%>, onUpdate: function() {
 	 $('.donation_summary_number').html(Math.ceil(foo.bar).toLocaleString());}, ease: Linear.easeNone})
 	 .to(".donation_summary_ch", 1, {autoAlpha: 1, ease: Linear.easeNone})	 
 	 .to(".donation_summary_en", 1, {autoAlpha: 1, ease: Linear.easeNone})
