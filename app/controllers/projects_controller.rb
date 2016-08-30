@@ -29,6 +29,11 @@ class ProjectsController < ApplicationController
   # POST /projects.json
   def create
     @project = Project.new(project_params)
+    if params[:project][:kind].to_i == GLOBAL_VAR['project_delegate'].to_i
+      @project.exe_desc = 'none'
+      @project.donate_begin_at = Time.zone.now
+      @project.donate_end_at = Time.zone.now
+    end
     unless params[:project][:year].blank?
       @project.year = DateTime.strptime(params[:project][:year], "%Y")
     end
@@ -116,6 +121,7 @@ class ProjectsController < ApplicationController
                      exp_business: @project.exp_business, exp_other: @project.exp_other,
                      balance: @project.balance,                      
                      #income: @project.donations.where("donate_date >= ? and donate = ? ", Time.zone.now.beginning_of_year, true ).sum(:amount),
+                     account_end: @project.account_end.strftime("%Y-%m-%d"),   
                      income: @project.income,
                      last_year_balance: @project.last_year_balance,
                      last_year_exp: @project.last_year_exp,

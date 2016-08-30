@@ -98,6 +98,7 @@
   			<%= f.number_field :balance, class: "form-control", placeholder: "目前餘額" %>
     	</div>
   </div>
+  <!--
   <div class="form-group row">
   	<label class="col-sm-offset-2 col-sm-2 control-label">前台顯示</label>
   		<div class="col-sm-6">
@@ -117,6 +118,7 @@
   		<%= file_field_tag "project[pj_cover]", type: :file, accept: "image/*"%>
   	</div>
   </div>
+  -->
   <div class="form-group row">
   	<label class="col-sm-offset-2 col-sm-2 control-label">支出明細</label>
   	<div class="col-sm-6">
@@ -129,10 +131,11 @@
   		<%= file_field_tag "project[pj_donation_attachment]", type: :file%>
   	</div>
   </div>
+  <!--
   <div class="form-group row">
 		<label class="col-sm-offset-2 col-sm-2 control-label">捐款開始*</label>
 		<div class="col-sm-6">
-			<%= f.text_field :donate_begin_at, class: "form-control", id: 'datetimepicker_donate_begin_at', placeholder: "日期" %>	
+			<%= f.text_field :donate_begin_at, class: "form-control", id: 'datetimepicker_donate_begin_at', placeholder: "日期"%>	
 		</div>
 	    <script type="text/javascript">
 	            $(function () {
@@ -150,7 +153,7 @@
   <div class="form-group row">
 		<label class="col-sm-offset-2 col-sm-2 control-label">捐款結束*</label>
 		<div class="col-sm-6">
-			<%= f.text_field :donate_end_at, class: "form-control", id: 'datetimepicker_donate_end_at', placeholder: "日期" %>	
+			<%= f.text_field :donate_end_at, class: "form-control", id: 'datetimepicker_donate_end_at', placeholder: "日期"%>	
 		</div>
 	    <script type="text/javascript">
 	            $(function () {
@@ -164,6 +167,7 @@
 	            });
 	    </script>	
   </div>
+  -->
   <% if params[:pj_kind].to_i==GLOBAL_VAR['project_delegate']%>
   <div class="form-group row">
   	<label class="col-sm-offset-2 col-sm-2 control-label">計畫代號*</label>
