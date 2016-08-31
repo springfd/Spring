@@ -33,6 +33,7 @@ class ProjectsController < ApplicationController
       @project.exe_desc = 'none'
       @project.donate_begin_at = Time.zone.now
       @project.donate_end_at = Time.zone.now
+      @project.account_begin = Time.zone.now 
     end
     unless params[:project][:year].blank?
       @project.year = DateTime.strptime(params[:project][:year], "%Y")
@@ -112,6 +113,8 @@ class ProjectsController < ApplicationController
     @project = Project.find_by_account_and_password(params[:project_account], params[:project_password])
     if @project.blank?
       render json: { success: false }.to_json
+    elsif @project.account_end < Time.zone.now
+      render json: { success: false }.to_json  
     else
       render json: { success: true, id: @project.id, 
                      name: @project.name, budget: @project.budget, exe_desc: @project.exe_desc,

@@ -129,7 +129,7 @@ $( "#login_form" ).submit(function( event ) {
 					$('.modal_last_year_exp').html(data.last_year_exp)											
 					$('.modal_last_year_balance').html(data.last_year_balance)											
 	    		}else{
-	    			 toastr['warning']('<%= t("帳號密碼錯誤") %>')
+	    			 toastr['warning']('<%= t("帳號密碼錯誤或帳號過期") %>')
 	    		}
 			}
 		});
