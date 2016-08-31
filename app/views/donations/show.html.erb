@@ -79,7 +79,7 @@
     border: 2px solid;
     text-align: center;
 } 
-@page{size:auto; margin:5mm;}
+@page{ size:auto; margin:5mm; }
 </style>
 <div style="text-align: right; font-size: 13px;">捐款收據編號: <%= @donation.order_num %></div>
 <table class="print-table">
@@ -116,11 +116,11 @@
 	</tr>
 </tbody>
 </table>
-<div style="font-size: 13px; height: 50px;">
+<div style="font-size: 13px; height: 55px;">
 	<div style="float: left">承蒙慷慨贊助，敬致謝枕</div>
 	<div style="float: right; color: red;">收執聯</div>
 </div>
-<div style="text-align: right; font-size: 13px; border-top: 2px dashed #000000; padding-top: 25px;">捐款收據編號: <%= @donation.order_num %></div>
+<div style="text-align: right; font-size: 13px; border-top: 2px dashed #000000; padding-top: 5.2mm">捐款收據編號: <%= @donation.order_num %></div>
 <table class="print-table">
 <tbody>
 	<tr>
@@ -155,11 +155,11 @@
 	</tr>
 </tbody>
 </table>
-<div style="font-size: 13px; height: 50px;">
+<div style="font-size: 13px; height: 55px">
 	<div style="float: left">承蒙慷慨贊助，敬致謝枕</div>
 	<div style="float: right; color: red;">出納聯</div>
 </div>
-<div style="text-align: right; font-size: 13px; border-top: 2px dashed #000000; padding-top: 25px;">捐款收據編號: <%= @donation.order_num %></div>
+<div style="text-align: right; font-size: 13px; border-top: 2px dashed #000000; padding-top: 5.2mm">捐款收據編號: <%= @donation.order_num %></div>
 <table class="print-table">
 <tbody>
 	<tr>
@@ -194,7 +194,7 @@
 	</tr>
 </tbody>
 </table>
-<div style="font-size: 13px; height: 50px;">
+<div style="font-size: 13px;">
 	<div style="float: left">承蒙慷慨贊助，敬致謝枕</div>
 	<div style="float: right; color: red;">會計聯</div>
 </div>

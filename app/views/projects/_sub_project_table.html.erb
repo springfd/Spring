@@ -5,6 +5,7 @@
 		      <tr>
 		        <td><%= project.name %></td>
 		      </tr>
+		      <%if project.kind.to_i == GLOBAL_VAR['project_self'].to_i %>
 		      <tr>
 		        <td style="text-align:center;">
 		        	<% if project.pj_cover.exists? %>
@@ -14,6 +15,7 @@
 				 	<% end %>
 		        </td>
 		      </tr>
+		      <%end%>
 	    	</tbody>
 	  	</table>
 	</div>
