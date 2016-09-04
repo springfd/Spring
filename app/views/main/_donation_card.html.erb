@@ -21,7 +21,7 @@
 					    <tbody>
 					      <tr>
 					        <th><%= t("預算") %>:</th>
-					        <td>$<%= project.budget %></td>
+					        <td><%= number_with_delimiter project.budget || 0 %> 元</td>
 					      </tr>
 					      <tr>
 					        <th><%= t("執行狀況") %>:</th>

@@ -3,7 +3,7 @@
 	  <table class="table backend_index_table">
 	  	<tbody>
 	      <tr>
-	        <th>連絡人: </th>
+	        <th>聯絡人: </th>
 	        <td><%= donation.name %></td>
 	      </tr>
 	      <tr>
@@ -11,7 +11,7 @@
 	        <td><%= number_with_delimiter donation.amount || 0%>元</td>
 	      </tr>
 	      <tr>
-	        <th>方式: </th>
+	        <th>捐款方式: </th>
 	        <td><%= Hash[donateWayOptions].rassoc(donation.donate_way).first %></td>
 	      </tr>
 	      <tr>

@@ -20,15 +20,15 @@
 	        <td colspan="8" class="dt-content" style="font-weight: 900!important; background: #e3e3e3; font-size: 16px;"><%= @project_name %>計畫</td>
 	      </tr>
 	      <tr>
-	      	<td class="dt-title">連絡人</td>
+	      	<td class="dt-title">聯絡人</td>
 	        <td colspan="3" class="dt-content"><%= @donation.name %></td>
 	        <td class="dt-title">編號</td>
 	        <td colspan="3" class="dt-content"><%= @donation.order_num %></td>
 	      </tr>
 	      <tr>
 	        <td class="dt-title">金額</td>
-	        <td colspan="1" class="dt-content"><%= @donation.amount %>元整</td>
-	        <td colspan="1" class="dt-title">方式</td>
+	        <td colspan="1" class="dt-content"><%= number_with_delimiter @donation.amount || 0 %>元整</td>
+	        <td colspan="1" class="dt-title">捐款方式</td>
 	        <td colspan="1" class="dt-content"><%= Hash[donateWayOptions].rassoc(@donation.donate_way).first %></td>
 	      	<td colspan="1" class="dt-title">日期</td>
 	      	<td colspan="2" class="dt-content"><%= @donation.donate_date.strftime("%Y-%m-%d") %></td>
