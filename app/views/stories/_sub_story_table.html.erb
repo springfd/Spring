@@ -10,8 +10,7 @@
 	        <td colspan="2"><%= story.topic %></td>
 	      </tr>
 	      <tr style="height: 320px;">
-	      	<th>描述 </th>
-	        <td style="font-size: 16px;">
+	        <td  colspan="2" style="font-size: 16px;">
 	        	<% if story.description.length > 239 %>
 				  	<%= truncate(story.description.gsub("\r\n", "\n"), length: 150) %>
 				    <%= link_to '  Read more', '', class: "read-more-#{story.id}" %>

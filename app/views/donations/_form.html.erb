@@ -11,9 +11,9 @@
 	  <% end %>
 	  <%= f.hidden_field :donate, value: true %>
 	  <div class="form-group row">
-	  	<label class="col-sm-offset-3 col-sm-2 control-label">捐款人</label>
+	  	<label class="col-sm-offset-3 col-sm-2 control-label">聯絡人</label>
 	  		<div class="col-sm-3">
-	  			<%= f.text_field :name, class: "form-control", placeholder: "捐款人" %>
+	  			<%= f.text_field :name, class: "form-control", placeholder: "聯絡人" %>
 	    	</div>
 	  </div>
 	  <div class="form-group row">
@@ -23,7 +23,7 @@
 	    	</div>
 	  </div>
 	  <div class="form-group row">
-			<label class="col-sm-offset-3 col-sm-2 control-label">方式*</label>
+			<label class="col-sm-offset-3 col-sm-2 control-label">捐款方式*</label>
 			<div class="col-sm-3">
 				<%= f.select :donate_way , options_for_select([["電匯", 0], ["線上刷卡", 1], ["其它", 2]], @donation.donate_way) , {prompt: '選擇捐款方式'}, class: "form-control" %>		
 	  		</div>
@@ -35,7 +35,7 @@
 	  		</div>
 	  </div>
 	  <div class="form-group row">
-			<label class="col-sm-offset-3 col-sm-2 control-label">捐款日期*</label>
+			<label class="col-sm-offset-3 col-sm-2 control-label">日期*</label>
 			<div class="col-sm-3">
 				<%= f.text_field :donate_date, class: "form-control", id: 'datetimepicker_donate_date', placeholder: "捐款日期" %>	
 			</div>

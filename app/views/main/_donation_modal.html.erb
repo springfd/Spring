@@ -123,11 +123,11 @@ $( "#login_form" ).submit(function( event ) {
 					$('.modal_exp_mix').html(data.exp_mix)
 					$('.modal_exp_other').html(data.exp_other)
 					$('.modal_exp_business').html(data.exp_business)
-					$('.modal_income').html(data.income)
+					$('.modal_income').html( addCommas(data.income) )
 					$('.modal_account_end').html(data.account_end)
-					$('.modal_balance').html(data.balance)	
-					$('.modal_last_year_exp').html(data.last_year_exp)											
-					$('.modal_last_year_balance').html(data.last_year_balance)											
+					$('.modal_balance').html( addCommas(data.balance) )	
+					$('.modal_last_year_exp').html( addCommas(data.last_year_exp) )											
+					$('.modal_last_year_balance').html( addCommas(data.last_year_balance) )											
 	    		}else{
 	    			 toastr['warning']('<%= t("帳號密碼錯誤或帳號過期") %>')
 	    		}
@@ -169,4 +169,14 @@ $("#login_form").bind("submit", function() {
 
 });
 */
+
+function addCommas(n){
+    var rx=  /(\d+)(\d{3})/;
+    return String(n).replace(/^\d+/, function(w){
+        while(rx.test(w)){
+            w= w.replace(rx, '$1,$2');
+        }
+        return w;
+    });
+}
 </script>

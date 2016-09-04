@@ -15,10 +15,10 @@
 	      </tr>
 	      <tr>
 	        <th>金額 </th>
-	        <td><%= donation.amount %>元</td>
+	        <td><%= number_with_delimiter donation.amount || 0 %> 元</td>
 	      </tr>
 	      <tr>
-	        <th>方式 </th>
+	        <th>捐款方式 </th>
 	        <td><%= Hash[donateWayOptions].rassoc(donation.donate_way).first %></td>
 	      </tr>
 	      <tr>
