@@ -1,0 +1,2 @@
+module DonationListsHelper
+end

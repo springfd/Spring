@@ -1,4 +1,5 @@
 class SignReportsController < ApplicationController
+  before_filter :authenticate_user!  
   before_action :set_sign_report, only: [:show, :edit, :update, :destroy]
 
   # GET /sign_reports

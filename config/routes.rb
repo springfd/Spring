@@ -1,5 +1,7 @@
 Rails.application.routes.draw do
 
+  resources :donation_lists
+  resources :special_projects
   resources :downloads
   scope "(:locale)", locale: /en|zh-TW/ do
     resources :sign_reports
@@ -35,7 +37,8 @@ Rails.application.routes.draw do
     get  'main/donation'
     get  'main/downloaded'
     get  'main/downloadManual' 
-    get  'main/downloadBoardLists'     
+    get  'main/downloadBoardLists'  
+    get  'main/special'   
     root 'main#about'
   end
 end

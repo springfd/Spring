@@ -107,7 +107,7 @@
 </div>		
 <div class="container-fluid text-center">
 	<div class="row" style="margin-bottom: 40px; margin-top: 40px;">
-		<div class="col-lg-12 donation_accounting">
+		<div class="col-lg-6 donation_accounting text-right">
 			<div class="form-group form-inline">
 			  <label for="sign_report"><%= t("會計師") %> <span style="color: #02a0eb"><%= t("簽證報告") %></span></label>
 			  <select class="form-control" id="sign_report">	
@@ -120,6 +120,20 @@
 			  </select>
 			</div>				
 		</div>
+		<div class="col-lg-6 donation_accounting text-left">
+			<div class="form-group form-inline">
+			  <label for="sign_report"><%= t("捐款") %> <span style="color: #02a0eb"><%= t("徵信") %></span></label>
+			  <select class="form-control" id="donation_list">	
+			  	<option><%= t("請選擇") %></option>			
+			  	<% SignReport.all.order('year').each do |s|%>
+					<option value="<%= s.sr_attachment.url%>">
+					<%= s.year.strftime("%Y")+t("年度") %>
+					</option>
+				<% end %>
+			  </select>
+			</div>				
+		</div>		
+		
 	</div>		
 </div>	
 <script>
@@ -243,6 +257,11 @@ $(window).resize(function() {
 
 //============================= select =============================//
 $( "#sign_report" ).change(function() {
+	//alert(this.value)
+	window.location = this.value;
+});
+
+$( "#donation_list" ).change(function() {
 	//alert(this.value)
 	window.location = this.value;
 });
