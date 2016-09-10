@@ -122,11 +122,11 @@
 		</div>
 		<div class="col-lg-6 donation_accounting text-left">
 			<div class="form-group form-inline">
-			  <label for="sign_report"><%= t("捐款") %> <span style="color: #02a0eb"><%= t("徵信") %></span></label>
+			  <label for="donation_list"><%= t("捐款") %> <span style="color: #02a0eb"><%= t("徵信") %></span></label>
 			  <select class="form-control" id="donation_list">	
 			  	<option><%= t("請選擇") %></option>			
-			  	<% SignReport.all.order('year').each do |s|%>
-					<option value="<%= s.sr_attachment.url%>">
+			  	<% DonationList.all.order('year').each do |s|%>
+					<option value="<%= s.dl_attachment.url%>">
 					<%= s.year.strftime("%Y")+t("年度") %>
 					</option>
 				<% end %>
