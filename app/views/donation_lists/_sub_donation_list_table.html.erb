@@ -1,0 +1,21 @@
+	<div class="col-md-4">
+	  <table class="table backend_index_table">
+	  	<tbody>
+	      <tr>
+	        <td colspan="2"><%= donation_list.title %></td>
+	      </tr>
+	      <tr>
+	        <th>年度</th>
+	        <td><%= donation_list.year.strftime("%Y") %></td>
+	      </tr>
+	      <tr style="text-align: center;">
+	      	<td colspan="2">
+	      		<% unless donation_list.dl_attachment_file_name.blank? %><%= link_to donation_list.dl_attachment_file_name, donation_list.dl_attachment.url(:original, false) %><% end %>
+	      	</td>
+	      </tr>
+	      <tr style="text-align: center;">
+		    <td colspan="2"><%= link_to "編輯", edit_donation_list_path(donation_list), data: { no_turbolink: true }, class: 'edit-btn', style: "" %><%= link_to '刪除', donation_list, method: :delete, data: { confirm: 'Are you sure?' } , class: 'delete-btn', style: "margin-left:24px;"%></td>
+	      </tr>
+	    </tbody>
+	  </table>
+	</div>

@@ -1,0 +1,16 @@
+	<div class="col-md-4">
+	  <table class="table backend_index_table">
+	  	<tbody>
+	      <tr>
+	        <td colspan="2"><%= special_project.title %></td>
+	      </tr>
+	      <tr>
+	        <th>描述</th>
+	        <td><%= special_project.description %></td>
+	      </tr>
+	      <tr style="text-align: center;">
+		    <td colspan="2"><%= link_to "編輯", edit_special_project_path(special_project), data: { no_turbolink: true }, class: 'edit-btn', style: "" %><%= link_to '刪除', special_project, method: :delete, data: { confirm: 'Are you sure?' } , class: 'delete-btn', style: "margin-left:24px;"%></td>
+	      </tr>
+	    </tbody>
+	  </table>
+	</div>

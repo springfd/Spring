@@ -1,0 +1,11 @@
+# Read about fixtures at http://api.rubyonrails.org/classes/ActiveRecord/FixtureSet.html
+
+one:
+  title: MyString
+  year: 2016-09-10 14:25:52
+  dl_attachment: 
+
+two:
+  title: MyString
+  year: 2016-09-10 14:25:52
+  dl_attachment: 

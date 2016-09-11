@@ -11,7 +11,18 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20160827082825) do
+ActiveRecord::Schema.define(version: 20160910062552) do
+
+  create_table "donation_lists", force: :cascade do |t|
+    t.string   "title",                      limit: 255
+    t.datetime "year"
+    t.string   "dl_attachment_file_name",    limit: 255
+    t.string   "dl_attachment_content_type", limit: 255
+    t.integer  "dl_attachment_file_size",    limit: 4
+    t.datetime "dl_attachment_updated_at"
+    t.datetime "created_at",                             null: false
+    t.datetime "updated_at",                             null: false
+  end
 
   create_table "donations", force: :cascade do |t|
     t.string   "name",            limit: 255
@@ -119,6 +130,15 @@ ActiveRecord::Schema.define(version: 20160827082825) do
     t.string   "sr_attachment_content_type", limit: 255
     t.integer  "sr_attachment_file_size",    limit: 4
     t.datetime "sr_attachment_updated_at"
+  end
+
+  create_table "special_projects", force: :cascade do |t|
+    t.string   "title",         limit: 255
+    t.string   "title_enlarge", limit: 255
+    t.string   "link",          limit: 255
+    t.text     "description",   limit: 65535
+    t.datetime "created_at",                  null: false
+    t.datetime "updated_at",                  null: false
   end
 
   create_table "stages", force: :cascade do |t|

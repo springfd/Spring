@@ -1,0 +1,15 @@
+<div class="container">
+	<div class="row">
+		<div class="col-md-12">	
+			<h3 style="letter-spacing: 2px;">專案合作</h3>
+			<%= link_to "新增", new_special_project_path, class: 'add-btn pull-right' %>
+		</div>		
+	</div>
+</div>
+<div class="container">
+	<div class="row">
+		<% @special_projects.each do |special_project| %>
+			<%= render "sub_special_project_table", special_project: special_project %>
+		<% end %>
+	</div>
+</div>

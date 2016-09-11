@@ -1,0 +1,15 @@
+<div class="container">
+	<div class="row">
+		<div class="col-md-12">	
+			<h3 style="letter-spacing: 2px;">捐款徵信</h3>
+			<%= link_to "新增", new_donation_list_path, class: 'add-btn pull-right' %>
+		</div>		
+	</div>
+</div>
+<div class="container">
+	<div class="row">
+		<% @donation_lists.order('year desc').each do |donation_list| %>
+			<%= render "sub_donation_list_table", donation_list: donation_list %>
+		<% end %>
+	</div>
+</div>

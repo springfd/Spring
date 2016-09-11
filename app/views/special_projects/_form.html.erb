@@ -1,0 +1,44 @@
+<%= form_for(@special_project) do |f| %>
+<div class="container" style="margin-top: 10mm">
+  <% if @special_project.errors.any? %>
+    <div id="error_explanation">
+
+      <ul>
+      <% @special_project.errors.full_messages.each do |message| %>
+        <li><%= message %></li>
+      <% end %>
+      </ul>
+    </div>
+  <% end %>
+  <div class="form-group row">
+  	<label class="col-sm-offset-2 col-sm-2 control-label">合作名稱(放大)*</label>
+  		<div class="col-sm-3">
+  			<%= f.text_field :title_enlarge, class: "form-control", placeholder: "合作名稱(放大)" %>
+    	</div>
+  </div>
+  <div class="form-group row">
+  	<label class="col-sm-offset-2 col-sm-2 control-label">合作名稱*</label>
+  		<div class="col-sm-3">
+  			<%= f.text_field :title, class: "form-control", placeholder: "合作名稱" %>
+    	</div>
+  </div>
+  <div class="form-group row">
+  	<label class="col-sm-offset-2 col-sm-2 control-label">連結*</label>
+  		<div class="col-sm-3">
+  			<%= f.text_field :link, class: "form-control", placeholder: "ex: http://www.google.com" %>
+    	</div>
+  </div>  
+  <div class="form-group row">
+  	<label class="col-sm-offset-2 col-sm-2 control-label">描述*</label>
+  		<div class="col-sm-3">
+  			<%= f.text_area :description, class: "form-control", placeholder: "描述" %>
+    	</div>
+  </div>  
+  
+  <div class="form-group row">
+		<div class="col-sm-7">
+			<%= f.submit '儲存',  class: "btn btn-info save-btn pull-right"  %>
+		</div>
+  </div>
+</div>
+<% end %>
