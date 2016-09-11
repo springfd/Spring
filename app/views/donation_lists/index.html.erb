@@ -8,7 +8,7 @@
 </div>
 <div class="container">
 	<div class="row">
-		<% @donation_lists.each do |donation_list| %>
+		<% @donation_lists.order('year desc').each do |donation_list| %>
 			<%= render "sub_donation_list_table", donation_list: donation_list %>
 		<% end %>
 	</div>
