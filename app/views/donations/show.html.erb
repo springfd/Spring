@@ -17,7 +17,7 @@
 	<table class="table donation_show_table">
 	    <tbody style="border-left: solid 13px #194180 !important;">
 	      <tr>
-	        <td colspan="8" class="dt-content" style="font-weight: 900!important; background: #e3e3e3; font-size: 16px;"><%= @project_name %>計畫</td>
+	        <td colspan="8" class="dt-content" style="font-weight: 900!important; background: #e3e3e3; font-size: 16px;"><%= @project_name %></td>
 	      </tr>
 	      <tr>
 	      	<td class="dt-title">聯絡人</td>
@@ -50,7 +50,10 @@
 	        <td colspan="7" class="dt-content"><%= @donation.description %></td>
 	      </tr>	      
 	      <tr>
-	        <td colspan="8" class="dt-content" style="padding:4px 16px!important;"><%= link_to "列印收據", "#", onclick:"printData();", class: 'btn btn-info print-btn pull-right' %></td>
+	        <td colspan="8" class="dt-content" style="padding:4px 16px!important;">
+	        	<%= link_to "列印收據(說明:自訂)", "#", onclick:"printData('"+ @donation.description.to_s+"');", class: 'btn btn-info print-btn pull-right'  %>
+	        	<%= link_to "列印收據(說明:計畫名稱)", "#", onclick:"printData('"+ @project_name +"');", class: 'btn btn-info print-btn pull-right', style: 'margin-right: 5px;' %>
+	        </td>
 	      </tr>
 	    </tbody>
 	</table>
@@ -81,7 +84,7 @@
 } 
 @page{ size:auto; margin-top:5mm; margin-bottom:5mm;}
 </style>
-<div style="text-align: right; font-size: 13px; padding-top: 10mm">捐款收據編號: <%= @donation.order_num %></div>
+<div style="text-align: right; font-size: 13px; padding-top: 7.5mm">捐款收據編號: <%= @donation.order_num %></div>
 <table class="print-table">
 <tbody>
 	<tr>
@@ -103,7 +106,7 @@
 		<td colspan="7" style="text-align: left;" class="print_amount"></td>
 	</tr>
 		<th>說明</th>
-		<td colspan="7" style="text-align: left;"><%= @donation.description %></td>
+		<td colspan="7" style="text-align: left;" class="description_print"></td>
 	<tr>
 		<td>執行長或授權代理人</td>
 		<td></td>
@@ -120,7 +123,7 @@
 	<div style="float: left">承蒙慷慨贊助，敬致謝枕</div>
 	<div style="float: right; color: red;">收執聯</div>
 </div>
-<div style="text-align: right; font-size: 13px; border-top: 2px dashed #000000; padding-top: 16.2mm">捐款收據編號: <%= @donation.order_num %></div>
+<div style="text-align: right; font-size: 13px; border-top: 2px dashed #000000; padding-top: 14.5mm">捐款收據編號: <%= @donation.order_num %></div>
 <table class="print-table">
 <tbody>
 	<tr>
@@ -142,7 +145,7 @@
 		<td colspan="7" style="text-align: left;" class="print_amount"></td>
 	</tr>
 		<th>說明</th>
-		<td colspan="7" style="text-align: left;"><%= @donation.description %></td>
+		<td colspan="7" style="text-align: left;" class="description_print"></td>
 	<tr>
 		<td>執行長或授權代理人</td>
 		<td></td>
@@ -159,7 +162,7 @@
 	<div style="float: left">承蒙慷慨贊助，敬致謝枕</div>
 	<div style="float: right; color: red;">出納聯</div>
 </div>
-<div style="text-align: right; font-size: 13px; border-top: 2px dashed #000000; padding-top: 16.2mm">捐款收據編號: <%= @donation.order_num %></div>
+<div style="text-align: right; font-size: 13px; border-top: 2px dashed #000000; padding-top: 14.5mm">捐款收據編號: <%= @donation.order_num %></div>
 <table class="print-table">
 <tbody>
 	<tr>
@@ -181,7 +184,7 @@
 		<td colspan="7" style="text-align: left;" class="print_amount"></td>
 	</tr>
 		<th>說明</th>
-		<td colspan="7" style="text-align: left;"><%= @donation.description %></td>
+		<td colspan="7" style="text-align: left;" class="description_print"></td>
 	<tr>
 		<td>執行長或授權代理人</td>
 		<td></td>
@@ -230,7 +233,8 @@ $(document).on('ready', function() {
 };
 	$('.print_amount').text( digit_uppercase('<%= @donation.amount %>') )
 });
-function printData() {    
+function printData(description) {    
+	$('.description_print').html(description)
                var data = document.getElementById('printTable').innerHTML;
      var popupWindow = window.open('','printwin',
           '');
