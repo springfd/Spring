@@ -30,21 +30,11 @@
 					  </ol>
 					  <!-- Wrapper for slides -->
 					  <div class="carousel-inner" role="listbox">
-					    <div class="item active">
-					      <%= image_tag news.pictures.first.image.url%>
-					    </div>
-					
-					    <div class="item">
-					      <%= image_tag 'forest.jpg'%>
-					    </div>
-					
-					    <div class="item">
-					      <%= image_tag 'sample_2.jpg'%>
-					    </div>
-					
-					    <div class="item">
-					      <%= image_tag 'sample_3.jpg'%>
-					    </div>
+					  	<% news.pictures.each_with_index do | p, i|%>
+					    	<div class="item <%if i == 0%>active<%end%>">
+					      		<%= image_tag p.image.url%>
+					    	</div>
+					 	<%end%>					  	
 					  </div>
 					  <!-- Left and right controls -->
 					  <a class="left carousel-control" href="#carousel_<%=news.id %>" role="button" data-slide="prev">
