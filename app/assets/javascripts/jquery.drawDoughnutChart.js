@@ -34,7 +34,7 @@
         tipOffsetY: -45,
         tipClass: "doughnutTip",
         summaryClass: "doughnutSummary",
-        summaryTitle: "已募款:",
+        summaryTitle: "已募款 $",
         summaryTitleClass: "doughnutSummaryTitle",
         summaryNumberClass: "doughnutSummaryNumber",
         beforeDraw: function() {  },
@@ -104,6 +104,7 @@
     var $summaryTitle = $('<p class="' + settings.summaryTitleClass + '">' + settings.summaryTitle + '</p>').appendTo($summary);
     var $summaryNumber = $('<p class="' + settings.summaryNumberClass + '"></p>').appendTo($summary).css({opacity: 0});
 	firstData = data[0].value;//Benny
+    $summaryTitle.append(firstData)//benny	   
     
     for (var i = 0, len = data.length; i < len; i++) {
       segmentTotal += data[i].value;
@@ -171,7 +172,8 @@
       if (settings.animation && settings.animateRotate) rotateAnimation = animationDecimal;//count up between0~1
 
       drawDoughnutText(animationDecimal, segmentTotal, firstData);
-
+      
+      
       $pathGroup.attr("opacity", animationDecimal);
 
       //If data have only one value, we draw hollow circle(#1).
@@ -200,7 +202,7 @@
         ];
         $paths[i].attr("d", cmd.join(' '));
         startRadius += segmentAngle;
-      }
+      }      
     }
     function drawDoughnutText(animationDecimal, segmentTotal, firstData) {
       $summaryNumber
@@ -223,7 +225,7 @@
           } else {
             settings.afterDrawed.call($this);
           }
-      });
+      });      
     }
     function Max(arr) {
       return Math.max.apply(null, arr);
