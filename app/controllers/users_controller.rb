@@ -1,7 +1,7 @@
 class UsersController < ApplicationController
   before_filter :authenticate_user!
-  before_action :check_identification
-  before_action :set_user, only: [:show, :destroy]
+  before_action :check_identity
+  before_action :set_user, only: [:show, :destroy, :setIdentity]
   def index
     @users = User.all
   end
@@ -25,14 +25,26 @@ class UsersController < ApplicationController
     end
   end
  
-  def check_identification
-	unless current_user.email == 'shihweiyao@hotmail.com' or current_user.email == 'smhuang@mail.nctu.edu.tw' or current_user.email == 'bennylin77@gmail.com'  
-		redirect_to "/projects", notice: "抱歉，您沒有權限"  		
-	end		
+
+ 
+  def setIdentity
+  	if @user.role == GLOBAL_VAR['manager'].to_i
+  		@user.role =  GLOBAL_VAR['user'].to_i
+  	else
+  		@user.role =  GLOBAL_VAR['manager'].to_i	
+  	end
+  	@user.save!
+    redirect_to "/users", notice: "成功更改使用者權限"	
   end
  
-  
   private
+  
+  def check_identity
+	if current_user.role == GLOBAL_VAR['user'].to_i
+		redirect_to "/projects", notice: "抱歉，您沒有權限"  		
+	end		
+  end  
+  
   def set_user
     @user = User.find(params[:id])
   end
