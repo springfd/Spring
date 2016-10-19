@@ -4,11 +4,13 @@
 		<div class="col-sm-offset-2 col-sm-8">
 			<div class="other_links_container text-center">			
 				<div class="other_links_title">
-					<%=t('文件')%><span style="color: #02a0eb;"> <%=t('下載')%></span>	
+					<span style="color: #02a0eb;"> <%=t('下載')%></span>	
 				</div>	
+				<!--
 				<div class="other_links_sub_container">	
 					<%= link_to t("本會手冊"), '/main/downloadManual', class: 'other_links_link'%>
-				</div>					
+				</div>
+				-->					
 				<% Download.all.each do |d| %>
 					<div class="other_links_sub_container">
 						<%=link_to d.title, d.file_at.url, class: 'other_links_link'%>

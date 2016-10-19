@@ -24,7 +24,7 @@ en:
         關於: About
         消息: News
         捐款: Donate
-        委辦計畫: Delegate Project
+        委辦計畫: Delegated projects
         閱讀更多: Read More
         已募: Donated
         累積期間: "Period: "
@@ -50,15 +50,15 @@ en:
         預算: Budget
         執行狀況: Status of implementation
         董事: Directors
-        董事會成員: Board of Directors
-        重要會務記事: Conference Record
+        董事會成員: Board
+        重要會務記事: Chronicle
         聯絡: Contact
         聯絡資訊: Contact Information
         其他: Other
         相關連結: Related Links
         本會手冊: Fundation Manual
         語言: Language
-        查詢委辦計畫: Search Delegate Project
+        查詢委辦計畫: Search Delegated Projects
         計畫代號: Project Account
         密碼: Password
         查詢: Search
@@ -74,9 +74,8 @@ en:
         捐款期間: Donation Period
         帳號密碼錯誤: Account or Password is incorrect
         請輸入帳號密碼: Please enter you account and password
-        文件下載: Document Download
         系統管理: System management
-        文件: Document 
+        文件下載: Download
         下載: Download
         帳號結束時間: Account Expired At
         餘額: Balance
