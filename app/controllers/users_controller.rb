@@ -26,7 +26,7 @@ class UsersController < ApplicationController
   end
  
   def check_identification
-	unless current_user.email == 'shihweiyao@hotmail.com' or current_user.email == 'smhuang@mail.nctu.edu.tw'
+	unless current_user.email == 'shihweiyao@hotmail.com' or current_user.email == 'smhuang@mail.nctu.edu.tw' or current_user.email == 'bennylin77@gmail.com'  
 		redirect_to "/projects", notice: "抱歉，您沒有權限"  		
 	end		
   end
