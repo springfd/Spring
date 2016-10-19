@@ -1,6 +1,6 @@
 class UsersController < ApplicationController
   before_filter :authenticate_user!
-  #before_action :check_identity
+  before_action :check_identity
   before_action :set_user, only: [:show, :destroy, :setIdentity]
   def index
     @users = User.all
