@@ -2,12 +2,25 @@
 	  <table class="table backend_index_table">
 	  	<tbody>
 	      <tr>
-	        <td colspan="2"><%= user.email %></td>
+	        <td colspan="4"><%= user.email %></td>
 	      </tr>
 	      <tr style="text-align: center;">
-		    <td colspan="2">
+		    <td colspan="4">
+		        <% if user.role == GLOBAL_VAR['user'] %>
+	        		<%= link_to '/users/setIdentity?id='+user.id.to_s , class: 'edit-btn' , style: "margin-right: 5px;" do %>設為管理者<% end %>
+		    	<% else %>
+	        		<%= link_to '/users/setIdentity?id='+user.id.to_s , class: 'edit-btn' , style: "margin-right: 5px;" do %>設為一般權限<% end %>		    	
+		    	<% end %>
+		    </td>
+	      </tr>
+	      <tr style="text-align: center;">
+		    <td colspan="4">	
 	        	<%= link_to new_confirmation_path(:user) , class: 'edit-btn' , style: "margin-right: 5px;" do %>重寄註冊信<% end %>
-	        	<%= link_to '刪除', user, method: :delete, data: { confirm: 'Are you sure?' } , class: 'delete-btn'%>
+		    </td>
+	      </tr>	      
+	      <tr style="text-align: center;">
+		    <td colspan="4">	
+		    <%= link_to '刪除', user, method: :delete, data: { confirm: 'Are you sure?' } , class: 'delete-btn'%>
 		    </td>
 	      </tr>
 	    </tbody>

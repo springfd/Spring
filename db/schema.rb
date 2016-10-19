@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20160910062552) do
+ActiveRecord::Schema.define(version: 20161019025254) do
 
   create_table "donation_lists", force: :cascade do |t|
     t.string   "title",                      limit: 255
@@ -180,6 +180,7 @@ ActiveRecord::Schema.define(version: 20160910062552) do
     t.string   "confirmation_token",     limit: 255
     t.datetime "confirmed_at"
     t.datetime "confirmation_sent_at"
+    t.integer  "role",                   limit: 4,   default: 0
   end
 
   add_index "users", ["confirmation_token"], name: "index_users_on_confirmation_token", unique: true, using: :btree

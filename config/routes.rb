@@ -1,4 +1,5 @@
 Rails.application.routes.draw do
+  get  'users/setIdentity'
 
   resources :donation_lists
   resources :special_projects
