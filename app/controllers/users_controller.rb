@@ -1,5 +1,6 @@
 class UsersController < ApplicationController
   before_filter :authenticate_user!
+  before_action :check_identification
   before_action :set_user, only: [:show, :destroy]
   def index
     @users = User.all
@@ -23,6 +24,13 @@ class UsersController < ApplicationController
         redirect_to "/users", notice: "成功刪除使用者"
     end
   end
+ 
+  def check_identification
+	unless current_user.email == 'shihweiyao@hotmail.com' or current_user.email == 'smhuang@mail.nctu.edu.tw'
+		redirect_to "/projects", notice: "抱歉，您沒有權限"  		
+	end		
+  end
+ 
   
   private
   def set_user
