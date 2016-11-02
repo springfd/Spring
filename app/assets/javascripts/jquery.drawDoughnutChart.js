@@ -207,7 +207,7 @@
     function drawDoughnutText(animationDecimal, segmentTotal, firstData) {
       $summaryNumber
         .css({opacity: animationDecimal})
-        .text((firstData/segmentTotal).toFixed(3)*100+'%');        
+        .text(((firstData*100)/segmentTotal).toFixed(1)+'%');        
         //.text((segmentTotal * animationDecimal).toFixed(0)+'%');
     }
     function animateFrame(cnt, drawData) {

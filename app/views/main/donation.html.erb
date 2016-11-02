@@ -8,26 +8,37 @@
 		-->		
 				<div class="donation_summary text-center">
 					<div class="donation_summary_inner">
-						<div class="donation_summary_ch"><%if I18n.locale != "en" %>已募<%end%></div>
+						<%if I18n.locale.to_s != "en" %>
+						<div class="donation_summary_ch">
+							已募
+						</div>
+						<%else%>
+						<div class="donation_summary_ch_to_en">
+							Donated
+						</div>						
+						<%end%>
 						<div class="donation_summary_number"></div>
 						<div class="donation_summary_en">NT</div>	
 					</div>
 					<div class="donation_range text-right"><%= t("累積期間") %> <%=Time.zone.now().year%>/01/01~<%=Time.zone.now().strftime("%Y/%m/%d")  %></div>	
 				</div>
+				<%if I18n.locale.to_s != "en" %>
 				<div class="text-center" style="margin-bottom: 10vh;">
 					<a href="#donation_content_donate" class="donation_top_button"><%= t("一般性用途捐款") %></a>
 					<a href="#donation-no-span" class="donation_top_button"><%= t("指定計畫捐款") %></a>
 				</div>
+				<%end%>
 				<div class="donation_arrow_container text-center">
 					<a href="#donation_content_donate" class="donation_arrow">
 						<span class="glyphicon glyphicon-menu-down"></span>
 					</a>
-				</div>
+				</div>				
 		</div>
 	</div>		
 </div>	
 <div class="container-fluid donation_content_donate" id="donation_content_donate">
 	<div class="donation_content_background_image"></div>
+	<%if I18n.locale.to_s != "en" %>
 	<div class="row" style="position:relative; z-index:2;" id="credit">
 		<div class="col-lg-offset-3 col-lg-6 col-sm-offset-2 col-sm-8 donation_content_donate_inner" id="donation_content_donate_inner">
 			<p class="text-center" style="font-size: 22px; letter-spacing: 2px;"><%= t("一般性用途") %> <span style="color: #02a0eb;"><%= t("捐款") %></span></p>		
@@ -93,7 +104,30 @@
 			<p style="color: #888888">*<%= t("款項將直接用於本會所執行，但經費仍不足之各項計畫。") %></p>	
 		</div>
 	</div>	
+	<%else%>
+	<div class="row" style="position:relative; z-index:2; color: #888888; font-size: 16px;" id="credit">
+		<div class="col-lg-offset-3 col-lg-6 col-sm-offset-2 col-sm-8 donation_content_donate_inner" id="donation_content_donate_inner">	
+		<p>To All Alumni and Elites: Thank you for your continuous support for our Foundation. We are to cherish
+		and make the best of each donation. A formal donation receipt is to be provided for each donation.The
+		receipt is applicable to districts under jurisdiction of tax law of the R.O.C. Taiwan only.
+		</p>
+		<p>Donation by bank transfer:
+		<br>	
+		(1) Please download and fill in donation sheet in 'Download'
+		<br>
+		(2) Please transfer the donation to our bank account as follows:
+		Hsinchu Branch of First Bank:
+		account name: Spring Foundation of NCTU
+		Current account number: 301-50-395251
+		Swift Code: FCBKTWTP301
+		Bank Add: 3 Ing-Ming St, Hsin Chu300,Taiwan, R.O.C.
+		<br>
+		</p>
+		</div>
+	</div>
+	<%end%>
 </div>	
+<%if I18n.locale.to_s != "en" %>
 <div class="container">
 <h2 class="donation-no-span" id="donation-no-span"><%= t("指定計畫") %> <span style="color: #02a0eb;"><%= t("捐款") %><span></h2>
 </div>
@@ -104,7 +138,8 @@
 			<%=render "donation_card", project: project%>	
 		<% end %>	  		 				
 	</div>	
-</div>		
+</div>	
+<%end%>	
 <div class="container-fluid text-center">
 	<div class="row" style="margin-bottom: 40px; margin-top: 40px;">
 		<div class="col-lg-6 donation_accounting text-right">
@@ -183,6 +218,7 @@ tween = new TimelineLite();
 tween.to(foo, 2, { bar: <%= Donation.joins(:project).where("projects.kind = 0 and donate_date >= ? and donate = ? ", Time.zone.now.beginning_of_year, true ).sum(:amount)%>, onUpdate: function() {
 	 $('.donation_summary_number').html(Math.ceil(foo.bar).toLocaleString());}, ease: Linear.easeNone})
 	 .to(".donation_summary_ch", 1, {autoAlpha: 1, ease: Linear.easeNone})	 
+	 .to(".donation_summary_ch_to_en", 1, {autoAlpha: 1, ease: Linear.easeNone})	 	 
 	 .to(".donation_summary_en", 1, {autoAlpha: 1, ease: Linear.easeNone})
 	 .to(".donation_range", 1, {autoAlpha: 1, ease: Linear.easeNone})
 	 //.to(".donation_content_donate_inner", 1, {autoAlpha: 1, ease: Linear.easeNone})
@@ -202,7 +238,9 @@ var $grid = $('.grid').masonry({
   percentPosition: true
   //gutter: '.gutter-sizer',    
 });
-$grid.on( 'click', '.grid-item-button', function( event ) {
+
+
+$grid.on( 'click', '.donation_card_small_img', function( event ) {
   $( event.currentTarget ).closest('.grid-item').toggleClass('is-expanded');
   $grid.masonry();
   id = $(event.currentTarget).attr('data-id')
@@ -214,6 +252,19 @@ $grid.on( 'click', '.grid-item-button', function( event ) {
   
 });
 
+/*
+$grid.on( 'click', '.grid-item-button', function( event ) {
+  $( event.currentTarget ).closest('.grid-item').toggleClass('is-expanded');
+  $grid.masonry();
+  id = $(event.currentTarget).attr('data-id')
+
+  $("#doughnutChart_"+id).drawDoughnutChart([
+    { title: "已募", value: parseInt($('#doughnutChart_'+id).attr('data-donation')),  color: "#02a0eb" },
+    { title: "剩餘", value: parseInt($('#doughnutChart_'+id).attr('data-expect_remains')),   color: "#eeeeee" }
+  ], {tipClass: "doughnutTip "+"doughnutTip_"+event.currentTarget.id});  
+  
+});
+*/
 $grid.on( 'click', '.grid-item-close', function( event ) {
   $( event.currentTarget ).closest('.grid-item').toggleClass('is-expanded');
   $grid.masonry();
