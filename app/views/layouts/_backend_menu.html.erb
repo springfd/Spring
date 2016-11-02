@@ -20,7 +20,7 @@
 		  <li role="presentation" <%= active(controller: 'projects', pj_kind: GLOBAL_VAR['project_delegate'])%>><%=link_to "委辦計畫",{controller: '/projects', action: 'index', pj_kind: GLOBAL_VAR['project_delegate']} %></li>
 		  <li role="presentation" <%= active(controller: 'donations')%>><%=link_to "捐款", donations_path %></li>
 		  <li role="presentation" <%= active(controller: 'stories')%>><%=link_to "消息", stories_path %></li>	  
-		  <li role="presentation" <%= active(controller: 'special_projects')%>><%=link_to "專案合作", special_projects_path %></li>
+		  <li role="presentation" <%= active(controller: 'special_projects')%>><%=link_to "特別企劃", special_projects_path %></li>
 		  <li role="presentation" <%= active(controller: 'users')%>><%=link_to "帳號管理", users_path %></li>
 		  <li class="dropdown">
           	  <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false">其他 <span class="caret"></span></a>

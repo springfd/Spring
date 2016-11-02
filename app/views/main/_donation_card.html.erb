@@ -4,10 +4,12 @@
 		<div class="container-fluid donation_card_small">	
 			<div class="row" style="">
 				<div class="col-lg-12">	
-					<div class="donation_card_small_img" style="background-image: url('<%= project.pj_cover.url%>')"></div>	
+					<div class="donation_card_small_img" style="background-image: url('<%= project.pj_cover.url%>')" data-id="<%= project.id %>"></div>	
 					<div class="donation_card_small_title"><%= project.name %></div>
 					<div class="donation_card_small_content"><%= truncate( project.description, length: 60)%></div>
+					<!--
 					<button type="button" class="btn btn-block grid-item-button" id="grid-item-button_<%= project.id %>" data-id="<%= project.id %>"><%= t("點擊捐款") %></button>		
+					-->
 				</div>			
 			</div>	
 		</div>  
@@ -126,11 +128,16 @@
 					<ul class="timeline">	
 					<% project.stages.order('stageDate').each_with_index do |s, i| %>
 			        <li class="<%if i%2 != 0 %>timeline-inverted<%end%>">
-			          <%if i%2 != 0 %>
-			          <div class="timeline-badge warning"><i class="glyphicon glyphicon-chevron-right"></i></div>      
-			          <%else%>
-			          <div class="timeline-badge danger"><i class="glyphicon glyphicon-chevron-left"></i></div>         
-			          <%end%>	
+			          
+			          <% if Time.zone.now < s.stageDate%>
+				          <%if i%2 != 0 %>
+				          <div class="timeline-badge warning"><i class="glyphicon glyphicon-chevron-right"></i></div>      
+				          <%else%>
+				          <div class="timeline-badge danger"><i class="glyphicon glyphicon-chevron-left"></i></div>         
+				          <%end%>
+				      <%else%> 
+				          <div class="timeline-badge success"><i class="glyphicon glyphicon-ok"></i></div>      				         
+				      <%end%>    	
 			          <div class="timeline-panel">
 			            <div class="timeline-heading">
 			              <h4 class="timeline-title"><%= s.title %></h4>

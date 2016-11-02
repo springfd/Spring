@@ -14,6 +14,14 @@
 			<div class="top_en_container text-center">
 				Spring Foundation of NCTU
 			</div>
+			<div class="top_language_container text-center">
+				<%= link_to root_url(locale: "zh-TW" ) do%> 
+				<div>中 文</div>
+				<%end%> 
+				<%= link_to root_url(locale: "en" ) do%>
+				<div>EN</div>
+				<%end%> 
+			</div>			
 			<div class="about_arrow_container text-center">
 				<a href="#about_1" class="about_arrow">
 					<span class="glyphicon glyphicon-menu-down"></span>
