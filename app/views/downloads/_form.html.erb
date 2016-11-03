@@ -11,9 +11,13 @@
   <% end %>
   <%= hidden_field_tag(:download_file_delete, false) %>
   <div class="form-group row">
-    <label class="col-sm-offset-2 col-sm-2 control-label">文件名稱*</label>
+    <label class="col-sm-offset-2 col-sm-2 control-label">名稱*</label>
     <div class="col-sm-4"><%= f.text_field :title, class: "form-control", placeholder: '名稱' %></div>
   </div>
+  <div class="form-group row">
+    <label class="col-sm-offset-2 col-sm-2 control-label">英文名稱*</label>
+    <div class="col-sm-4"><%= f.text_field :title_en, class: "form-control", placeholder: '英文名稱' %></div>
+  </div>  
   <div class="form-group row">
   	<label class="col-sm-offset-2 col-sm-2 control-label">附件</label>
   	<div class="col-sm-4">
