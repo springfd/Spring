@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20161019025254) do
+ActiveRecord::Schema.define(version: 20161103112806) do
 
   create_table "donation_lists", force: :cascade do |t|
     t.string   "title",                      limit: 255
@@ -49,6 +49,7 @@ ActiveRecord::Schema.define(version: 20161019025254) do
     t.string   "file_at_content_type", limit: 255
     t.integer  "file_at_file_size",    limit: 4
     t.datetime "file_at_updated_at"
+    t.string   "title_en",             limit: 255
   end
 
   create_table "links", force: :cascade do |t|
@@ -56,6 +57,7 @@ ActiveRecord::Schema.define(version: 20161019025254) do
     t.string   "web_addr",   limit: 255
     t.datetime "created_at",             null: false
     t.datetime "updated_at",             null: false
+    t.string   "name_en",    limit: 255
   end
 
   create_table "logs", force: :cascade do |t|
