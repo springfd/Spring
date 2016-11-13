@@ -24,24 +24,39 @@
 				</div>
 				<%if I18n.locale.to_s != "en" %>
 				<div class="text-center" style="margin-bottom: 10vh;">
-					<a href="#donation_content_donate" class="donation_top_button"><%= t("一般性用途捐款") %></a>
-					<a href="#donation-no-span" class="donation_top_button"><%= t("指定計畫捐款") %></a>
+					<a href="#donation-no-span" class="donation_top_button"><%= t("本會計畫") %></a>					
+					<a href="#donation_content_donate" class="donation_top_button"><%= t("線上捐款") %></a>
 				</div>
 				<%end%>
+				<!--
 				<div class="donation_arrow_container text-center">
 					<a href="#donation_content_donate" class="donation_arrow">
 						<span class="glyphicon glyphicon-menu-down"></span>
 					</a>
-				</div>				
+				</div>
+				-->				
 		</div>
 	</div>		
+</div>
+<%if I18n.locale.to_s != "en" %>
+<div class="container">
+<h2 class="donation-no-span" id="donation-no-span"><%= t("本會計畫") %> <span style="color: #02a0eb; margin-left: 10px;"><%= t("總覽") %><span></h2>
+</div>
+<div class="container-fluid">
+	<div class="grid" id="grid_container">
+		<div class="grid-sizer col-xs-12 col-sm-4"></div>				
+		<% Project.where('id <> 1 and visible = 1').each do |project|%>
+			<%=render "donation_card", project: project%>	
+		<% end %>	  		 				
+	</div>	
 </div>	
+<%end%>		
 <div class="container-fluid donation_content_donate" id="donation_content_donate">
 	<div class="donation_content_background_image"></div>
 	<%if I18n.locale.to_s != "en" %>
 	<div class="row" style="position:relative; z-index:2;" id="credit">
 		<div class="col-lg-offset-3 col-lg-6 col-sm-offset-2 col-sm-8 donation_content_donate_inner" id="donation_content_donate_inner">
-			<p class="text-center" style="font-size: 22px; letter-spacing: 2px;"><%= t("一般性用途") %> <span style="color: #02a0eb;"><%= t("捐款") %></span></p>		
+			<p class="text-center" style="font-size: 22px; letter-spacing: 2px;"><%= t("線上小額") %> <span style="color: #02a0eb;"><%= t("捐款") %></span></p>		
 			<%= form_tag(main_donation_path(locale: I18n.locale), class: "donation_form") do -%>
 						<%= hidden_field_tag 'id', 1, class: 'form-control'%>
 						<div class="donation_form_title"><%= t("收據") %></div> 
@@ -127,19 +142,6 @@
 	</div>
 	<%end%>
 </div>	
-<%if I18n.locale.to_s != "en" %>
-<div class="container">
-<h2 class="donation-no-span" id="donation-no-span"><%= t("指定計畫") %> <span style="color: #02a0eb;"><%= t("捐款") %><span></h2>
-</div>
-<div class="container-fluid">
-	<div class="grid" id="grid_container">
-		<div class="grid-sizer col-xs-12 col-sm-4"></div>				
-		<% Project.where('id <> 1 and visible = 1').each do |project|%>
-			<%=render "donation_card", project: project%>	
-		<% end %>	  		 				
-	</div>	
-</div>	
-<%end%>	
 <div class="container-fluid text-center">
 	<div class="row" style="margin-bottom: 40px; margin-top: 40px;">
 		<div class="col-lg-6 donation_accounting text-right">
@@ -217,10 +219,10 @@ var foo = { bar: 0 };
 tween = new TimelineLite();
 tween.to(foo, 2, { bar: <%= Donation.joins(:project).where("projects.kind = 0 and donate_date >= ? and donate = ? ", Time.zone.now.beginning_of_year, true ).sum(:amount)%>, onUpdate: function() {
 	 $('.donation_summary_number').html(Math.ceil(foo.bar).toLocaleString());}, ease: Linear.easeNone})
-	 .to(".donation_summary_ch", 1, {autoAlpha: 1, ease: Linear.easeNone})	 
-	 .to(".donation_summary_ch_to_en", 1, {autoAlpha: 1, ease: Linear.easeNone})	 	 
-	 .to(".donation_summary_en", 1, {autoAlpha: 1, ease: Linear.easeNone})
-	 .to(".donation_range", 1, {autoAlpha: 1, ease: Linear.easeNone})
+	 .to(".donation_summary_ch", 1, {autoAlpha: 1, ease: Linear.easeNone}, 'text')	 
+	 .to(".donation_summary_ch_to_en", 1, {autoAlpha: 1, ease: Linear.easeNone}, 'text')	 	 
+	 .to(".donation_summary_en", 1, {autoAlpha: 1, ease: Linear.easeNone}, 'text')
+	 .to(".donation_range", 1, {autoAlpha: 1, ease: Linear.easeNone}, 'text')
 	 //.to(".donation_content_donate_inner", 1, {autoAlpha: 1, ease: Linear.easeNone})
 	 //.from(".donation_content_donate_inner", 1,{bottom: "40px", ease: Linear.easeNone})
 
@@ -252,6 +254,29 @@ $grid.on( 'click', '.donation_card_small_img', function( event ) {
   
 });
 
+$grid.on( 'click', '.donation_card_small_title', function( event ) {
+  $( event.currentTarget ).closest('.grid-item').toggleClass('is-expanded');
+  $grid.masonry();
+  id = $(event.currentTarget).attr('data-id')
+
+  $("#doughnutChart_"+id).drawDoughnutChart([
+    { title: "已募", value: parseInt($('#doughnutChart_'+id).attr('data-donation')),  color: "#02a0eb" },
+    { title: "剩餘", value: parseInt($('#doughnutChart_'+id).attr('data-expect_remains')),   color: "#eeeeee" }
+  ], {tipClass: "doughnutTip "+"doughnutTip_"+event.currentTarget.id});  
+  
+});
+
+$grid.on( 'click', '.donation_card_small_content', function( event ) {
+  $( event.currentTarget ).closest('.grid-item').toggleClass('is-expanded');
+  $grid.masonry();
+  id = $(event.currentTarget).attr('data-id')
+
+  $("#doughnutChart_"+id).drawDoughnutChart([
+    { title: "已募", value: parseInt($('#doughnutChart_'+id).attr('data-donation')),  color: "#02a0eb" },
+    { title: "剩餘", value: parseInt($('#doughnutChart_'+id).attr('data-expect_remains')),   color: "#eeeeee" }
+  ], {tipClass: "doughnutTip "+"doughnutTip_"+event.currentTarget.id});  
+  
+});
 /*
 $grid.on( 'click', '.grid-item-button', function( event ) {
   $( event.currentTarget ).closest('.grid-item').toggleClass('is-expanded');
