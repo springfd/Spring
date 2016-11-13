@@ -235,8 +235,9 @@
 	right:0;
 	top:0;
 	bottom:0;
-	-webkit-clip-path: polygon(50% 6%, 100% 0, 100% 100%, 0 100%, 0 0);
-	clip-path: polygon(50% 6%, 100% 0, 100% 100%, 0 100%, 0 0);	
+	-webkit-clip-path: polygon(50% 6%, 100% 0, 100% 100%, 50% 94%, 0 100%, 0 0);
+	clip-path: polygon(50% 6%, 100% 0, 100% 100%, 50% 94%, 0 100%, 0 0);
+		
 	background: url('<%= asset_path 'forest.jpg' %>');
 	background-size:cover;
 	background-position: center center;	
@@ -289,11 +290,10 @@
 
 /*=========================== card ===================================*/
 .donation-no-span{
-	margin-top: 100px;
+	/*margin-top: 100px;*/
 	font-size: 22px; 
 	letter-spacing: 3px; 
 	text-align: center;	
-	/*
     display: table;
     white-space: nowrap;
     &:before, &:after {
@@ -305,7 +305,7 @@
       width: 45%;
     }
     &:before { right: 1.5%; }
-    &:after { left: 1.5%; }	*/
+    &:after { left: 1.5%; }	
 }
 @media (max-width: $screen-sm-min) {
 	.donation-no-span{
@@ -333,6 +333,10 @@
   font-size: 19px;
   letter-spacing: 2px	
 }
+.donation_card_small_title:hover{
+	color: #000000;
+	cursor: pointer;	
+}
 .donation_card_small_content{
   font-size: 14px;	
   line-height: 25px;
@@ -340,6 +344,10 @@
   color: #878787;
   height: 80px;
   overflow: hidden;
+}
+.donation_card_small_content:hover{
+  	color: #777777;
+	cursor: pointer;	
 }
 .donation_card_enlarge_img{
   height: 300px;
