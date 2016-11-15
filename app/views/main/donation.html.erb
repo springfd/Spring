@@ -144,10 +144,23 @@
 </div>	
 <div class="container-fluid text-center">
 	<div class="row" style="margin-bottom: 40px; margin-top: 40px;">
-		<div class="col-lg-6 donation_accounting text-right">
+		<div class="col-sm-6 donation_accounting text-left hidden-sm hidden-md hidden-lg">
 			<div class="form-group form-inline">
 			  <label for="sign_report"><%= t("會計師") %> <span style="color: #02a0eb"><%= t("簽證報告") %></span></label>
-			  <select class="form-control" id="sign_report">	
+			  <select class="form-control" class="sign_report" id="sign_report_1">	
+			  	<option><%= t("請選擇") %></option>			
+			  	<% SignReport.all.order('year').each do |s|%>
+					<option value="<%= s.sr_attachment.url%>">
+					<%= s.year.strftime("%Y")+t("年度") %>
+					</option>
+				<% end %>
+			  </select>
+			</div>				
+		</div>		
+		<div class="col-sm-6 donation_accounting text-right hidden-xs">
+			<div class="form-group form-inline">
+			  <label for="sign_report"><%= t("會計師") %> <span style="color: #02a0eb"><%= t("簽證報告") %></span></label>
+			  <select class="form-control" class="sign_report" id="sign_report_2">	
 			  	<option><%= t("請選擇") %></option>			
 			  	<% SignReport.all.order('year').each do |s|%>
 					<option value="<%= s.sr_attachment.url%>">
@@ -157,7 +170,7 @@
 			  </select>
 			</div>				
 		</div>
-		<div class="col-lg-6 donation_accounting text-left">
+		<div class="col-sm-6 donation_accounting text-left">
 			<div class="form-group form-inline">
 			  <label for="donation_list"><%= t("捐款") %> <span style="color: #02a0eb"><%= t("徵信") %></span></label>
 			  <select class="form-control" id="donation_list">	
@@ -169,8 +182,7 @@
 				<% end %>
 			  </select>
 			</div>				
-		</div>		
-		
+		</div>			
 	</div>		
 </div>	
 <script>
@@ -332,13 +344,15 @@ $(window).resize(function() {
 }); 
 
 //============================= select =============================//
-$( "#sign_report" ).change(function() {
+$( "#sign_report_1" ).change(function() {
 	//alert(this.value)
 	window.location = this.value;
 });
-
-$( "#donation_list" ).change(function() {
+$( "#sign_report_2" ).change(function() {
 	//alert(this.value)
+	window.location = this.value;
+});
+$( "#donation_list" ).change(function() {
 	window.location = this.value;
 });
 
