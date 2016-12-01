@@ -56,7 +56,7 @@
 	<%if I18n.locale.to_s != "en" %>
 	<div class="row" style="position:relative; z-index:2;" id="credit">
 		<div class="col-lg-offset-3 col-lg-6 col-sm-offset-2 col-sm-8 donation_content_donate_inner" id="donation_content_donate_inner">
-			<p class="text-center" style="font-size: 22px; letter-spacing: 2px;"><%= t("線上小額") %> <span style="color: #02a0eb;"><%= t("捐款") %></span></p>		
+			<p class="text-center" style="font-size: 22px; letter-spacing: 2px;"><%= t("線上") %> <span style="color: #02a0eb;"><%= t("捐款") %></span></p>		
 			<%= form_tag(main_donation_path(locale: I18n.locale), class: "donation_form") do -%>
 						<%= hidden_field_tag 'id', 1, class: 'form-control'%>
 						<div class="donation_form_title"><%= t("收據") %></div> 
