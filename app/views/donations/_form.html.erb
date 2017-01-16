@@ -10,6 +10,14 @@
 	  </div>
 	  <% end %>
 	  <%= f.hidden_field :donate, value: true %>
+	  <%if @donation.persisted?%>
+	  <div class="form-group row">
+	  	<label class="col-sm-offset-3 col-sm-2 control-label">編號</label>
+	  		<div class="col-sm-3">
+	  			<%= f.text_field :order_num, class: "form-control", placeholder: "編號" %>
+	    	</div>
+	  </div>	  
+	  <%end%>
 	  <div class="form-group row">
 	  	<label class="col-sm-offset-3 col-sm-2 control-label">聯絡人</label>
 	  		<div class="col-sm-3">
