@@ -1,17 +1,14 @@
 <script>
 	<% flash.each do |type, message| %>	
-	<%case type%>
-	<%when 'notice'%>
-		toastr['success']('<%=message.html_safe%>')				
-	<%when 'alert'%>
-		toastr['warning']('<%=message.html_safe%>')					
-	<%else%>
-		toastr['<%=type%>']('<%=message.html_safe%>')			
-	<%end%> 
-	<% end %>
-	Pace.on("done", function(){
-	    $(".cover").fadeOut(1000);
-	});  			
+		<%case type%>
+		<%when 'notice'%>
+			toastr['success']('<%=message.html_safe%>')				
+		<%when 'alert'%>
+			toastr['warning']('<%=message.html_safe%>')					
+		<%else%>
+			toastr['<%=type%>']('<%=message.html_safe%>')			
+		<%end%> 
+	<% end %> 			
 </script> 
 <script>
   (function(i,s,o,g,r,a,m){i['GoogleAnalyticsObject']=r;i[r]=i[r]||function(){
