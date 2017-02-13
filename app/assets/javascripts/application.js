@@ -27,4 +27,5 @@
 //= require ScrollMagic/animation.gsap.js
 //= require ScrollMagic/debug.addIndicators.js 
 //= require ScrollMagic/modernizr.custom.js
+//= require pace.js
 //= require_tree .
