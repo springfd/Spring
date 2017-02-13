@@ -73,7 +73,7 @@ body.backend{
     height: 100%;
     z-index: 1999;
     background: #ffffff;
-    opacity: 0.8
+    opacity: 0.9
 }
 .pace {
   -webkit-pointer-events: none;
@@ -82,47 +82,18 @@ body.backend{
   -webkit-user-select: none;
   -moz-user-select: none;
   user-select: none;
+}
 
-  z-index: 2000;
-  position: fixed;
-  margin: auto;
-  top: 0;
-  left: 0;
-  right: 0;
-  bottom: 0;
-  height: 5px;
-  width: 200px;
-  background: #fff;
-  border: 1px solid #1b498b;
-
-  overflow: hidden;
+.pace-inactive {
+  display: none;
 }
 
 .pace .pace-progress {
-  -webkit-box-sizing: border-box;
-  -moz-box-sizing: border-box;
-  -ms-box-sizing: border-box;
-  -o-box-sizing: border-box;
-  box-sizing: border-box;
-
-  -webkit-transform: translate3d(0, 0, 0);
-  -moz-transform: translate3d(0, 0, 0);
-  -ms-transform: translate3d(0, 0, 0);
-  -o-transform: translate3d(0, 0, 0);
-  transform: translate3d(0, 0, 0);
-
-  max-width: 200px;
+  background: #1b498b;
   position: fixed;
   z-index: 2000;
-  display: block;
-  position: absolute;
   top: 0;
   right: 100%;
-  height: 100%;
   width: 100%;
-  background: #1b498b;
-}
-
-.pace.pace-inactive {
-  display: none;
+  height: 2px;
 }
