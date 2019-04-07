@@ -4,9 +4,9 @@
   </div>
 </div>
 <div class="container">
-	<div class="row">	
+	<div class="row">
 		<div class="col-md-12">
-			<%= link_to '刪除', @donation, method: :delete, data: { confirm: 'Are you sure?' } , class: 'delete-btn pull-right'%>			
+			<%= link_to '刪除', @donation, method: :delete, data: { confirm: 'Are you sure?' } , class: 'delete-btn pull-right'%>
 			<%= link_to "編輯", edit_donation_path(@donation), class: 'edit-btn pull-right', style: "margin-right: 20px" %>
 		</div>
 	</div>
@@ -48,7 +48,7 @@
 	      <tr>
 	        <td class="dt-title">說明</td>
 	        <td colspan="7" class="dt-content"><%= @donation.description %></td>
-	      </tr>	      
+	      </tr>
 	      <tr>
 	        <td colspan="8" class="dt-content" style="padding:4px 16px!important;">
 	        	<%= link_to "列印收據(說明:自訂)", "#", onclick:"printData('"+ @donation.description.to_s+"');", class: 'btn btn-info print-btn pull-right'  %>
@@ -75,13 +75,13 @@
     height: 10mm;
     width: 25mm;
     border: 2px solid;
-} 
+}
 .print-table td {
     height: 10mm;
     width: 35mm;
     border: 2px solid;
     text-align: center;
-} 
+}
 @page{ size:auto; margin-top:5mm; margin-bottom:5mm;}
 </style>
 <div style="text-align: right; font-size: 13px; padding-top: 7.5mm">捐款收據編號: <%= @donation.order_num %></div>
@@ -91,7 +91,7 @@
 		<td colspan="8"><%=image_tag 'logo_text.png', class: 'logo_text'%><span style="margin-left: 8px;">捐款收據</span>
 			<div style="font-size: 80%">法人登記簿第11冊第17頁第295號 國稅局統一編號:98285331<br>
 				 所得稅減免字號: 北區國稅竹市資第8300115086號<br>
-				 新竹市大學路1001號 負責人: 吳廣義<br>
+				 新竹市大學路1001號 負責人: 林嘉勲<br>
 				 郵政劃撥儲金帳戶: 18372451 號 財團法人交大思源基金會
 			</div>
 			<div style="float: right; margin-right: 15px;">中華民國<span style="margin-left: 3px;"><%= @donation.donate_date.year-1911 %> 年</span><span style="margin-left: 3px;"><%= @donation.donate_date.month %> 月</span><span style="margin-left: 3px;"><%= @donation.donate_date.day %> 日</span></div>
@@ -130,7 +130,7 @@
 		<td colspan="8"><%=image_tag 'logo_text.png', class: 'logo_text' %><span style="margin-left: 8px;">捐款收據</span>
 			<div style="font-size: 80%">法人登記簿第11冊第17頁第295號 國稅局統一編號:98285331<br>
 				 所得稅減免字號: 北區國稅竹市資第8300115086號<br>
-				 新竹市大學路1001號 負責人: 吳廣義<br>
+				 新竹市大學路1001號 負責人: 林嘉勲<br>
 				 郵政劃撥儲金帳戶: 18372451 號 財團法人交大思源基金會
 			</div>
 			<div style="float: right; margin-right: 15px;">中華民國<span style="margin-left: 3px;"><%= @donation.donate_date.year-1911 %> 年</span><span style="margin-left: 3px;"><%= @donation.donate_date.month %> 月</span><span style="margin-left: 3px;"><%= @donation.donate_date.day %> 日</span></div>
@@ -169,7 +169,7 @@
 		<td colspan="8"><%=image_tag 'logo_text.png', class: 'logo_text' %><span style="margin-left: 8px;">捐款收據</span>
 			<div style="font-size: 80%">法人登記簿第11冊第17頁第295號 國稅局統一編號:98285331<br>
 				 所得稅減免字號: 北區國稅竹市資第8300115086號<br>
-				 新竹市大學路1001號 負責人: 吳廣義<br>
+				 新竹市大學路1001號 負責人: 林嘉勲<br>
 				 郵政劃撥儲金帳戶: 18372451 號 財團法人交大思源基金會
 			</div>
 			<div style="float: right; margin-right: 15px;">中華民國<span style="margin-left: 3px;"><%= @donation.donate_date.year-1911 %> 年</span><span style="margin-left: 3px;"><%= @donation.donate_date.month %> 月</span><span style="margin-left: 3px;"><%= @donation.donate_date.day %> 日</span></div>
@@ -215,7 +215,7 @@ $(document).on('ready', function() {
     ];
     var unit = [ '' , '拾' , '佰' , '仟' ];
     var group = [ '元' , '萬' , '億' ];
- 
+
     var s = '' ;
     for ( var i = 0; i < group.length && n > 0; i++) {
         var p = '' ;
@@ -233,7 +233,7 @@ $(document).on('ready', function() {
 };
 	$('.print_amount').text( digit_uppercase('<%= @donation.amount %>') )
 });
-function printData(description) {    
+function printData(description) {
 	$('.description_print').html(description)
                var data = document.getElementById('printTable').innerHTML;
      var popupWindow = window.open('','printwin',
